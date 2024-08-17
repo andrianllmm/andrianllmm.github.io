@@ -4,9 +4,10 @@ github_users:
 repo_description_lines_max: 2
 
 github_repos:
+  - andrianllmm/aklish
   - andrianllmm/tagLID
   - andrianllmm/tagalog-stemmer
   - andrianllmm/aklanon-stemmer
-  - andrianllmm/eng-dictionary-parser
   - andrianllmm/tgl-dictionary-parser
   - andrianllmm/akl-dictionary-parser
+  - andrianllmm/eng-dictionary-parser

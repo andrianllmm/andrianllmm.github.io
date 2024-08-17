@@ -2,17 +2,16 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: blank # the website title (if blank, full name will be used instead)
+title: Andrian Lloyd Maagma # the website title (if blank, full name will be used instead)
 first_name: Andrian Lloyd
 middle_name: M.
 last_name: Maagma
 email: maagmaandrian@gmail.com
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  Andrian's personal website.
+  Andrian's personal website
 footer_text: >
-  Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
-  Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-keywords: personal-website, portfolio, resume, cv, student, computer-science, programmer # add your own keywords or leave empty
+  <a href="https://github.com/andrianllmm/andrianllmm.github.io/" target="_blank">Source code</a>.
+keywords: personal-website, portfolio, resume, cv, student, computer-science, programmer, designer # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: "favicon.ico" # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
@@ -131,8 +130,8 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: andrianllmm # blog_name will be displayed in your blog page
-blog_description: Andrian's blog posts
+blog_name: # blog_name will be displayed in your blog page
+blog_description:
 permalink: /blog/:year/:title/
 lsi: false # produce an index for related posts
 
@@ -167,8 +166,8 @@ disqus_shortname: andrianllmm # put your disqus shortname
 # If you have blog posts published on medium.com or other external sources,
 # you can display them in your blog by adding a link to the RSS feed.
 external_sources:
-  - name: medium.com
-    rss_url: https://medium.com/@andrianllmm/feed
+  # - name: medium.com
+  #   rss_url: https://medium.com/@andrianllmm/feed
 
 # -----------------------------------------------------------------------------
 # Newsletter

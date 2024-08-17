@@ -1,90 +1,138 @@
-- title: General Information
+- title: Andrian Lloyd Maagma
   type: map
   contents:
-    - name: Full Name
-      value: Andrian Lloyd Maagma
-    - name: Date of Birth
-      value: 6th September 2006
-    - name: Languages
-      value: English, Tagalog, Aklanon
+    - name: Address
+      value: Ibajay, Aklan
+    - name: Email
+      value: maagmaandrian@gmail.com
+    - name: Phone
+      value: '+639949033883'
+
 
 - title: Education
   type: time_table
   contents:
     - title: Bachelor of Science in Computer Science
-      institution: University of the Philippines Visayas, Iloilo, Philippines
-      year: 2024
+      institution: University of the Philippines Visayas
+      location: Iloilo, Philippines
+      year: 2024–Present
       description:
-        - 'Relevant coursework:'
-        - 'Awards:'
-    - title: Science, Technology, Engineering, and Mathematics Strand
-      institution: Maloco National High School, Aklan, Philippines
-      year: 2022
+        - 'Relevant Coursework: Introduction to Computing, Introduction to Computer Science'
+
+    - title: Science, Technology, Engineering, and Mathematics Strand – Academic Track
+      institution: Maloco National High School
+      location: Aklan, Philippines
+      year: 2022–2024
       description:
-        - 'Relevant coursework: Capstone/Research Project, Inquiries, Investigation, and Immersion, Practical Research I & II'
-        - 'Awards: With highest honor, Department of Science and Technology Undergraduate Scholarship'
-    - title: Science, Technology, Engineering, and Mathematics Strand
-      institution: Maloco National High School, Aklan, Philippines
-      year: 2022
+        - 'Honors/Awards: With Highest Honor, DOST-SEI Undergraduate Scholarship'
+        - 'Relevant Coursework: Research Capstone Project, Practical Research 1 & 2'
+
+    - title: Media Arts – Special Program in the Arts
+      institution: Ibajay National High School
+      location: Aklan, Philippines
+      year: 2018–2022
       description:
-        - 'Relevant coursework: Graphic design, Animation, Photo manipulation, Video editing'
-        - 'Awards: With high honor'
+        - 'Honors/Awards: With High Honor'
+        - 'Relevant coursework: Graphic Design, Animation, Photo and Video Editing'
+
 
 - title: Experience
   type: time_table
   contents:
-    - title: Web developer
-      institution: Capstone/Research Project & Inquiries, Investigation, and Immersion
-      year: 2024
+    - title: Student Council Vice President
+      institution: Supreme Secondary Learner Government, Maloco National High School
+      year: 2023–2024
       description:
-        - Developed a web application for the Aklanon language,
-          involving crowdsourcing Aklanon-English translations,
-          Aklanon-English dictionaries, spellcheckers, and games, managing feedback from 30 users.
-    - title: Data analyst
-      institution: Practical Research II
-      year: 2023
+        - Led the creation of the student council's visual identity, including logo design and promotional assets.
+        - Designed graphic materials for social media, tarpaulins, backdrops, flyers, and other publications.
+
+    - title: School Paper Layout Artist
+      institution: Hilltop, Maloco Naitonal High School
+      year: 2023-2024
       description:
-        - Analyzed Tagalog-English code-mixed text data utilizing Python and Natural Language Processing (NLP) techniques
-          to derive code-switching relative frequency of both languages, managing data from 57 respondents.
-    - title: Startup co-founder
-      institution: Philippine Startup Challenge 7
+        - Designed the layout for a 12-page tabloid school newspaper, which served as the school's entry for the 2024 Division Schools Press Conference.
+        - Collaborated with writers and editors to ensure visual design aligns with content.
+
+    - title: Resource Speaker in Collaborative and Desktop Publishing
+      institution: School-based Journalism Camp, Solido National High School
       year: 2022
       description:
-        - Co-founded and pitched a mobile application designed to gamify math learning.
+        - Conducted workshops on graphic design theory and software tools, including Adobe InDesign and Photoshop.
+        - Provided guidance on efficient time management techniques and collaborative skills for layout artists.
 
-- title: Projects
+    - title: Co-founder in Startup Competition
+      institution: MATHuto, Philippine Startup Challenge 7
+      year: 2022
+      description:
+        - Co-founded a mobile app to gamify math learning and improve student engagement.
+        - Contributed to branding, UI/UX design, and pitch presentations for the startup competition.
+
+
+- title: Achievements
+  type: list
+  contents:
+    - Regional Schools Press Conference – Qualifier, Collaborative & Desktop Publishing, Layout Artist (2024)
+    - Division Schools Press Conference – Champion, Collaborative & Desktop Publishing, Layout Artist (2024)
+    - Regional SciMathlympics – Qualifier, Mathematics and Computational Science, Researcher (2023)
+    - Division Schools Press Conference – 1st Runner-up, Collaborative & Desktop Publishing, Layout Artist (2023)
+
+
+- title: Certifications
   type: time_table
   contents:
-    - title: <a href="https://github.com/andrianllmm/tagLID">tagLID</a>
-      year: 2023-now
-      description: A word level Language Identification (LID) tool for Tagalog-English (Taglish) text.
-    - title: <a href="https://github.com/andrianllmm/tagalog-stemmer">tglstemmer</a>
-      year: 2023-now
-      description: A Python library for Tagalog word stemming.
-    - title: <a href="https://github.com/andrianllmm/aklanon-stemmer">aklstemmer</a>
-      year: 2024-now
-      description: A Python library for Aklanon word stemming.
+    - title: 'CS50w: Web Programming with Python and JavaScript'
+      institution: Harvard University
+      location: Online
+      year: 2024
+      description:
+        - 'Relevant Coursework: Git, Django, React.js, UI/UX, Testing CI/CD, Scalability, Security'
 
-- title: Honors and Awards
-  type: time_table
-  contents:
-    - year: 2024
-      items:
-        - Regional Schools Press Conference Qualifier
-        - Division Schools Press Conference Champion
-    - year: 2023
-      items:
-        - Regional Mathscilympics Qualifier
-        - Division Schools Press Conference 1st Runner-up
+    - title: 'CS50p: Introduction to Programming with Python'
+      institution: Harvard University
+      location: Online
+      year: 2023
+      description:
+        - 'Relevant Coursework: Unit Tests, Object-Oriented Programming, Functional Programming, Concurrency, Regular Expressions'
+
+    - title: 'CS50x: Introduction to Computer Science'
+      institution: Harvard University
+      location: Online
+      year: 2023
+      description:
+        - 'Relevant Coursework: C, Algorithms, Data Structures, SQL, HTML, CSS, JavaScript, Flask, Cybersecurity, Artificial Intelligence'
+
 
 - title: Skills
-  type: list
+  type: nested_list
   contents:
-    - 'Technical Skills: Python, Django, JavaScript, React, Photoshop, Illustrator, InDesign'
-    - 'Industry skills: Problem-solving, Adaptability, Teamwork, Communication'
+    - title: Tools and Technologies
+      items:
+        - Python
+        - Django
+        - JavaScript
+        - React.js
+        - Adobe Photoshop
+        - Adobe Illustrator
+        - Adobe InDesign
+
+    - title: Industry Knowledge
+      items:
+        - Web development and design
+        - Natural Language Processing
+        - Data analysis
+
+    - title: Interpersonal Skills
+      items:
+        - Problem-solving
+        - Easily Adaptable
+        - Teamwork
+        - Communication
 
 
-- title: Hobbies and interests
-  type: list
+- title: Languages
+  type: map
   contents:
-    - Graphic design, Chess, Guitar, Cubing, Typing
+    - name: English
+      value: Professional working proficiency
+    - name: Tagalog
+      value: Professional working proficiency

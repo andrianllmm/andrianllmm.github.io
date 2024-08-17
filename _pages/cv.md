@@ -4,8 +4,8 @@ permalink: /cv/
 title: CV
 nav: true
 nav_order: 5
-cv_pdf: example_pdf.pdf
-description: My Curriculum Vitae
+cv_pdf: cv.pdf
+description: Curriculum Vitae
 toc:
   sidebar: left
 ---

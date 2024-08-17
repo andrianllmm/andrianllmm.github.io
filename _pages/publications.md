@@ -2,7 +2,7 @@
 layout: page
 permalink: /publications/
 title: Research
-description: Research I conducted in school and competitions.
+description:
 nav: true
 nav_order: 2
 ---
