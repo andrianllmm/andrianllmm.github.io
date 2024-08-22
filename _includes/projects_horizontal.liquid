@@ -11,9 +11,16 @@
           <div class="card-body">
             <h3 class="card-title">{{ project.title }}</h3>
             <p class="card-text">{{ project.description }}</p>
-            <div class="row ml-1 mr-1 p-0">
+            <div class="row mt-auto ml-auto mr-1 p-0 pt-3">
+              {% if project.demo %}
+                <div class="demo-icon mr-2">
+                  <div class="icon" data-toggle="tooltip" title="Demo">
+                    <a href="{{ project.demo }}"><i class="fa-solid fa-external-link-alt"></i></a>
+                  </div>
+                </div>
+              {% endif %}
               {% if project.github %}
-                <div class="github-icon">
+                <div class="github-icon mr-2">
                   <div class="icon" data-toggle="tooltip" title="Code Repository">
                     <a href="{{ project.github }}"><i class="fa-brands fa-github gh-icon"></i></a>
                   </div>
@@ -25,6 +32,11 @@
                   {% endif %}
                 </div>
               {% endif %}
+              <div class="knowmore-icon mr-2">
+                <div class="icon" data-toggle="tooltip" title="Know More">
+                  <a href="{{ project.url | relative_url }}"><i class="fa-solid fa-lightbulb"></i></a>
+                </div>
+              </div>
             </div>
           </div>
         </div>

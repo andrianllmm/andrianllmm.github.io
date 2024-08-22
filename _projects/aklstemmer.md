@@ -5,6 +5,7 @@ description: A Python library for Aklanon word stemming.
 img: assets/img/project_preview/aklstemmer.png
 importance: 2
 category: student
+github: https://github.com/andrianllmm/aklanon-stemmer
 selected: true
 ---
 
