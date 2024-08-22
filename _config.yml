@@ -187,6 +187,10 @@ collections:
     output: true
     permalink: /:collection/:title/
 
+selected_projects:
+  enabled: true
+  limit: 3
+
 latest_posts:
   enabled: true
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items

@@ -48,6 +48,31 @@ layout: default
       {% include latest_posts.liquid %}
     {% endif %}
 
+    <!-- Selected projects -->
+    {% if site.selected_projects.enabled %}
+      <h2>
+        <a href="{{ '/projects/' | relative_url }}" style="color: inherit">Featured projects</a>
+      </h2>
+      <div class="projects">
+        {% assign selected_projects = site.projects | where: "selected", true | sort: "importance" | limit: site.selected_projects.limit %}
+        {% if page.horizontal %}
+          <div class="container">
+            <div class="row row-cols-1 row-cols-md-2">
+              {% for project in selected_projects %}
+                {% include projects_horizontal.liquid %}
+              {% endfor %}
+            </div>
+          </div>
+        {% else %}
+          <div class="row row-cols-1 row-cols-md-3">
+              {% for project in selected_projects %}
+                {% include projects.liquid %}
+              {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
     <!-- Selected papers -->
     {% if page.selected_papers %}
       <h2>
