@@ -31,25 +31,25 @@ pagination:
 
 {% if site.display_tags or site.display_categories %}
 
-  <div class="tag-category-list">
-    <ul class="p-0 m-0">
+  <div class="tag-category-list p-0 m-0">
+    <ul class="p-0 m-3">
       {% for tag in site.display_tags %}
-        <li>
+        <li class="p-0 m-0">
           <i class="fa-solid fa-hashtag fa-sm"></i> <a href="{{ tag | slugify | prepend: '/blog/tag/' | relative_url }}">{{ tag }}</a>
         </li>
         {% unless forloop.last %}
-          <p>&bull;</p>
+          <span class="m-2">&bull;</span>
         {% endunless %}
       {% endfor %}
       {% if site.display_categories.size > 0 and site.display_tags.size > 0 %}
-        <p>&bull;</p>
+        <span class="m-2">&bull;</span>
       {% endif %}
       {% for category in site.display_categories %}
-        <li>
+        <li class="p-0 m-0">
           <i class="fa-solid fa-tag fa-sm"></i> <a href="{{ category | slugify | prepend: '/blog/category/' | relative_url }}">{{ category }}</a>
         </li>
         {% unless forloop.last %}
-          <p>&bull;</p>
+          <span class="m-2">&bull;</span>
         {% endunless %}
       {% endfor %}
     </ul>
