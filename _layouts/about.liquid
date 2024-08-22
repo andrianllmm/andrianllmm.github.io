@@ -1,20 +1,22 @@
 ---
 layout: default
 ---
+
 <div class="post">
   <header class="post-header">
     <h1 class="post-title">
       {% if site.title == 'blank' %}
-        <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
-        {{ site.last_name }}
+        <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }} {{ site.last_name }}
       {% else %}
         {{ site.title }}
       {% endif %}
     </h1>
-    <p class="desc">{{ page.subtitle }}</p>
+    <p class="desc font-italic">{{ page.subtitle }}</p>
   </header>
 
   <article>
+    <hr>
+
     {% if page.profile %}
       <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
         {% if page.profile.image %}
@@ -22,11 +24,9 @@ layout: default
           {% if page.profile.image_circular %}
             {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
           {% else %}
-            {% assign profile_image_class = 'img-fluid z-depth-1
-      rounded' %}
+            {% assign profile_image_class = 'img-fluid z-depth-1 rounded' %}
           {% endif %}
-          {% capture sizes %}(min-width: {{site.max_width}}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
-      30vw, 95vw"{% endcapture %}
+          {% capture sizes %}(min-width: {{site.max_width}}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px) 30vw, 95vw"{% endcapture %}
           {%
             include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
             cache_bust=true
@@ -38,56 +38,68 @@ layout: default
       </div>
     {% endif %}
 
-    <div class="clearfix">{{ content }}</div>
+    <section id="content">
+      <div class="clearfix">{{ content }}</div>
+    </section>
+
+    <hr>
 
     <!-- Latest posts -->
     {% if site.latest_posts.enabled %}
-      <h2>
-        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">Latest posts</a>
-      </h2>
-      {% include latest_posts.liquid %}
+      <section id="latest-posts" class="my-5">
+        <h2 class="mb-4">
+          <a href="{{ '/blog/' | relative_url }}" style="color: inherit">Latest posts</a>
+        </h2>
+        {% include latest_posts.liquid %}
+      </section>
     {% endif %}
 
     <!-- Selected projects -->
     {% if site.selected_projects.enabled %}
-      <h2>
-        <a href="{{ '/projects/' | relative_url }}" style="color: inherit">Featured projects</a>
-      </h2>
-      <div class="projects">
-        {% assign selected_projects = site.projects | where: "selected", true | sort: "importance" | limit: site.selected_projects.limit %}
-        {% if page.horizontal %}
-          <div class="container">
-            <div class="row row-cols-1 row-cols-md-2">
-              {% for project in selected_projects %}
-                {% include projects_horizontal.liquid %}
-              {% endfor %}
+      <section id="featured-projects" class="my-5">
+        <h2 class="mb-4">
+          <a href="{{ '/projects/' | relative_url }}" style="color: inherit">Featured projects</a>
+        </h2>
+        <div class="projects">
+          {% assign selected_projects = site.projects | where: "selected", true | sort: "importance" | limit: site.selected_projects.limit %}
+          {% if page.horizontal %}
+            <div class="container">
+              <div class="row row-cols-1 row-cols-md-2">
+                {% for project in selected_projects %}
+                  {% include projects_horizontal.liquid %}
+                {% endfor %}
+              </div>
             </div>
-          </div>
-        {% else %}
-          <div class="row row-cols-1 row-cols-md-3">
-              {% for project in selected_projects %}
-                {% include projects.liquid %}
-              {% endfor %}
-          </div>
-        {% endif %}
-      </div>
+          {% else %}
+            <div class="row row-cols-1 row-cols-md-3">
+                {% for project in selected_projects %}
+                  {% include projects.liquid %}
+                {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      </section>
     {% endif %}
 
     <!-- Selected papers -->
     {% if page.selected_papers %}
-      <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">Featured research</a>
-      </h2>
-      {% include selected_papers.liquid %}
+      <section id="featured-research" class="my-5">
+        <h2 class="mb-4">
+          <a href="{{ '/publications/' | relative_url }}" style="color: inherit">Featured research</a>
+        </h2>
+        {% include selected_papers.liquid %}
+      </section>
     {% endif %}
 
     <!-- Social -->
     {% if page.social %}
-      <div class="social">
-        <div class="contact-icons">{% include social.liquid %}</div>
+      <section id="social" class="mt-5">
+        <div class="social">
+          <div class="contact-icons">{% include social.liquid %}</div>
 
-        <div class="contact-note">{{ site.contact_note }}</div>
-      </div>
+          <div class="contact-note">{{ site.contact_note }}</div>
+        </div>
+      </section>
     {% endif %}
 
     {% if site.newsletter.enabled and site.footer_fixed %}
