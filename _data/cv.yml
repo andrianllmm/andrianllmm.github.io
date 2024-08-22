@@ -40,28 +40,28 @@
   type: time_table
   contents:
     - title: Student Council Vice President
-      institution: Supreme Secondary Learner Government, Maloco National High School
+      department: Supreme Secondary Learner Government, Maloco National High School
       year: 2023–2024
       description:
         - Led the creation of the student council's visual identity, including logo design and promotional assets.
         - Designed graphic materials for social media, tarpaulins, backdrops, flyers, and other publications.
 
     - title: School Paper Layout Artist
-      institution: Hilltop, Maloco Naitonal High School
+      department: Hilltop, Maloco Naitonal High School
       year: 2023-2024
       description:
         - Designed the layout for a 12-page tabloid school newspaper, which served as the school's entry for the 2024 Division Schools Press Conference.
         - Collaborated with writers and editors to ensure visual design aligns with content.
 
     - title: Resource Speaker in Collaborative and Desktop Publishing
-      institution: School-based Journalism Camp, Solido National High School
+      department: School-based Journalism Camp, Solido National High School
       year: 2022
       description:
         - Conducted workshops on graphic design theory and software tools, including Adobe InDesign and Photoshop.
         - Provided guidance on efficient time management techniques and collaborative skills for layout artists.
 
     - title: Co-founder in Startup Competition
-      institution: MATHuto, Philippine Startup Challenge 7
+      department: MATHuto, Philippine Startup Challenge 7
       year: 2022
       description:
         - Co-founded a mobile app to gamify math learning and improve student engagement.
@@ -103,30 +103,33 @@
 
 
 - title: Skills
-  type: nested_list
+  type: list_groups
   contents:
-    - title: Tools and Technologies
+    - category: Tools and Technologies
+      icon: fa fa-tools
       items:
-        - Python
-        - Django
-        - JavaScript
-        - React.js
-        - Adobe Photoshop
-        - Adobe Illustrator
-        - Adobe InDesign
+        - name: Python
+        - name: Django
+        - name: JavaScript
+        - name: React.js
+        - name: Adobe Photoshop
+        - name: Adobe Illustrator
+        - name: Adobe InDesign
 
-    - title: Industry Knowledge
+    - category: Industry Knowledge
+      icon: fa fa-briefcase
       items:
-        - Web development and design
-        - Natural Language Processing
-        - Data analysis
+        - name: Web development and design
+        - name: Natural Language Processing
+        - name: Data analysis
 
-    - title: Interpersonal Skills
+    - category: Interpersonal Skills
+      icon: fa fa-users
       items:
-        - Problem-solving
-        - Easily Adaptable
-        - Teamwork
-        - Communication
+        - name: Problem-solving
+        - name: Easily Adaptable
+        - name: Teamwork
+        - name: Communication
 
 
 - title: Languages

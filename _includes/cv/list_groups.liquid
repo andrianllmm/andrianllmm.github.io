@@ -20,7 +20,11 @@
             <tr>
               <td></td>
               <td class="list-group-name">
-                <b>{{ item.name }}</b>
+                {% if item.link %}
+                  <a href="{{ item.link }}"><b>{{ item.name }}</b></a>
+                {% else %}
+                  <b>{{ item.name }}</b>
+                {% endif %}
               </td>
               {% if item.level %}
                 <td class="list-group-level">{{ item.level }}</td>
@@ -33,13 +37,6 @@
                 <span class="list-group-time">{{ item.time }}</span>
                 </td>
               {% else %}
-                </td>
-              {% endif %}
-              {% if item.link %}
-                <td class="list-group-link">
-                  <a href="{{ item.link }}" target="_blank" class="btncv z-depth-0">
-                    {% if item.linkname %}{{ item.linkname }}{% else %}DOC{% endif %}
-                  </a>
                 </td>
               {% endif %}
             </tr>

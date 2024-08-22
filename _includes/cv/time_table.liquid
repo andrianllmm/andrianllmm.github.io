@@ -1,14 +1,14 @@
 <ul class="card-text font-weight-light list-group list-group-flush">
   {% for content in entry.contents %}
-    <li class="list-group-item">
+    <li class="list-group-item px-0">
       <div class="row">
         {% if content.year %}
-          <div class="col-xs-2 cl-sm-2 col-md-2 text-center" style="width: 75px">
+          <div class="col-xs-2 cl-sm-2 col-md-2" style="width: 75px">
             <table class="table-cv">
               <tbody>
                 <tr>
                   <td>
-                    <span class="badge font-weight-bold danger-color-dark text-uppercase align-middle" style="min-width: 75px">
+                    <span class="badge font-weight-bold rounded-pill danger-color-dark align-middle" style="min-width: 75px">
                       {{- content.year -}}
                     </span>
                   </td>
@@ -16,7 +16,7 @@
                 {% if content.location %}
                   <tr>
                     <td>
-                      <p class="location">
+                      <p class="location m-0">
                         <i class="fa-solid fa-location-dot iconlocation"></i>
                         {{ content.location }}
                       </p>
@@ -36,7 +36,7 @@
               <tbody>
                 {% if content.institution %}
                   <tr>
-                    <td style="vertical-align: top; text-align: center" class="institution">
+                    <td style="vertical-align: top; text-align: center" class="institution p-1">
                       <i class="fa-solid fa-building-columns iconinstitution"></i>
                     </td>
                     <td class="institution">{{ content.institution }}</td>
@@ -44,7 +44,7 @@
                 {% endif %}
                 {% if content.department %}
                   <tr>
-                    <td style="vertical-align: top; text-align: center" class="department">
+                    <td style="vertical-align: top; text-align: center" class="department p-1">
                       <i class="fa-regular fa-circle-dot icondepartment"></i>
                     </td>
                     <td class="department">{{ content.department }}</td>

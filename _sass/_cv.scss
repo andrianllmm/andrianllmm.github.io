@@ -59,12 +59,20 @@ i.icondepartment {
   margin-right: 0.3rem;
 }
 
-table.institution {
-  margin-bottom: 1rem;
+td.institution {
+  font-size: 0.8rem;
 }
 
 td.department {
   font-size: 0.8rem;
+}
+
+table.institution {
+  margin-bottom: 1rem;
+}
+
+table.department {
+  margin-bottom: 1rem;
 }
 
 div.container-links {
