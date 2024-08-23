@@ -21,7 +21,9 @@
               <td></td>
               <td class="list-group-name">
                 {% if item.link %}
-                  <a href="{{ item.link }}"><b>{{ item.name }}</b></a>
+                  <a href="{{ item.link }}"
+                    ><b>{{ item.name }}</b></a
+                  >
                 {% else %}
                   <b>{{ item.name }}</b>
                 {% endif %}

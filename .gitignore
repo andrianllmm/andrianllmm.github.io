@@ -1,13 +1,29 @@
-_site
-.bundle
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
-.DS_store
+# Jekyll-related files and directories
+_site/
+.bundle/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata/
+
+# System and editor-specific files
+.DS_Store
+.idea/
+
+# Ruby and Gem files
 .ruby-version
-.tweet-cache
 Gemfile.lock
-assets/libs/
+
+# Cache and temporary files
+.tweet-cache/
+
+# Node.js and package files
 node_modules/
-vendor
-.idea
+
+# Assets and libraries
+assets/libs/
+
+# Miscellaneous
+vendor/
+
+# Python virtual environment
+venv/

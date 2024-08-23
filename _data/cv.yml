@@ -6,8 +6,7 @@
     - name: Email
       value: maagmaandrian@gmail.com
     - name: Phone
-      value: '+639949033883'
-
+      value: "+639949033883"
 
 - title: Education
   type: time_table
@@ -17,24 +16,23 @@
       location: Iloilo, Philippines
       year: 2024–Present
       description:
-        - 'Relevant Coursework: Introduction to Computing, Introduction to Computer Science'
+        - "Relevant Coursework: Introduction to Computing, Introduction to Computer Science"
 
     - title: Science, Technology, Engineering, and Mathematics Strand – Academic Track
       institution: Maloco National High School
       location: Aklan, Philippines
       year: 2022–2024
       description:
-        - 'Honors/Awards: With Highest Honor, DOST-SEI Undergraduate Scholarship'
-        - 'Relevant Coursework: Research Capstone Project, Practical Research 1 & 2'
+        - "Honors/Awards: With Highest Honor, DOST-SEI Undergraduate Scholarship"
+        - "Relevant Coursework: Research Capstone Project, Practical Research 1 & 2"
 
     - title: Media Arts – Special Program in the Arts
       institution: Ibajay National High School
       location: Aklan, Philippines
       year: 2018–2022
       description:
-        - 'Honors/Awards: With High Honor'
-        - 'Relevant coursework: Graphic Design, Animation, Photo and Video Editing'
-
+        - "Honors/Awards: With High Honor"
+        - "Relevant coursework: Graphic Design, Animation, Photo and Video Editing"
 
 - title: Experience
   type: time_table
@@ -67,7 +65,6 @@
         - Co-founded a mobile app to gamify math learning and improve student engagement.
         - Contributed to branding, UI/UX design, and pitch presentations for the startup competition.
 
-
 - title: Achievements
   type: list
   contents:
@@ -76,31 +73,29 @@
     - Regional SciMathlympics – Qualifier, Mathematics and Computational Science, Researcher (2023)
     - Division Schools Press Conference – 1st Runner-up, Collaborative & Desktop Publishing, Layout Artist (2023)
 
-
 - title: Certifications
   type: time_table
   contents:
-    - title: 'CS50w: Web Programming with Python and JavaScript'
+    - title: "CS50w: Web Programming with Python and JavaScript"
       institution: Harvard University
       location: Online
       year: 2024
       description:
-        - 'Relevant Coursework: Git, Django, React.js, UI/UX, Testing CI/CD, Scalability, Security'
+        - "Relevant Coursework: Git, Django, React.js, UI/UX, Testing CI/CD, Scalability, Security"
 
-    - title: 'CS50p: Introduction to Programming with Python'
+    - title: "CS50p: Introduction to Programming with Python"
       institution: Harvard University
       location: Online
       year: 2023
       description:
-        - 'Relevant Coursework: Unit Tests, Object-Oriented Programming, Functional Programming, Concurrency, Regular Expressions'
+        - "Relevant Coursework: Unit Tests, Object-Oriented Programming, Functional Programming, Concurrency, Regular Expressions"
 
-    - title: 'CS50x: Introduction to Computer Science'
+    - title: "CS50x: Introduction to Computer Science"
       institution: Harvard University
       location: Online
       year: 2023
       description:
-        - 'Relevant Coursework: C, Algorithms, Data Structures, SQL, HTML, CSS, JavaScript, Flask, Cybersecurity, Artificial Intelligence'
-
+        - "Relevant Coursework: C, Algorithms, Data Structures, SQL, HTML, CSS, JavaScript, Flask, Cybersecurity, Artificial Intelligence"
 
 - title: Skills
   type: list_groups
@@ -130,7 +125,6 @@
         - name: Easily Adaptable
         - name: Teamwork
         - name: Communication
-
 
 - title: Languages
   type: map

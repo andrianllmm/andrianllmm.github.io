@@ -1,12 +1,12 @@
 ---
 layout: default
 ---
-
 <div class="post">
   <header class="post-header">
     <h1 class="post-title">
       {% if site.title == 'blank' %}
-        <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }} {{ site.last_name }}
+        <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
+        {{ site.last_name }}
       {% else %}
         {{ site.title }}
       {% endif %}
@@ -61,7 +61,7 @@ layout: default
           <a href="{{ '/projects/' | relative_url }}" style="color: inherit">Featured projects</a>
         </h2>
         <div class="projects">
-          {% assign selected_projects = site.projects | where: "selected", true | sort: "importance" | limit: site.selected_projects.limit %}
+          {% assign selected_projects = site.projects | where: 'selected', true | sort: 'importance' | limit: site.selected_projects.limit %}
           {% if page.horizontal %}
             <div class="container">
               <div class="row row-cols-1 row-cols-md-2">
@@ -72,9 +72,9 @@ layout: default
             </div>
           {% else %}
             <div class="row row-cols-1 row-cols-md-3">
-                {% for project in selected_projects %}
-                  {% include projects.liquid %}
-                {% endfor %}
+              {% for project in selected_projects %}
+                {% include projects.liquid %}
+              {% endfor %}
             </div>
           {% endif %}
         </div>
