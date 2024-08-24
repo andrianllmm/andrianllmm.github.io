@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: project
 title: Aklanon Stemmer
 description: A Python library for Aklanon word stemming.
 img: assets/img/project_preview/aklstemmer.png
@@ -9,6 +9,7 @@ skills:
   - Python
   - NLP
 github: https://github.com/andrianllmm/aklanon-stemmer
+giscus_comments: true
 selected: true
 ---
 

@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: project
 title: TagLID
 description: A word level Language Identification (LID) tool for Tagalog-English (Taglish) text.
 img: assets/img/project_preview/taglid.png
@@ -11,6 +11,7 @@ skills:
   - Web scraping
   - XML programming
 github: https://github.com/andrianllmm/taglid
+giscus_comments: true
 selected: true
 ---
 

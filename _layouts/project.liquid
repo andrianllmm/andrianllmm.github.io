@@ -1,0 +1,77 @@
+---
+layout: default
+---
+<div class="post">
+  <header class="post-header">
+    <div class="d-flex align-items-center">
+      <h1 class="post-title">{{ page.title }}</h1>
+      <div class="row ml-auto">
+        {% if page.demo %}
+          <div class="demo-icon mr-2">
+            <div class="icon" data-toggle="tooltip" title="Demo">
+              <a href="{{ page.demo }}"><i class="fa-solid fa-external-link-alt"></i></a>
+            </div>
+          </div>
+        {% endif %}
+        {% if page.github %}
+          <div class="github-icon mr-2">
+            <div class="icon" data-toggle="tooltip" title="Code Repository">
+              <a href="{{ page.github }}"><i class="fa-brands fa-github gh-icon"></i></a>
+            </div>
+            {% if page.github_stars %}
+              <span class="stars" data-toggle="tooltip" title="GitHub Stars">
+                <i class="fa-solid fa-star"></i>
+                <span id="{{ page.github_stars }}-stars"></span>
+              </span>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    {% if page.description %}
+      <p class="post-description m-0">{{ page.description }}</p>
+    {% endif %}
+    <div class="row mt-2 mx-1">
+      {% for skill in page.skills %}
+        <span class="badge m-1 rounded-pill align-middle shadow-none">{{ skill }}</span>
+      {% endfor %}
+    </div>
+  </header>
+  <hr>
+
+  <article class="post-content">
+    {% if page.toc and page.toc.beginning %}
+      <div id="table-of-contents">
+        {% toc %}
+      </div>
+      <hr>
+    {% endif %}
+    <div id="markdown-content">
+      {{ content }}
+    </div>
+  </article>
+
+  {% if page.citation %}
+    {% include citation.liquid %}
+  {% endif %}
+
+  {% if page.related_publications %}
+    <h2>References</h2>
+    <div class="publications">
+      {% bibliography --cited_in_order %}
+    </div>
+  {% endif %}
+
+  {% if site.related_blog_posts.enabled %}
+    {% if page.related_posts == null or page.related_posts %}
+      {% include related_posts.liquid %}
+    {% endif %}
+  {% endif %}
+
+  {% if site.disqus_shortname and page.disqus_comments %}
+    {% include disqus.liquid %}
+  {% endif %}
+  {% if site.giscus and page.giscus_comments %}
+    {% include giscus.liquid %}
+  {% endif %}
+</div>
