@@ -14,9 +14,7 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-Welcome to my digital space!
-
-I'm **Andrian**, a dedicated BS in Computer Science student at the [University of the Philippines Visayas](https://www.upv.edu.ph/).
+Hello world, this is **Andrian**, a Computer Science undergraduate at [University of the Philippines Visayas](https://www.upv.edu.ph/).
 
 I have a keen interest in full-stack web development, UI/UX design, data science, and natural language processing. I’ve developed my skills through developing and managing web applications, leading design projects, and conducting research.
 
