@@ -11,6 +11,11 @@
           <div class="card-body">
             <h3 class="card-title">{{ project.title }}</h3>
             <p class="card-text">{{ project.description }}</p>
+            <div class="row mx-1">
+              {% for skill in project.skills %}
+                <span class="badge m-1 rounded-pill align-middle">{{ skill }}</span>
+              {% endfor %}
+            </div>
             <div class="row mt-auto ml-auto mr-1 p-0 pt-3">
               {% if project.demo %}
                 <div class="demo-icon mr-2">

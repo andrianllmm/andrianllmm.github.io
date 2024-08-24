@@ -5,6 +5,11 @@ description: A word level Language Identification (LID) tool for Tagalog-English
 img: assets/img/project_preview/taglid.png
 importance: 1
 category: student
+skills:
+  - Python
+  - NLP
+  - Web scraping
+  - XML programming
 github: https://github.com/andrianllmm/taglid
 selected: true
 ---

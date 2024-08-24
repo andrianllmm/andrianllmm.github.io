@@ -5,6 +5,13 @@ description: A Django x React.js web application for crowdsourcing Aklanon-Engli
 img: assets/img/project_preview/aklish.png
 importance: 1
 category: student
+skills:
+  - Django
+  - React.js
+  - Python
+  - JavaScript
+  - Sass
+  - Bootstrap
 github: https://github.com/andrianllmm/aklish
 demo: https://aklish.up.railway.app
 selected: true
