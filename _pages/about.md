@@ -2,7 +2,7 @@
 layout: about
 title: About
 permalink: /
-subtitle: BS in Computer Science Student
+subtitle: Computer Science Undergraduate
 
 profile:
   align: right
