@@ -195,6 +195,24 @@ latest_posts:
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 
+selected_skills:
+  - python
+  - javascript
+  - django
+  - flask
+  - react
+  - html5
+  - css3
+  - sass
+  - bootstrap
+  - sqlite
+  - c
+  - git
+  - github
+  - docker
+  - adobephotoshop
+  - adobeillustrator
+
 # -----------------------------------------------------------------------------
 # Jekyll settings
 # -----------------------------------------------------------------------------

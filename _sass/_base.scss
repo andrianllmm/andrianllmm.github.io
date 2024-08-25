@@ -1286,3 +1286,65 @@ ninja-keys::part(ninja-input-wrapper) {
   background-color: var(--global-theme-color);
   color: var(--global-text-color);
 }
+
+// featured skills
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.logos {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  height: 4rem;
+}
+
+.logos-slide {
+  display: inline-block;
+  animation: 15s slide infinite linear;
+  height: 100%;
+}
+
+.logos-slide * {
+  height: 100%;
+  margin: 0 0.5rem;
+}
+
+// typed-out
+.typed-out-container {
+  display: inline-block;
+}
+
+.typed-out {
+  overflow: hidden;
+  border-right: 0.1rem solid var(--global-theme-color);
+  white-space: nowrap;
+  animation:
+    typing 1s steps(20, end) forwards,
+    blink-caret 1s step-end infinite;
+  width: 0;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: var(--global-theme-color);
+  }
+}

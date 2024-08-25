@@ -2,63 +2,61 @@
 layout: default
 ---
 <div class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      {% if site.title == 'blank' %}
-        <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
-        {{ site.last_name }}
-      {% else %}
-        {{ site.title }}
-      {% endif %}
+  <header class="post-header container mb-4" style="text-align: center;">
+    <div class="typed-out-container">
+      <div class="typed-out h4 font-weight-normal mb-0">Hello, World!</div>
+    </div>
+    <h1 class="post-title mb-0" style="font-size: calc(2.5rem + 1vw)">
+      This is <span class="font-weight-bold mb-0">{{ site.first_name | split: ' ' | first }}</span>
     </h1>
-    <p class="desc font-italic">{{ page.subtitle }}</p>
+    <p class="text-muted">{{ page.subtitle }}</p>
   </header>
 
   <article>
-    <hr>
+    <!-- Content -->
+    <section id="content" class="container mb-4">
+      <div class="row">
+        {% if page.profile %}
+          <div class="profile col-sm-4 mb-4 d-flex justify-content-center align-items-center">
+            {% if page.profile.image %}
+              {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
+              {% if page.profile.image_circular %}
+                {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
+              {% else %}
+                {% assign profile_image_class = 'img-fluid z-depth-1 rounded' %}
+              {% endif %}
+              {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px) 30vw, 95vw"{% endcapture %}
+              {%
+                include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
+                cache_bust=true
+              %}
+            {% endif %}
+            {% if page.profile.more_info %}
+              <div class="more-info">{{ page.profile.more_info }}</div>
+            {% endif %}
+          </div>
+        {% endif %}
 
-    {% if page.profile %}
-      <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
-        {% if page.profile.image %}
-          {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
-          {% if page.profile.image_circular %}
-            {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
-          {% else %}
-            {% assign profile_image_class = 'img-fluid z-depth-1 rounded' %}
-          {% endif %}
-          {% capture sizes %}(min-width: {{site.max_width}}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px) 30vw, 95vw"{% endcapture %}
-          {%
-            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
-            cache_bust=true
-          %}
-        {% endif %}
-        {% if page.profile.more_info %}
-          <div class="more-info">{{ page.profile.more_info }}</div>
-        {% endif %}
+        <div class="col-sm-8 d-flex flex-column justify-content-center align-items-center clearfix">{{ content }}</div>
       </div>
-    {% endif %}
-
-    <section id="content">
-      <div class="clearfix">{{ content }}</div>
     </section>
 
-    <hr>
-
-    <!-- Latest posts -->
-    {% if site.latest_posts.enabled %}
-      <section id="latest-posts" class="my-5">
-        <h2 class="mb-4">
-          <a href="{{ '/blog/' | relative_url }}" style="color: inherit">Latest posts</a>
-        </h2>
-        {% include latest_posts.liquid %}
-      </section>
-    {% endif %}
+    <!-- Skills -->
+    <section id="skills" class="mb-5">
+      <h2 class="mb-4" style="text-align: center;">
+        <a href="{{ '/cv/' | relative_url }}" style="color: inherit">Skilled at</a>
+      </h2>
+      <a href="/cv/#skills">
+        {% include selected_skills.liquid %}
+      </a>
+      <br>
+    </section>
 
     <!-- Selected projects -->
     {% if site.selected_projects.enabled %}
-      <section id="featured-projects" class="my-5">
-        <h2 class="mb-4">
-          <a href="{{ '/projects/' | relative_url }}" style="color: inherit">Featured projects</a>
+      <section id="featured-projects" class="mb-5">
+        <h2 class="mb-4" style="text-align: center;">
+          <a href="{{ '/projects/' | relative_url }}" style="color: inherit">Projects made</a>
         </h2>
         <div class="projects">
           {% assign selected_projects = site.projects | where: 'selected', true | sort: 'importance' | limit: site.selected_projects.limit %}
@@ -81,13 +79,39 @@ layout: default
       </section>
     {% endif %}
 
+    <!-- Contribution -->
+    <section id="contribution" class="mb-5">
+      <h2 class="mb-4" style="text-align: center;">
+        <a href="{{ '/repositories/' | relative_url }}" style="color: inherit"> 2,500+ Contributions</a>
+      </h2>
+      <div class="m-1 p-1" style="overflow-x: auto; text-align: center;">
+        <a href="https://github.com/andrianllmm">
+          <img
+            src="http://ghchart.rshah.org/000000/andrianllmm"
+            alt="Andrian's GitHub contributions"
+            style="width: 100%; max-width: 100%; height: auto; min-width: 750px;"
+          >
+        </a>
+      </div>
+    </section>
+
     <!-- Selected papers -->
     {% if page.selected_papers %}
-      <section id="featured-research" class="my-5">
-        <h2 class="mb-4">
-          <a href="{{ '/publications/' | relative_url }}" style="color: inherit">Featured research</a>
+      <section id="featured-research" class="mb-5">
+        <h2 class="mb-4" style="text-align: center;">
+          <a href="{{ '/publications/' | relative_url }}" style="color: inherit">Research conducted</a>
         </h2>
         {% include selected_papers.liquid %}
+      </section>
+    {% endif %}
+
+    <!-- Latest posts -->
+    {% if site.latest_posts.enabled %}
+      <section id="latest-posts" class="mb-5">
+        <h2 class="mb-4" style="text-align: center;">
+          <a href="{{ '/blog/' | relative_url }}" style="color: inherit">Latest posts</a>
+        </h2>
+        {% include latest_posts.liquid %}
       </section>
     {% endif %}
 
