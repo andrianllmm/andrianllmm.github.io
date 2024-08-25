@@ -615,16 +615,6 @@ footer.sticky-bottom {
 // Projects
 
 .projects {
-  a {
-    text-decoration: none;
-
-    &:hover {
-      .card-title {
-        color: var(--global-theme-color);
-      }
-    }
-  }
-
   .card {
     img {
       width: 100%;
@@ -642,9 +632,6 @@ footer.sticky-bottom {
   }
 
   h2.category {
-    padding-top: 0.5rem;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
     text-transform: capitalize;
   }
 }
