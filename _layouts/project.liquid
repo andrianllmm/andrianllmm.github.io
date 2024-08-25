@@ -5,16 +5,16 @@ layout: default
   <header class="post-header">
     <div class="d-flex align-items-center">
       <h1 class="post-title">{{ page.title }}</h1>
-      <div class="row ml-auto">
+      <div class="row ml-auto ml-2 mr-1">
         {% if page.demo %}
-          <div class="demo-icon mr-2">
+          <div class="demo-icon ml-2">
             <div class="icon" data-toggle="tooltip" title="Demo">
               <a href="{{ page.demo }}"><i class="fa-solid fa-external-link-alt"></i></a>
             </div>
           </div>
         {% endif %}
         {% if page.github %}
-          <div class="github-icon mr-2">
+          <div class="github-icon ml-2">
             <div class="icon" data-toggle="tooltip" title="Code Repository">
               <a href="{{ page.github }}"><i class="fa-brands fa-github gh-icon"></i></a>
             </div>

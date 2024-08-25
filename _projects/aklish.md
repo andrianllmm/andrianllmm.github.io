@@ -14,7 +14,6 @@ skills:
   - Bootstrap
 github: https://github.com/andrianllmm/aklish
 demo: https://aklish.up.railway.app
-related_publications: true
 giscus_comments: true
 selected: true
 ---
