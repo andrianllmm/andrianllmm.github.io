@@ -4,7 +4,7 @@ title: Aklish
 description: A Django x React.js web application for crowdsourcing Aklanon-English translations.
 img: assets/img/project_preview/aklish.png
 importance: 1
-category: student
+category: developer
 skills:
   - Django
   - React.js
