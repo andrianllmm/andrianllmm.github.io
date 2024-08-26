@@ -28,6 +28,7 @@ giscus_comments: true
     The primary challenge was to create a logo that aligns with MNHS’s established brand while introducing a fresh identity that subtly incorporates elements of SSLG's core values.
 
     Inspired by the concept of resiliency and innovation central to SSLG's roles, the new logo features an abstract figure composed of a raised fist and a light bulb, each reflecting the themes respectively. With this new logomark, the wordmark, emblem, and other assets was formed.
+
   </p>
 </section>
 
