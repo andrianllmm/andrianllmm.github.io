@@ -20,7 +20,6 @@ layout: default
         <!-- Profile picture -->
         {% if page.profile %}
           <div class="profile col-sm-4 mb-4 d-flex justify-content-center align-items-center">
-
             <!-- Profile image -->
             {% if page.profile.image %}
               {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
@@ -44,7 +43,6 @@ layout: default
             {% if page.profile.more_info %}
               <div class="more-info">{{ page.profile.more_info }}</div>
             {% endif %}
-
           </div>
         {% endif %}
 
@@ -58,7 +56,6 @@ layout: default
     <!-- Selected Skills -->
     {% if site.selected_skills %}
       <section id="top-skills" class="mb-5">
-
         <h2 class="mb-4" style="text-align: center;">
           <a href="{{ '/cv/' | relative_url }}#skills" style="color: inherit">Skilled at</a>
         </h2>
@@ -67,14 +64,12 @@ layout: default
           {% include selected_skills.liquid %}
         </a>
         <br>
-
       </section>
     {% endif %}
 
     <!-- Selected projects -->
     {% if site.selected_projects.enabled %}
       <section id="featured-projects" class="mb-5">
-
         <h2 class="mb-4" style="text-align: center;">
           <a href="{{ '/projects/' | relative_url }}" style="color: inherit">Projects made</a>
         </h2>
@@ -83,7 +78,6 @@ layout: default
           {% assign selected_projects = site.projects | where: 'selected', true | sort: 'importance' | limit: site.selected_projects.limit %}
 
           {% if page.horizontal %}
-
             <div class="container">
               <div class="row row-cols-1 row-cols-md-2">
                 {% for project in selected_projects %}
@@ -93,23 +87,19 @@ layout: default
             </div>
 
           {% else %}
-
             <div class="row row-cols-1 row-cols-md-3">
               {% for project in selected_projects %}
                 {% include projects.liquid %}
               {% endfor %}
             </div>
-
           {% endif %}
         </div>
-
       </section>
     {% endif %}
 
     {% if page.contribution %}
       <!-- Contribution -->
       <section id="contribution" class="mb-5">
-
         <h2 class="mb-4" style="text-align: center;">
           <a href="{{ '/repositories/' | relative_url }}" style="color: inherit"> Contributions</a>
         </h2>
@@ -124,33 +114,28 @@ layout: default
             >
           </a>
         </div>
-
       </section>
     {% endif %}
 
     {% if page.selected_papers %}
       <!-- Selected papers -->
       <section id="featured-research" class="mb-5">
-
         <h2 class="mb-4" style="text-align: center;">
           <a href="{{ '/publications/' | relative_url }}" style="color: inherit">Research conducted</a>
         </h2>
 
         {% include selected_papers.liquid %}
-
       </section>
     {% endif %}
 
     {% if site.latest_posts.enabled %}
       <!-- Latest posts -->
       <section id="latest-posts" class="mb-5">
-
         <h2 class="mb-4" style="text-align: center;">
           <a href="{{ '/blog/' | relative_url }}" style="color: inherit">Latest posts</a>
         </h2>
 
         {% include latest_posts.liquid %}
-
       </section>
     {% endif %}
 
