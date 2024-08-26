@@ -2,7 +2,7 @@
 layout: project
 title: Aklanon Stemmer
 description: A Python library for Aklanon word stemming.
-img: assets/img/project_preview/aklstemmer.png
+img: assets/img/projects/aklstemmer/preview.png
 importance: 2
 category: developer
 skills:
