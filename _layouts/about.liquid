@@ -4,10 +4,11 @@ layout: default
 <div class="post">
   <header class="post-header container mb-4" style="text-align: center;">
     <div class="typed-out-container">
-      <div class="typed-out h4 font-weight-normal mb-0">Hello, World!</div>
+      <div class="typed-out mb-0 h4 font-weight-normal">Hello, World!</div>
     </div>
     <h1 class="post-title mb-0" style="font-size: calc(2.5rem + 1vw)">
-      This is <span class="font-weight-bold mb-0">{{ site.first_name | split: ' ' | first }}</span>
+      {% assign first_name = site.first_name | split: ' ' | first %}
+      This is <span class="font-weight-bold mb-0">{{ first_name }}</span>
     </h1>
     <p class="text-muted">{{ page.subtitle }}</p>
   </header>
@@ -16,8 +17,11 @@ layout: default
     <!-- Content -->
     <section id="content" class="container mb-4">
       <div class="row">
+        <!-- Profile picture -->
         {% if page.profile %}
           <div class="profile col-sm-4 mb-4 d-flex justify-content-center align-items-center">
+
+            <!-- Profile image -->
             {% if page.profile.image %}
               {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
               {% if page.profile.image_circular %}
@@ -25,42 +29,60 @@ layout: default
               {% else %}
                 {% assign profile_image_class = 'img-fluid z-depth-1 rounded' %}
               {% endif %}
-              {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px) 30vw, 95vw"{% endcapture %}
+
+              {% capture sizes %}
+                (min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px) 30vw, 95vw"
+              {% endcapture %}
+
               {%
                 include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
                 cache_bust=true
               %}
             {% endif %}
+
+            <!-- Profile more info -->
             {% if page.profile.more_info %}
               <div class="more-info">{{ page.profile.more_info }}</div>
             {% endif %}
+
           </div>
         {% endif %}
 
-        <div class="col-sm-8 d-flex flex-column justify-content-center align-items-center clearfix">{{ content }}</div>
+        <!-- Description -->
+        <div class="col-sm-8 d-flex flex-column justify-content-center align-items-center clearfix">
+          {{ content }}
+        </div>
       </div>
     </section>
 
-    <!-- Skills -->
-    <section id="skills" class="mb-5">
-      <h2 class="mb-4" style="text-align: center;">
-        <a href="{{ '/cv/' | relative_url }}" style="color: inherit">Skilled at</a>
-      </h2>
-      <a href="/cv/#skills">
-        {% include selected_skills.liquid %}
-      </a>
-      <br>
-    </section>
+    <!-- Selected Skills -->
+    {% if site.selected_skills %}
+      <section id="top-skills" class="mb-5">
+
+        <h2 class="mb-4" style="text-align: center;">
+          <a href="{{ '/cv/' | relative_url }}#skills" style="color: inherit">Skilled at</a>
+        </h2>
+
+        <a href=".#top-skills">
+          {% include selected_skills.liquid %}
+        <br>
+
+      </section>
+    {% endif %}
 
     <!-- Selected projects -->
     {% if site.selected_projects.enabled %}
       <section id="featured-projects" class="mb-5">
+
         <h2 class="mb-4" style="text-align: center;">
           <a href="{{ '/projects/' | relative_url }}" style="color: inherit">Projects made</a>
         </h2>
+
         <div class="projects">
           {% assign selected_projects = site.projects | where: 'selected', true | sort: 'importance' | limit: site.selected_projects.limit %}
+
           {% if page.horizontal %}
+
             <div class="container">
               <div class="row row-cols-1 row-cols-md-2">
                 {% for project in selected_projects %}
@@ -68,65 +90,81 @@ layout: default
                 {% endfor %}
               </div>
             </div>
+
           {% else %}
+
             <div class="row row-cols-1 row-cols-md-3">
               {% for project in selected_projects %}
                 {% include projects.liquid %}
               {% endfor %}
             </div>
+
           {% endif %}
         </div>
+
       </section>
     {% endif %}
 
-    <!-- Contribution -->
-    <section id="contribution" class="mb-5">
-      <h2 class="mb-4" style="text-align: center;">
-        <a href="{{ '/repositories/' | relative_url }}" style="color: inherit"> 2,500+ Contributions</a>
-      </h2>
-      <div class="m-1 p-1" style="overflow-x: auto; text-align: center;">
-        <a href="https://github.com/andrianllmm">
-          <img
-            src="http://ghchart.rshah.org/000000/andrianllmm"
-            alt="Andrian's GitHub contributions"
-            style="width: 100%; max-width: 100%; height: auto; min-width: 750px;"
-          >
-        </a>
-      </div>
-    </section>
+    {% if page.contribution %}
+      <!-- Contribution -->
+      <section id="contribution" class="mb-5">
 
-    <!-- Selected papers -->
+        <h2 class="mb-4" style="text-align: center;">
+          <a href="{{ '/repositories/' | relative_url }}" style="color: inherit"> Contributions</a>
+        </h2>
+
+        <!-- Contribution chart -->
+        <div class="m-1 p-1" style="overflow-x: auto; text-align: center;">
+          <a href="https://github.com/{{ page.contribution }}">
+            <img
+              src="http://ghchart.rshah.org/000000/{{ page.contribution }}"
+              alt="{{ first_name }}'s GitHub contributions"
+              style="width: 100%; max-width: 100%; height: auto; min-width: 750px;"
+            >
+          </a>
+        </div>
+
+      </section>
+    {% endif %}
+
     {% if page.selected_papers %}
+      <!-- Selected papers -->
       <section id="featured-research" class="mb-5">
+
         <h2 class="mb-4" style="text-align: center;">
           <a href="{{ '/publications/' | relative_url }}" style="color: inherit">Research conducted</a>
         </h2>
+
         {% include selected_papers.liquid %}
+
       </section>
     {% endif %}
 
-    <!-- Latest posts -->
     {% if site.latest_posts.enabled %}
+      <!-- Latest posts -->
       <section id="latest-posts" class="mb-5">
+
         <h2 class="mb-4" style="text-align: center;">
           <a href="{{ '/blog/' | relative_url }}" style="color: inherit">Latest posts</a>
         </h2>
+
         {% include latest_posts.liquid %}
+
       </section>
     {% endif %}
 
-    <!-- Social -->
     {% if page.social %}
+      <!-- Social -->
       <section id="social" class="mt-5">
         <div class="social">
           <div class="contact-icons">{% include social.liquid %}</div>
-
           <div class="contact-note">{{ site.contact_note }}</div>
         </div>
       </section>
     {% endif %}
 
     {% if site.newsletter.enabled and site.footer_fixed %}
+      <!-- Newsletter -->
       {% include scripts/newsletter.liquid center=true %}
     {% endif %}
   </article>

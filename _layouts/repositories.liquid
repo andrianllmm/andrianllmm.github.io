@@ -2,8 +2,11 @@
 layout: page
 ---
 {% if site.data.repositories.github_users %}
+  <!-- Users -->
   <section id="users">
-    <h2 class="mt-4"><a href=".#users" class="text-reset text-decoration-none">Users</a></h2>
+    <h2 class="mt-4">
+      <a href=".#users" class="text-reset text-decoration-none">Users</a>
+    </h2>
 
     <div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
       {% for user in site.data.repositories.github_users %}
@@ -14,6 +17,7 @@ layout: page
   <hr>
 
   {% if site.repo_trophies.enabled %}
+    <!-- Trophies -->
     <section id="trophies">
       {% for user in site.data.repositories.github_users %}
         {% if site.data.repositories.github_users.size > 1 %}
@@ -30,6 +34,7 @@ layout: page
 {% endif %}
 
 {% if site.data.repositories.github_repos %}
+  <!-- Repos -->
   <section id="repos">
     <div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
       {% for repo in site.data.repositories.github_repos %}

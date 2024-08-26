@@ -2,6 +2,7 @@
 layout: blog
 permalink: /blog/
 title: Blog
+title_align: center
 nav: true
 nav_order: 1
 pagination:

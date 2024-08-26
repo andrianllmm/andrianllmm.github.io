@@ -5,6 +5,7 @@ date: 2024-08-18 00:00:00
 description: Welcome to my new digital space!
 tags: programming productivity
 categories: personal
+featured: true
 giscus_comments: true
 ---
 

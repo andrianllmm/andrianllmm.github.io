@@ -10,8 +10,10 @@ layout: page
         <h2 class="category mt-4">
           <a href=".#{{ category }}" class="text-reset text-decoration-none">{{ category }}</a>
         </h2>
+
         {% assign categorized_projects = site.projects | where: 'category', category %}
         {% assign sorted_projects = categorized_projects | sort: 'importance' %}
+
         <!-- Generate cards for each project -->
         {% if page.horizontal %}
           <div class="container">

@@ -1,6 +1,7 @@
 {% assign img_path = include.path | remove: '.jpg' | remove: '.jpeg' | remove: '.png' | remove: '.tiff' | remove: '.gif' %}
 
-<figure class="m-0"
+<figure
+  class="m-0"
   {% if include.slot %}
     slot="{{ include.slot }}"
   {% endif %}
