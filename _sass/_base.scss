@@ -481,8 +481,9 @@ footer.sticky-bottom {
 }
 
 .badge {
-  color: var(--global-card-bg-color) !important;
+  color: var(--global-bg-color) !important;
   background-color: var(--global-theme-color) !important;
+  box-shadow: none;
 }
 
 .table-cv-map {
