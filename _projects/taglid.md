@@ -11,6 +11,8 @@ skills:
   - Web scraping
   - XML programming
 github: https://github.com/andrianllmm/taglid
+toc:
+  sidebar: left
 pseudocode: true
 related_publications: true
 giscus_comments: true
@@ -53,7 +55,7 @@ You can also use TagLID as a CLI tool by running `python -m taglid`.
 
 ## How it works
 
-By utilizing word frequency lists, a word level language identification algorithm is defined below. This function checks the presence of a word in both Tagalog and English dictionaries and labels its language accordingly. This initial algorithm is in line with the one employed by [Herrera (2022)](https://aclanthology.org/2022.lrec-1.225). However, to address ambiguous cases where a word is present in both dictionaries such as words like the English preposition ‘at’ and the Tagalog conjunction ‘at’ (and), the word frequency of the word in both languages will be compared and evaluated accordingly.
+The basic algorithm is defined below by utilizing word frequency lists. This function checks the presence of a word in both Tagalog and English dictionaries and labels its language accordingly. This initial algorithm is in line with the one employed by [Herrera (2022)](https://aclanthology.org/2022.lrec-1.225). However, to address ambiguous cases where a word is present in both dictionaries such as words like the English preposition ‘at’ and the Tagalog conjunction ‘<i>at</i>’ (and), the word frequency of the word in both languages will be compared and evaluated accordingly.
 
 ```pseudocode
 % Dictionary-based word level language identification
@@ -82,4 +84,5 @@ By utilizing word frequency lists, a word level language identification algorith
 ```
 
 This function is preceded by supplementary functions to exclude certain words from the count since they are not specific to English or Tagalog.
-It is then proceeded other supplementary functions to handle special cases in which the word frequency lists cannot catch. Check the [source code](https://github.com/andrianllmm/tagLID/blob/main/src/taglid/lid.py) for see these supplementary functions.
+It is then proceeded by other supplementary functions to handle special cases in which the word frequency lists cannot catch.
+Check the [source code](https://github.com/andrianllmm/tagLID/blob/main/src/taglid/lid.py) to see these supplementary functions.
