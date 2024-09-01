@@ -74,10 +74,12 @@ layout: default
   </article>
 
   {% if page.citation %}
+    <br>
     {% include citation.liquid %}
   {% endif %}
 
   {% if page.related_publications %}
+    <br>
     <h2>References</h2>
     <div class="publications">
       {% bibliography --cited_in_order %}
@@ -86,14 +88,17 @@ layout: default
 
   {% if site.related_blog_posts.enabled %}
     {% if page.related_posts == null or page.related_posts %}
+      <br>
       {% include related_posts.liquid %}
     {% endif %}
   {% endif %}
 
   {% if site.disqus_shortname and page.disqus_comments %}
+    <br>
     {% include disqus.liquid %}
   {% endif %}
   {% if site.giscus and page.giscus_comments %}
+    <br>
     {% include giscus.liquid %}
   {% endif %}
 </div>
