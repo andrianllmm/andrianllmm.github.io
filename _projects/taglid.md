@@ -21,11 +21,9 @@ selected: true
 
 <br>
 
-
 ## Usage
 
 TagLID can be used both as a Python library and a command-line interface (CLI) tool. For comprehensive instructions, check the [repository](https://github.com/andrianllmm/taglid/#usage).
-
 
 ### Library mode
 
@@ -38,11 +36,12 @@ labeled_text = lang_identify("hello, mundo")
 print(simplify(labeled_text))
 
 ```
+
 Output:
+
 ```plaintext
 [('hello', 'eng'), ('mundo', 'tgl')]
 ```
-
 
 ### CLI mode
 
@@ -51,7 +50,6 @@ You can also use TagLID as a CLI tool by running `python -m taglid`.
 <script src="https://asciinema.org/a/QYzCSjTuhHuEvhw4cUsWCJMJV.js" id="asciicast-QYzCSjTuhHuEvhw4cUsWCJMJV" async="true"></script>
 
 <br>
-
 
 ## How it works
 
@@ -82,5 +80,6 @@ By utilizing word frequency lists, a word level language identification algorith
 \end{algorithmic}
 \end{algorithm}
 ```
+
 This function is preceded by supplementary functions to exclude certain words from the count since they are not specific to English or Tagalog.
 It is then proceeded other supplementary functions to handle special cases in which the word frequency lists cannot catch. Check the [source code](https://github.com/andrianllmm/tagLID/blob/main/src/taglid/lid.py) for see these supplementary functions.

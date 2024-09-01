@@ -28,7 +28,6 @@ selected: true
 
 {% include figure.liquid loading="eager" path="assets/img/projects/aklish/preview.png" class="img-fluid mb-4 rounded-lg" zoomable=true %}
 
-
 ## Goals
 
 - **Expand Language Resources** <br>
@@ -42,19 +41,17 @@ selected: true
 
 <br>
 
-
 ## Tech Stack
 
-| **Front-End**    | JS ES14, React 18, HTML 5, CSS 4, SASS 1, Bootstrap 5 |
-| **Back-End**     | Python 3, Django 5 |
-| **Database**     | MySQL |
-| **APIs**         | REST |
-| **Testing**      | PyTest |
+| **Front-End** | JS ES14, React 18, HTML 5, CSS 4, SASS 1, Bootstrap 5 |
+| **Back-End** | Python 3, Django 5 |
+| **Database** | MySQL |
+| **APIs** | REST |
+| **Testing** | PyTest |
 | **Version Control** | Git, GitHub |
-| **Deployment**   | Railway |
+| **Deployment** | Railway |
 
 <br>
-
 
 ## Interface
 
@@ -78,7 +75,6 @@ The interface is designed with **responsiveness** in mind, ensuring it adapts se
 
 <br>
 
-
 <br>
 ## Features
 <br>
@@ -94,7 +90,6 @@ Users can input entries and translations in both Aklanon and English.
 
 <br>
 
-
 ### Multiple Translations
 
 The platform supports multiple translations for a single entry, providing a range of translation options and interpretations.
@@ -102,7 +97,6 @@ The platform supports multiple translations for a single entry, providing a rang
 <div class="col-md-6 mx-auto"> {% include figure.liquid path="assets/img/projects/aklish/screenshots/desktop/multiple-translations.png" class="img-fluid rounded" zoomable=true %} </div>
 
 <br>
-
 
 ### Browse Entries
 
@@ -112,7 +106,6 @@ Users can browse through various contributions and translations, making it easy 
 
 <br>
 
-
 ### Search Entries
 
 A robust search feature enables users to find specific entries or translations quickly and efficiently.
@@ -120,7 +113,6 @@ A robust search feature enables users to find specific entries or translations q
 <div class="col-md-6 mx-auto"> {% include figure.liquid path="assets/img/projects/aklish/screenshots/desktop/search-entries.png" class="img-fluid rounded" zoomable=true %} </div>
 
 <br>
-
 
 ### Authentication
 
@@ -150,9 +142,7 @@ Secure authentication ensures that users can create accounts, log in, and manage
 
 <br>
 
-
 ### Quality Control Strategies
-
 
 #### Voting System
 
@@ -161,7 +151,6 @@ A community-driven voting system allows users to rate and evaluate translations,
 <div class="col-md-6 mx-auto"> {% include figure.liquid path="assets/img/projects/aklish/screenshots/desktop/voting.png" class="img-fluid rounded" zoomable=true %} </div>
 
 <br>
-
 
 #### Dictionaries
 
@@ -191,7 +180,6 @@ An integrated Aklanon and English dictionary provides users with references and 
 
 <br>
 
-
 #### Proofreaders
 
 Proofreading tools and mechanisms help maintain the quality of translations in both Aklanon and English.
@@ -214,7 +202,6 @@ Proofreading tools and mechanisms help maintain the quality of translations in b
 
 <br>
 
-
 #### Points System
 
 A points system similar to Stack Overflow's reputation system rewards active users and contributors, promoting accountability within the community.
@@ -223,9 +210,7 @@ A points system similar to Stack Overflow's reputation system rewards active use
 
 <br>
 
-
 ### Engagement Strategies
-
 
 #### Leaderboard System
 
@@ -235,11 +220,9 @@ Leaderboards showcase top contributors, encouraging healthy competition and reco
 
 <br>
 
-
 #### Games
 
 Interactive games, including a Wordle clone and synonym-antonym matching, provide an engaging way to learn and practice both languages.
-
 
 ##### Wordle
 
@@ -267,7 +250,6 @@ Interactive games, including a Wordle clone and synonym-antonym matching, provid
 
 <br>
 
-
 #### Match
 
 {% tabs match %}
@@ -287,7 +269,6 @@ Interactive games, including a Wordle clone and synonym-antonym matching, provid
 {% endtabs %}
 
 <br>
-
 
 ## Effectiveness
 
