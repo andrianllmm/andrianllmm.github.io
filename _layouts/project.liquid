@@ -33,6 +33,11 @@ layout: default
             {% endif %}
           </div>
         {% endif %}
+        <div class="link-icon ml-2">
+          <div class="icon" data-toggle="tooltip" title="Link">
+            <a href="{{ project.url | relative_url }}"><i class="fa-solid fa-link"></i></a>
+          </div>
+        </div>
       </div>
     </div>
     {% if page.description %}
