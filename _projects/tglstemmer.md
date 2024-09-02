@@ -4,7 +4,7 @@ title: Tagalog Stemmer
 description: A Python library for Tagalog word stemming.
 img: assets/img/projects/tglstemmer/preview.png
 importance: 2
-category: developer
+category: libraries
 skills:
   - Python
   - NLP

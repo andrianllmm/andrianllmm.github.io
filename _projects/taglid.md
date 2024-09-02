@@ -4,7 +4,7 @@ title: TagLID
 description: A word level Language Identification (LID) tool for Tagalog-English (Taglish) text.
 img: assets/img/projects/taglid/preview.png
 importance: 1
-category: developer
+category: libraries
 skills:
   - Python
   - NLP
