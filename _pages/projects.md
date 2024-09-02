@@ -7,4 +7,5 @@ nav: true
 nav_order: 3
 display_categories: [developer, design]
 horizontal: false
+title_align: center
 ---

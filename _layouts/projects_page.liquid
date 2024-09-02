@@ -2,12 +2,34 @@
 layout: page
 ---
 <!-- pages/projects.md -->
+{% if page.display_categories %}
+  <!-- Display tags/categories -->
+  <div class="tag-category-list p-0 m-0">
+    <ul class="p-0 m-3">
+      {% if page.display_categories.size > 0 and page.display_tags.size > 0 %}
+        <span class="m-2">&bull;</span>
+      {% endif %}
+
+      <!-- Categories -->
+      {% for category in page.display_categories %}
+        <li class="p-0 m-0">
+          <i class="fa-solid fa-tag fa-sm"></i>
+          <a href=".#{{ category }}">{{ category }}</a>
+        </li>
+        {% unless forloop.last %}
+          <span class="m-2">&bull;</span>
+        {% endunless %}
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
+
 <div class="projects">
   {% if site.enable_project_categories and page.display_categories %}
     <!-- Display categorized projects -->
     {% for category in page.display_categories %}
       <section id="{{ category }}">
-        <h2 class="category mt-4">
+        <h2 class="category my-4 text-center">
           <a href=".#{{ category }}" class="text-reset text-decoration-none">{{ category }}</a>
         </h2>
 
