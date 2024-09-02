@@ -2,7 +2,7 @@
 layout: project
 title: SSLG Visual Identity
 description: Visual Identity of Maloco NHS Supreme Secondary Learner Government
-img: assets/img/projects/sslg/preview.jpg
+img: assets/img/projects/sslg/cover.jpg
 importance: 1
 category: design
 skills:

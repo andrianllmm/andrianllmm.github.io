@@ -2,7 +2,7 @@
 layout: project
 title: Barlak Logo
 description: Logo Design of Maloco NHS Beauty Pageant
-img: assets/img/projects/barlak/preview.jpg
+img: assets/img/projects/barlak/cover.jpg
 importance: 2
 category: design
 skills:
