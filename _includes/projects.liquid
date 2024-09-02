@@ -27,6 +27,13 @@
               </div>
             </div>
           {% endif %}
+          {% if project.file %}
+            <div class="file-icon mr-2">
+              <div class="icon" data-toggle="tooltip" title="File">
+                <a href="{{ project.file }}"><i class="fa-solid fa-file"></i></a>
+              </div>
+            </div>
+          {% endif %}
           {% if project.github %}
             <div class="github-icon mr-2">
               <div class="icon" data-toggle="tooltip" title="Code Repository">

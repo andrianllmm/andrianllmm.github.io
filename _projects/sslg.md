@@ -8,6 +8,7 @@ category: design
 skills:
   - Illustrator
   - Photoshop
+file: /assets/pdf/projects/sslg/sslg_visual-identity.pdf
 giscus_comments: true
 ---
 

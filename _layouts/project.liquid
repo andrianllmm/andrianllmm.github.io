@@ -13,6 +13,13 @@ layout: default
             </div>
           </div>
         {% endif %}
+        {% if page.file %}
+          <div class="file-icon ml-2">
+            <div class="icon" data-toggle="tooltip" title="File">
+              <a href="{{ page.file }}"><i class="fa-solid fa-file"></i></a>
+            </div>
+          </div>
+        {% endif %}
         {% if page.github %}
           <div class="github-icon ml-2">
             <div class="icon" data-toggle="tooltip" title="Code Repository">

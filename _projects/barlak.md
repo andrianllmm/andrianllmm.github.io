@@ -10,6 +10,7 @@ skills:
   - Photoshop
   - After Effects
   - Premiere Pro
+file: /assets/pdf/projects/barlak/barlak_logo.pdf
 giscus_comments: true
 ---
 
