@@ -34,8 +34,8 @@ giscus_comments: true
 
 <div class="px-lg-5 mx-lg-5">
 
-  {% include figure.liquid loading="eager" path="assets/img/projects/barlak/logomark.jpg" class="img-fluid mb-4 rounded-lg" zoomable=true %}
-  {% include figure.liquid loading="eager" path="assets/img/projects/barlak/logomark_details.jpg" class="img-fluid mb-4 rounded-lg" zoomable=true %}
+{% include figure.liquid loading="eager" path="assets/img/projects/barlak/logomark.jpg" class="img-fluid mb-4 rounded-lg" zoomable=true %}
+{% include figure.liquid loading="eager" path="assets/img/projects/barlak/logomark_details.jpg" class="img-fluid mb-4 rounded-lg" zoomable=true %}
 
   <img-comparison-slider value="50" hover="hover" class="w-100 h-auto">
     {% include figure.liquid loading="eager" path="assets/img/projects/barlak/logomark-3d_before.jpg" class="img-fluid mb-4 rounded-lg" slot="first" %}
@@ -43,8 +43,8 @@ giscus_comments: true
   </img-comparison-slider>
   {% include figure.liquid loading="eager" path="assets/img/projects/barlak/logomark-3d_details.jpg" class="img-fluid mb-4 rounded-lg" zoomable=true %}
 
-  {% include figure.liquid loading="eager" path="assets/img/projects/barlak/emblem.jpg" class="img-fluid mb-4 rounded-lg" zoomable=true %}
-  {% include figure.liquid loading="eager" path="assets/img/projects/barlak/emblem_details.jpg" class="img-fluid mb-4 rounded-lg" zoomable=true %}
+{% include figure.liquid loading="eager" path="assets/img/projects/barlak/emblem.jpg" class="img-fluid mb-4 rounded-lg" zoomable=true %}
+{% include figure.liquid loading="eager" path="assets/img/projects/barlak/emblem_details.jpg" class="img-fluid mb-4 rounded-lg" zoomable=true %}
 
   <img-comparison-slider value="50" hover="hover" class="w-100 h-auto">
     {% include figure.liquid loading="eager" path="assets/img/projects/barlak/emblem-3d_before.jpg" class="img-fluid mb-4 rounded-lg" slot="first" %}
