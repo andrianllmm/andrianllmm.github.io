@@ -11,7 +11,6 @@ skills:
   - JavaScript
   - Bootstrap
 giscus_comments: true
-selected: true
 ---
 
 Hoothoot is a web application that provides a social networking experience similar to Twitter. It allows users to create posts, like and comment on posts, share content, and follow other users. The app features user authentication, robust post management, and real-time updates for likes and comments. Hoothoot was developed as part of a [problem set](https://cs50.harvard.edu/web/2020/projects/4/network/) for [Harvard's CS50w](https://cs50.harvard.edu/web/2020/).
