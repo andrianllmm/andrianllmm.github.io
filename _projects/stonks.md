@@ -17,7 +17,7 @@ giscus_comments: true
 selected: true
 ---
 
-Stonks is a web application that allows users to manage portfolios of stocks. It enables users to check real-time stock prices and the value of their portfolios using the Yahoo Finance API. The app also simulates "buying" and "selling" stocks by querying for stock prices. Stonks was developed as part of a [problem set](https://cs50.harvard.edu/x/2024/psets/9/finance/) for  [Harvard's CS50x](https://cs50.harvard.edu/x/2024/).
+Stonks is a web application that allows users to manage portfolios of stocks. It enables users to check real-time stock prices and the value of their portfolios using the Yahoo Finance API. The app also simulates "buying" and "selling" stocks by querying for stock prices. Stonks was developed as part of a [problem set](https://cs50.harvard.edu/x/2024/psets/9/finance/) for [Harvard's CS50x](https://cs50.harvard.edu/x/2024/).
 
 {% include figure.liquid loading="eager" path="assets/img/projects/stonks/preview.png" class="img-fluid mb-4 rounded-lg" zoomable=true %}
 
