@@ -105,8 +105,9 @@
       items:
         - name: Python
         - name: Django
-        - name: JavaScript
+        - name: JavaScript/TypeScript
         - name: React.js
+        - name: Next.js
         - name: Adobe Photoshop
         - name: Adobe Illustrator
         - name: Adobe InDesign

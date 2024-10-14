@@ -198,12 +198,15 @@ latest_posts:
 selected_skills:
   - python
   - javascript
+  - typescript
   - django
   - flask
   - react
+  - nextdotjs
   - html5
   - css3
   - sass
+  - tailwindcss
   - bootstrap
   - sqlite
   - c
