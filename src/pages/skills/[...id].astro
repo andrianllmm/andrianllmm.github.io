@@ -1,0 +1,48 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import ArrowCard from "@components/ArrowCard.astro";
+import BackToPrevious from "@components/BackToPrevious.astro";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects", ({ data }) => !data.draft);
+
+  // Get unique skills
+  const skills = [
+    ...new Set(projects.flatMap((project) => project.data.skills || [])),
+  ];
+
+  // Create paths for each skill
+  return skills.map((skill) => ({
+    params: { id: skill },
+    props: {
+      projects: projects.filter((project) =>
+        project.data.skills?.includes(skill),
+      ),
+    },
+  }));
+}
+
+const { id } = Astro.params;
+const { projects } = Astro.props;
+
+// Sort projects by date, most recent first
+const sortedProjects = projects.sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+);
+---
+
+<Layout title={`Skill: ${id}`} description={`Projects with the skill: ${id}`}>
+  <Container>
+    <div class="space-y-10" data-pagefind-ignore>
+      <BackToPrevious href="/skills"> All skills </BackToPrevious>
+      <h1 class="animate font-semibold text-black dark:text-white">
+        Projects involving "{id}"
+      </h1>
+      <ul class="animate flex flex-col gap-4">
+        {sortedProjects.map((project) => <ArrowCard entry={project} />)}
+      </ul>
+    </div>
+  </Container>
+</Layout>
