@@ -7,17 +7,39 @@ import Link from "@components/Link.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
-const blog = (await getCollection("blog"))
-  .filter((post) => !post.data.draft)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
-
 const projects: CollectionEntry<"projects">[] = (
   await getCollection("projects")
 )
   .filter((project) => !project.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
+
+const posts = (await getCollection("blog"))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
+
+const skills = [
+  ...new Set(projects.flatMap((project) => project.data.skills || [])),
+].sort((a, b) => {
+  // Sort skills by the number of projects they have, descending
+  const countA = projects.filter((project) =>
+    project.data.skills?.includes(a),
+  ).length;
+  const countB = projects.filter((project) =>
+    project.data.skills?.includes(b),
+  ).length;
+  return countB - countA || a.localeCompare(b); // Secondary sort by name
+});
+
+const tags = [...new Set(posts.flatMap((post) => post.data.tags || []))].sort(
+  (a, b) => {
+    // Sort tags by the number of posts they have, descending
+    const countA = posts.filter((post) => post.data.tags?.includes(a)).length;
+    const countB = posts.filter((post) => post.data.tags?.includes(b)).length;
+    return countB - countA || a.localeCompare(b); // Secondary sort by name
+  },
+);
 ---
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
@@ -72,6 +94,27 @@ const projects: CollectionEntry<"projects">[] = (
             </h2>
             <Link href="/projects"> See all projects </Link>
           </div>
+          <div class="animate flex flex-wrap gap-2">
+            {
+              skills.map((skill) => (
+                <a
+                  href={`/skills/${skill}`}
+                  class="rounded-sm border border-black/15 px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white"
+                >
+                  {skill}{" "}
+                  <span class="text-sm text-gray-600">
+                    (
+                    {
+                      projects.filter((project) =>
+                        project.data.skills?.includes(skill),
+                      ).length
+                    }
+                    )
+                  </span>
+                </a>
+              ))
+            }
+          </div>
           <ul class="not-prose flex flex-col gap-4">
             {
               projects.map((project) => (
@@ -90,9 +133,29 @@ const projects: CollectionEntry<"projects">[] = (
             </h2>
             <Link href="/blog"> See all posts </Link>
           </div>
+          <div class="animate flex flex-wrap gap-2">
+            {
+              tags.map((tag) => (
+                <a
+                  href={`/tags/${tag}`}
+                  class="rounded-sm border border-black/15 px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white"
+                >
+                  {tag}{" "}
+                  <span class="text-sm text-gray-600">
+                    (
+                    {
+                      posts.filter((post) => post.data.tags?.includes(tag))
+                        .length
+                    }
+                    )
+                  </span>
+                </a>
+              ))
+            }
+          </div>
           <ul class="not-prose flex flex-col gap-4">
             {
-              blog.map((post) => (
+              posts.map((post) => (
                 <li>
                   <ArrowCard entry={post} />
                 </li>
