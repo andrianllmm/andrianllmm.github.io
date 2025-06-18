@@ -10,6 +10,11 @@ export default defineConfig({
   integrations: [sitemap(), mdx(), pagefind()],
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      watch: {
+        ignored: ["**/cv/**"],
+      },
+    },
   },
   markdown: {
     shikiConfig: {

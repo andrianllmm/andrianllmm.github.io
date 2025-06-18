@@ -1,0 +1,31 @@
+---
+import { getEntry, render } from "astro:content";
+import Container from "@components/Container.astro";
+import Layout from "@layouts/Layout.astro";
+import Link from "@components/Link.astro";
+import TableOfContents from "@components/TableOfContents.astro";
+import BackToPrevious from "@components/BackToPrevious.astro";
+
+const entry = await getEntry("cv", "index");
+
+if (!entry) {
+  throw new Error("CV not found.");
+}
+
+const { Content, headings } = await render(entry);
+---
+
+<Layout title={"CV"} description={"Andrian Lloyd Maagma's Curriculum Vitae"}>
+  <Container>
+    <div class="animate mb-5 flex items-center justify-between">
+      <BackToPrevious href="/">Back to home</BackToPrevious>
+      <nav class="flex gap-1">
+        <Link href="/cv.pdf" external>PDF</Link>
+      </nav>
+    </div>
+    <TableOfContents headings={headings} />
+    <article class="animate mt-5">
+      <Content />
+    </article>
+  </Container>
+</Layout>
