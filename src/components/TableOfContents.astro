@@ -2,7 +2,7 @@
 import TableOfContentsHeading from "./TableOfContentsHeading.astro";
 
 // https://kld.dev/building-table-of-contents/
-const { headings } = Astro.props;
+const { headings, open } = Astro.props;
 const toc = buildToc(headings);
 
 export interface Heading {
@@ -12,23 +12,27 @@ export interface Heading {
 }
 
 function buildToc(headings: Heading[]) {
-  const toc: Heading[] = [];
-  const parentHeadings = new Map();
-  headings.forEach((h) => {
+  const toc: any[] = [];
+  const parentHeadings = new Map<number, any>();
+
+  for (const h of headings) {
     const heading = { ...h, subheadings: [] };
     parentHeadings.set(heading.depth, heading);
-    if (heading.depth === 2) {
-      toc.push(heading);
+
+    const parent = parentHeadings.get(heading.depth - 1);
+    if (parent) {
+      parent.subheadings.push(heading);
     } else {
-      parentHeadings.get(heading.depth - 1).subheadings.push(heading);
+      toc.push(heading); // no parent? treat as top-level
     }
-  });
+  }
+
   return toc;
 }
 ---
 
 <details
-  open
+  {...open ? { open: false } : {}}
   class="animate group rounded-lg border border-black/15 dark:border-white/20"
 >
   <summary
