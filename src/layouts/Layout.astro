@@ -25,5 +25,15 @@ const { title, description } = Astro.props;
     </main>
     <Footer />
     <Pagefind />
+
+    <script is:inline src="/js/medium-zoom.min.js"></script>
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", () => {
+        mediumZoom("[data-zoomable]", {
+          background: "transparent",
+          margin: 64,
+        });
+      });
+    </script>
   </body>
 </html>
