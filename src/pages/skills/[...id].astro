@@ -4,6 +4,7 @@ import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import ArrowCard from "@components/ArrowCard.astro";
 import BackToPrevious from "@components/BackToPrevious.astro";
+import SkillBadge from "@components/SkillBadge.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects", ({ data }) => !data.draft);
@@ -37,8 +38,10 @@ const sortedProjects = projects.sort(
   <Container>
     <div class="space-y-10" data-pagefind-ignore>
       <BackToPrevious href="/skills"> All skills </BackToPrevious>
-      <h1 class="animate font-semibold text-black dark:text-white">
-        Projects involving "{id}"
+      <h1
+        class="animate flex items-center gap-1 font-semibold text-black dark:text-white"
+      >
+        Projects involving {(<SkillBadge skill={id} className="border-none" />)}
       </h1>
       <ul class="animate flex flex-col gap-4">
         {sortedProjects.map((project) => <ArrowCard entry={project} />)}

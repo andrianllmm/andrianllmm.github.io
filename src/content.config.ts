@@ -1,16 +1,8 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
+import { skills } from "@data/skills";
 
-const blog = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/blog" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    date: z.coerce.date(),
-    draft: z.boolean().optional(),
-    tags: z.array(z.string()).optional(),
-  }),
-});
+const skillEnum = z.enum(Object.keys(skills) as [string, ...string[]]);
 
 const projects = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/projects" }),
@@ -21,7 +13,18 @@ const projects = defineCollection({
     draft: z.boolean().optional(),
     demoURL: z.string().optional(),
     repoURL: z.string().optional(),
-    skills: z.array(z.string()).optional(),
+    skills: z.array(skillEnum).optional(),
+  }),
+});
+
+const blog = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/blog" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    date: z.coerce.date(),
+    draft: z.boolean().optional(),
+    tags: z.array(z.string()).optional(),
   }),
 });
 

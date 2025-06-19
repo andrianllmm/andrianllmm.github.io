@@ -4,6 +4,7 @@ import Container from "@components/Container.astro";
 import { SITE, HOME, SOCIALS } from "@consts";
 import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
+import SkillBadge from "@components/SkillBadge.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
@@ -95,25 +96,7 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags || []))].sort(
             <Link href="/projects"> See all projects </Link>
           </div>
           <div class="animate flex flex-wrap gap-2">
-            {
-              skills.map((skill) => (
-                <a
-                  href={`/skills/${skill}`}
-                  class="rounded-sm border border-black/15 px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white"
-                >
-                  {skill}{" "}
-                  <span class="text-sm text-gray-600">
-                    (
-                    {
-                      projects.filter((project) =>
-                        project.data.skills?.includes(skill),
-                      ).length
-                    }
-                    )
-                  </span>
-                </a>
-              ))
-            }
+            {skills.map((skill) => <SkillBadge skill={skill} />)}
           </div>
           <ul class="not-prose flex flex-col gap-4">
             {

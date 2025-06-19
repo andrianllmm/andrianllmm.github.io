@@ -7,6 +7,7 @@ import { readingTime } from "@lib/utils";
 import BackToPrevious from "@components/BackToPrevious.astro";
 import Link from "@components/Link.astro";
 import TableOfContents from "@components/TableOfContents.astro";
+import SkillBadge from "@components/SkillBadge.astro";
 
 export async function getStaticPaths() {
   const projects = (await getCollection("projects"))
@@ -29,47 +30,52 @@ const { Content, headings } = await render(project);
       <BackToPrevious href="/projects">Back to projects</BackToPrevious>
     </div>
     <div class="animate my-10 space-y-1">
-      <div class="flex items-center gap-1.5">
-        <div class="font-base text-sm">
-          <FormattedDate date={project.data.date} />
+      <div class="flex justify-between">
+        <div class="flex items-center gap-1.5">
+          <div class="font-base text-sm">
+            <FormattedDate date={project.data.date} />
+          </div>
+          &bull;
+          {
+            project.body && (
+              <div class="font-base text-sm">{readingTime(project.body)}</div>
+            )
+          }
         </div>
-        &bull;
-        {
-          project.body && (
-            <div class="font-base text-sm">{readingTime(project.body)}</div>
-          )
-        }
+        <div class="flex items-center gap-1.5">
+          {
+            (project.data.demoURL || project.data.repoURL) && (
+              <nav class="flex gap-1">
+                {project.data.demoURL && (
+                  <Link href={project.data.demoURL} external>
+                    demo
+                  </Link>
+                )}
+                {project.data.demoURL && project.data.repoURL && <span>/</span>}
+                {project.data.repoURL && (
+                  <Link href={project.data.repoURL} external>
+                    repo
+                  </Link>
+                )}
+              </nav>
+            )
+          }
+        </div>
       </div>
-      <h1 class="text-3xl font-semibold text-black dark:text-white">
+
+      <h1 class="my-4 text-3xl font-semibold text-black dark:text-white">
         {project.data.title}
       </h1>
-      {
-        (project.data.demoURL || project.data.repoURL) && (
-          <nav class="flex gap-1">
-            {project.data.demoURL && (
-              <Link href={project.data.demoURL} external>
-                demo
-              </Link>
-            )}
-            {project.data.demoURL && project.data.repoURL && <span>/</span>}
-            {project.data.repoURL && (
-              <Link href={project.data.repoURL} external>
-                repo
-              </Link>
-            )}
-          </nav>
-        )
-      }
+
       {
         project.data.skills && project.data.skills?.length > 0 ? (
-          <div class="animate flex gap-2 pt-1">
+          <div class="animate flex flex-wrap gap-1">
             {project.data.skills.map((skill) => (
-              <a
-                href={`/skills/${skill}`}
-                class="rounded-sm border border-black/15 px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white"
-              >
-                {skill}
-              </a>
+              <SkillBadge
+                skill={skill}
+                showNum={false}
+                className="border-none"
+              />
             ))}
           </div>
         ) : null

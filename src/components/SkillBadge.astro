@@ -1,0 +1,47 @@
+---
+import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
+import { cn } from "@lib/utils";
+import { skills, type SkillKey } from "@data/skills";
+
+const projects = await getCollection("projects", ({ data }) => !data.draft);
+const {
+  skill,
+  showName = true,
+  showNum = true,
+  className = "",
+} = Astro.props as {
+  skill: SkillKey;
+  showName?: boolean;
+  showNum?: boolean;
+  className?: string;
+};
+---
+
+<a
+  href={`/skills/${skill}`}
+  class={cn(
+    "transition-all hover:-translate-y-0.75 flex items-center gap-1 rounded-sm border border-black/15 px-1.5 py-0.75 text-sm duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white",
+    className,
+  )}
+>
+  {skills[skill].icon && <Icon name={skills[skill].icon} />}
+  <span class={!showName ? "sr-only" : ""}>{skills[skill].name}</span>
+  {
+    showNum && (
+      <div class="relative">
+        <span
+          class={cn(
+            "absolute -right-1 -bottom-1 translate-x-1/2 -translate-y-1/2",
+            "flex h-4 w-4 items-center justify-center rounded-full bg-neutral-100 text-xs text-black/35 dark:bg-neutral-900 dark:text-white/40",
+          )}
+        >
+          {
+            projects.filter((project) => project.data.skills?.includes(skill))
+              .length
+          }
+        </span>
+      </div>
+    )
+  }
+</a>
