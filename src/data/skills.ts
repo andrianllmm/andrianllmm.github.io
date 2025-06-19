@@ -1,6 +1,6 @@
 export type Skill = {
   name: string;
-  icon: string;
+  icon?: string;
 };
 
 export const skills = {

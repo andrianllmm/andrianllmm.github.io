@@ -1,8 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-import { Icon } from "astro-icon/components";
 import { cn } from "@lib/utils";
-import { skills, type SkillKey } from "@data/skills";
+import { Icon } from "astro-icon/components";
+import { skills, type SkillKey, type Skill } from "@data/skills";
 
 const projects = await getCollection("projects", ({ data }) => !data.draft);
 const {
@@ -16,6 +16,11 @@ const {
   showNum?: boolean;
   className?: string;
 };
+
+const { icon, name } = skills[skill] as Skill;
+const projectCount = projects.filter((project) =>
+  project.data.skills?.includes(skill),
+).length;
 ---
 
 <a
@@ -25,8 +30,8 @@ const {
     className,
   )}
 >
-  {skills[skill].icon && <Icon name={skills[skill].icon} />}
-  <span class={!showName ? "sr-only" : ""}>{skills[skill].name}</span>
+  {icon && <Icon name={icon} />}
+  <span class={!showName ? "sr-only" : ""}>{name}</span>
   {
     showNum && (
       <div class="relative">
@@ -36,10 +41,7 @@ const {
             "flex h-4 w-4 items-center justify-center rounded-full bg-neutral-100 text-xs text-black/35 dark:bg-neutral-900 dark:text-white/40",
           )}
         >
-          {
-            projects.filter((project) => project.data.skills?.includes(skill))
-              .length
-          }
+          {projectCount}
         </span>
       </div>
     )
