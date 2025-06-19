@@ -24,58 +24,87 @@ const posts = (await getCollection("blog"))
 
 const skills = [
   ...new Set(projects.flatMap((project) => project.data.skills || [])),
-].sort((a, b) => {
-  // Sort skills by the number of projects they have, descending
-  const countA = projects.filter((project) =>
-    project.data.skills?.includes(a),
-  ).length;
-  const countB = projects.filter((project) =>
-    project.data.skills?.includes(b),
-  ).length;
-  return countB - countA || a.localeCompare(b); // Secondary sort by name
-});
+]
+  .sort((a, b) => {
+    // Sort skills by the number of projects they have, descending
+    const countA = projects.filter((project) =>
+      project.data.skills?.includes(a),
+    ).length;
+    const countB = projects.filter((project) =>
+      project.data.skills?.includes(b),
+    ).length;
+    return countB - countA || a.localeCompare(b); // Secondary sort by name
+  })
+  .slice(0, SITE.NUM_SKILLS_ON_HOMEPAGE);
 
-const tags = [...new Set(posts.flatMap((post) => post.data.tags || []))].sort(
-  (a, b) => {
+const tags = [...new Set(posts.flatMap((post) => post.data.tags || []))]
+  .sort((a, b) => {
     // Sort tags by the number of posts they have, descending
     const countA = posts.filter((post) => post.data.tags?.includes(a)).length;
     const countB = posts.filter((post) => post.data.tags?.includes(b)).length;
     return countB - countA || a.localeCompare(b); // Secondary sort by name
-  },
-);
+  })
+  .slice(0, SITE.NUM_TAGS_ON_HOMEPAGE);
 ---
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
     <aside data-pagefind-ignore>
-      <h1 class="font-semibold text-black dark:text-white">I'm Andrian</h1>
       <div class="space-y-16">
         <section>
-          <article class="space-y-4">
-            <span>
-              <p>
-                I’m into web dev, UI/UX, data science, and NLP. I’ve picked up a
-                lot by building apps, leading design projects, and conducting
-                research.
-              </p>
-            </span>
-          </article>
-        </section>
+          <div class="animate space-y-2">
+            <h1
+              class="text-xl font-semibold text-black md:text-2xl dark:text-white"
+            >
+              This is Andrian
+            </h1>
+            <p class="text-sm text-black/60 dark:text-white/60">
+              Computer Science Student @
+              <Link href="https://upv.edu.ph" external
+                >University of the Philippines Visayas</Link
+              >
+            </p>
+          </div>
 
-        <section class="animate space-y-4">
-          <Contact />
+          <article class="animate space-y-4">
+            <p>
+              I’m into web dev, UI/UX, data science, and NLP. I’ve picked up a
+              lot by building apps, leading design projects, and conducting
+              research.
+            </p>
+          </article>
+
+          <nav class="animate" aria-label="Contact links">
+            <Contact />
+          </nav>
         </section>
 
         <section class="animate space-y-6">
           <div class="flex flex-wrap items-center justify-between gap-y-2">
-            <h2 class="font-semibold text-black dark:text-white">
+            <h2 class="text-lg font-semibold text-black dark:text-white">
               Recent projects
             </h2>
-            <Link href="/projects"> See all projects </Link>
+            <Link href="/projects">See all projects</Link>
           </div>
-          <div class="animate flex flex-wrap gap-2">
-            {skills.map((skill) => <SkillBadge skill={skill} />)}
+
+          <div class="animate flex flex-wrap gap-1">
+            {
+              skills.map((skill) => (
+                <SkillBadge
+                  skill={skill}
+                  showNum={false}
+                  className="border-none"
+                />
+              ))
+            }
+            <a
+              href="/skills"
+              aria-label="See all skills"
+              class="rounded-sm px-1.5 py-0.75 font-bold transition-all duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white"
+              >. . .</a
+            >
           </div>
+
           <ul class="not-prose flex flex-col gap-4">
             {
               projects.map((project) => (
@@ -89,14 +118,26 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags || []))].sort(
 
         <section class="animate space-y-6">
           <div class="flex flex-wrap items-center justify-between gap-y-2">
-            <h2 class="font-semibold text-black dark:text-white">
+            <h2 class="text-lg font-semibold text-black dark:text-white">
               Latest posts
             </h2>
-            <Link href="/blog"> See all posts </Link>
+            <Link href="/blog">See all posts</Link>
           </div>
-          <div class="animate flex flex-wrap gap-2">
-            {tags.map((tag) => <TagBadge tag={tag} />)}
+
+          <div class="animate flex flex-wrap gap-1">
+            {
+              tags.map((tag) => (
+                <TagBadge tag={tag} showNum={false} className="border-none" />
+              ))
+            }
+            <a
+              href="/tags"
+              aria-label="See all tags"
+              class="rounded-sm px-1.5 py-0.75 font-bold transition-all duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white"
+              >. . .</a
+            >
           </div>
+
           <ul class="not-prose flex flex-col gap-4">
             {
               posts.map((post) => (
