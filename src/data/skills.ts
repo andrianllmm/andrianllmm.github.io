@@ -19,6 +19,11 @@ export const skills = {
   sqlite: { name: "SQLite", icon: "simple-icons:sqlite" },
   docker: { name: "Docker", icon: "simple-icons:docker" },
   git: { name: "Git", icon: "simple-icons:git" },
+  pandas: { name: "Pandas", icon: "simple-icons:pandas" },
+  nltk: { name: "NLTK" },
+  regex: { name: "Regex" },
+  webScraping: { name: "Web Scraping" },
+  xmlParsing: { name: "XML Parsing" },
 } as const;
 
 export type SkillKey = keyof typeof skills;
