@@ -1,0 +1,31 @@
+---
+interface Props {
+  startDate: Date;
+  endDate?: Date;
+  formatOptions?: Intl.DateTimeFormatOptions;
+}
+
+const {
+  startDate,
+  endDate,
+  formatOptions = { year: "numeric", month: "long", day: "2-digit" },
+} = Astro.props;
+
+function formatDate(date: Date, options: Intl.DateTimeFormatOptions) {
+  return date.toLocaleDateString("en-US", options);
+}
+---
+
+<time datetime={startDate.toISOString()}>
+  {formatDate(startDate, formatOptions)}
+</time>
+<span> – </span>
+{
+  endDate ? (
+    <time datetime={endDate.toISOString()}>
+      {formatDate(endDate, formatOptions)}
+    </time>
+  ) : (
+    <span>Present</span>
+  )
+}

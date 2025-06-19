@@ -29,9 +29,13 @@ const { id } = Astro.params;
 const { projects } = Astro.props;
 
 // Sort projects by date, most recent first
-const sortedProjects = projects.sort(
-  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
-);
+const sortedProjects = projects.sort((a, b) => {
+  const aEnd = a.data.endDate ?? new Date();
+  const bEnd = b.data.endDate ?? new Date();
+  const endCompare = bEnd.getTime() - aEnd.getTime();
+  if (endCompare !== 0) return endCompare;
+  return a.data.startDate.getTime() - b.data.startDate.getTime();
+});
 ---
 
 <Layout title={`Skill: ${id}`} description={`Projects with the skill: ${id}`}>
