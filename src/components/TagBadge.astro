@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content";
+import { cn } from "@lib/utils";
+import { tags, type TagKey } from "@data/tags";
+
+const posts = await getCollection("blog", ({ data }) => !data.draft);
+const {
+  tag,
+  showNum = true,
+  className = "",
+} = Astro.props as {
+  tag: TagKey;
+  showNum?: boolean;
+  className?: string;
+};
+---
+
+<a
+  href={`/tags/${tag}`}
+  class={cn(
+    "transition-all hover:-translate-y-0.75 flex items-center gap-1 rounded-sm border border-black/15 px-1.5 py-0.75 text-sm duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white",
+    className,
+  )}
+>
+  <span>#{tags[tag].name}</span>
+  {
+    showNum && (
+      <div class="relative">
+        <span
+          class={cn(
+            "absolute -right-1 -bottom-1 translate-x-1/2 -translate-y-1/2",
+            "flex h-4 w-4 items-center justify-center rounded-full bg-neutral-100 text-xs text-black/35 dark:bg-neutral-900 dark:text-white/40",
+          )}
+        >
+          {posts.filter((post) => post.data.tags?.includes(tag)).length}
+        </span>
+      </div>
+    )
+  }
+</a>

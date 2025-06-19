@@ -7,6 +7,7 @@ import { readingTime } from "@lib/utils";
 import BackToPrevious from "@components/BackToPrevious.astro";
 import PostNavigation from "@components/PostNavigation.astro";
 import TableOfContents from "@components/TableOfContents.astro";
+import TagBadge from "@components/TagBadge.astro";
 import Giscus from "@components/Giscus.astro";
 
 export async function getStaticPaths() {
@@ -68,19 +69,18 @@ const { Content, headings } = await render(post);
           )
         }
       </div>
-      <h1 class="animate text-3xl font-semibold text-black dark:text-white">
+
+      <h1
+        class="animate my-3 text-3xl font-semibold text-black dark:text-white"
+      >
         {post.data.title}
       </h1>
+
       {
         post.data.tags && post.data.tags?.length > 0 ? (
-          <div class="animate flex gap-2 pt-1">
+          <div class="animate flex flex-wrap gap-0.5">
             {post.data.tags.map((tag) => (
-              <a
-                href={`/tags/${tag}`}
-                class="rounded-sm border border-black/15 px-2 py-1 text-sm transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white"
-              >
-                {tag}
-              </a>
+              <TagBadge tag={tag} showNum={false} className="border-none" />
             ))}
           </div>
         ) : null
