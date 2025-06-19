@@ -11,13 +11,17 @@ import BackToTop from "@components/BackToTop.astro";
         <BackToTop />
       </div>
     </div>
-    <div class="flex items-center justify-between">
-      <div>&copy; {new Date().getFullYear()} • {SITE.TITLE}</div>
-      <div class="flex flex-wrap items-center gap-1.5">
+    <div
+      class="flex flex-col flex-wrap items-end justify-center gap-4 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <div class="order-2 text-xs text-nowrap sm:order-1">
+        &copy; {new Date().getFullYear()} • {SITE.TITLE}
+      </div>
+      <div class="order-1 flex flex-nowrap items-center gap-1.5 sm:order-2">
         <button
           id="light-theme-button"
           aria-label="Light theme"
-          class="group flex size-9 items-center justify-center rounded-sm border border-black/15 hover:bg-black/5 focus-visible:bg-black/5 dark:border-white/20 dark:hover:bg-white/5 dark:focus-visible:bg-white/5"
+          class="group flex size-8 items-center justify-center rounded-sm border border-black/15 hover:bg-black/5 focus-visible:bg-black/5 dark:border-white/20 dark:hover:bg-white/5 dark:focus-visible:bg-white/5"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +49,7 @@ import BackToTop from "@components/BackToTop.astro";
         <button
           id="dark-theme-button"
           aria-label="Dark theme"
-          class="group flex size-9 items-center justify-center rounded-sm border border-black/15 hover:bg-black/5 focus-visible:bg-black/5 dark:border-white/20 dark:hover:bg-white/5 dark:focus-visible:bg-white/5"
+          class="group flex size-8 items-center justify-center rounded-sm border border-black/15 hover:bg-black/5 focus-visible:bg-black/5 dark:border-white/20 dark:hover:bg-white/5 dark:focus-visible:bg-white/5"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +69,7 @@ import BackToTop from "@components/BackToTop.astro";
         <button
           id="system-theme-button"
           aria-label="System theme"
-          class="group flex size-9 items-center justify-center rounded-sm border border-black/15 hover:bg-black/5 focus-visible:bg-black/5 dark:border-white/20 dark:hover:bg-white/5 dark:focus-visible:bg-white/5"
+          class="group flex size-8 items-center justify-center rounded-sm border border-black/15 hover:bg-black/5 focus-visible:bg-black/5 dark:border-white/20 dark:hover:bg-white/5 dark:focus-visible:bg-white/5"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

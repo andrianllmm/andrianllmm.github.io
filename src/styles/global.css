@@ -5,9 +5,11 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: Geist Sans, ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-mono: Geist Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+  --font-sans:
+    Geist Sans, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono:
+    Geist Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
 }
 
@@ -53,17 +55,17 @@
   }
 
   header {
-    @apply fixed top-0 right-0 left-0 z-50 py-6;
+    @apply fixed top-0 right-0 left-0 z-50 pt-4 pb-3;
     @apply bg-neutral-100/75 dark:bg-neutral-900/75;
     @apply saturate-200 backdrop-blur-xs;
   }
 
   main {
-    @apply flex-1 py-32;
+    @apply flex-1 py-24;
   }
 
   footer {
-    @apply py-6 text-sm;
+    @apply pt-4 pb-5 text-sm;
   }
 
   article {
