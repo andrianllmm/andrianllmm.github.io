@@ -1,0 +1,51 @@
+---
+import { SITE, SOCIALS } from "@consts";
+import Link from "@components/Link.astro";
+import { Icon } from "astro-icon/components";
+
+const socialIconMapping: Record<string, string> = {
+  GitHub: "simple-icons:github",
+  "Twitter-X": "simple-icons:x",
+  LinkedIn: "simple-icons:linkedin",
+  YouTube: "simple-icons:youtube",
+};
+
+const CONTACTS = [
+  {
+    name: SITE.EMAIL,
+    href: `mailto:${SITE.EMAIL}`,
+    icon: "simple-icons:gmail",
+    isEmail: true,
+  },
+  ...SOCIALS.map(({ NAME, HREF }) => ({
+    name: NAME,
+    href: HREF,
+    icon: socialIconMapping[NAME],
+    isEmail: false,
+  })),
+];
+---
+
+<ul class="not-prose flex flex-wrap gap-2">
+  {
+    CONTACTS.map((contact) => (
+      <li class="group flex w-fit items-center gap-1 text-nowrap">
+        <Link
+          href={contact.href}
+          external={!contact.isEmail}
+          aria-label={
+            contact.isEmail
+              ? `Email ${SITE.TITLE}`
+              : `${SITE.TITLE} on ${contact.name}`
+          }
+          className="flex items-center gap-1.5"
+        >
+          {contact.icon && <Icon name={contact.icon} />}
+          <span class="max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-all delay-100 duration-400 ease-in-out group-hover:max-w-[16rem] group-hover:opacity-100">
+            {contact.name}
+          </span>
+        </Link>
+      </li>
+    ))
+  }
+</ul>

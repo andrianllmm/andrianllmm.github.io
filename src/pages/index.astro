@@ -8,6 +8,7 @@ import SkillBadge from "@components/SkillBadge.astro";
 import TagBadge from "@components/TagBadge.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
+import Contact from "@components/Contact.astro";
 
 const projects: CollectionEntry<"projects">[] = (
   await getCollection("projects")
@@ -62,31 +63,7 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags || []))].sort(
         </section>
 
         <section class="animate space-y-4">
-          <ul class="not-prose flex flex-wrap gap-2">
-            <li class="line-clamp-1">
-              <Link
-                href={`mailto:${SITE.EMAIL}`}
-                aria-label={`Email ${SITE.TITLE}`}
-              >
-                {SITE.EMAIL}
-              </Link>
-              {"/"}
-            </li>
-            {
-              SOCIALS.map((SOCIAL, index) => (
-                <li class="flex gap-x-2 text-nowrap">
-                  <Link
-                    href={SOCIAL.HREF}
-                    external
-                    aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`}
-                  >
-                    {SOCIAL.NAME}
-                  </Link>
-                  {index < SOCIALS.length - 1 && "/"}
-                </li>
-              ))
-            }
-          </ul>
+          <Contact />
         </section>
 
         <section class="animate space-y-6">
