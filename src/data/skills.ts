@@ -22,6 +22,7 @@ export const skills = {
   pandas: { name: "Pandas", icon: "simple-icons:pandas" },
   nltk: { name: "NLTK" },
   regex: { name: "Regex" },
+  nlp: { name: "NLP" },
   webScraping: { name: "Web Scraping" },
   xmlParsing: { name: "XML Parsing" },
 } as const;
