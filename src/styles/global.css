@@ -1,8 +1,143 @@
 @import "tailwindcss";
 
 @plugin '@tailwindcss/typography';
+@plugin '@tailwindcss/forms';
 
 @custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 0.5rem;
+
+  /* --background: #f9f5d7;
+  --foreground: #7c6f64; */
+  --background: #fefef9;
+  --foreground: #514841;
+
+  --background-accent: #f5f5ee;
+  --foreground-accent: #72655b;
+  --background-dim: #f2f2f1;
+  --foreground-dim: #918276;
+  --gray: #b4aaa2;
+  --red: #c14a4a;
+  --orange: #c35e0a;
+  --yellow: #b47109;
+  --green: #6c782e;
+  --aqua: #4c7a5d;
+  --blue: #45707a;
+  --purple: #945e80;
+
+  --primary: var(--aqua);
+  --primary-foreground: var(--foreground);
+  --secondary: var(--yellow);
+  --secondary-foreground: var(--foreground);
+  --accent: var(--background-accent);
+  --accent-foreground: var(--foreground-accent);
+  --success: var(--green);
+  --success-foreground: var(--foreground);
+  --destructive: var(--red);
+  --destructive-foreground: var(--foreground);
+  --warning: var(--orange);
+  --warning-foreground: var(--foreground);
+  --info: var(--blue);
+  --info-foreground: var(--foreground);
+  --muted: var(--background-dim);
+  --muted-foreground: var(--foreground-dim);
+  --border: var(--gray);
+  --ring: var(--primary);
+
+  /* Code */
+  --astro-code-foreground: var(--foreground);
+  --astro-code-background: transparent;
+  --astro-code-token-comment: var(--muted-foreground);
+  --astro-code-token-keyword: var(--red);
+  --astro-code-token-string: var(--yellow);
+  --astro-code-token-function: var(--green);
+  --astro-code-token-constant: var(--aqua);
+  --astro-code-token-parameter: var(--purple);
+  --astro-code-token-string-expression: var(--yellow);
+  --astro-code-token-punctuation: var(--muted-foreground);
+  --astro-code-token-link: var(--blue);
+}
+
+.dark {
+  /* --background: #202020;
+  --foreground: #a89984; */
+  --background: #1d1d1d;
+  --foreground: #c0b6a6;
+
+  --background-accent: #272727;
+  --foreground-accent: #b0a38f;
+  --background-dim: #313131;
+  --foreground-dim: #9f9078;
+  --gray: #3c362b;
+  --red: #ea6962;
+  --orange: #e78a4e;
+  --yellow: #d8a657;
+  --green: #a9b665;
+  --aqua: #89b482;
+  --blue: #7daea3;
+  --purple: #d3869b;
+
+  --primary: var(--aqua);
+  --primary-foreground: var(--foreground);
+  --secondary: var(--yellow);
+  --secondary-foreground: var(--foreground);
+  --accent: var(--background-accent);
+  --accent-foreground: var(--foreground-accent);
+  --success: var(--green);
+  --success-foreground: var(--foreground);
+  --destructive: var(--red);
+  --destructive-foreground: var(--foreground);
+  --warning: var(--orange);
+  --warning-foreground: var(--foreground);
+  --info: var(--blue);
+  --info-foreground: var(--foreground);
+  --muted: var(--background-dim);
+  --muted-foreground: var(--foreground-dim);
+  --border: var(--gray);
+  --ring: var(--primary);
+
+  /* Code */
+  --astro-code-foreground: var(--foreground);
+  --astro-code-background: transparent;
+  --astro-code-token-comment: var(--muted-foreground);
+  --astro-code-token-keyword: var(--red);
+  --astro-code-token-string: var(--yellow);
+  --astro-code-token-function: var(--green);
+  --astro-code-token-constant: var(--aqua);
+  --astro-code-token-parameter: var(--purple);
+  --astro-code-token-string-expression: var(--yellow);
+  --astro-code-token-punctuation: var(--muted-foreground);
+  --astro-code-token-link: var(--blue);
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+}
 
 @theme {
   --font-sans:
@@ -27,15 +162,15 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+    border-color: var(--border, currentColor);
   }
 }
 
 @layer utilities {
   html {
     overflow-y: auto;
-    color-scheme: light;
     scroll-padding-top: 100px;
+    color-scheme: light;
   }
 
   html.dark {
@@ -48,16 +183,15 @@
   }
 
   body {
-    @apply font-sans antialiased;
     @apply flex flex-col;
-    @apply bg-neutral-100 dark:bg-neutral-900;
-    @apply text-black/75 dark:text-white/75;
+    @apply bg-background text-foreground;
+    @apply font-sans antialiased;
+    text-rendering: optimizeLegibility;
   }
 
   header {
     @apply fixed top-0 right-0 left-0 z-50 pt-4 pb-3;
-    @apply bg-neutral-100/75 dark:bg-neutral-900/75;
-    @apply saturate-200 backdrop-blur-xs;
+    @apply bg-background/80 backdrop-blur-lg;
   }
 
   main {
@@ -68,23 +202,127 @@
     @apply pt-4 pb-5 text-sm;
   }
 
+  /* Custom focus ring */
+  :where(
+    button,
+    [type="button"],
+    [type="submit"],
+    a,
+    pre,
+    input,
+    textarea,
+    select
+  ) {
+    @apply focus-visible:ring-ring focus-visible:ring-offset-background focus-visible:ring-1 focus-visible:ring-offset-1 focus-visible:outline-none;
+  }
+
+  kbd,
+  article kbd {
+    @apply bg-background text-foreground rounded border-1 px-1 pt-0.25 pb-0.75 font-mono text-xs whitespace-nowrap;
+    box-shadow: inset 0 -0.075rem 0 0 var(--border);
+  }
+
+  mark,
+  article mark {
+    @apply bg-primary/30 text-primary/70 rounded px-0.75 py-0.25;
+  }
+
+  body::selection {
+    @apply text-primary/70 bg-primary/30;
+  }
+
+  pre {
+    @apply border py-5;
+  }
+}
+
+/* Article styling */
+@layer utilities {
   article {
-    @apply prose prose-neutral dark:prose-invert prose-img:mx-auto prose-img:my-auto max-w-full;
-    @apply prose-headings:font-semibold;
-    @apply prose-headings:text-black dark:prose-headings:text-white;
+    @apply prose text-foreground prose-headings:text-foreground prose-headings:font-semibold;
+  }
+
+  article hr {
+    @apply border-border;
+  }
+
+  article img {
+    @apply mx-auto my-auto max-w-full rounded-lg;
+  }
+
+  article strong {
+    @apply text-foreground font-semibold;
+  }
+
+  article ul li::marker {
+    @apply text-foreground;
+  }
+
+  article ol li::marker {
+    @apply text-foreground;
+  }
+
+  article input[type="checkbox"] {
+    @apply bg-background accent-accent border-border appearance-none rounded;
+  }
+
+  article input[type="checkbox"]:checked {
+    @apply bg-accent accent-accent border-border text-accent-foreground;
+  }
+
+  article input[type="checkbox"]:disabled {
+    @apply bg-muted accent-muted-foreground border-border text-muted-foreground;
+  }
+
+  article pre,
+  article code {
+    @apply text-foreground font-mono;
+  }
+
+  article blockquote {
+    @apply border-border text-foreground border-l-4 pl-4;
+  }
+
+  article th {
+    @apply border-border border-b-2 font-semibold;
+  }
+
+  article tr:not(:last-child) {
+    @apply border-border border-b;
+  }
+
+  article a {
+    @apply hover:text-accent-foreground hover:decoration-accent-foreground/60 inline-block text-current decoration-current/30 transition-colors duration-300 ease-in-out;
+    @apply underline underline-offset-[0.2rem];
   }
 }
 
 @layer utilities {
-  article a {
-    @apply font-sans text-current underline underline-offset-[3px];
-    @apply decoration-black/30 dark:decoration-white/30;
-    @apply transition-colors duration-300 ease-in-out;
+  /* Custom scrollbar styling. */
+  ::-webkit-scrollbar {
+    width: 5px;
   }
-  article a:hover {
-    @apply text-black dark:text-white;
-    @apply decoration-black/50 dark:decoration-white/50;
+  ::-webkit-scrollbar-track {
+    background: transparent;
   }
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 5px;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+}
+
+@utility no-scrollbar {
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .animate {
@@ -104,48 +342,8 @@ html.scrolled #back-to-top {
   @apply pointer-events-auto opacity-100;
 }
 
-/* shiki config */
-pre {
-  @apply border border-black/15 py-5 dark:border-white/20;
-}
-
-:root {
-  --astro-code-foreground: #09090b;
-  --astro-code-background: #fafafa;
-  --astro-code-token-comment: #a19595;
-  --astro-code-token-keyword: #f47067;
-  --astro-code-token-string: #00a99a;
-  --astro-code-token-function: #429996;
-  --astro-code-token-constant: #2b70c5;
-  --astro-code-token-parameter: #4e8fdf;
-  --astro-code-token-string-expression: #ae42a0;
-  --astro-code-token-punctuation: #8996a3;
-  --astro-code-token-link: #8d85ff;
-}
-
-.dark {
-  --astro-code-foreground: #fafafa;
-  --astro-code-background: #09090b;
-  --astro-code-token-comment: #a19595;
-  --astro-code-token-keyword: #f47067;
-  --astro-code-token-string: #00a99a;
-  --astro-code-token-function: #6eafad;
-  --astro-code-token-constant: #b3cceb;
-  --astro-code-token-parameter: #4e8fdf;
-  --astro-code-token-string-expression: #bf7db6;
-  --astro-code-token-punctuation: #8996a3;
-  --astro-code-token-link: #8d85ff;
-}
-
 /* copy code button on codeblocks */
 .copy-code {
-  @apply absolute top-3 right-3 grid size-9 place-content-center rounded-sm border border-black/15 bg-neutral-100 text-center duration-300 ease-in-out dark:border-white/20 dark:bg-neutral-900;
-}
-
-.copy-code:hover {
-  @apply bg-[#E9E9E9] transition-colors dark:bg-[#232323];
-}
-
-.copy-code:active {
-  @apply scale-90 transition-transform;
+  @apply absolute top-3 right-3 rounded border px-0.75 py-0.25 text-center text-[0.625rem] duration-300 ease-in-out select-none;
+  @apply bg-background hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground transition-colors active:scale-90 active:transition-transform;
 }

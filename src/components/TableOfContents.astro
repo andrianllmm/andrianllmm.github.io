@@ -31,12 +31,9 @@ function buildToc(headings: Heading[]) {
 }
 ---
 
-<details
-  {...open ? { open: false } : {}}
-  class="animate group rounded-lg border border-black/15 dark:border-white/20"
->
+<details {...open ? { open: false } : {}} class="animate group rounded">
   <summary
-    class="cursor-pointer rounded-t-lg px-3 py-1.5 font-medium transition-colors group-open:bg-black/5 hover:bg-black/5 dark:group-open:bg-white/5 hover:dark:bg-white/5"
+    class="group-open:bg-accent hover:bg-accent focus-visible:bg-accent focus-visible:text-accent-foreground cursor-pointer rounded-lg px-3 py-1.5 font-medium transition-colors group-open:rounded-b-none"
     >Table of Contents</summary
   >
   <nav>

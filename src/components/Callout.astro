@@ -1,30 +1,34 @@
 ---
+import { Icon } from "astro-icon/components";
+
 interface Props {
-  type?: "default" | "info" | "warning" | "error";
+  type?: "default" | "info" | "warning" | "destructive";
 }
 const { type = "default" } = Astro.props;
-let emoji = "💡";
-if (type === "info") {
-  emoji = "ℹ️";
-} else if (type === "warning") {
-  emoji = "⚠️";
-} else if (type === "error") {
-  emoji = "🚨";
-}
 
-const baseClasses = "relative my-4 flex rounded border p-3";
+const icons = {
+  default: "lucide:lightbulb",
+  info: "lucide:info",
+  warning: "lucide:alert-triangle",
+  destructive: "lucide:alert-octagon",
+};
+
 const typeClasses = {
-  default:
-    "border-orange-800 bg-orange-100 text-orange-950 dark:border-orange-200/20 dark:bg-orange-950/20 dark:text-orange-200",
-  info: "border-blue-800 bg-blue-100 text-blue-950 dark:border-blue-200/20 dark:bg-blue-950/20 dark:text-blue-200",
-  warning:
-    "border-yellow-800 bg-yellow-100 text-yellow-950 dark:border-yellow-200/20 dark:bg-yellow-950/20 dark:text-yellow-200",
-  error:
-    "border-red-800 bg-red-100 text-red-950 dark:border-red-200/20 dark:bg-red-950/20 dark:text-red-200",
+  default: "border-primary bg-primary/10 text-primary",
+  info: "border-info bg-info/10 text-info",
+  warning: "border-warning bg-warning/10 text-warning",
+  destructive: "border-destructive bg-destructive/10 text-destructive",
 };
 ---
 
-<div class:list={["not-prose", baseClasses, typeClasses[type]]}>
-  <span class="pointer-events-none pr-3 text-xl select-none">{emoji}</span>
-  <slot />
+<div
+  class:list={[
+    typeClasses[type],
+    "not-prose my-4 flex items-start gap-3 rounded border p-3",
+  ]}
+>
+  <Icon name={icons[type]} class="mt-1 h-4 w-4 flex-shrink-0 sm:h-5 sm:w-5" />
+  <div class="text-sm leading-relaxed">
+    <slot />
+  </div>
 </div>

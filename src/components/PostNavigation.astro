@@ -7,7 +7,7 @@ const { prevPost, nextPost } = Astro.props;
     prevPost?.id ? (
       <a
         href={`/blog/${prevPost?.id}`}
-        class="group relative flex flex-nowrap rounded-lg border border-black/15 px-4 py-3 pl-10 no-underline transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white"
+        class="group hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground relative flex flex-nowrap rounded border px-4 py-3 pl-10 no-underline transition-colors duration-300 ease-in-out"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +37,7 @@ const { prevPost, nextPost } = Astro.props;
     nextPost?.id ? (
       <a
         href={`/blog/${nextPost?.id}`}
-        class="group relative flex grow flex-row-reverse flex-nowrap rounded-lg border border-black/15 px-4 py-4 pr-10 no-underline transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white"
+        class="group hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground relative flex grow flex-row-reverse flex-nowrap rounded border px-4 py-3 pr-10 no-underline transition-colors duration-300 ease-in-out"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

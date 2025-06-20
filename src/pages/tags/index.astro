@@ -12,7 +12,7 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags || []))].sort();
   <Container>
     <div class="space-y-10">
       <h1 class="animate font-semibold">All Tags</h1>
-      <div class="animate flex flex-wrap gap-2">
+      <div class="animate flex flex-wrap gap-3">
         {tags.map((tag) => <TagBadge tag={tag} />)}
       </div>
     </div>

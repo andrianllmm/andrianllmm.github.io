@@ -14,7 +14,7 @@ const CONTACTS = [
   {
     name: SITE.EMAIL,
     href: `mailto:${SITE.EMAIL}`,
-    icon: "simple-icons:gmail",
+    icon: "lucide:mail",
     isEmail: true,
   },
   ...SOCIALS.map(({ NAME, HREF }) => ({
@@ -40,7 +40,24 @@ const CONTACTS = [
           }
           className="flex items-center gap-1.5"
         >
-          {contact.icon && <Icon name={contact.icon} />}
+          {contact.icon && (
+            <>
+              {contact.isEmail ? (
+                <>
+                  <Icon
+                    name="lucide:mail"
+                    class="h-4.5 w-4.5 transition-opacity duration-300 group-hover:hidden"
+                  />
+                  <Icon
+                    name="lucide:mail-open"
+                    class="hidden h-4.5 w-4.5 transition-opacity duration-300 group-hover:inline"
+                  />
+                </>
+              ) : (
+                <Icon name={contact.icon} class="h-4 w-4" />
+              )}
+            </>
+          )}
           <span class="max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-all delay-100 duration-400 ease-in-out group-hover:max-w-[16rem] group-hover:opacity-100">
             {contact.name}
           </span>
