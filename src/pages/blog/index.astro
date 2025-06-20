@@ -2,6 +2,7 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
+import BackToPrevious from "@components/BackToPrevious.astro";
 import ArrowCard from "@components/ArrowCard.astro";
 import { BLOG } from "@consts";
 
@@ -28,7 +29,10 @@ const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
 <Layout title={BLOG.TITLE} description={BLOG.DESCRIPTION}>
   <Container>
     <aside data-pagefind-ignore>
-      <div class="space-y-10">
+      <div class="animate mb-6">
+        <BackToPrevious href="/">Back to home</BackToPrevious>
+      </div>
+      <div class="space-y-6">
         <div class="space-y-4">
           {
             years.map((year) => (

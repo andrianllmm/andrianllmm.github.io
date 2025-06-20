@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
+import BackToPrevious from "@components/BackToPrevious.astro";
 import SkillBadge from "@components/SkillBadge.astro";
 
 const projects = await getCollection("projects", ({ data }) => !data.draft);
@@ -12,7 +13,10 @@ const skills = [
 
 <Layout title="Skills" description="List of skills used.">
   <Container>
-    <div class="space-y-10">
+    <div class="animate mb-6">
+      <BackToPrevious href="/">Back to home</BackToPrevious>
+    </div>
+    <div class="space-y-6">
       <h1 class="animate font-semibold">All Skills</h1>
       <div class="animate flex flex-wrap gap-3">
         {skills.map((skill) => <SkillBadge skill={skill} />)}

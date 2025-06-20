@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
+import BackToPrevious from "@components/BackToPrevious.astro";
 import ArrowCard from "@components/ArrowCard.astro";
 import { PROJECTS } from "@consts";
 
@@ -18,8 +19,11 @@ const projects = (await getCollection("projects"))
 
 <Layout title={PROJECTS.TITLE} description={PROJECTS.DESCRIPTION}>
   <Container>
+    <div class="animate mb-6">
+      <BackToPrevious href="/">Back to home</BackToPrevious>
+    </div>
     <aside data-pagefind-ignore>
-      <div class="space-y-10">
+      <div class="space-y-6">
         <div class="animate font-semibold">Projects</div>
         <ul class="animate not-prose flex flex-col gap-4">
           {

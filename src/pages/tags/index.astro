@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
+import BackToPrevious from "@components/BackToPrevious.astro";
 import TagBadge from "@components/TagBadge.astro";
 
 const posts = await getCollection("blog", ({ data }) => !data.draft);
@@ -10,7 +11,10 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags || []))].sort();
 
 <Layout title="Tags" description="List of tags used.">
   <Container>
-    <div class="space-y-10">
+    <div class="animate mb-6">
+      <BackToPrevious href="/">Back to home</BackToPrevious>
+    </div>
+    <div class="space-y-6">
       <h1 class="animate font-semibold">All Tags</h1>
       <div class="animate flex flex-wrap gap-3">
         {tags.map((tag) => <TagBadge tag={tag} />)}

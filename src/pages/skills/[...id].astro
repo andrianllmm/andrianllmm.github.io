@@ -40,8 +40,10 @@ const sortedProjects = projects.sort((a, b) => {
 
 <Layout title={`Skill: ${id}`} description={`Projects with the skill: ${id}`}>
   <Container>
-    <div class="space-y-10" data-pagefind-ignore>
-      <BackToPrevious href="/skills"> All skills </BackToPrevious>
+    <div class="animate mb-6">
+      <BackToPrevious href="/skills">All skills</BackToPrevious>
+    </div>
+    <div class="space-y-6" data-pagefind-ignore>
       <h1 class="animate flex items-center gap-1 font-semibold">
         Projects involving {(<SkillBadge skill={id} className="border-none" />)}
       </h1>
