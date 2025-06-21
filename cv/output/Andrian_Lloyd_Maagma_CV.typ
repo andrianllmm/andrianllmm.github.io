@@ -8,11 +8,11 @@
 #let design-page-size = "a4"
 #let design-section-titles-font-size = 1.4em
 #let design-colors-text = rgb(0, 0, 0)
-#let design-colors-section-titles = rgb(0, 79, 144)
+#let design-colors-section-titles = rgb(69, 112, 122)
 #let design-colors-last-updated-date-and-page-numbering = rgb(128, 128, 128)
-#let design-colors-name = rgb(0, 79, 144)
-#let design-colors-connections = rgb(0, 79, 144)
-#let design-colors-links = rgb(0, 79, 144)
+#let design-colors-name = rgb(69, 112, 122)
+#let design-colors-connections = rgb(69, 112, 122)
+#let design-colors-links = rgb(69, 112, 122)
 #let design-section-titles-font-family = "Source Sans 3"
 #let design-section-titles-bold = true
 #let design-section-titles-line-thickness = 0.5pt

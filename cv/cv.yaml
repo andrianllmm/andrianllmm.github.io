@@ -111,10 +111,10 @@ design:
     show_last_updated_date: false
   colors:
     text: rgb(0, 0, 0)
-    name: rgb(0, 79, 144)
-    connections: rgb(0, 79, 144)
-    section_titles: rgb(0, 79, 144)
-    links: rgb(0, 79, 144)
+    name: rgb(69, 112, 122)
+    connections: rgb(69, 112, 122)
+    section_titles: rgb(69, 112, 122)
+    links: rgb(69, 112, 122)
     last_updated_date_and_page_numbering: rgb(128, 128, 128)
   text:
     font_family: Source Sans 3
