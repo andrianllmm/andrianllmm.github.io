@@ -9,6 +9,7 @@ import BackToPrevious from "@components/BackToPrevious.astro";
 import Link from "@components/Link.astro";
 import TableOfContents from "@components/TableOfContents.astro";
 import SkillBadge from "@components/SkillBadge.astro";
+import Giscus from "@components/Giscus.astro";
 
 export async function getStaticPaths() {
   const projects = (await getCollection("projects")).filter(
@@ -89,6 +90,9 @@ const { Content, headings } = await render(project);
     <TableOfContents headings={headings} />
     <article class="animate">
       <Content />
+      <div class="mt-24">
+        <Giscus />
+      </div>
     </article>
   </Container>
 </Layout>
