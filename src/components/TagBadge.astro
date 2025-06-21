@@ -24,6 +24,6 @@ const postCount = posts.filter((post) => post.data.tags?.includes(tag)).length;
     indicator={showNum && postCount}
     class={cn("hover:-translate-y-0.75 transition-transform", className)}
   >
-    {name}
+    #{name}
   </Badge>
 </a>

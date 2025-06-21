@@ -3,8 +3,7 @@ export type Tag = {
 };
 
 export const tags = {
-  tutorial: { name: "Tutorial" },
-  life: { name: "Life" },
+  tech: { name: "tech" },
 } as const;
 
 export type TagKey = keyof typeof tags;
