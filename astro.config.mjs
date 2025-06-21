@@ -8,7 +8,7 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://astro-micro.vercel.app",
+  site: "https://andrianllmm.github.io",
   integrations: [sitemap(), mdx(), pagefind(), icon()],
   vite: {
     plugins: [tailwindcss()],
