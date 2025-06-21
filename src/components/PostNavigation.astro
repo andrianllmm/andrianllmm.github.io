@@ -1,32 +1,21 @@
 ---
+import Button from "./Button.astro";
+import Arrow from "./Arrow.astro";
+
 const { prevPost, nextPost } = Astro.props;
 ---
 
 <div class="grid grid-cols-2 gap-1.5 sm:gap-3">
   {
     prevPost?.id ? (
-      <a
-        href={`/blog/${prevPost?.id}`}
-        class="group hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground relative flex flex-nowrap rounded border px-4 py-3 pl-10 no-underline transition-colors duration-300 ease-in-out"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          class="absolute top-1/2 left-2 size-5 -translate-y-1/2 fill-none stroke-current stroke-2"
-        >
-          <line
-            x1="5"
-            y1="12"
-            x2="19"
-            y2="12"
-            class="translate-x-3 scale-x-0 transition-transform duration-300 ease-in-out group-hover:translate-x-0 group-hover:scale-x-100 group-focus-visible:translate-x-0 group-focus-visible:scale-x-100"
+      <a href={`/blog/${prevPost?.id}`} class="not-prose no-underline">
+        <Button class="group relative w-full justify-center rounded-lg p-2">
+          <Arrow
+            direction="left"
+            class="absolute top-1/2 left-2 size-5 -translate-y-1/2"
           />
-          <polyline
-            points="12 5 5 12 12 19"
-            class="translate-x-1 transition-transform duration-300 ease-in-out group-hover:translate-x-0 group-focus-visible:translate-x-0"
-          />
-        </svg>
-        <div class="flex items-center text-sm">{prevPost?.data.title}</div>
+          <div class="text-center text-sm">{prevPost?.data.title}</div>
+        </Button>
       </a>
     ) : (
       <div class="invisible" />
@@ -35,28 +24,14 @@ const { prevPost, nextPost } = Astro.props;
 
   {
     nextPost?.id ? (
-      <a
-        href={`/blog/${nextPost?.id}`}
-        class="group hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground relative flex grow flex-row-reverse flex-nowrap rounded border px-4 py-3 pr-10 no-underline transition-colors duration-300 ease-in-out"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          class="absolute top-1/2 right-2 size-5 -translate-y-1/2 fill-none stroke-current stroke-2"
-        >
-          <line
-            x1="5"
-            y1="12"
-            x2="19"
-            y2="12"
-            class="translate-x-3 scale-x-0 transition-transform duration-300 ease-in-out group-hover:translate-x-0 group-hover:scale-x-100 group-focus-visible:translate-x-0 group-focus-visible:scale-x-100"
+      <a href={`/blog/${nextPost?.id}`} class="not-prose no-underline">
+        <Button class="group relative w-full justify-center rounded-lg p-2">
+          <div class="text-center text-sm">{nextPost?.data.title}</div>
+          <Arrow
+            direction="right"
+            class="absolute top-1/2 right-2 size-5 -translate-y-1/2"
           />
-          <polyline
-            points="12 5 19 12 12 19"
-            class="-translate-x-1 transition-transform duration-300 ease-in-out group-hover:translate-x-0 group-focus-visible:translate-x-0"
-          />
-        </svg>
-        <div class="flex items-center text-sm">{nextPost?.data.title}</div>
+        </Button>
       </a>
     ) : (
       <div class="invisible" />

@@ -1,20 +1,20 @@
 ---
 import { getCollection } from "astro:content";
 import { cn } from "@lib/utils";
-import { Icon } from "astro-icon/components";
 import { skills, type SkillKey, type Skill } from "@data/skills";
+import Badge from "./Badge.astro";
 
 const projects = await getCollection("projects", ({ data }) => !data.draft);
 const {
   skill,
-  showName = true,
-  showNum = true,
-  className = "",
+  hideName = false,
+  showNum = false,
+  class: className = "",
 } = Astro.props as {
   skill: SkillKey;
-  showName?: boolean;
+  hideName?: boolean;
   showNum?: boolean;
-  className?: string;
+  class?: string;
 };
 
 const { icon, name } = skills[skill] as Skill;
@@ -23,27 +23,13 @@ const projectCount = projects.filter((project) =>
 ).length;
 ---
 
-<a
-  href={`/skills/${skill}`}
-  class={cn(
-    "transition-all hover:-translate-y-0.75 flex items-center gap-1 rounded border px-1.5 py-0.75 text-sm duration-300 ease-in-out hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground",
-    className,
-  )}
->
-  {icon && <Icon name={icon} />}
-  <span class={!showName ? "sr-only" : ""}>{name}</span>
-  {
-    showNum && (
-      <div class="relative">
-        <span
-          class={cn(
-            "absolute -right-1 -bottom-1 translate-x-1/2 -translate-y-1/2",
-            "bg-background text-border flex h-4 w-4 items-center justify-center rounded-full text-xs",
-          )}
-        >
-          {projectCount}
-        </span>
-      </div>
-    )
-  }
+<a href={`/skills/${skill}`}>
+  <Badge
+    iconName={icon}
+    hideName={hideName}
+    indicator={showNum && projectCount}
+    class={cn("hover:-translate-y-0.75 transition-transform", className)}
+  >
+    {name}
+  </Badge>
 </a>

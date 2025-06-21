@@ -78,7 +78,7 @@ const { Content, headings } = await render(post);
         post.data.tags && post.data.tags?.length > 0 ? (
           <div class="animate flex flex-wrap gap-0.5">
             {post.data.tags.map((tag) => (
-              <TagBadge tag={tag} showNum={false} className="border-none" />
+              <TagBadge tag={tag} class="border-none" />
             ))}
           </div>
         ) : null

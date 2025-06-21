@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
-import ArrowCard from "@components/ArrowCard.astro";
+import EntryCard from "@components/EntryCard.astro";
 import BackToPrevious from "@components/BackToPrevious.astro";
 import SkillBadge from "@components/SkillBadge.astro";
 
@@ -45,10 +45,12 @@ const sortedProjects = projects.sort((a, b) => {
     </div>
     <div class="space-y-6" data-pagefind-ignore>
       <h1 class="animate flex items-center gap-1 font-semibold">
-        Projects involving {(<SkillBadge skill={id} className="border-none" />)}
+        Projects involving {
+          (<SkillBadge skill={id} showNum class="border-none" />)
+        }
       </h1>
       <ul class="animate flex flex-col gap-4">
-        {sortedProjects.map((project) => <ArrowCard entry={project} />)}
+        {sortedProjects.map((project) => <EntryCard entry={project} />)}
       </ul>
     </div>
   </Container>

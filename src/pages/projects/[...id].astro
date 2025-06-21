@@ -77,11 +77,7 @@ const { Content, headings } = await render(project);
         project.data.skills && project.data.skills?.length > 0 ? (
           <div class="animate flex flex-wrap gap-1">
             {project.data.skills.map((skill) => (
-              <SkillBadge
-                skill={skill}
-                showNum={false}
-                className="border-none"
-              />
+              <SkillBadge skill={skill} class="border-none" />
             ))}
           </div>
         ) : null

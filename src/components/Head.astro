@@ -67,36 +67,28 @@ const { title, description, image = "/astro-micro.jpg" } = Astro.props;
 <ClientRouter />
 
 <script is:inline>
-  function init() {
+  function initTheme() {
     preloadTheme();
-    onScroll();
-    animate();
     updateThemeButtons();
-    addCopyCodeButtons();
     setGiscusTheme();
 
-    const backToTop = document.getElementById("back-to-top");
-    backToTop?.addEventListener("click", (event) => scrollToTop(event));
+    const lightBtn = document.getElementById("light-theme-button");
+    const darkBtn = document.getElementById("dark-theme-button");
+    const systemBtn = document.getElementById("system-theme-button");
 
-    const backToPrev = document.getElementById("back-to-prev");
-    backToPrev?.addEventListener("click", () => window.history.back());
-
-    const lightThemeButton = document.getElementById("light-theme-button");
-    lightThemeButton?.addEventListener("click", () => {
+    lightBtn?.addEventListener("click", () => {
       localStorage.setItem("theme", "light");
       toggleTheme(false);
       updateThemeButtons();
     });
 
-    const darkThemeButton = document.getElementById("dark-theme-button");
-    darkThemeButton?.addEventListener("click", () => {
+    darkBtn?.addEventListener("click", () => {
       localStorage.setItem("theme", "dark");
       toggleTheme(true);
       updateThemeButtons();
     });
 
-    const systemThemeButton = document.getElementById("system-theme-button");
-    systemThemeButton?.addEventListener("click", () => {
+    systemBtn?.addEventListener("click", () => {
       localStorage.setItem("theme", "system");
       toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
       updateThemeButtons();
@@ -109,64 +101,23 @@ const { title, description, image = "/astro-micro.jpg" } = Astro.props;
           toggleTheme(event.matches);
         }
       });
-
-    document.addEventListener("scroll", onScroll);
   }
 
-  function updateThemeButtons() {
-    const theme = localStorage.getItem("theme");
-    const lightThemeButton = document.getElementById("light-theme-button");
-    const darkThemeButton = document.getElementById("dark-theme-button");
-    const systemThemeButton = document.getElementById("system-theme-button");
+  function preloadTheme() {
+    const userTheme = localStorage.theme;
 
-    function removeActiveButtonTheme(button) {
-      button?.classList.remove("bg-accent");
-    }
-
-    function addActiveButtonTheme(button) {
-      button?.classList.add("bg-accent");
-    }
-
-    removeActiveButtonTheme(lightThemeButton);
-    removeActiveButtonTheme(darkThemeButton);
-    removeActiveButtonTheme(systemThemeButton);
-
-    if (theme === "light") {
-      addActiveButtonTheme(lightThemeButton);
-    } else if (theme === "dark") {
-      addActiveButtonTheme(darkThemeButton);
+    if (userTheme === "system") {
+      toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
+    } else if (userTheme === "light") {
+      toggleTheme(false);
     } else {
-      addActiveButtonTheme(systemThemeButton);
+      toggleTheme(true);
     }
+
+    setGiscusTheme();
   }
 
-  function animate() {
-    const animateElements = document.querySelectorAll(".animate");
-
-    animateElements.forEach((element, index) => {
-      setTimeout(() => {
-        element.classList.add("show");
-      }, index * 100);
-    });
-  }
-
-  function onScroll() {
-    if (window.scrollY > 0) {
-      document.documentElement.classList.add("scrolled");
-    } else {
-      document.documentElement.classList.remove("scrolled");
-    }
-  }
-
-  function scrollToTop(event) {
-    event.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }
-
-  function toggleTheme(dark) {
+  function toggleTheme(isDark) {
     const css = document.createElement("style");
 
     css.appendChild(
@@ -184,11 +135,7 @@ const { title, description, image = "/astro-micro.jpg" } = Astro.props;
 
     document.head.appendChild(css);
 
-    if (dark) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    document.documentElement.classList.toggle("dark", isDark);
 
     window.getComputedStyle(css).opacity;
     document.head.removeChild(css);
@@ -196,34 +143,63 @@ const { title, description, image = "/astro-micro.jpg" } = Astro.props;
     setGiscusTheme();
   }
 
-  function preloadTheme() {
-    const userTheme = localStorage.theme;
+  function updateThemeButtons() {
+    const theme = localStorage.getItem("theme");
+    const lightBtn = document.getElementById("light-theme-button");
+    const darkBtn = document.getElementById("dark-theme-button");
+    const systemBtn = document.getElementById("system-theme-button");
 
-    if (userTheme === "light" || userTheme === "dark") {
-      toggleTheme(userTheme === "dark");
+    [lightBtn, darkBtn, systemBtn].forEach((btn) => {
+      if (btn) btn.dataset.active = "false";
+    });
+
+    if (theme === "system") {
+      systemBtn?.setAttribute("data-active", "true");
+    } else if (theme === "light") {
+      lightBtn?.setAttribute("data-active", "true");
     } else {
-      toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
+      darkBtn?.setAttribute("data-active", "true");
     }
   }
 
-  function addCopyCodeButtons() {
-    const copyButtonLabel = "copy";
-    const copiedButtonLabel = "copied!";
+  function setGiscusTheme() {
+    const giscus = document.querySelector<HTMLIFrameElement>(".giscus-frame");
+    if (!giscus) return;
 
-    const codeBlocks = Array.from(document.querySelectorAll("pre"));
+    const isDark = document.documentElement.classList.contains("dark");
+    const theme = isDark ? "noborder_dark" : "noborder_light";
 
-    async function copyCode(codeBlock, copyButton) {
-      const codeText = codeBlock.innerText;
-      const buttonText = copyButton.innerText;
-      const textToCopy = codeText.replace(buttonText, "");
+    const url = new URL(giscus.src);
+    url.searchParams.set("theme", theme);
+    giscus.src = url.toString();
+  }
 
-      await navigator.clipboard.writeText(textToCopy);
-      copyButton.innerText = copiedButtonLabel;
+  document.addEventListener("DOMContentLoaded", initTheme);
+  document.addEventListener("astro:after-swap", initTheme);
+  preloadTheme();
+</script>
 
+<script is:inline>
+  function initAnimate() {
+    const animateElements = document.querySelectorAll(".animate");
+
+    animateElements.forEach((element, index) => {
       setTimeout(() => {
-        copyButton.innerText = copyButtonLabel;
-      }, 2000);
-    }
+        element.classList.add("show");
+      }, index * 100);
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", initAnimate);
+  document.addEventListener("astro:after-swap", initAnimate);
+</script>
+
+<script is:inline>
+  const copyButtonLabel = "copy";
+  const copiedButtonLabel = "copied!";
+
+  function addCopyCodeButtons() {
+    const codeBlocks = Array.from(document.querySelectorAll("pre"));
 
     for (let codeBlock of codeBlocks) {
       const wrapper = document.createElement("div");
@@ -236,7 +212,7 @@ const { title, description, image = "/astro-micro.jpg" } = Astro.props;
       codeBlock.setAttribute("tabindex", "0");
       codeBlock.appendChild(copyButton);
 
-      codeBlock.parentNode.insertBefore(wrapper, codeBlock);
+      codeBlock.parentNode?.insertBefore(wrapper, codeBlock);
       wrapper.appendChild(codeBlock);
 
       copyButton?.addEventListener("click", async () => {
@@ -245,17 +221,37 @@ const { title, description, image = "/astro-micro.jpg" } = Astro.props;
     }
   }
 
-  const setGiscusTheme = () => {
-    const giscus = document.querySelector(".giscus-frame");
-    const isDark = document.documentElement.classList.contains("dark");
-    if (giscus) {
-      const url = new URL(giscus.src);
-      url.searchParams.set("theme", isDark ? "gruvbox_dark" : "gruvbox_light");
-      giscus.src = url.toString();
-    }
-  };
+  async function copyCode(codeBlock, copyButton) {
+    const codeText = codeBlock.innerText;
+    const buttonText = copyButton.innerText;
+    const textToCopy = codeText.replace(buttonText, "");
 
-  document.addEventListener("DOMContentLoaded", () => init());
-  document.addEventListener("astro:after-swap", () => init());
-  preloadTheme();
+    await navigator.clipboard.writeText(textToCopy);
+    copyButton.innerText = copiedButtonLabel;
+
+    setTimeout(() => {
+      copyButton.innerText = copyButtonLabel;
+    }, 2000);
+  }
+
+  document.addEventListener("DOMContentLoaded", addCopyCodeButtons);
+  document.addEventListener("astro:after-swap", addCopyCodeButtons);
+</script>
+
+<script>
+  import mediumZoom, { type Zoom } from "medium-zoom";
+
+  let zoomInstance: Zoom | null = null;
+
+  function initMediumZoom() {
+    if (zoomInstance) zoomInstance.detach();
+    zoomInstance = mediumZoom("[data-zoomable]", {
+      background: "transparent",
+      margin: 64,
+    });
+  }
+
+  initMediumZoom();
+
+  document.addEventListener("DOMContentLoaded", initMediumZoom);
 </script>

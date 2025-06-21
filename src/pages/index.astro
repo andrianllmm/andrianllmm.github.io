@@ -2,13 +2,14 @@
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import { SITE, HOME } from "@consts";
-import ArrowCard from "@components/ArrowCard.astro";
+import EntryCard from "@components/EntryCard.astro";
 import Link from "@components/Link.astro";
 import SkillBadge from "@components/SkillBadge.astro";
 import TagBadge from "@components/TagBadge.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import Contact from "@components/Contact.astro";
+import Badge from "@components/Badge.astro";
 
 const projects: CollectionEntry<"projects">[] = (
   await getCollection("projects")
@@ -90,26 +91,19 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags || []))]
           <div class="animate flex flex-wrap gap-1">
             {
               skills.map((skill) => (
-                <SkillBadge
-                  skill={skill}
-                  showNum={false}
-                  className="border-none"
-                />
+                <SkillBadge skill={skill} class="border-none" />
               ))
             }
-            <a
-              href="/skills"
-              aria-label="See all skills"
-              class="hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground rounded px-1.5 py-0.75 font-bold transition-all duration-300 ease-in-out"
-              >. . .</a
-            >
+            <a href="/skills" aria-label="See all skills">
+              <Badge class="border-none">. . .</Badge>
+            </a>
           </div>
 
           <ul class="not-prose flex flex-col gap-4">
             {
               projects.map((project) => (
                 <li>
-                  <ArrowCard entry={project} />
+                  <EntryCard entry={project} />
                 </li>
               ))
             }
@@ -123,24 +117,17 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags || []))]
           </div>
 
           <div class="animate flex flex-wrap gap-1">
-            {
-              tags.map((tag) => (
-                <TagBadge tag={tag} showNum={false} className="border-none" />
-              ))
-            }
-            <a
-              href="/tags"
-              aria-label="See all tags"
-              class="hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground rounded px-1.5 py-0.75 font-bold transition-all duration-300 ease-in-out"
-              >. . .</a
-            >
+            {tags.map((tag) => <TagBadge tag={tag} class="border-none" />)}
+            <a href="/tags" aria-label="See all tags">
+              <Badge class="border-none">. . .</Badge>
+            </a>
           </div>
 
           <ul class="not-prose flex flex-col gap-4">
             {
               posts.map((post) => (
                 <li>
-                  <ArrowCard entry={post} />
+                  <EntryCard entry={post} />
                 </li>
               ))
             }

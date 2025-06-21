@@ -334,14 +334,6 @@
   @apply translate-y-0 opacity-100;
 }
 
-html #back-to-top {
-  @apply pointer-events-none opacity-0;
-}
-
-html.scrolled #back-to-top {
-  @apply pointer-events-auto opacity-100;
-}
-
 /* copy code button on codeblocks */
 .copy-code {
   @apply absolute top-3 right-3 rounded border px-0.75 py-0.25 text-center text-[0.625rem] duration-300 ease-in-out select-none;

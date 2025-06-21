@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import BackToPrevious from "@components/BackToPrevious.astro";
-import ArrowCard from "@components/ArrowCard.astro";
+import EntryCard from "@components/EntryCard.astro";
 import { PROJECTS } from "@consts";
 
 const projects = (await getCollection("projects"))
@@ -29,7 +29,7 @@ const projects = (await getCollection("projects"))
           {
             projects.map((project) => (
               <li>
-                <ArrowCard entry={project} />
+                <EntryCard entry={project} />
               </li>
             ))
           }

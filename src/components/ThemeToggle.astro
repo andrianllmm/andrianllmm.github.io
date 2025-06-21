@@ -1,0 +1,28 @@
+---
+import { Icon } from "astro-icon/components";
+import Button from "./Button.astro";
+---
+
+<div class="order-1 flex flex-nowrap items-center gap-1.5 sm:order-2">
+  <Button
+    id="light-theme-button"
+    aria-label="Light theme"
+    class="group data-[active=true]:bg-accent size-8"
+  >
+    <Icon name="lucide:sun" class="size-4 group-hover:animate-pulse" />
+  </Button>
+  <Button
+    id="dark-theme-button"
+    aria-label="Dark theme"
+    class="data-[active=true]:bg-accent group size-8"
+  >
+    <Icon name="lucide:moon" class="size-4 group-hover:animate-pulse" />
+  </Button>
+  <Button
+    id="system-theme-button"
+    aria-label="System theme"
+    class="data-[active=true]:bg-accent group size-8"
+  >
+    <Icon name="lucide:monitor" class="size-4 group-hover:animate-pulse" />
+  </Button>
+</div>

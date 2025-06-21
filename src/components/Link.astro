@@ -1,20 +1,21 @@
 ---
 import { cn } from "@lib/utils";
+import type { HTMLAttributes } from "astro/types";
 
-type Props = {
+interface Props extends HTMLAttributes<"a"> {
   href: string;
   external?: boolean;
   underline?: boolean;
   group?: boolean;
-  className?: string;
-};
+  class?: string;
+}
 
 const {
   href,
   external,
   underline = true,
   group = false,
-  className = "",
+  class: className = "",
   ...rest
 } = Astro.props;
 ---

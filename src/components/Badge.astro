@@ -1,0 +1,42 @@
+---
+import { cn } from "@lib/utils";
+import { Icon } from "astro-icon/components";
+
+const {
+  iconName,
+  indicator,
+  hideName = false,
+  class: className = "",
+} = Astro.props as {
+  iconName?: string;
+  indicator?: number;
+  hideName?: boolean;
+  class?: string;
+};
+---
+
+<span
+  class={cn(
+    "transition-colors flex items-center gap-1 rounded border px-1.5 py-0.75 text-sm duration-300 ease-in-out hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground",
+    className,
+  )}
+>
+  {iconName && <Icon name={iconName} />}
+  <span class={hideName ? "sr-only" : ""}>
+    <slot />
+  </span>
+  {
+    typeof indicator === "number" && (
+      <div class="relative">
+        <span
+          class={cn(
+            "absolute -right-1 -bottom-1 translate-x-1/2 -translate-y-1/2",
+            "bg-background text-border flex h-4 w-4 items-center justify-center rounded-full text-xs",
+          )}
+        >
+          {indicator}
+        </span>
+      </div>
+    )
+  }
+</span>

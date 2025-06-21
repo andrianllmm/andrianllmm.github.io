@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
-import ArrowCard from "@components/ArrowCard.astro";
+import EntryCard from "@components/EntryCard.astro";
 import BackToPrevious from "@components/BackToPrevious.astro";
 import TagBadge from "@components/TagBadge.astro";
 
@@ -37,10 +37,10 @@ const sortedPosts = posts.sort(
     </div>
     <div class="space-y-10" data-pagefind-ignore>
       <h1 class="animate flex items-center gap-1 font-semibold">
-        Posts tagged with <TagBadge tag={id} className="border-none" />
+        Posts tagged with <TagBadge tag={id} showNum class="border-none" />
       </h1>
       <ul class="animate flex flex-col gap-4">
-        {sortedPosts.map((post) => <ArrowCard entry={post} />)}
+        {sortedPosts.map((post) => <EntryCard entry={post} />)}
       </ul>
     </div>
   </Container>
