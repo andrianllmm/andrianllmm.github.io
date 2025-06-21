@@ -9,6 +9,7 @@ import TagBadge from "@components/TagBadge.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import Contact from "@components/Contact.astro";
+import Avatar from "@components/Avatar.astro";
 import Badge from "@components/Badge.astro";
 
 const projects: CollectionEntry<"projects">[] = (
@@ -59,15 +60,31 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags || []))]
     <aside data-pagefind-ignore>
       <div class="space-y-16">
         <section>
-          <div class="animate space-y-2">
-            <h1 class="text-xl font-semibold md:text-2xl">This is Andrian</h1>
-            <p class="text-muted-foreground text-sm">
-              Computer Science Student @
-              <Link href="https://upv.edu.ph" external
-                >University of the Philippines Visayas</Link
-              >
-            </p>
+          <div class="grid grid-cols-6 items-center gap-4">
+            <!-- Avatar -->
+            <div class="animate col-span-2 sm:col-span-1">
+              <Avatar />
+            </div>
+
+            <!-- Text with contact on large screens -->
+            <div class="animate col-span-4 sm:col-span-5 space-y-1 sm:space-y-2">
+              <h1 class="text-2xl font-semibold sm:text-3xl">
+                This is Andrian
+              </h1>
+              <p class="text-muted-foreground text-xs sm:text-sm">
+                <abbr title="Computer Science" class="no-underline">CS</abbr> Student @
+                <Link href="https://upv.edu.ph" external>
+                  <abbr title="University of the Philippines Visayas">UPV</abbr>
+                </Link>
+              </p>
+
+              <!-- Contact inline on sm and up -->
+              <nav aria-label="Contact links">
+                <Contact />
+              </nav>
+            </div>
           </div>
+
 
           <article class="animate space-y-4">
             <p>
@@ -76,10 +93,6 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags || []))]
               research.
             </p>
           </article>
-
-          <nav class="animate" aria-label="Contact links">
-            <Contact />
-          </nav>
         </section>
 
         <section class="animate space-y-6">

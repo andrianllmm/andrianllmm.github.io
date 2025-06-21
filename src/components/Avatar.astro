@@ -1,0 +1,26 @@
+---
+import { Image } from "astro:assets";
+
+const imageClass = "delay-50 group-hover:cursor-zoom-in h-full w-full translate-y-2 hover:-translate-y-1 scale-120 group-hover:scale-400 duration-300 ease-in-out transition-transform";
+---
+
+<div class="delay-50 group h-full w-full overflow-hidden rounded-full border hover:border-4 hover:border-accent hover:-translate-y-2 transition-all duration-300 ease-in-out">
+  <a href="/images/avatar.png" target="_blank">
+    <Image
+      src="/images/avatar.png"
+      alt="Avatar dark"
+      class:list={["hidden dark:inline-block", imageClass]}
+       width="100"
+       height="100"
+    />
+  </a>
+  <a href="/images/avatar-light.png" target="_blank">
+    <Image
+      src="/images/avatar-light.png"
+      alt="Avatar light"
+      class:list={["inline-block dark:hidden", imageClass]}
+      width="100"
+       height="100"
+    />
+  </a>
+</div>

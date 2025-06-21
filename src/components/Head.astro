@@ -35,7 +35,8 @@ const { title, description, image = "/astro-micro.jpg" } = Astro.props;
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="icon" href="/favicon.ico" media="(prefers-color-scheme: dark)" />
+<link rel="icon" href="/favicon-light.ico" media="(prefers-color-scheme: light)" />
 <meta name="generator" content={Astro.generator} />
 
 <!-- Canonical URL -->
