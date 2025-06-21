@@ -242,6 +242,14 @@
     @apply prose text-foreground prose-headings:text-foreground prose-headings:font-semibold;
   }
 
+  article h5 {
+    @apply mt-4 mb-1;
+  }
+
+  article h6 {
+    @apply mt-2 mb-1;
+  }
+
   article hr {
     @apply border-border;
   }

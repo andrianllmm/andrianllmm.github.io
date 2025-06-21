@@ -245,12 +245,16 @@ const { title, description, image = "/astro-micro.jpg" } = Astro.props;
   let zoomInstance: Zoom | null = null;
 
   function initMediumZoom() {
-    if (zoomInstance) zoomInstance.detach();
-    zoomInstance = mediumZoom("[data-zoomable]", {
-      background: "transparent",
-      margin: 64,
-    });
-  }
+  if (zoomInstance) zoomInstance.detach();
+
+  // Set a smaller margin for mobile screens
+  const margin = window.innerWidth <= 768 ? 16 : 64;
+
+  zoomInstance = mediumZoom("[data-zoomable]", {
+    background: "transparent",
+    margin: margin,
+  });
+}
 
   initMediumZoom();
 

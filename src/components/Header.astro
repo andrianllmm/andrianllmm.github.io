@@ -10,7 +10,10 @@ import { SITE } from "@consts";
     <div class="flex flex-wrap justify-between gap-y-2">
       <Link href="/" underline={false} class="rounded">
         <div class="font-semibold">
-          <span class="block sm:hidden">Andrian</span>
+          <span class="block sm:hidden">
+            Andrian
+            <span class="sr-only"> ({SITE.TITLE})</span>
+          </span>
           <span class="hidden sm:block">{SITE.TITLE}</span>
         </div>
       </Link>
@@ -44,7 +47,9 @@ import { SITE } from "@consts";
           aria-label="Search"
           class="hover:text-accent-foreground focus-visible:text-accent-foreground flex items-center gap-1 rounded-sm p-0 text-xs transition-all duration-300 ease-in-out hover:-translate-y-0.5 hover:cursor-pointer"
         >
+        <span class="hidden sm:inline">
           <kbd>Ctrl</kbd><kbd>K</kbd>
+        </span>
           <Icon
             name="lucide:search"
             class="h-4 w-4 transition-colors duration-300 ease-in-out"

@@ -6,7 +6,7 @@ interface Props {
 
 const {
   date,
-  formatOptions = { year: "numeric", month: "long", day: "2-digit" },
+  formatOptions = { year: "numeric", month: "short", day: "2-digit" },
 } = Astro.props;
 
 function formatDate(date: Date, options: Intl.DateTimeFormatOptions) {

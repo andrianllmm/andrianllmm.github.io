@@ -1,6 +1,7 @@
 ---
 import { type CollectionEntry, getCollection, render } from "astro:content";
 import Layout from "@layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
 import Container from "@components/Container.astro";
 import FormattedDateRange from "@components/FormattedDateRange.astro";
 import { readingTime } from "@lib/utils";
@@ -32,13 +33,13 @@ const { Content, headings } = await render(project);
       <BackToPrevious href="/projects">Back to projects</BackToPrevious>
     </div>
     <div class="animate my-10 space-y-1">
-      <div class="flex justify-between">
+      <div class="flex flex-wrap justify-between">
         <div class="flex items-center gap-1.5">
           <div class="font-base text-sm">
             <FormattedDateRange
               startDate={project.data.startDate}
               endDate={project.data.endDate}
-              formatOptions={{ year: "numeric", month: "long" }}
+              formatOptions={{ year: "numeric", month: "short" }}
             />
           </div>
           &bull;
@@ -53,14 +54,16 @@ const { Content, headings } = await render(project);
             (project.data.demoURL || project.data.repoURL) && (
               <nav class="flex gap-1">
                 {project.data.demoURL && (
-                  <Link href={project.data.demoURL} external>
-                    demo
+                  <Link href={project.data.demoURL} external class="flex items-center gap-1">
+                    <Icon name="lucide:external-link" class="h-4 w-4" />
+                    <span class="sr-only sm:not-sr-only">demo</span>
                   </Link>
                 )}
                 {project.data.demoURL && project.data.repoURL && <span>/</span>}
                 {project.data.repoURL && (
-                  <Link href={project.data.repoURL} external>
-                    repo
+                  <Link href={project.data.repoURL} external class="flex items-center gap-1">
+                    <Icon name="lucide:github" class="h-4 w-4" />
+                    <span class="sr-only sm:not-sr-only">repo</span>
                   </Link>
                 )}
               </nav>
