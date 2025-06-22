@@ -1,0 +1,25 @@
+---
+title: "Pydoku"
+description: "A Sudoku game using Python Tkinter with puzzle generation and solver"
+startDate: "2024-11"
+endDate: "2024-12"
+repoURL: https://github.com/andrianllmm/pydoku
+skills: ["python", "tkinter"]
+image: "./preview.png"
+---
+
+import { Image } from "astro:assets";
+import preview from "./preview.png";
+
+<Image
+  src={preview}
+  alt="Preview"
+  class="my-4 w-full max-w-100 shadow-xl"
+  data-zoomable
+/>
+
+Pydoku is a Sudoku game built in Python using
+[Tkinter](https://docs.python.org/3/library/tkinter.html). It generates random
+puzzles, lets users solve them, and offers hints. It also includes a solver that
+uses backtracking to find solutions. The interface is designed to be minimal and
+easy to use.

@@ -22,6 +22,7 @@ export const skills = {
   nltk: { name: "NLTK" },
   pypi: { name: "PyPI", icon: "simple-icons:pypi" },
   poetry: { name: "Poetry", icon: "simple-icons:poetry" },
+  tkinter: { name: "Tkinter" },
   pygame: { name: "PyGame" },
   regex: { name: "Regex", icon: "lucide:regex" },
   nlp: { name: "NLP", icon: "lucide:languages" },
