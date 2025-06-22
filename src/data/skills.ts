@@ -20,6 +20,8 @@ export const skills = {
   wxt: { name: "WXT" },
   pandas: { name: "Pandas", icon: "simple-icons:pandas" },
   nltk: { name: "NLTK" },
+  pypi: { name: "PyPI", icon: "simple-icons:pypi" },
+  poetry: { name: "Poetry", icon: "simple-icons:poetry" },
   regex: { name: "Regex" },
   nlp: { name: "NLP" },
   docker: { name: "Docker", icon: "simple-icons:docker" },

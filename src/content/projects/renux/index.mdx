@@ -1,0 +1,27 @@
+---
+title: "renux"
+description: "A terminal app with a TUI for bulk file renaming using regex."
+startDate: "2025-05"
+demoURL: https://pypi.org/project/renux
+repoURL: https://github.com/andrianllmm/renux
+skills: ["python", "pypi", "poetry", "regex"]
+image: "./preview.gif"
+---
+
+import { Image } from "astro:assets";
+import preview from "./preview.gif";
+
+<Image
+  src={preview}
+  alt="Preview"
+  class="my-4 w-full max-w-100 shadow-xl"
+  data-zoomable
+/>
+
+renux is a tool with terminal user interface (TUI) that automates file renaming.
+It simplifies this task with features like regex, placeholders, and text transformations,
+making it ideal for situations such as renaming photos, cleaning up download folders, or enforcing consistent naming conventions.
+It was initially developed as a final project for <a href="https://cs50.harvard.edu/python/2022" target="_blank">Harvard's CS50p</a>.[^1]
+It is now a reusable tool that is available in <a href="https://pypi.org/project/renux">PyPI</a>
+
+[^1]: _Harvard's Introduction to Programming with Python_ (CS50p) was one of the first online CS courses I completed. This project served as my final capstone.
