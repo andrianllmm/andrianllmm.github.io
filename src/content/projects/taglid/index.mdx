@@ -1,8 +1,8 @@
 ---
 title: "TagLID"
-description: "A word level Language Identification (LID) tool for Tagalog-English (Taglish) text."
-startDate: "2023-12"
-endDate: "2024-03"
+description: "A word-level Language Identification (LID) tool for Tagalog-English (Taglish) text."
+startDate: "2024-02"
+endDate: "2024-06"
 repoURL: https://github.com/andrianllmm/taglid
 skills: ["python", "pandas", "nltk", "webScraping", "xmlParsing"]
 image: "./preview.png"
@@ -14,15 +14,21 @@ image: "./preview.png"
   async="true"
 ></script>
 
-TagLID is an open-source python library for word level Language Identification (LID) in Tagalog-English (Taglish) text.
-It was originally developed as a data analysis tool for our <abbr title="Senior High School">SHS</abbr> Practical Research 2 project
+TagLID is a library that labels each word in a Taglish (Tagalog-English mix)
+text by language. It gives either a simple tag (`tgl` or `eng`) or detailed
+frequency info with flags indicating how the word was identified. It is a
+rule-based and opinionated system that mostly uses dictionary lookups. It also
+handles cases like skipping numbers, names, and interjections, and includes
+logic for dealing with slang, abbreviations, contractions, stemming or
+lemmatizing inflected words, intrawords, and correcting misspellings.
+
+## Why I built it
+
+TagLID was originally developed as a data analysis tool for our <abbr title="Senior High School">SHS</abbr> Practical Research 2 project
 to calculate the frequency of Tagalog and English words in Taglish texts. [^1]
 Since then, it has evolved into a reusable and general-purpose tool for Taglish language detection.
 
-## Usage
-
-TagLID can be used both as a Python library and a command-line interface (CLI) tool.
-Check the repository for complete <a href="https://github.com/andrianllmm/taglid/#usage" target="_blank">instructions</a>.
+## How it turned out
 
 ### Library mode
 
@@ -33,12 +39,11 @@ from taglid.lid import lang_identify, simplify
 
 labeled_text = lang_identify("hello, mundo")
 print(simplify(labeled_text))
-
 ```
 
 Output:
 
-```
+```sh
 [('hello', 'eng'), ('mundo', 'tgl')]
 ```
 
@@ -46,13 +51,13 @@ Output:
 
 Users can also use TagLID as a CLI tool.
 
-```bash
+```sh
 python -m taglid.lid
 ```
 
 Example input:
 
-```bash
+```sh
 text: hello, mundo
 ```
 
@@ -65,13 +70,16 @@ hello       1      0  DICT
 mundo       0      1  DICT
 ```
 
-## How it works
+## How I built it
 
-The basic algorithm is utilizes word frequency lists. These are
-web scraped from the <a href="https://tagalog.pinoydictionary.com/" target="_blank">Pinoy Dictionary</a>
-and parsed from the XML version of the <a href="https://ibiblio.org/webster/" target="_blank">GCIDE</a> English dictionary.
+The core algorithm utilizes dictionary lookups to identify language.
+Dictionaries were web scraped from the <a href="https://tagalog.pinoydictionary.com/" target="_blank">Pinoy Dictionary</a>
+and parsed from the XML version of the <a href="https://ibiblio.org/webster/" target="_blank">GCIDE</a> English dictionary
+using <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/" target="_blank">BeautifulSoup4</a>.
+To assign frequencies to words, an additional list from
+the <a href="https://wortschatz.uni-leipzig.de/en/download/" target="_blank">Leipzig Corpora Collection</a> was integrated.
 
-This algorithm checks the word appears in both Tagalog and English dictionaries and labels its language accordingly.
+This algorithm if checks the word appears in both Tagalog and English dictionaries and labels its language accordingly.
 This initial algorithm is in line with the one employed by <a href="https://aclanthology.org/2022.lrec-1.225" target="_blank">Herrera, et al. (2022)</a>.
 
 To address ambiguous cases where a word is present in both dictionaries such as
@@ -93,9 +101,20 @@ function LangIdentify(word):
     return lang
 ```
 
-This function is preceded by <a href="https://github.com/andrianllmm/tagLID/blob/main/src/taglid/lid.py" target="_blank">supplementary functions</a>
+Before the main function, there are <a href="https://github.com/andrianllmm/tagLID/blob/main/src/taglid/lid.py" target="_blank">supplementary functions</a>
 to exclude certain words from the count since they are not specific to English or Tagalog.
-It is then proceeded by other supplementary functions to handle special cases in which the word frequency lists cannot catch.
+It is then followed by other supplementary functions to handle special cases that the word frequency lists cannot catch.
+
+## What I learned
+
+This is one of the first coding projects I've written, so a lot of things were new.
+I learned how to package a Python library and a CLI tool, clean data better, scrape the web, and parse XML.
+I also realized that building something I actually wanted to reuse later made me care more about code structure and maintainability.
+
+At first, it felt like labeling words as English or Tagalog should be simple—just check a dictionary, right?
+But once I ran into tricky edge cases like "at", slang, misspellings, and inflections, I knew it wasn’t going to be that straightforward.
+Dictionary lookups helped, but I still had to write a bunch of rules to deal with
+the nuances of Taglish and how people actually talk, especially when grammar goes out the window.
 
 ---
 

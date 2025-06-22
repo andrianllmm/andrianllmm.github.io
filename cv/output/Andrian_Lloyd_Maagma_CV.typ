@@ -589,9 +589,9 @@ Aug 2024 – present
 )
 #one-col-entry(
   content: [
-    #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [A word level Language Identification \(LID\) tool for Tagalog-English \(Taglish\) text])], column-gutter: 0cm)
+    #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [A word-level Language Identification \(LID\) tool for Tagalog-English \(Taglish\) text])], column-gutter: 0cm)
 
-#v(-design-text-leading)  #v(design-highlights-top-margin);#highlights([Utilized traditional #strong[Natural Language Processing] \(NLP\) techniques to identify language of each word.],[Created a #strong[Python library] for Tagalog word stemming to improve Tagalog language detection.],[#strong[Web scraped] a Tagalog dictionary website and parsed XML files from an English dictionary using BeautifulSoup4.],[Derived metrics on code-switching frequency from data collected from 57 respondents.],)
+#v(-design-text-leading)  #v(design-highlights-top-margin);#highlights([Utilized rule-based #strong[Natural Language Processing] \(NLP\) techniques to identify the language of each word.],[Created a #strong[Python library] for Tagalog word stemming to improve Tagalog language detection for inflected words.],[#strong[Scraped] from Tagalog and English dictionaries using BeautifulSoup4 to generate frequency-based lookup tables.],[Computed code-switching frequency from 57 survey responses to automate data analysis for a language research study.],)
   ],
 )
 

@@ -91,10 +91,10 @@ Computer Science student with experience in full-stack web development, UI/UX, d
     <time datetime="2023 – 2024">2023 – 2024</time>
 </span>
 
-- Utilized traditional **Natural Language Processing** (NLP) techniques to identify language of each word.
-- Created a **Python library** for Tagalog word stemming to improve Tagalog language detection.
-- **Web scraped** a Tagalog dictionary website and parsed XML files from an English dictionary using BeautifulSoup4.
-- Derived metrics on code-switching frequency from data collected from 57 respondents.
+- Utilized rule-based **Natural Language Processing** (NLP) techniques to identify the language of each word.
+- Created a **Python library** for Tagalog word stemming to improve Tagalog language detection for inflected words.
+- **Scraped** from Tagalog and English dictionaries using BeautifulSoup4 to generate frequency-based lookup tables.
+- Computed code-switching frequency from 57 survey responses to automate data analysis for a language research study.
 
 ## Skills
 
