@@ -1,23 +1,29 @@
 ---
 title: Aklanon Stemmer
 description: A Python library for Aklanon word stemming.
-startDate: "2024-04"
-endDate: "2024-06"
+startDate: "2024-03"
+endDate: "2024-05"
 repoURL: https://github.com/andrianllmm/aklanon-stemmer
 skills: ["python", "regex", "nltk", "nlp"]
 image: "./preview.png"
 ---
 
-AklStemmer is an open-source Python library for <a href="https://www.ethnologue.com/language/akl" target="_blank">Aklanon</a> word stemming.
+AklStemmer is a library that finds the root form of <a href="https://www.ethnologue.com/language/akl" target="_blank">Aklanon</a> words.
+It works on inflected words, even those with mixed Aklanon-English terms or those not found in dictionaries.
+It removes affixes, reduces repeated syllables, and applies transformation rules to find possible root forms.
+These are filtered using a list of valid words and conditions. The best root is then chosen based on how much was changed during the process.
+
+## Why I built it
+
 It was originally developed as a supplementary tool for the spellchecker used in the [Aklish project](/projects/aklish).
 Its main purpose is to determine the base or root word of an Aklanon word.
 The library was specifically designed to improve the dictionary-base spellchecker,
 as inflected words are often not included in word lists.
 Today, it serves as a reusable tool for stemming any Aklanon-inflected words.
 
-## Usage
+## How it turned out
 
-TagLID can be used as a Python library by importing it into their Python script.
+AklStemmer can be used as a Python library by importing it into a Python script.
 Check the repository for complete <a href="https://github.com/andrianllmm/aklanon-stemmer/#usage" target="_blank">instructions</a>.
 
 ```python
@@ -35,7 +41,7 @@ Check the repository for complete <a href="https://github.com/andrianllmm/aklano
 None
 ```
 
-## How it works
+## How I built it
 
 AklStemmer performs stemming by applying a modular sequence of affix-removal and transformation rules to input words.
 Here’s how it works under the hood:
