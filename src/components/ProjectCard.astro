@@ -1,0 +1,58 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import { skills as skillsData, type Skill, type SkillKey } from "@data/skills";
+
+type Props = {
+  project: CollectionEntry<"projects">;
+};
+
+const { project } = Astro.props as {
+  project: CollectionEntry<"projects">;
+};
+
+const skills = project.data.skills
+  ?.filter((skill) => (skillsData[skill as SkillKey] as Skill)?.icon)
+  .slice(0, 3);
+---
+
+<a
+  href={`/${project.collection}/${project.id}`}
+  class:list={[
+    "not-prose group flex h-full w-full flex-1 flex-col gap-3 rounded-lg border px-4 py-5",
+    "hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground transition-all duration-300 ease-in-out",
+  ]}
+>
+  {
+    project.data.image && (
+      <div class="aspect-video overflow-hidden rounded-lg">
+        <Image
+          src={project.data.image}
+          alt={project.data.title}
+          class="transition-transform duration-300 ease-in-out group-hover:scale-110"
+        />
+      </div>
+    )
+  }
+  <div class="flex flex-1 flex-col justify-end gap-1">
+    <div class="line-clamp-2 font-semibold">{project.data.title}</div>
+    <div class="line-clamp-2 text-sm group-hover:line-clamp-6 sm:line-clamp-3">
+      {project.data.description}
+    </div>
+    <div class="text-muted-foreground mt-2 flex gap-1.5 text-xs">
+      {
+        project.data.demoURL && (
+          <Icon name="lucide:external-link" class="size-4" />
+        )
+      }
+      {project.data.repoURL && <Icon name="lucide:github" class="size-4" />}
+      {
+        skills?.map((skill) => {
+          const { icon } = skillsData[skill as SkillKey] as Skill;
+          return icon && <Icon name={icon} class="size-4" />;
+        })
+      }
+    </div>
+  </div>
+</a>

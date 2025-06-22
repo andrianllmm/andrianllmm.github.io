@@ -62,10 +62,9 @@ const { Content, headings } = await render(post);
         <div class="font-base text-sm">
           <FormattedDate date={post.data.date} />
         </div>
-        &bull;
         {
           post.body && (
-            <div class="font-base text-sm">{readingTime(post.body)}</div>
+            <div class="font-base text-sm">&bull; {readingTime(post.body)}</div>
           )
         }
       </div>

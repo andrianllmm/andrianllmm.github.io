@@ -11,6 +11,10 @@ const directionClassMap = {
   left: "rotate-0",
   up: "rotate-90",
   down: "-rotate-90",
+  upright: "rotate-135",
+  downright: "-rotate-135",
+  upleft: "rotate-45",
+  downleft: "-rotate-45",
 } as const;
 
 const directionClass = directionClassMap[direction] || "";

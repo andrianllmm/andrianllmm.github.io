@@ -3,16 +3,20 @@ import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import BackToPrevious from "@components/BackToPrevious.astro";
-import EntryCard from "@components/EntryCard.astro";
+import ProjectCard from "@components/ProjectCard.astro";
 import { PROJECTS } from "@consts";
 
 const projects = (await getCollection("projects"))
   .filter((project) => !project.data.draft)
   .sort((a, b) => {
-    const aEnd = a.data.endDate ?? new Date();
-    const bEnd = b.data.endDate ?? new Date();
-    const endCompare = bEnd.getTime() - aEnd.getTime();
-    if (endCompare !== 0) return endCompare;
+    const aEnd = a.data.endDate;
+    const bEnd = b.data.endDate;
+    if (aEnd === undefined && bEnd !== undefined) return -1; // a is ongoing
+    if (bEnd === undefined && aEnd !== undefined) return 1; // b is ongoing
+    if (aEnd !== undefined && bEnd !== undefined) {
+      const endCompare = bEnd.getTime() - aEnd.getTime();
+      if (endCompare !== 0) return endCompare;
+    }
     return a.data.startDate.getTime() - b.data.startDate.getTime();
   });
 ---
@@ -25,11 +29,11 @@ const projects = (await getCollection("projects"))
     <aside data-pagefind-ignore>
       <div class="space-y-6">
         <div class="animate font-semibold">Projects</div>
-        <ul class="animate not-prose flex flex-col gap-4">
+        <ul class="animate not-prose grid grid-cols-1 gap-4 sm:grid-cols-2">
           {
             projects.map((project) => (
               <li>
-                <EntryCard entry={project} />
+                <ProjectCard project={project} />
               </li>
             ))
           }

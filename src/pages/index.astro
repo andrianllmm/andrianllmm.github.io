@@ -2,7 +2,8 @@
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import { SITE, HOME } from "@consts";
-import EntryCard from "@components/EntryCard.astro";
+import ProjectCard from "@components/ProjectCard.astro";
+import PostCard from "@components/PostCard.astro";
 import Link from "@components/Link.astro";
 import SkillBadge from "@components/SkillBadge.astro";
 import TagBadge from "@components/TagBadge.astro";
@@ -17,10 +18,14 @@ const projects: CollectionEntry<"projects">[] = (
 )
   .filter((project) => !project.data.draft)
   .sort((a, b) => {
-    const aEnd = a.data.endDate ?? new Date();
-    const bEnd = b.data.endDate ?? new Date();
-    const endCompare = bEnd.getTime() - aEnd.getTime();
-    if (endCompare !== 0) return endCompare;
+    const aEnd = a.data.endDate;
+    const bEnd = b.data.endDate;
+    if (aEnd === undefined && bEnd !== undefined) return -1; // a is ongoing
+    if (bEnd === undefined && aEnd !== undefined) return 1; // b is ongoing
+    if (aEnd !== undefined && bEnd !== undefined) {
+      const endCompare = bEnd.getTime() - aEnd.getTime();
+      if (endCompare !== 0) return endCompare;
+    }
     return a.data.startDate.getTime() - b.data.startDate.getTime();
   })
   .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
@@ -67,12 +72,15 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags || []))]
             </div>
 
             <!-- Text with contact on large screens -->
-            <div class="animate col-span-4 sm:col-span-5 space-y-1 sm:space-y-2">
+            <div
+              class="animate col-span-4 space-y-1 sm:col-span-5 sm:space-y-2"
+            >
               <h1 class="text-2xl font-semibold sm:text-3xl">
                 This is Andrian
               </h1>
               <p class="text-muted-foreground text-xs sm:text-sm">
-                <abbr title="Computer Science" class="no-underline">CS</abbr> Student @
+                <abbr title="Computer Science" class="no-underline">CS</abbr> Student
+                @
                 <Link href="https://upv.edu.ph" external>
                   <abbr title="University of the Philippines Visayas">UPV</abbr>
                 </Link>
@@ -84,7 +92,6 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags || []))]
               </nav>
             </div>
           </div>
-
 
           <article class="animate space-y-4">
             <p>
@@ -112,11 +119,11 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags || []))]
             </a>
           </div>
 
-          <ul class="not-prose flex flex-col gap-4">
+          <ul class="not-prose grid grid-cols-1 gap-4 sm:grid-cols-2">
             {
               projects.map((project) => (
                 <li>
-                  <EntryCard entry={project} />
+                  <ProjectCard project={project} />
                 </li>
               ))
             }
@@ -140,7 +147,7 @@ const tags = [...new Set(posts.flatMap((post) => post.data.tags || []))]
             {
               posts.map((post) => (
                 <li>
-                  <EntryCard entry={post} />
+                  <PostCard post={post} />
                 </li>
               ))
             }

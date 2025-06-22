@@ -2,8 +2,8 @@
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
-import EntryCard from "@components/EntryCard.astro";
 import BackToPrevious from "@components/BackToPrevious.astro";
+import ProjectCard from "@components/ProjectCard.astro";
 import SkillBadge from "@components/SkillBadge.astro";
 
 export async function getStaticPaths() {
@@ -29,13 +29,19 @@ const { id } = Astro.params;
 const { projects } = Astro.props;
 
 // Sort projects by date, most recent first
-const sortedProjects = projects.sort((a, b) => {
-  const aEnd = a.data.endDate ?? new Date();
-  const bEnd = b.data.endDate ?? new Date();
-  const endCompare = bEnd.getTime() - aEnd.getTime();
-  if (endCompare !== 0) return endCompare;
-  return a.data.startDate.getTime() - b.data.startDate.getTime();
-});
+const sortedProjects = projects
+  .filter((project) => !project.data.draft)
+  .sort((a, b) => {
+    const aEnd = a.data.endDate;
+    const bEnd = b.data.endDate;
+    if (aEnd === undefined && bEnd !== undefined) return -1; // a is ongoing
+    if (bEnd === undefined && aEnd !== undefined) return 1; // b is ongoing
+    if (aEnd !== undefined && bEnd !== undefined) {
+      const endCompare = bEnd.getTime() - aEnd.getTime();
+      if (endCompare !== 0) return endCompare;
+    }
+    return a.data.startDate.getTime() - b.data.startDate.getTime();
+  });
 ---
 
 <Layout title={`Skill: ${id}`} description={`Projects with the skill: ${id}`}>
@@ -49,8 +55,14 @@ const sortedProjects = projects.sort((a, b) => {
           (<SkillBadge skill={id} showNum class="border-none" />)
         }
       </h1>
-      <ul class="animate flex flex-col gap-4">
-        {sortedProjects.map((project) => <EntryCard entry={project} />)}
+      <ul class="animate grid grid-cols-1 gap-4 sm:grid-cols-2">
+        {
+          sortedProjects.map((project) => (
+            <li>
+              <ProjectCard project={project} />
+            </li>
+          ))
+        }
       </ul>
     </div>
   </Container>

@@ -8,27 +8,31 @@ const tagEnum = z.enum(Object.keys(tags) as [string, ...string[]]);
 
 const projects = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/projects" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    startDate: z.coerce.date(),
-    endDate: z.coerce.date().optional(),
-    draft: z.boolean().optional(),
-    demoURL: z.string().optional(),
-    repoURL: z.string().optional(),
-    skills: z.array(skillEnum).optional(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      startDate: z.coerce.date(),
+      endDate: z.coerce.date().optional(),
+      draft: z.boolean().optional(),
+      demoURL: z.string().optional(),
+      repoURL: z.string().optional(),
+      skills: z.array(skillEnum).optional(),
+      image: image().optional(),
+    }),
 });
 
 const blog = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/blog" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    date: z.coerce.date(),
-    draft: z.boolean().optional(),
-    tags: z.array(tagEnum).optional(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      date: z.coerce.date(),
+      draft: z.boolean().optional(),
+      tags: z.array(tagEnum).optional(),
+      image: image().optional(),
+    }),
 });
 
 const cv = defineCollection({

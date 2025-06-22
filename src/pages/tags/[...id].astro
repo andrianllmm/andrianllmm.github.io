@@ -2,8 +2,8 @@
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
-import EntryCard from "@components/EntryCard.astro";
 import BackToPrevious from "@components/BackToPrevious.astro";
+import PostCard from "@components/PostCard.astro";
 import TagBadge from "@components/TagBadge.astro";
 
 export async function getStaticPaths() {
@@ -40,7 +40,7 @@ const sortedPosts = posts.sort(
         Posts tagged with <TagBadge tag={id} showNum class="border-none" />
       </h1>
       <ul class="animate flex flex-col gap-4">
-        {sortedPosts.map((post) => <EntryCard entry={post} />)}
+        {sortedPosts.map((post) => <PostCard post={post} />)}
       </ul>
     </div>
   </Container>

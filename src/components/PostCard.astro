@@ -1,0 +1,53 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+import FormattedDate from "./FormattedDate.astro";
+import { readingTime } from "@lib/utils";
+
+type Props = {
+  post: CollectionEntry<"blog">;
+};
+
+const { post } = Astro.props as {
+  post: CollectionEntry<"blog">;
+};
+---
+
+<a
+  href={`/${post.collection}/${post.id}`}
+  class:list={[
+    "not-prose group flex h-full w-full flex-1 items-start gap-2 rounded-lg border px-4 py-3 sm:items-center sm:gap-3",
+    "hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground transition-all duration-300 ease-in-out",
+  ]}
+>
+  {
+    post.data.image && (
+      <div class="aspect-video w-24 overflow-hidden rounded-lg sm:w-36 md:w-48">
+        <Image
+          src={post.data.image}
+          alt={post.data.title}
+          class="transition-transform duration-300 ease-in-out group-hover:scale-105"
+        />
+      </div>
+    )
+  }
+  <div class="flex flex-1 flex-col gap-1">
+    <div class="line-clamp-2 font-semibold">{post.data.title}</div>
+    <div
+      class="line-clamp-1 text-sm text-wrap group-hover:line-clamp-6 sm:line-clamp-2"
+    >
+      {post.data.description}
+    </div>
+    <div class="text-muted-foreground mt-0.5 flex gap-1 text-xs">
+      {
+        post.data.date && (
+          <FormattedDate
+            date={post.data.date}
+            formatOptions={{ year: "numeric" }}
+          />
+        )
+      }
+      {post.body && <div>&bull; {readingTime(post.body)}</div>}
+    </div>
+  </div>
+</a>
