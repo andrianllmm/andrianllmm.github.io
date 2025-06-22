@@ -572,9 +572,9 @@ Aug 2024 – present
 )
 #one-col-entry(
   content: [
-    #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [A web application for crowdsourcing Aklanon-English translations])], column-gutter: 0cm)
+    #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [A web app for crowdsourcing Aklanon-English translations])], column-gutter: 0cm)
 
-#v(-design-text-leading)  #v(design-highlights-top-margin);#highlights([Developed #strong[CRUD] functionality for translations and dictionaries using Django and React.],[Created a dictionary-based Aklanon #strong[spellchecker] using the SymSpellPy library.],[Developed a Python library for Aklanon word #strong[stemming] to improve the spell-checker.],[Managed and iteratively improved the application based on input from 30 users.],)
+#v(-design-text-leading)  #v(design-highlights-top-margin);#highlights([Built full #strong[CRUD] functionality for translations using Django and React, enabling user-generated content.],[Implemented a dictionary-based Aklanon #strong[spellchecker], improving translation accuracy.],[Developed an Aklanon word #strong[stemming] library enhance spell-check precision.],[Conducted user testing with 30 native speakers and iteratively improved UX, resulting in increased usability.],)
   ],
 )
 

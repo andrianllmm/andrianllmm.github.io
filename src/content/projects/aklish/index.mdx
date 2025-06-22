@@ -9,6 +9,7 @@ skills: ["django", "react", "python", "javascript", "bootstrap", "sass"]
 image: "./preview.png"
 ---
 
+import Callout from "@components/Callout.astro";
 import { Image } from "astro:assets";
 import preview from "./preview.png";
 import homepageDark from "./screenshots/homepage_dark.png";
@@ -31,20 +32,32 @@ import match from "./screenshots/match.png";
 <Image src={preview} alt="Preview" data-zoomable />
 
 Aklish is a web app that crowdsources <a href="https://www.ethnologue.com/language/akl" target="_blank">Aklanon</a>-English translations.
-It was initially developed as a <abbr title="Senior High School">SHS</abbr> Research Capstone Project to help preserve and enrich
-the Aklanon language, my mother tongue, which is classified as a Low-resource language (LRL).[^1]
-The platform lets users contribute translations and has since grown to include dictionaries, spellcheckers, leaderboards, and word games.
+The platform lets users contribute translations with quality control (dictionaries and spellcheckers) and engagement (leaderboards and word games) strategies.
 
-## Goals
+{/* prettier-ignore */}
+<Callout type="info">
+  This project is currently inactive since I'm working on a similar project called
+  <a href="https://github.com/Miagao-Valley/kulasisi" target="_blank">Kulasisi</a>
+  where it covers all Philippine languages, not just Aklanon.
+</Callout>
+
+## Why I built it
+
+Well, it was initially developed as a <abbr title="Senior High School">SHS</abbr> Research Capstone Project to help preserve and enrich
+the Aklanon language, my mother tongue, which is classified as a Low-resource language (LRL).[^1] I built it to:
 
 - **Expand language resources**: create reliable, accessible resources to help grow the language.
 - **Encourage community collaboration**: let native speakers and learners take part in translating and improving content.
-- **Support learning**: make it easier for people practice and learn the language.
+- **Support learning**: make it easier for people to practice and learn the language.
 
-## Interface
+## How it turned out
 
-The interface is designed to be user-friendly and easy to navigate.
-It is responsive (adapts to all screen sizes) and has dark mode for better accessibility.
+### The interface
+
+Looking back, now that I’ve used TailwindCSS and modern UI libraries,
+it’s kind of hard to remember how I built this interface with just Django templates and Bootstrap.
+The interface turned out to be user-friendly and easy to navigate.
+It's also responsive and has dark mode for better accessibility.
 
 <div class="flex gap-4">
   <div class="flex items-center justify-center">
@@ -55,9 +68,7 @@ It is responsive (adapts to all screen sizes) and has dark mode for better acces
   </div>
 </div>
 
-## Features
-
-### Bidirectional Input
+### Bidirectional input of translations
 
 Users can enter phrases in either Aklanon or English, and provide multiple translations in the opposite language.
 
@@ -66,7 +77,7 @@ Users can enter phrases in either Aklanon or English, and provide multiple trans
   <Image src={addTranslation} alt="Add Translation" data-zoomable />
 </div>
 
-### Browse and Search Entries
+### Browse and search
 
 Users can easily explore entries through a well-organized interface with proper pagination.
 They can also quickly find specific entries with options to filter and sort results.
@@ -86,15 +97,14 @@ They can also quickly find specific entries with options to filter and sort resu
   />
 </div>
 
-### Quality Control Strategies
+### Voting system
 
-#### Voting System
-
-Users can evaluate translations by either upvoting (+1) or downvoting (-1) them.
+Users can evaluate translations by upvoting (+1) or downvoting (-1) them.
+This helps build consensus on the best translations, making it easier for users to know which ones to trust.
 
 <Image src={voting} alt="Voting System" class="w-full max-w-80" data-zoomable />
 
-#### Dictionaries
+### Aklanon-English dictionary
 
 Provides users with words and their definitions, examples, related terms, and other properties
 to help in maintaining consistency in their translations.
@@ -116,13 +126,13 @@ dictionary and a PDF <a href="https://archive.org/details/ERIC_ED145704" target=
   />
 </div>
 
-#### Proofreaders (Spellcheckers)
+### Aklanon and English proofreader (spellchecker)
 
 Highlights potential errors in translations, such as misspellings, by referencing the dictionary.
 It suggests likely corrections, which users can choose to accept or ignore.
 The spellchecker uses the <a href="https://pypi.org/project/symspellpy" target="_blank">SymSpellPy</a>
 library, along with <a href="https://lemminflect.readthedocs.io" target="_blank">LemmInlect</a> and <a href="https://github.com/andrianllmm/aklanon-stemmer">AklStemmer</a>
-libraries English and Aklanon word stemming to under the hood.
+libraries for English and Aklanon word stemming to under the hood.
 
 <Image
   src={proofreader}
@@ -131,7 +141,7 @@ libraries English and Aklanon word stemming to under the hood.
   data-zoomable
 />
 
-#### Points System
+### Points (reputation) system
 
 A reputation-based points system, similar to <a href="https://stackoverflow.com/help/whats-reputation" target="_blank">Stack Overflow's</a>,
 rewards active contributors and promotes accountability within the community.
@@ -143,9 +153,7 @@ rewards active contributors and promotes accountability within the community.
   data-zoomable
 />
 
-### Engagement Strategies
-
-#### Leaderboard System
+### Leaderboard system
 
 Recognizes active participants by showcasing top contributors, ranked by their reputation in the points system.
 
@@ -156,17 +164,17 @@ Recognizes active participants by showcasing top contributors, ranked by their r
   data-zoomable
 />
 
-#### Games
+### Games
 
 Interactive games provide a fun and engaging way to learn and practice both Aklanon and English.
 
-##### Wordle
+#### Wordle
 
 A <a href="https://www.nytimes.com/games/wordle" target="_blank">Wordle</a>-inspired game where users guess words in either language to expand their vocabulary through repeated exposure.
 
 <Image src={wordle} alt="Wordle" class="w-full max-w-80" data-zoomable />
 
-##### Match
+#### Synonym-antonym match
 
 A synonym-antonym matching game that helps users understand relationships between words.
 
@@ -182,7 +190,9 @@ The registration form ensures that users provide a unique username and a strong 
   <Image src={register} alt="Register" data-zoomable />
 </div>
 
-## Tech Stack
+## How I built it
+
+### Technologies I used
 
 |                |                                                       |
 | -------------- | ----------------------------------------------------- |
@@ -193,12 +203,28 @@ The registration form ensures that users provide a unique username and a strong 
 | **Testing**    | PyTest                                                |
 | **Deployment** | Railway                                               |
 
-## Effectiveness
+## How well it worked
 
 Through a comprehensive assessment of its functionality, performance, accessibility, adherence to modern standards (AMS),
 search engine optimization (SEO), usability, and engagement, Aklish was determined to be functional (82.01%), perform well (81.33%),
 be accessible (96.79%), adhere to modern standards (100%), be search engine optimized (99.21%), be usable (61.29%),
 and relatively low in engagement based on several metrics.[^2]
+
+## What I learned
+
+Working on Aklish taught me how to build a full-stack app from scratch and actually ship it.
+It's the first web app I've built that I deployed to production and have users to test it with.
+I got better at managing a large codebase and debugging the kinds of issues that only show up in production.
+
+Aside from the statistical results, I also noticed that users were more interested in
+the games than the actual idea of "contributing translations".
+It taught me that building a community for this kind of platform is harder than it looks.
+It's not just putting a CRUD interface out there and hoping for people to just contribute.
+
+Finally, building tools for a low-resource language like Aklanon made it clear how much infrastructure is missing.
+Even simple things like spellcheckers or dictionaries took a lot of manual setup.
+I wouldn't call it clean work, but it gave me a clearer idea of what needs to exist
+for these kind of languages to have a real digital presence.
 
 ---
 

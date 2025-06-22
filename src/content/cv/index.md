@@ -80,10 +80,10 @@ Computer Science student with experience in full-stack web development, UI/UX, d
     <time datetime="2024 – 2025">2024 – 2025</time>
 </span>
 
-- Developed **CRUD** functionality for translations and dictionaries using Django and React.
-- Created a dictionary-based Aklanon **spellchecker** using the SymSpellPy library.
-- Developed a Python library for Aklanon word **stemming** to improve the spell-checker.
-- Managed and iteratively improved the application based on input from 30 users.
+- Built full **CRUD** functionality for translations using Django and React, enabling user-generated content.
+- Implemented a dictionary-based Aklanon **spellchecker**, improving translation accuracy.
+- Developed an Aklanon word **stemming** library enhance spell-check precision.
+- Conducted user testing with 30 native speakers and iteratively improved UX, resulting in increased usability.
 
 ### [TagLID](https://github.com/andrianllmm/taglid)
 
