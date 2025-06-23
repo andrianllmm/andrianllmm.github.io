@@ -1,0 +1,112 @@
+---
+title: "Backlogs"
+description: "Yet another kanban to-do list with a natural language input parser"
+startDate: "2025-03"
+endDate: "2025-06"
+repoURL: https://github.com/andrianllmm/backlogs
+skills: ["django", "python", "javascript", "html5", "css3", "bootstrap"]
+image: "./preview.gif"
+---
+
+import { Image } from "astro:assets";
+import preview from "./preview.gif";
+import input from "./screenshots/input.png";
+import dragAndDrop from "./screenshots/drag-and-drop.png";
+import taskView from "./screenshots/task-view.png";
+
+<Image
+  src={preview}
+  alt="Preview"
+  class="my-4 w-full max-w-100 shadow-xl"
+  data-zoomable
+/>
+
+Backlogs is a to-do list app that helps you manage tasks efficiently with a
+kanban layout. It automatically extracts deadlines and priorities from natural
+language input, making it easy to create tasks and stay on track to finish them
+on time.
+
+## Why I built it
+
+Backlogs was initially developed as a final project for <a href="https://cs50.harvard.edu/web/2020" target="_blank">Harvard's CS50w</a>.[^1]
+The task was to design and implement a web application of our own with Python and JavaScript.
+I figured a to-do list app would be a solid way to practice the basics of web development.
+I specifically wanted to try natural language input parsing and a basic kanban layout since they seemed hard to pull off without a frontend framework.
+
+## How it turned out
+
+### Natural language parser
+
+Users can create tasks using intuitive natural language inputs by identifying date phrases and priority keywords,
+automatically assigning appropriate due dates and urgency levels.
+
+<Image
+  src={input}
+  alt="Input"
+  class="my-4 w-full max-w-100 shadow-xl"
+  data-zoomable
+/>
+
+### Responsive kanban board
+
+Users can drag-and-drop tasks across different status columns (e.g., To Do, In Progress, Done).
+And yes, the layout also adapts to various screen sizes using responsive design techniques such as
+transitioning from a 3-column layout to 1-column with 3 tabs.
+
+<Image
+  src={dragAndDrop}
+  alt="Drag and Drop"
+  class="my-4 w-full max-w-100 shadow-xl"
+  data-zoomable
+/>
+
+### Task prioritization
+
+Users can categorize tasks by priority levels such as Low, Medium, and High.
+This helps them focus on the most important tasks first.
+
+<Image
+  src={taskView}
+  alt="Task View"
+  class="my-4 w-full max-w-100 shadow-xl"
+  data-zoomable
+/>
+
+### Authentication
+
+Users can register, log in, and manage a personal backlog of tasks.
+
+## How I built it
+
+The natural language parser was inspired by popular todo list apps like <a href="https://todoist.com/" target="_blank">Todoist</a>.
+The parser is rule-based and was built from scratch with a lot of regex and if statements.
+The input was built overlaying a `div` element for highlighting keywords on top of an `input` element.
+It may be hacky but it works.
+
+I implemented the kanban board with custom drag-and-drop task movement using native HTML5 APIs and JavaScript event handling.
+Utilizing events such as `dragstart`, `dragenter`, and `drop`,
+I was able to create not only a monster of a JavaScript module but something that actually works well.
+
+Task creation and updates (CRUD) are handled via AJAX. Reloading the page every interaction would’ve been annoying,
+so I used JavaScript to send and receive data in the background.
+
+<a href="https://docs.djangoproject.com/en/5.2/topics/templates" target="_blank">Django templates</a>
+are heavily used to create reusable frontend components (even for small pieces like the checkbox). I leaned on `{% include %}` a lot,
+mostly to avoid repeating the same HTML in ten different places. That habit definitely came from working with React. It just makes sense.
+
+## What I learned
+
+I got more experience working with Django and JavaScript (again) in the same project.
+I also developed a DRY habit of organizing templates to make the code easier to maintain.
+
+Working with the native drag-and-drop API taught me how to handle the different events properly.
+Writing the parser also helped me understand how to structure rule-based logic and use regex more effectively.
+
+Overall, this project helped me see how the different parts of a web app fit together.
+
+---
+
+[^1]:
+    _Harvard's Introduction to Programming with Python_ (CS50w) was one of the first online CS courses I completed.
+    This project served as my final capstone. It leverages many of the core lessons from the course,
+    including Django, JavaScript, Bootstrap, AJAX, and UI/UX principles.
