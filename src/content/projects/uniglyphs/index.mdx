@@ -1,6 +1,6 @@
 ---
 title: "UniGlyphs"
-description: "A browser extension for styling text on any website using a dynamic toolbar."
+description: "A browser extension that lets you format text on any website using an inline toolbar."
 startDate: "2025-04"
 demoURL: https://uniglyphs.vercel.app
 repoURL: https://github.com/andrianllmm/uniglyphs
@@ -19,22 +19,36 @@ import preview from "./preview.gif";
   data-zoomable
 />
 
-UniGlyphs is a browser extension that lets users style and format text anywhere.
-It provides a floating toolbar that works on websites like Facebook, along with a full-page and popup editor in the browser.
-Users can write expressive posts, comments, and more—even on platforms that don’t allow custom fonts.
-Styled text is generated using Unicode characters that resemble different font styles, such as 𝐛𝐨𝐥𝐝, 𝑖𝑡𝑎𝑙𝑖𝑐, and 𝔤𝔬𝔱𝔥𝔦𝔠, which persists their look across platforms.
-It was initially developed as a final project for <a href="https://cs50.harvard.edu/x/2025" target="_blank">Harvard's CS50x</a>.[^1]
-It is now a reusable tool in the <a href="https://chromewebstore.google.com/detail/hcnbmicjiggmklnmkpljeomkmagigkbc" target="_blank">Chrome Web Store</a>.
+<abbr title="UniGlyphs">𝔘𝐧𝗂𝒢𝑙𝗒𝕡h𝚜</abbr> is a browser extension that lets you
+format text directly on sites like Facebook, X (formerly Twitter), LinkedIn, and
+many more. Just highlight some text, and an inline toolbar pops up, so you can
+format it on the spot. There's also a full-page editor and a popup version if
+you want more space to work.
 
-## Tech Stack
+With UniGlyphs, you can make your posts and comments stand out—even on platforms
+that don’t normally allow it. Behind the scenes, it uses <a href="https://en.wikipedia.org/wiki/Unicode" target="_blank">Unicode</a>
+characters that mimic different "fonts", like 𝐛𝐨𝐥𝐝, 𝑖𝑡𝑎𝑙𝑖𝑐, and 𝔤𝔬𝔱𝔥𝔦𝔠, so the
+styling sticks no matter where you paste it.
 
-|                     |                         |
-| ------------------- | ----------------------- |
-| **Web**             | Next.js React           |
-| **Extension**       | WXT                     |
-| **Styling**         | Tailwind CSS, shadcn/ui |
-| **Monorepo**        | Turborepo               |
-| **Package manager** | WXT                     |
-| **Deployment**      | Vercel                  |
+## Why I built it
+
+UniGlyphs was initially developed as a final project for <a href="https://cs50.harvard.edu/x/2025" target="_blank">Harvard's CS50x</a>.[^1]
+The task was to build something of interest to me or that solves an actual problem—something that outlives the course.
+I chose to build a browser extension because I had never made one before, and it wasn't covered in the curriculum.
+It was a chance to explore something new while solving a real problem and apply the foundations I learned in the course.
+What started as a course project is now a reusable tool available on the <a href="https://chromewebstore.google.com/detail/hcnbmicjiggmklnmkpljeomkmagigkbc" target="_blank">Chrome Web Store</a>.
+
+## How I built it
+
+### Technologies I used
+
+|               |                         |
+| ------------- | ----------------------- |
+| **Web**       | Next.js, React, Vercel  |
+| **Extension** | WXT                     |
+| **Styling**   | Tailwind CSS, shadcn/ui |
+| **Monorepo**  | Turborepo               |
+
+---
 
 [^1]: _Harvard's Introduction to Computer Science_ (CS50x) was one of the first online CS courses I completed. This project served as my final capstone.
