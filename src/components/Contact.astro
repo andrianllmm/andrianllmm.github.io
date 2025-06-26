@@ -10,18 +10,33 @@ const socialIconMapping: Record<string, string> = {
   YouTube: "simple-icons:youtube",
 };
 
-const CONTACTS = [
+interface Contact {
+  name: string;
+  type: string;
+  href: string;
+  icon: string;
+  iconOpen?: string;
+}
+
+const CONTACTS: Contact[] = [
+  {
+    name: "Aklan, Philippines",
+    type: "location",
+    href: "https://maps.google.com/?q=Aklan, Philippines",
+    icon: "lucide:map-pin",
+  },
   {
     name: SITE.EMAIL,
+    type: "email",
     href: `mailto:${SITE.EMAIL}`,
     icon: "lucide:mail",
-    isEmail: true,
+    iconOpen: "lucide:mail-open",
   },
   ...SOCIALS.map(({ NAME, HREF }) => ({
     name: NAME,
+    type: "social",
     href: HREF,
     icon: socialIconMapping[NAME],
-    isEmail: false,
   })),
 ];
 ---
@@ -32,32 +47,31 @@ const CONTACTS = [
       <li class="group flex w-fit items-center gap-1 text-nowrap">
         <Link
           href={contact.href}
-          external={!contact.isEmail}
+          external
           aria-label={
-            contact.isEmail
-              ? `Email ${SITE.TITLE}`
-              : `${SITE.TITLE} on ${contact.name}`
+            contact.type === "location"
+              ? `${SITE.TITLE} is based in ${contact.name}`
+              : contact.type === "email"
+                ? `Email ${SITE.TITLE}`
+                : `${SITE.TITLE} on ${contact.name}`
           }
           class="flex items-center gap-1.5"
         >
-          {contact.icon && (
-            <>
-              {contact.isEmail ? (
-                <>
-                  <Icon
-                    name="lucide:mail"
-                    class="h-4.5 w-4.5 transition-opacity duration-300 group-hover:hidden"
-                  />
-                  <Icon
-                    name="lucide:mail-open"
-                    class="hidden h-4.5 w-4.5 transition-opacity duration-300 group-hover:inline"
-                  />
-                </>
-              ) : (
-                <Icon name={contact.icon} class="h-4 w-4" />
-              )}
-            </>
-          )}
+          <>
+            <Icon
+              name={contact.icon}
+              class:list={[
+                "h-4 w-4 transition-colors duration-300 ease-in-out",
+                contact.iconOpen && "group-hover:hidden",
+              ]}
+            />
+            {contact.iconOpen && (
+              <Icon
+                name={contact.iconOpen}
+                class="hidden size-4 transition-opacity duration-300 group-hover:inline"
+              />
+            )}
+          </>
           <span class="max-w-0 overflow-hidden whitespace-nowrap opacity-0 transition-all delay-100 duration-400 ease-in-out group-hover:max-w-[16rem] group-hover:opacity-100">
             {contact.name}
           </span>
