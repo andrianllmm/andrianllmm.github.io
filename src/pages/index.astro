@@ -8,15 +8,19 @@ import Link from "@components/Link.astro";
 import SkillBadge from "@components/SkillBadge.astro";
 import TagBadge from "@components/TagBadge.astro";
 import { getCollection } from "astro:content";
-import type { CollectionEntry } from "astro:content";
 import Contact from "@components/Contact.astro";
 import Avatar from "@components/Avatar.astro";
 import Badge from "@components/Badge.astro";
+import { skills as allSkills } from "@data/skills";
+import { tags as allTags } from "@data/tags";
 
-const projects: CollectionEntry<"projects">[] = (
-  await getCollection("projects")
-)
-  .filter((project) => !project.data.draft)
+const skills = Object.keys(allSkills).slice(0, SITE.NUM_SKILLS_ON_HOMEPAGE);
+const tags = Object.keys(allTags).slice(0, SITE.NUM_TAGS_ON_HOMEPAGE);
+
+const allProjects = (await getCollection("projects")).filter(
+  (p) => !p.data.draft,
+);
+const projects = [...allProjects]
   .sort((a, b) => {
     const aEnd = a.data.endDate;
     const bEnd = b.data.endDate;
@@ -30,34 +34,10 @@ const projects: CollectionEntry<"projects">[] = (
   })
   .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
 
-const posts = (await getCollection("blog"))
-  .filter((post) => !post.data.draft)
+const allPosts = (await getCollection("blog")).filter((p) => !p.data.draft);
+const posts = allPosts
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
-
-const skills = [
-  ...new Set(projects.flatMap((project) => project.data.skills || [])),
-]
-  .sort((a, b) => {
-    // Sort skills by the number of projects they have, descending
-    const countA = projects.filter((project) =>
-      project.data.skills?.includes(a),
-    ).length;
-    const countB = projects.filter((project) =>
-      project.data.skills?.includes(b),
-    ).length;
-    return countB - countA || a.localeCompare(b); // Secondary sort by name
-  })
-  .slice(0, SITE.NUM_SKILLS_ON_HOMEPAGE);
-
-const tags = [...new Set(posts.flatMap((post) => post.data.tags || []))]
-  .sort((a, b) => {
-    // Sort tags by the number of posts they have, descending
-    const countA = posts.filter((post) => post.data.tags?.includes(a)).length;
-    const countB = posts.filter((post) => post.data.tags?.includes(b)).length;
-    return countB - countA || a.localeCompare(b); // Secondary sort by name
-  })
-  .slice(0, SITE.NUM_TAGS_ON_HOMEPAGE);
 ---
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>

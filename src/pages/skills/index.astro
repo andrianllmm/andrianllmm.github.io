@@ -6,9 +6,13 @@ import BackToPrevious from "@components/BackToPrevious.astro";
 import SkillBadge from "@components/SkillBadge.astro";
 
 const projects = await getCollection("projects", ({ data }) => !data.draft);
-const skills = [
-  ...new Set(projects.flatMap((project) => project.data.skills || [])),
-].sort();
+const skills = [...new Set(projects.flatMap((p) => p.data.skills || []))].sort(
+  (a, b) => {
+    const countA = projects.filter((p) => p.data.skills?.includes(a)).length;
+    const countB = projects.filter((p) => p.data.skills?.includes(b)).length;
+    return countB - countA || a.localeCompare(b);
+  },
+);
 ---
 
 <Layout title="Skills" description="List of skills used.">

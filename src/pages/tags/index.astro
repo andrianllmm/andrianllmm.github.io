@@ -6,7 +6,14 @@ import BackToPrevious from "@components/BackToPrevious.astro";
 import TagBadge from "@components/TagBadge.astro";
 
 const posts = await getCollection("blog", ({ data }) => !data.draft);
-const tags = [...new Set(posts.flatMap((post) => post.data.tags || []))].sort();
+const tags = [...new Set(posts.flatMap((p) => p.data.tags || []))].sort(
+  (a, b) => {
+    // Sort tags by the number of posts they have, descending
+    const countA = posts.filter((post) => post.data.tags?.includes(a)).length;
+    const countB = posts.filter((post) => post.data.tags?.includes(b)).length;
+    return countB - countA || a.localeCompare(b); // Secondary sort by name
+  },
+);
 ---
 
 <Layout title="Tags" description="List of tags used.">
