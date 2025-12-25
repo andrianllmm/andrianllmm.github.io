@@ -7,6 +7,7 @@ export const skills = {
   python: { name: "Python", icon: "simple-icons:python" },
   javascript: { name: "JavaScript", icon: "simple-icons:javascript" },
   typescript: { name: "TypeScript", icon: "simple-icons:typescript" },
+  java: { name: "Java", icon: "devicon-plain:java" },
   django: { name: "Django", icon: "simple-icons:django" },
   react: { name: "React", icon: "simple-icons:react" },
   nextjs: { name: "Next.js", icon: "simple-icons:nextdotjs" },
