@@ -8,7 +8,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "cv": "chmod +x ./cv/render.sh && ./cv/render.sh"
+    "cv": "node cv/cv.js"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
