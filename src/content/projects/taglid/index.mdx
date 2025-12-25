@@ -83,7 +83,7 @@ This algorithm checks if the word appears in Tagalog and English dictionaries an
 This initial algorithm is in line with the one employed by <a href="https://aclanthology.org/2022.lrec-1.225" target="_blank">Herrera, et al. (2022)</a>.
 
 To address ambiguous cases where a word is present in both dictionaries such as
-the English preposition ‘at’ and the Tagalog conjunction ‘<i>at</i>’ (and),
+the English preposition 'at' and the Tagalog conjunction '<i>at</i>' (and),
 the word frequency in both languages will be compared.
 
 ```python
@@ -112,7 +112,7 @@ I learned how to package a Python library and a CLI tool, clean data better, scr
 I also realized that building something I actually wanted to reuse later made me care more about code structure and maintainability.
 
 At first, it felt like labeling words as English or Tagalog should be simple—just check a dictionary, right?
-But once I ran into tricky edge cases like "at", slang, misspellings, and inflections, I knew it wasn’t going to be that straightforward.
+But once I ran into tricky edge cases like "at", slang, misspellings, and inflections, I knew it wasn't going to be that straightforward.
 Dictionary lookups helped, but I still had to write a bunch of rules to deal with
 the nuances of Taglish and how people actually talk, especially when grammar goes out the window.
 
