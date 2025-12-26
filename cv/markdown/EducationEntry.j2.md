@@ -1,4 +1,4 @@
-### <<entry.institution>>, ((* if entry.degree *))<<entry.degree>> in ((* endif *))<<entry.area>>
+### <<entry.degree>> in <<entry.area>>, <<entry.institution>>
 
 ((* if entry.date_string or entry.location *))
 <span class="text-muted-foreground">
@@ -11,6 +11,10 @@
   ((* endif *))
 </span>
 ((* endif *))
+
+<p>
+<<entry.summary>>
+</p>
 
 ((* for item in entry.highlights *))
 - <<item>>

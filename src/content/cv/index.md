@@ -1,13 +1,10 @@
 # Andrian Lloyd Maagma's <abbr title="Curriculum Vitae">CV</abbr>
 
-  <address>Aklan, Philippines</address>
-  <a href="tel:++63 998 391 1727" target="_blank">
-    +63 998 391 1727
-  </a>
+  <address style="display: inline;">Aklan, Philippines</address>
  /   <a href="mailto:maagmaandrian@gmail.com" target="_blank">
     maagmaandrian@gmail.com
   </a>
- /     <a href="https://linkedin.com/in/andrianllmm" target="_blank">
+ /     <a href="https://linkedin.com/in/andrian-maagma" target="_blank">
       LinkedIn
     </a>
  /     <a href="https://github.com/andrianllmm" target="_blank">
@@ -17,62 +14,82 @@
 
 ## Summary
 
-Computer Science student with experience in full-stack web development, UI/UX, data science, and NLP. Built and maintained web apps, led design work, and conducted research.
+Computer Science student specializing in full-stack web development, UI/UX design, and data science. Skilled in building and maintaining web applications, leading design projects, and conducting tech-driven research.
 
 ## Education
 
-### University of the Philippines Visayas, BS in Computer Science
+### BS in Computer Science, University of the Philippines Visayas
 
 <span class="text-muted-foreground">
     <time datetime="Aug 2024 – present">Aug 2024 – present</time>
  •     <address style="display: inline;" class="text-muted-foreground">Miagao, Iloilo, Philippines</address>
 </span>
 
+<p>
+
+</p>
+
 - Cumulative GWA (1st Year): 1.22 — consistent President's Lister
-- Relevant Coursework: Foundations of Programming, Discrete Mathematics
-
-### Maloco National High School, SHS in STEM
-
-<span class="text-muted-foreground">
-    <time datetime="2022 – 2024">2022 – 2024</time>
- •     <address style="display: inline;" class="text-muted-foreground">Ibajay, Aklan, Philippines</address>
-</span>
-
-- Awards: With Highest Honor, DOST-SEI Undergraduate Scholarship
-- Relevant Coursework: Research Capstone Project, Practical Research 1 & 2
+- Relevant Coursework: Foundations of Object-Oriented Programming, Data Structures
 
 ## Experience
 
-### Supreme Secondary Learner Government, Vice President
+### Lead Web Developer, Pagbutlak — Student Publication of College of Arts and Sciences
 
 <span class="text-muted-foreground">
-    <time datetime="2023 – 2024">2023 – 2024</time>
- •     <address style="display: inline;" class="text-muted-foreground">Maloco NHS</address>
+    <time datetime="2025 – present">2025 – present</time>
 </span>
 
-- Led the creation of the student council's visual identity, including logo design and promotional assets.
-- Designed graphic materials for social media, tarpaulins, backdrops, flyers, and other publications.
+<p>
+Leading the early-stage development of the student publication website, aiming to replace the existing WordPress site with a modern, responsive platform.
+</p>
 
-### Hilltop (School Publication), School Paper Layout Artist
+- Designed the project architecture and tech stack with Next.js, PayloadCMS, and TailwindCSS.
+- Established content migration strategy and editorial workflows to ensure smooth transition from the legacy site.
+
+### Branding and Creative Associate, UP Data Science Society
 
 <span class="text-muted-foreground">
-    <time datetime="2023 – 2024">2023 – 2024</time>
- •     <address style="display: inline;" class="text-muted-foreground">Maloco NHS</address>
+    <time datetime="2025 – present">2025 – present</time>
 </span>
 
-- Designed 12-page tabloid school newspapers, which served as the school's entry for the Division Schools Press Conference.
-- Collaborated with writers and editors to ensure visual design aligns with content.
+<p>
+Supporting the society's branding and creative initiatives, with a focus on website development.
+</p>
 
-### Philippine Startup Challenge 7 MATHuto, Startup Co-founder
+
+### Web Developer, Komsai.Org — Organization for Computer Science Students
 
 <span class="text-muted-foreground">
-    <time datetime="2022 – 2022">2022 – 2022</time>
+    <time datetime="2024 – present">2024 – present</time>
 </span>
 
-- Co-founded a startup that developed a mobile application to gamify math learning for Grade 1 students.
-- Contributed to branding, UI/UX design, and pitch presentations for the startup competition.
+<p>
+Developing the organization's website using modern web technologies, streamlining content updates and improving the experience for student members.
+</p>
+
 
 ## Projects
+
+### [renux](https://github.com/andrianllmm/renux)
+
+<span class="text-muted-foreground">
+    <time datetime="2025 – 2025">2025 – 2025</time>
+</span>
+
+- Streamlined file renaming for developers and power users, improving productivity.
+- Packaged as an installable Python TUI application, accessible to users on all platforms.
+- Achieved **3,000+ downloads** on [PyPI](https://pypi.org/project/renux/) and 30+ stars on [GitHub](https://github.com/andrianllmm/renux/stargazers).
+
+### [UniGlyphs](https://github.com/andrianllmm/uniglyphs)
+
+<span class="text-muted-foreground">
+    <time datetime="2025 – 2025">2025 – 2025</time>
+</span>
+
+- Enhanced web text formatting workflows for users across platforms.
+- Developed a flexible **browser extension** supporting complex interactions on any website input.
+- Gained 20+ users on [Chrome Web Store](https://chrome.google.com/webstore/detail/uniglyphs/hcnbmicjiggmklnmkpljeomkmagigkbc).
 
 ### [Aklish](https://github.com/andrianllmm/aklish)
 
@@ -82,13 +99,13 @@ Computer Science student with experience in full-stack web development, UI/UX, d
 
 - Built full **CRUD** functionality for translations using Django and React, enabling user-generated content.
 - Implemented a dictionary-based Aklanon **spellchecker**, improving translation accuracy.
-- Developed an Aklanon word **stemming** library enhance spell-check precision.
+- Developed an Aklanon word **stemming** library, enhancing spell-check precision.
 - Conducted user testing with 30 native speakers and iteratively improved UX, resulting in increased usability.
 
 ### [TagLID](https://github.com/andrianllmm/taglid)
 
 <span class="text-muted-foreground">
-    <time datetime="2023 – 2024">2023 – 2024</time>
+    <time datetime="2024 – 2024">2024 – 2024</time>
 </span>
 
 - Utilized rule-based **Natural Language Processing** (NLP) techniques to identify the language of each word.
@@ -98,7 +115,6 @@ Computer Science student with experience in full-stack web development, UI/UX, d
 
 ## Skills
 
-- Tools and Technologies: Python, Django, JavaScript, TypeScript, React, Next.js, TailwindCSS, Git, Adobe Photoshop, Illustrator, InDesign
-- Industry Knowledge: Web development and design, Natural Language Processing, Data analysis
-- Interpersonal Skills: Problem-solving, Adaptability, Teamwork, Communication
+- Tools: Python, Django, JavaScript, TypeScript, React, Next.js, TailwindCSS, Pandas, Scikit-learn, TensorFlow, PyTorch, Git, Docker
+- Industry Knowledge: Web development and design, machine learning, natural language processing, data analysis
 - Languages: English (Professional working proficiency), Tagalog (Professional working proficiency)

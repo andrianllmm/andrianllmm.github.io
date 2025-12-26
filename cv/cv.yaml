@@ -2,16 +2,15 @@ cv:
   name: Andrian Lloyd Maagma
   location: Aklan, Philippines
   email: maagmaandrian@gmail.com
-  phone: "+639983911727"
   website: https://andrianllmm.github.io
   social_networks:
     - network: LinkedIn
-      username: andrianllmm
+      username: andrian-maagma
     - network: GitHub
       username: andrianllmm
   sections:
     Summary:
-      - "Computer Science student with experience in full-stack web development, UI/UX, data science, and NLP. Built and maintained web apps, led design work, and conducted research."
+      - "Computer Science student specializing in full-stack web development, UI/UX design, and data science. Skilled in building and maintaining web applications, leading design projects, and conducting tech-driven research."
     education:
       - institution: University of the Philippines Visayas
         area: Computer Science
@@ -23,79 +22,82 @@ cv:
         summary:
         highlights:
           - "Cumulative GWA (1st Year): 1.22 — consistent President's Lister"
-          - "Relevant Coursework: Foundations of Programming, Discrete Mathematics"
-      - institution: Maloco National High School
-        area: STEM
-        degree: SHS
-        date:
-        start_date: 2022
-        end_date: 2024
-        location: Ibajay, Aklan, Philippines
-        summary:
-        highlights:
-          - "Awards: With Highest Honor, DOST-SEI Undergraduate Scholarship"
-          - "Relevant Coursework: Research Capstone Project, Practical Research 1 & 2"
+          - "Relevant Coursework: Foundations of Object-Oriented Programming, Data Structures"
+
     experience:
-      - company: Supreme Secondary Learner Government
-        position: Vice President
-        date:
-        start_date: 2023
-        end_date: 2024
-        location: Maloco NHS
-        summary:
-        highlights:
-          - "Led the creation of the student council's visual identity, including logo design and promotional assets."
-          - "Designed graphic materials for social media, tarpaulins, backdrops, flyers, and other publications."
-      - company: Hilltop (School Publication)
-        position: School Paper Layout Artist
-        date:
-        start_date: 2023
-        end_date: 2024
-        location: Maloco NHS
-        summary:
-        highlights:
-          - "Designed 12-page tabloid school newspapers, which served as the school's entry for the Division Schools Press Conference."
-          - "Collaborated with writers and editors to ensure visual design aligns with content."
-      - company: Philippine Startup Challenge 7 MATHuto
-        position: Startup Co-founder
-        date:
-        start_date: 2022
-        end_date: 2022
+      - company: Pagbutlak — Student Publication of College of Arts and Sciences
+        position: Lead Web Developer
+        start_date: 2025
         location:
-        summary:
+        summary: "Leading the early-stage development of the student publication website, aiming to replace the existing WordPress site with a modern, responsive platform."
         highlights:
-          - "Co-founded a startup that developed a mobile application to gamify math learning for Grade 1 students."
-          - "Contributed to branding, UI/UX design, and pitch presentations for the startup competition."
+          - "Designed the project architecture and tech stack with Next.js, PayloadCMS, and TailwindCSS."
+          - "Established content migration strategy and editorial workflows to ensure smooth transition from the legacy site."
+
+      - company: UP Data Science Society
+        position: Branding and Creative Associate
+        start_date: 2025
+        location:
+        summary: "Supporting the society's branding and creative initiatives, with a focus on website development."
+
+      - company: Komsai.Org — Organization for Computer Science Students
+        position: Web Developer
+        start_date: 2024
+        location:
+        summary: "Developing the organization's website using modern web technologies, streamlining content updates and improving the experience for student members."
+
     projects:
+      - name: "[renux](https://github.com/andrianllmm/renux)"
+        date:
+        start_date: 2025
+        end_date: 2025
+        location:
+        summary: "Terminal-based bulk file renamer with a user-friendly TUI."
+        highlights:
+          - "Streamlined file renaming for developers and power users, improving productivity."
+          - "Packaged as an installable Python TUI application, accessible to users on all platforms."
+          - "Achieved **3,000+ downloads** on [PyPI](https://pypi.org/project/renux/) and 30+ stars on [GitHub](https://github.com/andrianllmm/renux/stargazers)."
+
+      - name: "[UniGlyphs](https://github.com/andrianllmm/uniglyphs)"
+        date:
+        start_date: 2025
+        end_date: 2025
+        location:
+        summary: "Browser extension for formatting text on any website using an inline toolbar."
+        highlights:
+          - "Enhanced web text formatting workflows for users across platforms."
+          - "Developed a flexible **browser extension** supporting complex interactions on any website input."
+          - "Gained 20+ users on [Chrome Web Store](https://chrome.google.com/webstore/detail/uniglyphs/hcnbmicjiggmklnmkpljeomkmagigkbc)."
+
       - name: "[Aklish](https://github.com/andrianllmm/aklish)"
         date:
         start_date: 2024
         end_date: 2025
         location:
-        summary: "A web app for crowdsourcing Aklanon-English translations"
+        summary: "A web app for crowdsourcing Aklanon–English translations"
         highlights:
           - "Built full **CRUD** functionality for translations using Django and React, enabling user-generated content."
           - "Implemented a dictionary-based Aklanon **spellchecker**, improving translation accuracy."
-          - "Developed an Aklanon word **stemming** library enhance spell-check precision."
+          - "Developed an Aklanon word **stemming** library, enhancing spell-check precision."
           - "Conducted user testing with 30 native speakers and iteratively improved UX, resulting in increased usability."
+
       - name: "[TagLID](https://github.com/andrianllmm/taglid)"
         date:
-        start_date: 2023
+        start_date: 2024
         end_date: 2024
         location:
-        summary: "A word-level Language Identification (LID) tool for Tagalog-English (Taglish) text"
+        summary: "A word-level Language Identification (LID) tool for Tagalog–English (Taglish) text"
         highlights:
           - "Utilized rule-based **Natural Language Processing** (NLP) techniques to identify the language of each word."
           - "Created a **Python library** for Tagalog word stemming to improve Tagalog language detection for inflected words."
           - "**Scraped** from Tagalog and English dictionaries using BeautifulSoup4 to generate frequency-based lookup tables."
           - "Computed code-switching frequency from 57 survey responses to automate data analysis for a language research study."
+
     skills:
-      - label: Tools and Technologies
-        details: "Python, Django, JavaScript, TypeScript, React, Next.js, TailwindCSS, Git, Adobe Photoshop, Illustrator, InDesign"
+      - label: Tools
+        details: "Python, Django, JavaScript, TypeScript, React, Next.js, TailwindCSS, Pandas, Scikit-learn, TensorFlow, PyTorch, Git, Docker"
       - label: Industry Knowledge
-        details: "Web development and design, Natural Language Processing, Data analysis"
-      - label: Interpersonal Skills
-        details: "Problem-solving, Adaptability, Teamwork, Communication"
+        details: "Web development and design, machine learning, natural language processing, data analysis"
       - label: Languages
         details: "English (Professional working proficiency), Tagalog (Professional working proficiency)"
 
@@ -127,9 +129,9 @@ design:
     use_external_link_icon: true
   header:
     name_font_family: Source Sans 3
-    name_font_size: 30pt
+    name_font_size: 24pt
     name_bold: true
-    photo_width: 3.5cm
+    photo_width: 3cm
     vertical_space_between_name_and_connections: 0.7cm
     vertical_space_between_connections_and_first_section: 0.7cm
     horizontal_space_between_connections: 0.5cm
@@ -165,16 +167,6 @@ design:
   entry_types:
     one_line_entry:
       template: "**LABEL:** DETAILS"
-    education_entry:
-      main_column_first_row_template: "**INSTITUTION**, AREA"
-      degree_column_template: "**DEGREE**"
-      degree_column_width: 1cm
-      main_column_second_row_template: |-
-        SUMMARY
-        HIGHLIGHTS
-      date_and_location_column_template: |-
-        LOCATION
-        DATE
     normal_entry:
       main_column_first_row_template: "**NAME**"
       main_column_second_row_template: |-
@@ -183,8 +175,18 @@ design:
       date_and_location_column_template: |-
         LOCATION
         DATE
+    education_entry:
+      main_column_first_row_template: "**AREA**, INSTITUTION"
+      degree_column_template: "**DEGREE**"
+      degree_column_width: 1cm
+      main_column_second_row_template: |-
+        SUMMARY
+        HIGHLIGHTS
+      date_and_location_column_template: |-
+        LOCATION
+        DATE
     experience_entry:
-      main_column_first_row_template: "**COMPANY**, POSITION"
+      main_column_first_row_template: "**POSITION**, COMPANY"
       main_column_second_row_template: |-
         SUMMARY
         HIGHLIGHTS
@@ -242,7 +244,7 @@ locale:
     - November
     - December
 rendercv_settings:
-  date: "2025-06-18"
+  date: "2025-12-31"
   render_command:
     output_folder_name: output
     pdf_path: ../public/cv.pdf

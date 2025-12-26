@@ -3,7 +3,7 @@
 
 #let name = "Andrian Lloyd Maagma"
 #let locale-catalog-page-numbering-style = context { "Andrian Lloyd Maagma - Page " + str(here().page()) + " of " + str(counter(page).final().first()) + "" }
-#let locale-catalog-last-updated-date-style = "Last updated in June 2025"
+#let locale-catalog-last-updated-date-style = "Last updated in Dec 2025"
 #let locale-catalog-language = "en"
 #let design-page-size = "a4"
 #let design-section-titles-font-size = 1.4em
@@ -27,10 +27,10 @@
 #let design-text-font-family = "Source Sans 3"
 #let design-text-alignment = "justified"
 #let design-text-date-and-location-column-alignment = right
-#let design-header-photo-width = 3.5cm
+#let design-header-photo-width = 3cm
 #let design-header-use-icons-for-connections = true
 #let design-header-name-font-family = "Source Sans 3"
-#let design-header-name-font-size = 30pt
+#let design-header-name-font-size = 24pt
 #let design-header-name-bold = true
 #let design-header-connections-font-family = "Source Sans 3"
 #let design-header-vertical-space-between-name-and-connections = 0.7cm
@@ -453,9 +453,8 @@
 #let connections-list = (
   [#fa-icon("location-dot", size: 0.9em) #h(0.05cm)Aklan, Philippines],
   [#box(original-link("mailto:maagmaandrian@gmail.com")[#fa-icon("envelope", size: 0.9em) #h(0.05cm)maagmaandrian\@gmail.com])],
-  [#box(original-link("tel:+63-998-391-1727")[#fa-icon("phone", size: 0.9em) #h(0.05cm)+63 998 391 1727])],
   [#box(original-link("https://andrianllmm.github.io/")[#fa-icon("link", size: 0.9em) #h(0.05cm)andrianllmm.github.io])],
-  [#box(original-link("https://linkedin.com/in/andrianllmm")[#fa-icon("linkedin", size: 0.9em) #h(0.05cm)andrianllmm])],
+  [#box(original-link("https://linkedin.com/in/andrian-maagma")[#fa-icon("linkedin", size: 0.9em) #h(0.05cm)andrian-maagma])],
   [#box(original-link("https://github.com/andrianllmm")[#fa-icon("github", size: 0.9em) #h(0.05cm)andrianllmm])],
 )
 #connections(connections-list)
@@ -466,7 +465,7 @@
 
 
 #one-col-entry(
-  content: [Computer Science student with experience in full-stack web development, UI\/UX, data science, and NLP. Built and maintained web apps, led design work, and conducted research.]
+  content: [Computer Science student specializing in full-stack web development, UI\/UX design, and data science. Skilled in building and maintaining web applications, leading design projects, and conducting tech-driven research.]
 )
 
 
@@ -478,33 +477,15 @@
   left-column-width: 1cm,
   left-content: [#strong[BS]],
   middle-content: [
-    #strong[University of the Philippines Visayas], Computer Science
+    #strong[Computer Science], University of the Philippines Visayas
     #v(-design-text-leading)
 
-    #v(design-highlights-top-margin);#highlights([Cumulative GWA \(1st Year\): 1.22 — consistent President's Lister],[Relevant Coursework: Foundations of Programming, Discrete Mathematics],)
+    #v(design-highlights-top-margin);#highlights([Cumulative GWA \(1st Year\): 1.22 — consistent President's Lister],[Relevant Coursework: Foundations of Object-Oriented Programming, Data Structures],)
   ],
   right-content: [
     Miagao, Iloilo, Philippines
 
 Aug 2024 – present
-  ],
-)
-
-#v(design-entries-vertical-space-between-entries)
-// YES DATE, YES DEGREE
-#three-col-entry(
-  left-column-width: 1cm,
-  left-content: [#strong[SHS]],
-  middle-content: [
-    #strong[Maloco National High School], STEM
-    #v(-design-text-leading)
-
-    #v(design-highlights-top-margin);#highlights([Awards: With Highest Honor, DOST-SEI Undergraduate Scholarship],[Relevant Coursework: Research Capstone Project, Practical Research 1 & 2],)
-  ],
-  right-content: [
-    Ibajay, Aklan, Philippines
-
-2022 – 2024
   ],
 )
 
@@ -515,45 +496,47 @@ Aug 2024 – present
 
 #two-col-entry(
   left-content: [
-    #strong[Supreme Secondary Learner Government], Vice President
-    #v(-design-text-leading)
-
-    #v(design-highlights-top-margin);#highlights([Led the creation of the student council's visual identity, including logo design and promotional assets.],[Designed graphic materials for social media, tarpaulins, backdrops, flyers, and other publications.],)
+    #strong[Lead Web Developer], Pagbutlak — Student Publication of College of Arts and Sciences
   ],
   right-content: [
-    Maloco NHS
-
-2023 – 2024
-  ],
-)
-
-#v(design-entries-vertical-space-between-entries)
-#two-col-entry(
-  left-content: [
-    #strong[Hilltop \(School Publication\)], School Paper Layout Artist
-    #v(-design-text-leading)
-
-    #v(design-highlights-top-margin);#highlights([Designed 12-page tabloid school newspapers, which served as the school's entry for the Division Schools Press Conference.],[Collaborated with writers and editors to ensure visual design aligns with content.],)
-  ],
-  right-content: [
-    Maloco NHS
-
-2023 – 2024
-  ],
-)
-
-#v(design-entries-vertical-space-between-entries)
-#two-col-entry(
-  left-content: [
-    #strong[Philippine Startup Challenge 7 MATHuto], Startup Co-founder
-  ],
-  right-content: [
-    2022 – 2022
+    2025 – present
   ],
 )
 #one-col-entry(
   content: [
-    #v(design-highlights-top-margin);#highlights([Co-founded a startup that developed a mobile application to gamify math learning for Grade 1 students.],[Contributed to branding, UI\/UX design, and pitch presentations for the startup competition.],)
+    #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [Leading the early-stage development of the student publication website, aiming to replace the existing WordPress site with a modern, responsive platform.])], column-gutter: 0cm)
+
+#v(-design-text-leading)  #v(design-highlights-top-margin);#highlights([Designed the project architecture and tech stack with Next.js, PayloadCMS, and TailwindCSS.],[Established content migration strategy and editorial workflows to ensure smooth transition from the legacy site.],)
+  ],
+)
+
+#v(design-entries-vertical-space-between-entries)
+#two-col-entry(
+  left-content: [
+    #strong[Branding and Creative Associate], UP Data Science Society
+  ],
+  right-content: [
+    2025 – present
+  ],
+)
+#one-col-entry(
+  content: [
+    #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [Supporting the society's branding and creative initiatives, with a focus on website development.])], column-gutter: 0cm)
+  ],
+)
+
+#v(design-entries-vertical-space-between-entries)
+#two-col-entry(
+  left-content: [
+    #strong[Web Developer], Komsai.Org — Organization for Computer Science Students
+  ],
+  right-content: [
+    2024 – present
+  ],
+)
+#one-col-entry(
+  content: [
+    #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [Developing the organization's website using modern web technologies, streamlining content updates and improving the experience for student members.])], column-gutter: 0cm)
   ],
 )
 
@@ -564,6 +547,40 @@ Aug 2024 – present
 
 #two-col-entry(
   left-content: [
+    #link("https://github.com/andrianllmm/renux")[#strong[renux]]
+  ],
+  right-content: [
+    2025 – 2025
+  ],
+)
+#one-col-entry(
+  content: [
+    #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [Terminal-based bulk file renamer with a user-friendly TUI.])], column-gutter: 0cm)
+
+#v(-design-text-leading)  #v(design-highlights-top-margin);#highlights([Streamlined file renaming for developers and power users, improving productivity.],[Packaged as an installable Python TUI application, accessible to users on all platforms.],[Achieved #strong[3,000+ downloads] on #link("https://pypi.org/project/renux/")[PyPI] and 30+ stars on #link("https://github.com/andrianllmm/renux/stargazers")[GitHub].],)
+  ],
+)
+
+#v(design-entries-vertical-space-between-entries)
+#two-col-entry(
+  left-content: [
+    #link("https://github.com/andrianllmm/uniglyphs")[#strong[UniGlyphs]]
+  ],
+  right-content: [
+    2025 – 2025
+  ],
+)
+#one-col-entry(
+  content: [
+    #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [Browser extension for formatting text on any website using an inline toolbar.])], column-gutter: 0cm)
+
+#v(-design-text-leading)  #v(design-highlights-top-margin);#highlights([Enhanced web text formatting workflows for users across platforms.],[Developed a flexible #strong[browser extension] supporting complex interactions on any website input.],[Gained 20+ users on #link("https://chrome.google.com/webstore/detail/uniglyphs/hcnbmicjiggmklnmkpljeomkmagigkbc")[Chrome Web Store].],)
+  ],
+)
+
+#v(design-entries-vertical-space-between-entries)
+#two-col-entry(
+  left-content: [
     #link("https://github.com/andrianllmm/aklish")[#strong[Aklish]]
   ],
   right-content: [
@@ -572,9 +589,9 @@ Aug 2024 – present
 )
 #one-col-entry(
   content: [
-    #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [A web app for crowdsourcing Aklanon-English translations])], column-gutter: 0cm)
+    #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [A web app for crowdsourcing Aklanon–English translations])], column-gutter: 0cm)
 
-#v(-design-text-leading)  #v(design-highlights-top-margin);#highlights([Built full #strong[CRUD] functionality for translations using Django and React, enabling user-generated content.],[Implemented a dictionary-based Aklanon #strong[spellchecker], improving translation accuracy.],[Developed an Aklanon word #strong[stemming] library enhance spell-check precision.],[Conducted user testing with 30 native speakers and iteratively improved UX, resulting in increased usability.],)
+#v(-design-text-leading)  #v(design-highlights-top-margin);#highlights([Built full #strong[CRUD] functionality for translations using Django and React, enabling user-generated content.],[Implemented a dictionary-based Aklanon #strong[spellchecker], improving translation accuracy.],[Developed an Aklanon word #strong[stemming] library, enhancing spell-check precision.],[Conducted user testing with 30 native speakers and iteratively improved UX, resulting in increased usability.],)
   ],
 )
 
@@ -584,12 +601,12 @@ Aug 2024 – present
     #link("https://github.com/andrianllmm/taglid")[#strong[TagLID]]
   ],
   right-content: [
-    2023 – 2024
+    2024 – 2024
   ],
 )
 #one-col-entry(
   content: [
-    #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [A word-level Language Identification \(LID\) tool for Tagalog-English \(Taglish\) text])], column-gutter: 0cm)
+    #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [A word-level Language Identification \(LID\) tool for Tagalog–English \(Taglish\) text])], column-gutter: 0cm)
 
 #v(-design-text-leading)  #v(design-highlights-top-margin);#highlights([Utilized rule-based #strong[Natural Language Processing] \(NLP\) techniques to identify the language of each word.],[Created a #strong[Python library] for Tagalog word stemming to improve Tagalog language detection for inflected words.],[#strong[Scraped] from Tagalog and English dictionaries using BeautifulSoup4 to generate frequency-based lookup tables.],[Computed code-switching frequency from 57 survey responses to automate data analysis for a language research study.],)
   ],
@@ -601,15 +618,11 @@ Aug 2024 – present
 
 
 #one-col-entry(
-  content: [#strong[Tools and Technologies:] Python, Django, JavaScript, TypeScript, React, Next.js, TailwindCSS, Git, Adobe Photoshop, Illustrator, InDesign]
+  content: [#strong[Tools:] Python, Django, JavaScript, TypeScript, React, Next.js, TailwindCSS, Pandas, Scikit-learn, TensorFlow, PyTorch, Git, Docker]
 )
 #v(design-entries-vertical-space-between-entries)
 #one-col-entry(
-  content: [#strong[Industry Knowledge:] Web development and design, Natural Language Processing, Data analysis]
-)
-#v(design-entries-vertical-space-between-entries)
-#one-col-entry(
-  content: [#strong[Interpersonal Skills:] Problem-solving, Adaptability, Teamwork, Communication]
+  content: [#strong[Industry Knowledge:] Web development and design, machine learning, natural language processing, data analysis]
 )
 #v(design-entries-vertical-space-between-entries)
 #one-col-entry(

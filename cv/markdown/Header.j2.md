@@ -1,10 +1,12 @@
 # <<cv.name>>'s <abbr title="Curriculum Vitae">CV</abbr>
 
-((* if cv.location *))
-  <address><<cv.location>></address>
-((* endif *))
 ((* set has_prev = False *))
+((* if cv.location *))
+  <address style="display: inline;"><<cv.location>></address>
+  ((* set has_prev = True *))
+((* endif *))
 ((* if cv.phone *))
+  ((* if has_prev *)) / ((* endif *))
   <a href="tel:+<<cv.phone|replace("tel:", "")|replace("-"," ")>>" target="_blank">
     <<cv.phone|replace("tel:", "")|replace("-"," ")>>
   </a>

@@ -1,4 +1,4 @@
-### <<entry.company>>, <<entry.position>>
+### <<entry.position>>, <<entry.company>>
 
 ((* if entry.date_string or entry.location *))
 <span class="text-muted-foreground">
@@ -11,6 +11,10 @@
   ((* endif *))
 </span>
 ((* endif *))
+
+<p>
+<<entry.summary>>
+</p>
 
 ((* for item in entry.highlights *))
 - <<item>>
