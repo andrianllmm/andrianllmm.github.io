@@ -14,11 +14,11 @@ const projects = defineCollection({
       description: z.string(),
       startDate: z.coerce.date(),
       endDate: z.coerce.date().optional(),
-      draft: z.boolean().optional(),
+      skills: z.array(skillEnum).optional(),
       demoURL: z.string().optional(),
       repoURL: z.string().optional(),
-      skills: z.array(skillEnum).optional(),
       image: image().optional(),
+      draft: z.boolean().default(false),
     }),
 });
 
@@ -29,9 +29,9 @@ const posts = defineCollection({
       title: z.string(),
       description: z.string(),
       date: z.coerce.date(),
-      draft: z.boolean().optional(),
       tags: z.array(tagEnum).optional(),
       image: image().optional(),
+      draft: z.boolean().default(false),
     }),
 });
 
