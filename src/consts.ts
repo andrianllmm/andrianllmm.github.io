@@ -36,7 +36,7 @@ export const ACHIEVEMENTS = {
 export const SOCIALS: Socials = [
   {
     NAME: "LinkedIn",
-    HREF: "https://linkedin.com/in/andrianllmm/",
+    HREF: "https://linkedin.com/in/andrian-maagma/",
   },
   {
     NAME: "GitHub",
