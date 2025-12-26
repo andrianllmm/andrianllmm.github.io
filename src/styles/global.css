@@ -6,7 +6,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --radius: 0.5rem;
+  --radius: 0.75rem;
 
   /* --background: #f9f5d7;
   --foreground: #7c6f64; */
@@ -17,6 +17,7 @@
   --foreground-accent: #72655b;
   --background-dim: #f2f2f1;
   --foreground-dim: #918276;
+  --foreground-border: #e1deda;
   --gray: #b4aaa2;
   --red: #c14a4a;
   --orange: #c35e0a;
@@ -42,7 +43,7 @@
   --info-foreground: var(--foreground);
   --muted: var(--background-dim);
   --muted-foreground: var(--foreground-dim);
-  --border: var(--gray);
+  --border: var(--foreground-border);
   --ring: var(--primary);
 
   /* Code */
@@ -68,7 +69,8 @@
   --background-accent: #272727;
   --foreground-accent: #b0a38f;
   --background-dim: #313131;
-  --foreground-dim: #9f9078;
+  --foreground-dim: #968e81;
+  --foreground-border: #2d2920;
   --gray: #3c362b;
   --red: #ea6962;
   --orange: #e78a4e;
@@ -94,7 +96,7 @@
   --info-foreground: var(--foreground);
   --muted: var(--background-dim);
   --muted-foreground: var(--foreground-dim);
-  --border: var(--gray);
+  --border: var(--foreground-border);
   --ring: var(--primary);
 
   /* Code */
