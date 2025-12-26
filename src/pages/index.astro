@@ -91,7 +91,11 @@ const posts = allPosts
                 <SkillBadge skill={skill} class="border-none" />
               ))
             }
-            <a href="/skills" aria-label="See all skills">
+            <a
+              href="/skills"
+              aria-label="See all skills"
+              title="See all skills"
+            >
               <Badge class="border-none">. . .</Badge>
             </a>
           </div>
@@ -115,7 +119,7 @@ const posts = allPosts
 
           <div class="animate flex flex-wrap gap-1">
             {tags.map((tag) => <TagBadge tag={tag} class="border-none" />)}
-            <a href="/tags" aria-label="See all tags">
+            <a href="/tags" aria-label="See all tags" title="See all tags">
               <Badge class="border-none">. . .</Badge>
             </a>
           </div>
