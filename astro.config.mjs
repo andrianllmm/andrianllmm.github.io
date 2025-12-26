@@ -5,6 +5,7 @@ import pagefind from "astro-pagefind";
 import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import mermaid from "astro-mermaid";
+import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
@@ -23,6 +24,7 @@ export default defineConfig({
         securityLevel: "strict",
       },
     }),
+    partytown(),
   ],
   vite: {
     plugins: [tailwindcss()],
