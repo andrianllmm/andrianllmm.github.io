@@ -11,9 +11,11 @@ export const skills = {
   django: { name: "Django", icon: "simple-icons:django" },
   react: { name: "React", icon: "simple-icons:react" },
   nextjs: { name: "Next.js", icon: "simple-icons:nextdotjs" },
-  flask: { name: "Flask", icon: "simple-icons:flask" },
   tailwind: { name: "Tailwind CSS", icon: "simple-icons:tailwindcss" },
+  firebase: { name: "Firebase", icon: "simple-icons:firebase" },
+  solidity: { name: "Solidity", icon: "simple-icons:solidity" },
   wxt: { name: "WXT" },
+  flask: { name: "Flask", icon: "simple-icons:flask" },
 
   sqlite: { name: "SQLite", icon: "simple-icons:sqlite" },
   html5: { name: "HTML", icon: "simple-icons:html5" },
@@ -36,8 +38,17 @@ export const skills = {
 
   nlp: { name: "NLP" },
   regex: { name: "Regex", icon: "lucide:regex" },
-  webScraping: { name: "Web Scraping" },
-  xmlParsing: { name: "XML Parsing" },
+  webScraping: { name: "Web Scraping", icon: "lucide:globe" },
+  xmlParsing: { name: "XML Parsing", icon: "lucide:code-xml" },
+
+  crypto: { name: "Cryptography", icon: "lucide:message-square-lock" },
+  reversing: { name: "Reverse Engineering", icon: "lucide:bug" },
+  networkSec: { name: "Network Security", icon: "lucide:network" },
+  webSec: { name: "Web Security", icon: "lucide:globe-lock" },
+  forensics: { name: "Digital Forensics", icon: "lucide:file-search" },
+  stego: { name: "Steganography", icon: "lucide:images" },
+  pwn: { name: "Binary Exploitation", icon: "lucide:binary" },
+  osint: { name: "OSINT" },
 } as const;
 
 export type SkillKey = keyof typeof skills;
