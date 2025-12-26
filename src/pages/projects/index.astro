@@ -26,9 +26,11 @@ const projects = (await getCollection("projects"))
     <div class="animate mb-6">
       <BackToPrevious href="/">Back to home</BackToPrevious>
     </div>
+
     <aside data-pagefind-ignore>
       <div class="space-y-6">
-        <div class="animate font-semibold">Projects</div>
+        <h1 class="animate font-semibold">Projects</h1>
+
         <ul class="animate not-prose grid grid-cols-1 gap-4 sm:grid-cols-2">
           {
             projects.map((project) => (

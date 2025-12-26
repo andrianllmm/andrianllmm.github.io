@@ -21,8 +21,10 @@ const tags = [...new Set(posts.flatMap((p) => p.data.tags || []))].sort(
     <div class="animate mb-6">
       <BackToPrevious href="/">Back to home</BackToPrevious>
     </div>
+
     <div class="space-y-6">
-      <h1 class="animate font-semibold">All Tags</h1>
+      <h1 class="animate font-semibold">Tags</h1>
+
       <div class="animate flex flex-wrap gap-3">
         {tags.map((tag) => <TagBadge tag={tag} showNum />)}
       </div>

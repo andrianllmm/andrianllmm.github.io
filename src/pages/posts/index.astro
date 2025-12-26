@@ -32,7 +32,10 @@ const years = Object.keys(posts).sort((a, b) => parseInt(b) - parseInt(a));
       <div class="animate mb-6">
         <BackToPrevious href="/">Back to home</BackToPrevious>
       </div>
+
       <div class="space-y-6">
+        <h1 class="animate font-semibold">Posts</h1>
+
         <div class="space-y-4">
           {
             years.map((year) => (

@@ -30,24 +30,28 @@ const DESCRIPTION =
       <BackToPrevious href="/">Back to home</BackToPrevious>
     </div>
 
-    <div class="mb-4 flex gap-2">
-      {
-        educationProfiles.map((profile) => (
-          <a href={profile.url} target="_blank" rel="noopener noreferrer">
-            <Badge iconName={profile.icon}>{profile.platform}</Badge>
-          </a>
-        ))
-      }
-    </div>
+    <div class="space-y-6">
+      <h1 class="animate font-semibold">Education</h1>
 
-    <ul class="not-prose flex flex-col gap-4">
-      {
-        sortedEducation.map((item) => (
-          <li>
-            <EducationCard item={item} />
-          </li>
-        ))
-      }
-    </ul>
+      <div class="mb-4 flex gap-2">
+        {
+          educationProfiles.map((profile) => (
+            <a href={profile.url} target="_blank" rel="noopener noreferrer">
+              <Badge iconName={profile.icon}>{profile.platform}</Badge>
+            </a>
+          ))
+        }
+      </div>
+
+      <ul class="not-prose flex flex-col gap-4">
+        {
+          sortedEducation.map((item) => (
+            <li>
+              <EducationCard item={item} />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
   </Container>
 </Layout>

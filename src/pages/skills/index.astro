@@ -22,8 +22,10 @@ const skills: SkillKey[] = (Object.keys(skillData) as SkillKey[]).sort(
     <div class="animate mb-6">
       <BackToPrevious href="/">Back to home</BackToPrevious>
     </div>
+
     <div class="space-y-6">
-      <h1 class="animate font-semibold">All Skills</h1>
+      <h1 class="animate font-semibold">Skills</h1>
+
       <div class="animate flex flex-wrap gap-3">
         {skills.map((skill) => <SkillBadge skill={skill} showNum />)}
       </div>
