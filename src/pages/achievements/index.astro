@@ -1,0 +1,59 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import BackToPrevious from "@components/BackToPrevious.astro";
+import AchievementCard from "@components/AchievementCard.astro";
+import { ACHIEVEMENTS } from "@consts";
+
+const data = (await getCollection("achievements")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
+
+type Acc = {
+  [year: string]: CollectionEntry<"achievements">[];
+};
+
+const achievements = data.reduce((acc: Acc, item) => {
+  const year = item.data.date.getFullYear().toString();
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(item);
+  return acc;
+}, {});
+
+const years = Object.keys(achievements).sort(
+  (a, b) => parseInt(b) - parseInt(a),
+);
+---
+
+<Layout title={ACHIEVEMENTS.TITLE} description={ACHIEVEMENTS.DESCRIPTION}>
+  <Container>
+    <aside data-pagefind-ignore>
+      <div class="animate mb-6">
+        <BackToPrevious href="/">Back to home</BackToPrevious>
+      </div>
+      <div class="space-y-6">
+        <div class="space-y-4">
+          {
+            years.map((year) => (
+              <section class="animate space-y-4">
+                <div class="font-semibold">{year}</div>
+                <div>
+                  <ul class="not-prose flex flex-col gap-4">
+                    {achievements[year].map((item) => (
+                      <li>
+                        <AchievementCard achievement={item} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </section>
+            ))
+          }
+        </div>
+      </div>
+    </aside>
+  </Container>
+</Layout>

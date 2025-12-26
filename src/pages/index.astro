@@ -1,16 +1,17 @@
 ---
+import { SITE, HOME } from "@consts";
+import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
-import { SITE, HOME } from "@consts";
+import Link from "@components/Link.astro";
 import ProjectCard from "@components/ProjectCard.astro";
 import PostCard from "@components/PostCard.astro";
-import Link from "@components/Link.astro";
+import AchievementCard from "@components/AchievementCard.astro";
 import SkillBadge from "@components/SkillBadge.astro";
 import TagBadge from "@components/TagBadge.astro";
-import { getCollection } from "astro:content";
-import Contact from "@components/Contact.astro";
-import Avatar from "@components/Avatar.astro";
 import Badge from "@components/Badge.astro";
+import Avatar from "@components/Avatar.astro";
+import Contact from "@components/Contact.astro";
 import { skills as allSkills } from "@data/skills";
 import { tags as allTags } from "@data/tags";
 
@@ -38,6 +39,13 @@ const allPosts = (await getCollection("posts")).filter((p) => !p.data.draft);
 const posts = allPosts
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
+
+const allAchievements = (await getCollection("achievements")).filter(
+  (a) => !a.data.draft,
+);
+const achievements = [...allAchievements]
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, SITE.NUM_ACHIEVEMENTS_ON_HOMEPAGE || 3); // set a default if needed
 ---
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
@@ -129,6 +137,23 @@ const posts = allPosts
               posts.map((post) => (
                 <li>
                   <PostCard post={post} />
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <section class="animate space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-y-2">
+            <h2 class="text-lg font-semibold">Recent achievements</h2>
+            <Link href="/achievements">See all achievements</Link>
+          </div>
+
+          <ul class="not-prose flex flex-col gap-4">
+            {
+              achievements.map((achievement) => (
+                <li>
+                  <AchievementCard achievement={achievement} />
                 </li>
               ))
             }

@@ -35,9 +35,33 @@ const posts = defineCollection({
     }),
 });
 
+const achievements = defineCollection({
+  loader: glob({
+    pattern: "**/*.{md,mdx}",
+    base: "./src/content/achievements",
+  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      position: z.string(),
+      type: z.enum([
+        "Hackathon",
+        "Coding Competition",
+        "CTF",
+        "Award",
+        "Other",
+      ]),
+      date: z.coerce.date(),
+      description: z.string().optional(),
+      skills: z.array(skillEnum).optional(),
+      image: image().optional(),
+      url: z.string().optional(),
+      draft: z.boolean().default(false),
+    }),
+});
 const cv = defineCollection({
   type: "content",
   schema: z.object({ title: z.string().optional() }),
 });
 
-export const collections = { posts, projects, cv };
+export const collections = { posts, projects, cv, achievements };

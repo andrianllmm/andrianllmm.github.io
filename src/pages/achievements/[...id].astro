@@ -1,0 +1,79 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import FormattedDate from "@components/FormattedDate.astro";
+import BackToPrevious from "@components/BackToPrevious.astro";
+import Giscus from "@components/Giscus.astro";
+import SkillBadge from "@components/SkillBadge.astro";
+import TableOfContents from "@components/TableOfContents.astro";
+
+export async function getStaticPaths() {
+  const achievements = (await getCollection("achievements"))
+    .filter((a) => !a.data.draft)
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  return achievements.map((achievement) => ({
+    params: { id: achievement.id },
+    props: achievement,
+  }));
+}
+
+type Props = CollectionEntry<"achievements">;
+
+const achievement = Astro.props;
+const { Content, headings } = await render(achievement);
+
+const achievementSkills = achievement.data.skills;
+---
+
+<Layout
+  title={achievement.data.title}
+  description={achievement.data.description || "An achievement."}
+>
+  <Container>
+    <div class="animate">
+      <BackToPrevious href="/achievements">Back to achievements</BackToPrevious>
+    </div>
+
+    <div class="animate my-10 space-y-1">
+      <div
+        class="text-muted-foreground animate flex flex-wrap items-center gap-2"
+      >
+        <div class="text-accent-foreground text-sm font-medium">
+          {achievement.data.position}
+        </div>
+        &bull;
+        <div class="text-sm">
+          {achievement.data.type}
+        </div>
+        &bull;
+        <div class="text-sm">
+          <FormattedDate date={achievement.data.date} />
+        </div>
+      </div>
+
+      <h1 class="animate my-3 text-3xl font-semibold">
+        {achievement.data.title}
+      </h1>
+
+      {
+        achievementSkills && achievementSkills.length > 0 && (
+          <div class="animate mt-2 flex flex-wrap gap-1">
+            {achievementSkills.map((skill) => (
+              <SkillBadge skill={skill} class="border-none" />
+            ))}
+          </div>
+        )
+      }
+    </div>
+
+    {headings.length > 0 && <TableOfContents headings={headings} />}
+
+    <article class="animate">
+      <Content />
+      <div class="mt-24">
+        <Giscus />
+      </div>
+    </article>
+  </Container>
+</Layout>
