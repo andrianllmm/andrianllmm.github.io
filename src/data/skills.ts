@@ -76,4 +76,4 @@ export const skillGroups = {
   ],
 
   Tools: ["git", "docker", "vercel", "railway"],
-} as const satisfies Record<string, readonly SkillKey[]>;
+} satisfies Record<string, readonly SkillKey[]>;
