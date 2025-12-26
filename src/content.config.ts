@@ -49,6 +49,7 @@ const achievements = defineCollection({
         "Coding Competition",
         "CTF",
         "Award",
+        "Competition", // for general use
         "Other",
       ]),
       date: z.coerce.date(),
