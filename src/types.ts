@@ -7,6 +7,7 @@ export type Site = {
   NUM_POSTS_ON_HOMEPAGE: number;
   NUM_TAGS_ON_HOMEPAGE: number;
   NUM_ACHIEVEMENTS_ON_HOMEPAGE: number;
+  NUM_EDUCATION_ON_HOMEPAGE: number;
 };
 
 export type Metadata = {

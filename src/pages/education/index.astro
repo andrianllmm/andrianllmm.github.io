@@ -1,0 +1,53 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import BackToPrevious from "@components/BackToPrevious.astro";
+import EducationCard from "@components/EducationCard.astro";
+import { education, educationProfiles } from "@data/education";
+import { Icon } from "astro-icon/components";
+import Badge from "@components/Badge.astro";
+
+const sortedEducation = [...education].sort((a, b) => {
+  const aEnd = a.endDate ? new Date(a.endDate).getTime() : 0;
+  const bEnd = b.endDate ? new Date(b.endDate).getTime() : 0;
+
+  if (bEnd !== aEnd) return bEnd - aEnd;
+
+  const aStart = a.startDate ? new Date(a.startDate).getTime() : 0;
+  const bStart = b.startDate ? new Date(b.startDate).getTime() : 0;
+
+  return bStart - aStart;
+});
+
+const TITLE = "Education & Certifications";
+const DESCRIPTION =
+  "A list of my formal education, online courses, and certifications.";
+---
+
+<Layout title={TITLE} description={DESCRIPTION}>
+  <Container>
+    <div class="animate mb-6">
+      <BackToPrevious href="/">Back to home</BackToPrevious>
+    </div>
+
+    <div class="mb-4 flex gap-2">
+      {
+        educationProfiles.map((profile) => (
+          <a href={profile.url} target="_blank" rel="noopener noreferrer">
+            <Badge iconName={profile.icon}>{profile.platform}</Badge>
+          </a>
+        ))
+      }
+    </div>
+
+    <ul class="not-prose flex flex-col gap-4">
+      {
+        sortedEducation.map((item) => (
+          <li>
+            <EducationCard item={item} />
+          </li>
+        ))
+      }
+    </ul>
+  </Container>
+</Layout>

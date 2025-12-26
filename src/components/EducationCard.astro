@@ -1,0 +1,94 @@
+---
+import type { EducationItem } from "@data/education";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+
+const { item } = Astro.props as { item: EducationItem };
+
+// Format years for display
+let yearDisplay = "";
+if (item.startDate) {
+  const startYear = new Date(item.startDate).getFullYear();
+  if (item.endDate) {
+    const endYear = new Date(item.endDate).getFullYear();
+    yearDisplay =
+      startYear === endYear ? `${startYear}` : `${startYear} - ${endYear}`;
+  } else {
+    yearDisplay = `${startYear}`;
+  }
+}
+
+// Determine if completed
+const today = new Date();
+const isCompleted =
+  item.endDate && new Date(item.endDate).getTime() <= today.getTime();
+
+const statusIcon = isCompleted
+  ? "lucide:circle-check"
+  : "lucide:circle-dot-dashed";
+---
+
+<a
+  href={item.url ?? "#"}
+  class:list={[
+    "not-prose group flex h-full w-full flex-1 items-start gap-2 rounded-lg px-3 py-2 sm:items-center sm:gap-3",
+    "hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground transition-all duration-300 ease-in-out",
+  ]}
+  target={item.url ? "_blank" : undefined}
+  rel={item.url ? "noopener noreferrer" : undefined}
+>
+  {
+    item.image && (
+      <div class="aspect-video w-24 overflow-hidden rounded-lg sm:w-24 md:w-32">
+        <Image
+          src={item.image}
+          alt={item.title}
+          inferSize
+          class="h-full w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+        />
+      </div>
+    )
+  }
+
+  <div class="flex flex-1 flex-col">
+    <div class="line-clamp-2 flex items-center gap-1 font-semibold">
+      {item.title}
+    </div>
+    <div class="line-clamp-3 text-sm text-wrap sm:line-clamp-2">
+      {item.description}
+    </div>
+    <div
+      class="text-muted-foreground mt-0.5 flex flex-wrap items-center gap-1 text-xs"
+    >
+      <Icon name={statusIcon} class="text-accent-foreground h-3 w-3" />
+      {item.category && <span>{item.category}</span>}
+      {
+        item.institution && (
+          <>
+            &bull;{" "}
+            <span class="text-accent-foreground font-medium">
+              {item.institution}
+            </span>
+          </>
+        )
+      }
+      {
+        item.provider && !item.institution && (
+          <>
+            &bull;{" "}
+            <span class="text-accent-foreground font-medium">
+              {item.provider}
+            </span>
+          </>
+        )
+      }
+      {
+        yearDisplay && (
+          <>
+            &bull; <span>{yearDisplay}</span>
+          </>
+        )
+      }
+    </div>
+  </div>
+</a>
