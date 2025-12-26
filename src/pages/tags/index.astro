@@ -5,7 +5,7 @@ import Container from "@components/Container.astro";
 import BackToPrevious from "@components/BackToPrevious.astro";
 import TagBadge from "@components/TagBadge.astro";
 
-const posts = await getCollection("blog", ({ data }) => !data.draft);
+const posts = await getCollection("posts", ({ data }) => !data.draft);
 const tags = [...new Set(posts.flatMap((p) => p.data.tags || []))].sort(
   (a, b) => {
     // Sort tags by the number of posts they have, descending

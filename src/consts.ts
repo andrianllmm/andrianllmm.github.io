@@ -15,8 +15,8 @@ export const HOME: Metadata = {
   DESCRIPTION: "This is Andrian Lloyd Maagma's personal website.",
 };
 
-export const BLOG: Metadata = {
-  TITLE: "Blog",
+export const POSTS: Metadata = {
+  TITLE: "Posts",
   DESCRIPTION: "A collection of articles on topics I am passionate about.",
 };
 

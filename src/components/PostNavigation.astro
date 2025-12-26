@@ -8,7 +8,7 @@ const { prevPost, nextPost } = Astro.props;
 <div class="grid grid-cols-2 gap-1.5 sm:gap-3">
   {
     prevPost?.id ? (
-      <a href={`/blog/${prevPost?.id}`} class="not-prose no-underline">
+      <a href={`/posts/${prevPost?.id}`} class="not-prose no-underline">
         <Button class="group relative w-full justify-center rounded-lg p-2">
           <Arrow
             direction="left"
@@ -24,7 +24,7 @@ const { prevPost, nextPost } = Astro.props;
 
   {
     nextPost?.id ? (
-      <a href={`/blog/${nextPost?.id}`} class="not-prose no-underline">
+      <a href={`/posts/${nextPost?.id}`} class="not-prose no-underline">
         <Button class="group relative w-full justify-center rounded-lg p-2">
           <div class="text-center text-sm">{nextPost?.data.title}</div>
           <Arrow

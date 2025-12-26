@@ -34,7 +34,7 @@ const projects = [...allProjects]
   })
   .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
 
-const allPosts = (await getCollection("blog")).filter((p) => !p.data.draft);
+const allPosts = (await getCollection("posts")).filter((p) => !p.data.draft);
 const posts = allPosts
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
@@ -114,7 +114,7 @@ const posts = allPosts
         <section class="animate space-y-6">
           <div class="flex flex-wrap items-center justify-between gap-y-2">
             <h2 class="text-lg font-semibold">Latest posts</h2>
-            <Link href="/blog">See all posts</Link>
+            <Link href="/posts">See all posts</Link>
           </div>
 
           <div class="animate flex flex-wrap gap-1">

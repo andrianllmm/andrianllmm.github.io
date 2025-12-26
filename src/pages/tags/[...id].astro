@@ -7,7 +7,7 @@ import PostCard from "@components/PostCard.astro";
 import TagBadge from "@components/TagBadge.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog", ({ data }) => !data.draft);
+  const posts = await getCollection("posts", ({ data }) => !data.draft);
 
   // Get unique tags
   const tags = [...new Set(posts.flatMap((post) => post.data.tags || []))];
