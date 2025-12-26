@@ -4,17 +4,24 @@ import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import BackToPrevious from "@components/BackToPrevious.astro";
 import SkillBadge from "@components/SkillBadge.astro";
-import { skills as skillData, type SkillKey } from "@data/skills";
+import { skills as skillData, skillGroups, type SkillKey } from "@data/skills";
 
 const projects = await getCollection("projects", ({ data }) => !data.draft);
 
-const skills: SkillKey[] = (Object.keys(skillData) as SkillKey[]).sort(
-  (a, b) => {
+// Function to sort skills by number of projects
+const sortSkills = (skillKeys: SkillKey[]) => {
+  return skillKeys.sort((a, b) => {
     const countA = projects.filter((p) => p.data.skills?.includes(a)).length;
     const countB = projects.filter((p) => p.data.skills?.includes(b)).length;
     return countB - countA || a.localeCompare(b);
-  },
-);
+  });
+};
+
+// Compute "Other" skills not in any group
+const groupedSkills = new Set(Object.values(skillGroups).flat());
+const otherSkills = Object.keys(skillData).filter(
+  (skill) => !groupedSkills.has(skill as SkillKey),
+) as SkillKey[];
 ---
 
 <Layout title="Skills" description="List of skills used.">
@@ -23,12 +30,34 @@ const skills: SkillKey[] = (Object.keys(skillData) as SkillKey[]).sort(
       <BackToPrevious href="/">Back to home</BackToPrevious>
     </div>
 
-    <div class="space-y-6">
+    <div class="space-y-8">
       <h1 class="animate font-semibold">Skills</h1>
 
-      <div class="animate flex flex-wrap gap-3">
-        {skills.map((skill) => <SkillBadge skill={skill} showNum />)}
-      </div>
+      {
+        Object.entries(skillGroups).map(([groupName, groupSkills]) => (
+          <div class="space-y-4">
+            <h2 class="text-lg font-semibold">{groupName}</h2>
+            <div class="flex flex-wrap gap-3">
+              {sortSkills(groupSkills).map((skill) => (
+                <SkillBadge skill={skill} showNum />
+              ))}
+            </div>
+          </div>
+        ))
+      }
+
+      {
+        otherSkills.length > 0 && (
+          <div class="space-y-4">
+            <h2 class="text-lg font-semibold">Other</h2>
+            <div class="flex flex-wrap gap-3">
+              {sortSkills(otherSkills).map((skill) => (
+                <SkillBadge skill={skill} showNum />
+              ))}
+            </div>
+          </div>
+        )
+      }
     </div>
   </Container>
 </Layout>
