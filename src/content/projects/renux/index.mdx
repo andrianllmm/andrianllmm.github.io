@@ -5,18 +5,13 @@ startDate: "2025-05"
 skills: ["python"]
 demoURL: https://pypi.org/project/renux
 repoURL: https://github.com/andrianllmm/renux
-image: "./preview.gif"
+image: "./preview.png"
 ---
 
 import { Image } from "astro:assets";
-import preview from "./preview.gif";
+import demo from "./demo.gif";
 
-<Image
-  src={preview}
-  alt="Preview"
-  class="my-4 w-full max-w-100"
-  data-zoomable
-/>
+<Image src={demo} alt="Demo" class="my-4 w-full max-w-100" data-zoomable />
 
 `renux` is a tool with a text-based (or terminal) user interface (TUI) that automates file renaming.
 It simplifies this task with features like regex, placeholders, and text transformations,
