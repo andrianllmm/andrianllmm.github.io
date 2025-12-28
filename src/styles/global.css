@@ -257,7 +257,7 @@
   }
 
   article img {
-    @apply mx-auto my-auto max-w-full rounded-lg;
+    @apply text-muted mx-auto my-auto max-w-full rounded-lg text-xs;
   }
 
   article strong {
