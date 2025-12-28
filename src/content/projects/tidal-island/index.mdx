@@ -11,9 +11,9 @@ image: "./preview.gif"
 
 import { Image } from "astro:assets";
 import titleScreenImg from "./screenshots/title-screen.png";
-import playingStillImg from "./screenshots/playing.png";
-import playingImg from "./screenshots/playing.gif";
-import playingOnRaftImg from "./screenshots/playing-on-raft.gif";
+import playingImg from "./screenshots/playing.png";
+import playingVideo from "./screenshots/playing.mp4";
+import playingOnRaftVideo from "./screenshots/playing-on-raft.mp4";
 import playerSheet from "./sprites/player-sheet.png";
 import debugRenderImg from "./screenshots/debug-render.png";
 import worldBuilderImg from "./screenshots/world-builder.png";
@@ -51,30 +51,27 @@ The game is now available on <a href="https://andrianllmm.itch.io/tidal-island/"
 playable by anyone on Windows, Mac, or Linux.
 
 <div class="my-4 flex flex-wrap items-center justify-center gap-2">
-  <Image
-    src={titleScreenImg}
-    alt="Title screen"
-    class="w-full max-w-[300px]"
-    data-zoomable
-  />
-  <Image
-    src={playingOnRaftImg}
+  <Image src={titleScreenImg} alt="Title screen" class="w-full max-w-[300px]" />
+  <video
+    src={playingOnRaftVideo}
     alt="Playing on a raft"
     class="w-full max-w-[300px]"
-    data-zoomable
+    autoplay
+    loop
+    muted
+    playsinline
+    preload="metadata"
   />
-  <Image
-    src={playingImg}
-    alt="Playing"
+  <video
+    src={playingVideo}
     class="w-full max-w-[300px]"
-    data-zoomable
+    autoplay
+    loop
+    muted
+    playsinline
+    preload="metadata"
   />
-  <Image
-    src={playingStillImg}
-    alt="Playing still"
-    class="w-full max-w-[300px]"
-    data-zoomable
-  />
+  <Image src={playingImg} alt="Playing still" class="w-full max-w-[300px]" />
 </div>
 
 ## How I built it

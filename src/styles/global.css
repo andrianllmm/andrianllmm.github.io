@@ -260,6 +260,10 @@
     @apply text-muted mx-auto my-auto max-w-full rounded-lg text-xs;
   }
 
+  article video {
+    @apply text-muted mx-auto my-auto max-w-full rounded-lg text-xs;
+  }
+
   article strong {
     @apply text-foreground font-semibold;
   }
