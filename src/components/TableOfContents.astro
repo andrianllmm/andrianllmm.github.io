@@ -33,8 +33,12 @@ function buildToc(headings: Heading[]) {
 
 <details {...open ? { open: false } : {}} class="animate group rounded">
   <summary
-    class="group-open:bg-accent hover:bg-accent focus-visible:bg-accent focus-visible:text-accent-foreground cursor-pointer rounded-lg px-3 py-1.5 font-medium transition-colors group-open:rounded-b-none"
-    >Table of Contents</summary
+    class:list={[
+      "rounded-lg px-3 py-1.5",
+      "text-muted-foreground text-sm font-medium",
+      "hover:bg-accent focus-visible:bg-accent focus-visible:text-accent-foreground cursor-pointer transition-colors",
+      "group-open:bg-accent group-open:rounded-b-none",
+    ]}>Table of Contents</summary
   >
   <nav>
     <ul class="py-3">
