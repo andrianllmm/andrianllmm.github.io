@@ -29,15 +29,15 @@ Computer Science student specializing in full-stack web development, UI/UX desig
 
 </p>
 
-- Cumulative GWA (1st Year): 1.22 — consistent President's Lister
-- Relevant Coursework: Foundations of Object-Oriented Programming, Data Structures
+- Current Cumulative GWA: 1.15 (President's Lister)
+- Relevant Coursework: Web Programming, Database Systems
 
 ## Experience
 
 ### Lead Web Developer, Pagbutlak — Student Publication of College of Arts and Sciences
 
 <span class="text-muted-foreground">
-    <time datetime="2025 – present">2025 – present</time>
+    <time datetime="Sept 2025 – present">Sept 2025 – present</time>
 </span>
 
 <p>
@@ -50,7 +50,7 @@ Leading the early-stage development of the student publication website, aiming t
 ### Branding and Creative Associate, UP Data Science Society
 
 <span class="text-muted-foreground">
-    <time datetime="2025 – present">2025 – present</time>
+    <time datetime="Aug 2025 – Dec 2025">Aug 2025 – Dec 2025</time>
 </span>
 
 <p>
@@ -61,7 +61,7 @@ Supporting the society's branding and creative initiatives, with a focus on webs
 ### Web Developer, Komsai.Org — Organization for Computer Science Students
 
 <span class="text-muted-foreground">
-    <time datetime="2024 – present">2024 – present</time>
+    <time datetime="Sept 2024 – present">Sept 2024 – present</time>
 </span>
 
 <p>
