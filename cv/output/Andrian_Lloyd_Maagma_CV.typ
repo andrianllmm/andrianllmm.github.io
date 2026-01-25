@@ -480,7 +480,7 @@
     #strong[Computer Science], University of the Philippines Visayas
     #v(-design-text-leading)
 
-    #v(design-highlights-top-margin);#highlights([Cumulative GWA \(1st Year\): 1.22 — consistent President's Lister],[Relevant Coursework: Foundations of Object-Oriented Programming, Data Structures],)
+    #v(design-highlights-top-margin);#highlights([Current Cumulative GWA: 1.15 \(President's Lister\)],[Relevant Coursework: Web Programming, Database Systems],)
   ],
   right-content: [
     Miagao, Iloilo, Philippines
@@ -499,7 +499,7 @@ Aug 2024 – present
     #strong[Lead Web Developer], Pagbutlak — Student Publication of College of Arts and Sciences
   ],
   right-content: [
-    2025 – present
+    Sept 2025 – present
   ],
 )
 #one-col-entry(
@@ -516,7 +516,7 @@ Aug 2024 – present
     #strong[Branding and Creative Associate], UP Data Science Society
   ],
   right-content: [
-    2025 – present
+    Aug 2025 – Dec 2025
   ],
 )
 #one-col-entry(
@@ -531,7 +531,7 @@ Aug 2024 – present
     #strong[Web Developer], Komsai.Org — Organization for Computer Science Students
   ],
   right-content: [
-    2024 – present
+    Sept 2024 – present
   ],
 )
 #one-col-entry(

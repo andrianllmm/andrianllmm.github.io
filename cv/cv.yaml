@@ -21,13 +21,13 @@ cv:
         location: Miagao, Iloilo, Philippines
         summary:
         highlights:
-          - "Cumulative GWA (1st Year): 1.22 — consistent President's Lister"
-          - "Relevant Coursework: Foundations of Object-Oriented Programming, Data Structures"
+          - "Current Cumulative GWA: 1.15 (President's Lister)"
+          - "Relevant Coursework: Web Programming, Database Systems"
 
     experience:
       - company: Pagbutlak — Student Publication of College of Arts and Sciences
         position: Lead Web Developer
-        start_date: 2025
+        start_date: 2025-09
         location:
         summary: "Leading the early-stage development of the student publication website, aiming to replace the existing WordPress site with a modern, responsive platform."
         highlights:
@@ -36,13 +36,14 @@ cv:
 
       - company: UP Data Science Society
         position: Branding and Creative Associate
-        start_date: 2025
+        start_date: 2025-08
+        end_date: 2025-12
         location:
         summary: "Supporting the society's branding and creative initiatives, with a focus on website development."
 
       - company: Komsai.Org — Organization for Computer Science Students
         position: Web Developer
-        start_date: 2024
+        start_date: 2024-09
         location:
         summary: "Developing the organization's website using modern web technologies, streamlining content updates and improving the experience for student members."
 
