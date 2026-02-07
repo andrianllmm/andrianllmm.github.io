@@ -547,6 +547,23 @@ Aug 2024 – present
 
 #two-col-entry(
   left-content: [
+    #link("https://github.com/popcorn-prophets/manobela")[#strong[Manobela]]
+  ],
+  right-content: [
+    Jan 2026 – Feb 2026
+  ],
+)
+#one-col-entry(
+  content: [
+    #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [A driver monitoring mobile app using computer vision])], column-gutter: 0cm)
+
+#v(-design-text-leading)  #v(design-highlights-top-margin);#highlights([Led a team of five to build a #strong[mobile app] with real-time WebRTC video processing using #strong[computer vision].],[Won #strong[champion] at the #link("https://github.com/TrackTech-Hackathon")[TrackTech Hackathon] 2026 - CPU CSS, outperforming 7 teams.],)
+  ],
+)
+
+#v(design-entries-vertical-space-between-entries)
+#two-col-entry(
+  left-content: [
     #link("https://github.com/andrianllmm/renux")[#strong[renux]]
   ],
   right-content: [
@@ -557,7 +574,7 @@ Aug 2024 – present
   content: [
     #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [Terminal-based bulk file renamer with a user-friendly TUI.])], column-gutter: 0cm)
 
-#v(-design-text-leading)  #v(design-highlights-top-margin);#highlights([Streamlined file renaming for developers and power users, improving productivity.],[Packaged as an installable Python TUI application, accessible to users on all platforms.],[Achieved #strong[3,000+ downloads] on #link("https://pypi.org/project/renux/")[PyPI] and 30+ stars on #link("https://github.com/andrianllmm/renux/stargazers")[GitHub].],)
+#v(-design-text-leading)  #v(design-highlights-top-margin);#highlights([Packaged as an installable Python TUI application, accessible to users on all platforms.],[Achieved #strong[3,000+ downloads] on #link("https://pypi.org/project/renux/")[PyPI] and 30+ stars on #link("https://github.com/andrianllmm/renux/stargazers")[GitHub].],)
   ],
 )
 
@@ -574,7 +591,7 @@ Aug 2024 – present
   content: [
     #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [Browser extension for formatting text on any website using an inline toolbar.])], column-gutter: 0cm)
 
-#v(-design-text-leading)  #v(design-highlights-top-margin);#highlights([Enhanced web text formatting workflows for users across platforms.],[Developed a flexible #strong[browser extension] supporting complex interactions on any website input.],[Gained 20+ users on #link("https://chrome.google.com/webstore/detail/uniglyphs/hcnbmicjiggmklnmkpljeomkmagigkbc")[Chrome Web Store].],)
+#v(-design-text-leading)  #v(design-highlights-top-margin);#highlights([Developed a flexible #strong[browser extension] supporting complex interactions on any website input.],[Gained 20+ users on #link("https://chrome.google.com/webstore/detail/uniglyphs/hcnbmicjiggmklnmkpljeomkmagigkbc")[Chrome Web Store].],)
   ],
 )
 
@@ -591,7 +608,7 @@ Aug 2024 – present
   content: [
     #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [A web app for crowdsourcing Aklanon–English translations])], column-gutter: 0cm)
 
-#v(-design-text-leading)  #v(design-highlights-top-margin);#highlights([Built full #strong[CRUD] functionality for translations using Django and React, enabling user-generated content.],[Implemented a dictionary-based Aklanon #strong[spellchecker], improving translation accuracy.],[Developed an Aklanon word #strong[stemming] library, enhancing spell-check precision.],[Conducted user testing with 30 native speakers and iteratively improved UX, resulting in increased usability.],)
+#v(-design-text-leading)  #v(design-highlights-top-margin);#highlights([Implemented a dictionary-based Aklanon #strong[spellchecker], improving translation accuracy.],[Developed an Aklanon word #strong[stemming] library, enhancing spell-check precision.],[Conducted user testing with 30 native speakers and iteratively improved UX, resulting in increased usability.],)
   ],
 )
 
@@ -608,7 +625,7 @@ Aug 2024 – present
   content: [
     #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [A word-level Language Identification \(LID\) tool for Tagalog–English \(Taglish\) text])], column-gutter: 0cm)
 
-#v(-design-text-leading)  #v(design-highlights-top-margin);#highlights([Utilized rule-based #strong[Natural Language Processing] \(NLP\) techniques to identify the language of each word.],[Created a #strong[Python library] for Tagalog word stemming to improve Tagalog language detection for inflected words.],[#strong[Scraped] from Tagalog and English dictionaries using BeautifulSoup4 to generate frequency-based lookup tables.],[Computed code-switching frequency from 57 survey responses to automate data analysis for a language research study.],)
+#v(-design-text-leading)  #v(design-highlights-top-margin);#highlights([Created a #strong[Python library] for Tagalog word stemming to improve Tagalog language detection for inflected words.],[#strong[Scraped] from Tagalog and English dictionaries using BeautifulSoup4 to generate frequency-based lookup tables.],[Computed code-switching frequency from 57 survey responses to automate data analysis for a language research study.],)
   ],
 )
 
@@ -618,7 +635,7 @@ Aug 2024 – present
 
 
 #one-col-entry(
-  content: [#strong[Tools:] Python, Django, JavaScript, TypeScript, React, Next.js, TailwindCSS, Pandas, Scikit-learn, TensorFlow, PyTorch, Git, Docker]
+  content: [#strong[Tools:] TypeScript, React, Next.js, React Native, Expo, Astro, TailwindCSS, Python, Django, FastAPI, Pandas, TensorFlow, PyTorch]
 )
 #v(design-entries-vertical-space-between-entries)
 #one-col-entry(
