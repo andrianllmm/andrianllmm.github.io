@@ -1,5 +1,5 @@
 ---
-import { PINNED_PROJECTS, SITE, HOME } from "@consts";
+import { PINNED_PROJECTS, PINNED_SKILLS, SITE, HOME } from "@consts";
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
@@ -13,11 +13,10 @@ import TagBadge from "@components/TagBadge.astro";
 import Badge from "@components/Badge.astro";
 import Avatar from "@components/Avatar.astro";
 import Contact from "@components/Contact.astro";
-import { skills as allSkills } from "@data/skills";
 import { tags as allTags } from "@data/tags";
 import { education } from "@data/education";
 
-const skills = Object.keys(allSkills).slice(0, SITE.NUM_SKILLS_ON_HOMEPAGE);
+const skills = PINNED_SKILLS;
 const tags = Object.keys(allTags).slice(0, SITE.NUM_TAGS_ON_HOMEPAGE);
 
 const allProjects = (await getCollection("projects")).filter(

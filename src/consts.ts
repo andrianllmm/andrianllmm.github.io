@@ -19,6 +19,22 @@ export const PINNED_PROJECTS = [
   "tidal-island",
 ];
 
+export const PINNED_SKILLS = [
+  "typescript",
+  "react",
+  "nextjs",
+  "reactNative",
+  "expo",
+  "astro",
+  "tailwind",
+  "python",
+  "django",
+  "fastapi",
+  "pandas",
+  "tensorflow",
+  "pytorch",
+];
+
 export const HOME: Metadata = {
   TITLE: "Home",
   DESCRIPTION: "This is Andrian Lloyd Maagma's personal website.",
