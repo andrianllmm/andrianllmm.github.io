@@ -71,13 +71,21 @@ Developing the organization's website using modern web technologies, streamlinin
 
 ## Projects
 
+### [Manobela](https://github.com/popcorn-prophets/manobela)
+
+<span class="text-muted-foreground">
+    <time datetime="Jan 2026 – Feb 2026">Jan 2026 – Feb 2026</time>
+</span>
+
+- Led a team of five to build a **mobile app** with real-time WebRTC video processing using **computer vision**.
+- Won **champion** at the [TrackTech Hackathon](https://github.com/TrackTech-Hackathon) 2026 - CPU CSS, outperforming 7 teams.
+
 ### [renux](https://github.com/andrianllmm/renux)
 
 <span class="text-muted-foreground">
     <time datetime="2025 – 2025">2025 – 2025</time>
 </span>
 
-- Streamlined file renaming for developers and power users, improving productivity.
 - Packaged as an installable Python TUI application, accessible to users on all platforms.
 - Achieved **3,000+ downloads** on [PyPI](https://pypi.org/project/renux/) and 30+ stars on [GitHub](https://github.com/andrianllmm/renux/stargazers).
 
@@ -87,7 +95,6 @@ Developing the organization's website using modern web technologies, streamlinin
     <time datetime="2025 – 2025">2025 – 2025</time>
 </span>
 
-- Enhanced web text formatting workflows for users across platforms.
 - Developed a flexible **browser extension** supporting complex interactions on any website input.
 - Gained 20+ users on [Chrome Web Store](https://chrome.google.com/webstore/detail/uniglyphs/hcnbmicjiggmklnmkpljeomkmagigkbc).
 
@@ -97,7 +104,6 @@ Developing the organization's website using modern web technologies, streamlinin
     <time datetime="2024 – 2025">2024 – 2025</time>
 </span>
 
-- Built full **CRUD** functionality for translations using Django and React, enabling user-generated content.
 - Implemented a dictionary-based Aklanon **spellchecker**, improving translation accuracy.
 - Developed an Aklanon word **stemming** library, enhancing spell-check precision.
 - Conducted user testing with 30 native speakers and iteratively improved UX, resulting in increased usability.
@@ -108,13 +114,12 @@ Developing the organization's website using modern web technologies, streamlinin
     <time datetime="2024 – 2024">2024 – 2024</time>
 </span>
 
-- Utilized rule-based **Natural Language Processing** (NLP) techniques to identify the language of each word.
 - Created a **Python library** for Tagalog word stemming to improve Tagalog language detection for inflected words.
 - **Scraped** from Tagalog and English dictionaries using BeautifulSoup4 to generate frequency-based lookup tables.
 - Computed code-switching frequency from 57 survey responses to automate data analysis for a language research study.
 
 ## Skills
 
-- Tools: Python, Django, JavaScript, TypeScript, React, Next.js, TailwindCSS, Pandas, Scikit-learn, TensorFlow, PyTorch, Git, Docker
+- Tools: TypeScript, React, Next.js, React Native, Expo, Astro, TailwindCSS,Python, Django, FastAPI, Pandas, TensorFlow, PyTorch
 - Industry Knowledge: Web development and design, machine learning, natural language processing, data analysis
 - Languages: English (Professional working proficiency), Tagalog (Professional working proficiency)
