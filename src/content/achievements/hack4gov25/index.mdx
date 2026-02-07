@@ -16,6 +16,7 @@ skills:
 image: "./photos/team.png"
 ---
 
+import Callout from "@components/Callout.astro";
 import { Image } from "astro:assets";
 import teamImg from "./photos/team.png";
 import individualImg from "./photos/individual.png";
@@ -33,8 +34,12 @@ Web Exploitation, Forensics, Network Security, and <abbr title="Open-Source Inte
 
 ## How it turned out
 
-- **1st Runner-Up** for Team Category out of 11 teams (830 points).
-- **2nd Runner-Up** for Individual Category (480 points).
+<Callout type="award">
+  1st Runner-Up for Team Category out of 11 teams (830 points).
+</Callout>
+<Callout type="award">
+  2nd Runner-Up for Individual Category (480 points).
+</Callout>
 
 <div class="flex gap-4 my-4">
     <Image
