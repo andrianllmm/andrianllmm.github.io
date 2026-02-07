@@ -12,6 +12,29 @@ export const SITE: Site = {
   NUM_EDUCATION_ON_HOMEPAGE: 5,
 };
 
+export const PINNED_PROJECTS = [
+  "manobela",
+  "renux",
+  "uniglyphs",
+  "tidal-island",
+];
+
+export const PINNED_SKILLS = [
+  "typescript",
+  "react",
+  "nextjs",
+  "reactNative",
+  "expo",
+  "astro",
+  "tailwind",
+  "python",
+  "django",
+  "fastapi",
+  "pandas",
+  "tensorflow",
+  "pytorch",
+];
+
 export const HOME: Metadata = {
   TITLE: "Home",
   DESCRIPTION: "This is Andrian Lloyd Maagma's personal website.",
