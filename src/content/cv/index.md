@@ -120,6 +120,6 @@ Developing the organization's website using modern web technologies, streamlinin
 
 ## Skills
 
-- Tools: TypeScript, React, Next.js, React Native, Expo, Astro, TailwindCSS,Python, Django, FastAPI, Pandas, TensorFlow, PyTorch
+- Tools: TypeScript, React, Next.js, React Native, Expo, Astro, TailwindCSS, Python, Django, FastAPI, Pandas, TensorFlow, PyTorch
 - Industry Knowledge: Web development and design, machine learning, natural language processing, data analysis
 - Languages: English (Professional working proficiency), Tagalog (Professional working proficiency)

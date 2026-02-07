@@ -101,7 +101,7 @@ cv:
 
     skills:
       - label: Tools
-        details: "TypeScript, React, Next.js, React Native, Expo, Astro, TailwindCSS,Python, Django, FastAPI, Pandas, TensorFlow, PyTorch"
+        details: "TypeScript, React, Next.js, React Native, Expo, Astro, TailwindCSS, Python, Django, FastAPI, Pandas, TensorFlow, PyTorch"
       - label: Industry Knowledge
         details: "Web development and design, machine learning, natural language processing, data analysis"
       - label: Languages

@@ -635,7 +635,7 @@ Aug 2024 – present
 
 
 #one-col-entry(
-  content: [#strong[Tools:] TypeScript, React, Next.js, React Native, Expo, Astro, TailwindCSS,Python, Django, FastAPI, Pandas, TensorFlow, PyTorch]
+  content: [#strong[Tools:] TypeScript, React, Next.js, React Native, Expo, Astro, TailwindCSS, Python, Django, FastAPI, Pandas, TensorFlow, PyTorch]
 )
 #v(design-entries-vertical-space-between-entries)
 #one-col-entry(
