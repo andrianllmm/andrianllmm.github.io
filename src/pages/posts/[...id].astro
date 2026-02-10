@@ -9,6 +9,8 @@ import PostNavigation from "@components/PostNavigation.astro";
 import TableOfContents from "@components/TableOfContents.astro";
 import TagBadge from "@components/TagBadge.astro";
 import Giscus from "@components/Giscus.astro";
+import StructuredData from "@components/StructuredData.astro";
+import { tags as allTags } from "@data/tags";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("posts"))
@@ -50,9 +52,76 @@ const prevPost = getPrevPost();
 
 const post = Astro.props;
 const { Content, headings } = await render(post);
+
+// Generate keywords from tags
+const keywords = post.data.tags?.map((tag) => allTags[tag]?.name || tag) || [];
+
+// Create BlogPosting structured data
+const blogPosting = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: post.data.title,
+  description: post.data.description,
+  image: post.data.image
+    ? new URL(post.data.image.src, Astro.site).toString()
+    : new URL("/images/meta-image.png", Astro.site).toString(),
+  datePublished: post.data.date.toISOString(),
+  dateModified: post.data.date.toISOString(),
+  author: {
+    "@type": "Person",
+    name: "Andrian Lloyd Maagma",
+    url: Astro.site,
+  },
+  publisher: {
+    "@type": "Person",
+    name: "Andrian Lloyd Maagma",
+    url: Astro.site,
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": new URL(Astro.url.pathname, Astro.site).toString(),
+  },
+  keywords: keywords.join(", "),
+};
+
+// Create BreadcrumbList structured data
+const breadcrumbList = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: Astro.site,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Posts",
+      item: new URL("/posts", Astro.site).toString(),
+    },
+    {
+      "@type": "ListItem",
+      position: 3,
+      name: post.data.title,
+      item: new URL(Astro.url.pathname, Astro.site).toString(),
+    },
+  ],
+};
 ---
 
-<Layout title={post.data.title} description={post.data.description}>
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  type="article"
+  publishedDate={post.data.date}
+  keywords={keywords}
+>
+  <Fragment slot="head">
+    <StructuredData data={blogPosting} />
+    <StructuredData data={breadcrumbList} />
+  </Fragment>
   <Container>
     <div class="animate">
       <BackToPrevious href="/posts">Back to posts</BackToPrevious>

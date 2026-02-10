@@ -1,0 +1,16 @@
+/* TEAM */
+Developer: Andrian Lloyd Maagma
+Site: https://andrianllmm.github.io
+LinkedIn: https://linkedin.com/in/andrian-maagma/
+GitHub: https://github.com/andrianllmm
+Twitter: @andrianllmm
+Location: Philippines
+
+/* SITE */
+Last update: 2026/02/01
+Standards: HTML5, CSS3, JavaScript
+Components: Astro, TypeScript, TailwindCSS
+Software: VS Code, GitHub
+
+/* THANKS */
+Thanks to all open source contributors

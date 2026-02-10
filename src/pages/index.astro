@@ -1,5 +1,5 @@
 ---
-import { PINNED_PROJECTS, PINNED_SKILLS, SITE, HOME } from "@consts";
+import { PINNED_PROJECTS, PINNED_SKILLS, SITE, HOME, SOCIALS } from "@consts";
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
@@ -13,6 +13,7 @@ import TagBadge from "@components/TagBadge.astro";
 import Badge from "@components/Badge.astro";
 import Avatar from "@components/Avatar.astro";
 import Contact from "@components/Contact.astro";
+import StructuredData from "@components/StructuredData.astro";
 import { tags as allTags } from "@data/tags";
 import { education } from "@data/education";
 
@@ -50,9 +51,46 @@ const stillLearning = education
     return bStart - aStart;
   })
   .slice(0, SITE.NUM_EDUCATION_ON_HOMEPAGE || 3);
+
+// Create Person structured data
+const personData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Andrian Lloyd Maagma",
+  url: Astro.site,
+  email: SITE.EMAIL,
+  jobTitle: "Computer Science Student",
+  description: SITE.DESCRIPTION,
+  sameAs: SOCIALS.map((social) => social.HREF),
+};
+
+// Create WebSite structured data with search capability
+const websiteData = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Andrian Lloyd Maagma",
+  description: SITE.DESCRIPTION,
+  url: Astro.site,
+  author: {
+    "@type": "Person",
+    name: "Andrian Lloyd Maagma",
+  },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${Astro.site}/#search={search_term_string}`,
+    },
+    "query-input": "required name=search_term_string",
+  },
+};
 ---
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+  <Fragment slot="head">
+    <StructuredData data={personData} />
+    <StructuredData data={websiteData} />
+  </Fragment>
   <Container>
     <aside data-pagefind-ignore>
       <div class="space-y-16">
