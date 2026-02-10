@@ -111,9 +111,6 @@ const breadcrumbList = {
 };
 ---
 
-<StructuredData data={blogPosting} />
-<StructuredData data={breadcrumbList} />
-
 <Layout
   title={post.data.title}
   description={post.data.description}
@@ -121,6 +118,10 @@ const breadcrumbList = {
   publishedDate={post.data.date}
   keywords={keywords}
 >
+  <Fragment slot="head">
+    <StructuredData data={blogPosting} />
+    <StructuredData data={breadcrumbList} />
+  </Fragment>
   <Container>
     <div class="animate">
       <BackToPrevious href="/posts">Back to posts</BackToPrevious>

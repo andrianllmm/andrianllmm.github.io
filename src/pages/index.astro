@@ -86,10 +86,11 @@ const websiteData = {
 };
 ---
 
-<StructuredData data={personData} />
-<StructuredData data={websiteData} />
-
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+  <Fragment slot="head">
+    <StructuredData data={personData} />
+    <StructuredData data={websiteData} />
+  </Fragment>
   <Container>
     <aside data-pagefind-ignore>
       <div class="space-y-16">
