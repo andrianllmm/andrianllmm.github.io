@@ -20,14 +20,6 @@ export const education: EducationItem[] = [
     url: "https://www.upv.edu.ph/",
   },
   {
-    title: "Java Programming I",
-    category: "Certification",
-    provider: "University of Helsinki",
-    startDate: "2025",
-    endDate: "2025",
-    url: "https://certificates.mooc.fi/validate/w3kqono4ir",
-  },
-  {
     title: "CS50's Web Programming with Python and JavaScript",
     category: "Certification",
     provider: "Harvard University",
