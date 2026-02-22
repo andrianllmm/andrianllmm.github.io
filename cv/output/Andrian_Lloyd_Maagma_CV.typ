@@ -513,10 +513,10 @@ Aug 2024 – present
 #v(design-entries-vertical-space-between-entries)
 #two-col-entry(
   left-content: [
-    #strong[Branding and Creative Associate], UP Data Science Society
+    #strong[Branding and Creative Fellow], UP Data Science Society
   ],
   right-content: [
-    Aug 2025 – present
+    Jan 2026 – present
   ],
 )
 #one-col-entry(
