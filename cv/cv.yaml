@@ -29,7 +29,7 @@ cv:
         position: Lead Web Developer
         start_date: 2025-09
         location:
-        summary: "Leading the early-stage development of the student publication website, aiming to replace the existing WordPress site with a modern, responsive platform."
+        summary: "Leading the development of a new publication website to replace a legacy WordPress platform with a modern system."
         highlights:
           - "Designed the project architecture and tech stack with Next.js, PayloadCMS, and TailwindCSS."
           - "Established content migration strategy and editorial workflows to ensure smooth transition from the legacy site."
@@ -37,9 +37,11 @@ cv:
       - company: UP Data Science Society
         position: Branding and Creative Associate
         start_date: 2025-08
-        end_date: 2025-12
         location:
         summary: "Supporting the society's branding and creative initiatives, with a focus on website development."
+        highlights:
+          - "Contributed in the early-stage development of the organization's website."
+          - "Built a Spotify Wrapped–inspired data science website that was featured by the organization."
 
       - company: Komsai.Org — Organization for Computer Science Students
         position: Web Developer

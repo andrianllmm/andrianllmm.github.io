@@ -504,7 +504,7 @@ Aug 2024 – present
 )
 #one-col-entry(
   content: [
-    #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [Leading the early-stage development of the student publication website, aiming to replace the existing WordPress site with a modern, responsive platform.])], column-gutter: 0cm)
+    #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [Leading the development of a new publication website to replace a legacy WordPress platform with a modern system.])], column-gutter: 0cm)
 
 #v(-design-text-leading)  #v(design-highlights-top-margin);#highlights([Designed the project architecture and tech stack with Next.js, PayloadCMS, and TailwindCSS.],[Established content migration strategy and editorial workflows to ensure smooth transition from the legacy site.],)
   ],
@@ -516,12 +516,14 @@ Aug 2024 – present
     #strong[Branding and Creative Associate], UP Data Science Society
   ],
   right-content: [
-    Aug 2025 – Dec 2025
+    Aug 2025 – present
   ],
 )
 #one-col-entry(
   content: [
     #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [Supporting the society's branding and creative initiatives, with a focus on website development.])], column-gutter: 0cm)
+
+#v(-design-text-leading)  #v(design-highlights-top-margin);#highlights([Contributed in the early-stage development of the organization's website.],[Built a Spotify Wrapped–inspired data science website that was featured by the organization.],)
   ],
 )
 
