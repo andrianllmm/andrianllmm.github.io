@@ -47,10 +47,10 @@ Leading the development of a new publication website to replace a legacy WordPre
 - Designed the project architecture and tech stack with Next.js, PayloadCMS, and TailwindCSS.
 - Established content migration strategy and editorial workflows to ensure smooth transition from the legacy site.
 
-### Branding and Creative Associate, UP Data Science Society
+### Branding and Creative Fellow, UP Data Science Society
 
 <span class="text-muted-foreground">
-    <time datetime="Aug 2025 – present">Aug 2025 – present</time>
+    <time datetime="Jan 2026 – present">Jan 2026 – present</time>
 </span>
 
 <p>
