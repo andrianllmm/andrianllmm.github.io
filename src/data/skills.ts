@@ -16,7 +16,7 @@ export const skills = {
   django: { name: "Django", icon: "simple-icons:django" },
   fastapi: { name: "FastAPI", icon: "simple-icons:fastapi" },
   flask: { name: "Flask", icon: "simple-icons:flask" },
-  tailwind: { name: "Tailwind CSS", icon: "simple-icons:tailwindcss" },
+  tailwind: { name: "Tailwind", icon: "simple-icons:tailwindcss" },
   solidity: { name: "Solidity", icon: "simple-icons:solidity" },
   html: { name: "HTML", icon: "simple-icons:html5" },
   css: { name: "CSS", icon: "simple-icons:css3" },
