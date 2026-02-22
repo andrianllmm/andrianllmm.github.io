@@ -20,6 +20,26 @@ export const education: EducationItem[] = [
     url: "https://www.upv.edu.ph/",
   },
   {
+    title: "fast.ai: Practical Deep Learning for Coders",
+    category: "Online Course",
+    provider: "fast.ai",
+    startDate: "2025",
+    endDate: "2026",
+    url: "https://course.fast.ai/",
+    description:
+      "Applied deep learning with PyTorch covering vision, NLP, and deployment.",
+  },
+  {
+    title: "Machine Learning Specialization",
+    category: "Certification",
+    provider: "DeepLearning.AI & Stanford University",
+    startDate: "2025",
+    endDate: "2025",
+    url: "https://www.coursera.org/specializations/machine-learning-introduction",
+    description:
+      "Foundations of machine learning including supervised and unsupervised learning.",
+  },
+  {
     title: "CS50's Web Programming with Python and JavaScript",
     category: "Certification",
     provider: "Harvard University",
