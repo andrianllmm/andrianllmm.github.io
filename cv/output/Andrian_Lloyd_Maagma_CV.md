@@ -14,7 +14,7 @@
 
 ## Summary
 
-Computer Science student specializing in full-stack web development, UI/UX design, and data science. Skilled in building and maintaining web applications, leading design projects, and conducting tech-driven research.
+A Computer Science student who builds full-stack apps with machine learning. I aim to create tools that people actually use and find useful. I also value accessible software and contribute to open-source whenever I can.
 
 ## Education
 
