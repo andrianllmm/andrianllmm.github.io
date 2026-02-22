@@ -41,7 +41,7 @@ Computer Science student specializing in full-stack web development, UI/UX desig
 </span>
 
 <p>
-Leading the early-stage development of the student publication website, aiming to replace the existing WordPress site with a modern, responsive platform.
+Leading the development of a new publication website to replace a legacy WordPress platform with a modern system.
 </p>
 
 - Designed the project architecture and tech stack with Next.js, PayloadCMS, and TailwindCSS.
@@ -50,13 +50,15 @@ Leading the early-stage development of the student publication website, aiming t
 ### Branding and Creative Associate, UP Data Science Society
 
 <span class="text-muted-foreground">
-    <time datetime="Aug 2025 – Dec 2025">Aug 2025 – Dec 2025</time>
+    <time datetime="Aug 2025 – present">Aug 2025 – present</time>
 </span>
 
 <p>
 Supporting the society's branding and creative initiatives, with a focus on website development.
 </p>
 
+- Contributed in the early-stage development of the organization's website.
+- Built a Spotify Wrapped–inspired data science website that was featured by the organization.
 
 ### Web Developer, Komsai.Org — Organization for Computer Science Students
 
