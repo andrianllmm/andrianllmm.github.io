@@ -38,7 +38,7 @@ pydantic-core==2.27.2
     # via pydantic
 pydantic-extra-types==2.10.2
     # via rendercv
-pygments==2.19.1
+pygments==2.20.0
     # via rich
 rendercv[full]==2.2
     # via -r requirements.in
