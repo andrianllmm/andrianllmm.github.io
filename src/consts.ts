@@ -14,9 +14,9 @@ export const SITE: Site = {
 
 export const PINNED_PROJECTS = [
   "manobela",
+  "project-hermes",
   "renux",
   "uniglyphs",
-  "tidal-island",
 ];
 
 export const PINNED_SKILLS = [
