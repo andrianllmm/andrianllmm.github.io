@@ -566,6 +566,23 @@ Aug 2024 – present
 #v(design-entries-vertical-space-between-entries)
 #two-col-entry(
   left-content: [
+    #link("https://github.com/popcorn-prophets/project-hermes")[#strong[Project HERMES]]
+  ],
+  right-content: [
+    Mar 2026 – Apr 2026
+  ],
+)
+#one-col-entry(
+  content: [
+    #two-col(left-column-width: design-highlights-summary-left-margin, right-column-width: 1fr, left-content: [], right-content: [#v(design-highlights-top-margin);#align(left, [DRRM communication control center through AI-powered chatbots])], column-gutter: 0cm)
+
+#v(-design-text-leading)  #v(design-highlights-top-margin);#highlights([Built an AI #strong[chatbot] to automate incident reporting and information dissemination.],[Integrated with Messenger and Telegram APIs.],)
+  ],
+)
+
+#v(design-entries-vertical-space-between-entries)
+#two-col-entry(
+  left-content: [
     #link("https://github.com/andrianllmm/renux")[#strong[renux]]
   ],
   right-content: [
@@ -637,7 +654,7 @@ Aug 2024 – present
 
 
 #one-col-entry(
-  content: [#strong[Tools:] TypeScript, React, Next.js, React Native, Expo, Astro, TailwindCSS, Python, Django, FastAPI, Pandas, TensorFlow, PyTorch]
+  content: [#strong[Tools:] TypeScript, React, Next.js, React Native, Expo, Astro, TailwindCSS, Python, Django, FastAPI, Supabase, Pandas, TensorFlow, PyTorch]
 )
 #v(design-entries-vertical-space-between-entries)
 #one-col-entry(

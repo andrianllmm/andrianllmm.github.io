@@ -29,6 +29,8 @@ export const skills = {
   pytorch: { name: "PyTorch", icon: "simple-icons:pytorch" },
   opencv: { name: "OpenCV", icon: "simple-icons:opencv" },
   sqlite: { name: "SQLite", icon: "simple-icons:sqlite" },
+  postgresql: { name: "PostgreSQL", icon: "simple-icons:postgresql" },
+  supabase: { name: "Supabase", icon: "simple-icons:supabase" },
   firebase: { name: "Firebase", icon: "simple-icons:firebase" },
   git: { name: "Git", icon: "simple-icons:git" },
   docker: { name: "Docker", icon: "simple-icons:docker" },
@@ -63,7 +65,7 @@ export const skillGroups = {
     "fastapi",
     "flask",
   ],
-  Databases: ["sqlite", "firebase"],
+  Databases: ["sqlite", "postgresql", "supabase", "firebase"],
   "Data Science": [
     "numpy",
     "pandas",

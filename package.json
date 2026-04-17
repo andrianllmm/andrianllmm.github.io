@@ -11,6 +11,7 @@
     "cv": "node cv/cv.js"
   },
   "dependencies": {
+    "@astro-community/astro-embed-youtube": "^0.5.10",
     "@astrojs/check": "^0.9.4",
     "@astrojs/mdx": "^4.3.0",
     "@astrojs/partytown": "^2.1.4",

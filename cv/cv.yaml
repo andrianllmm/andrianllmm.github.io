@@ -59,6 +59,15 @@ cv:
         highlights:
           - "Led a team of five to build a **mobile app** with real-time WebRTC video processing using **computer vision**."
           - "Won **champion** at the [TrackTech Hackathon](https://github.com/TrackTech-Hackathon) 2026 - CPU CSS, outperforming 7 teams."
+      - name: "[Project HERMES](https://github.com/popcorn-prophets/project-hermes)"
+        date:
+        start_date: 2026-03
+        end_date: 2026-04
+        location:
+        summary: "DRRM communication control center through AI-powered chatbots"
+        highlights:
+          - "Built an AI **chatbot** to automate incident reporting and information dissemination."
+          - "Integrated with Messenger and Telegram APIs."
       - name: "[renux](https://github.com/andrianllmm/renux)"
         date:
         start_date: 2025
@@ -103,7 +112,7 @@ cv:
 
     skills:
       - label: Tools
-        details: "TypeScript, React, Next.js, React Native, Expo, Astro, TailwindCSS, Python, Django, FastAPI, Pandas, TensorFlow, PyTorch"
+        details: "TypeScript, React, Next.js, React Native, Expo, Astro, TailwindCSS, Python, Django, FastAPI, Supabase, Pandas, TensorFlow, PyTorch"
       - label: Industry Knowledge
         details: "Web development and design, machine learning, natural language processing, data analysis"
       - label: Languages
