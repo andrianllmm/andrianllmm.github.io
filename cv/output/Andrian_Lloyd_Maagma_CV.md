@@ -82,6 +82,15 @@ Developing the organization's website using modern web technologies, streamlinin
 - Led a team of five to build a **mobile app** with real-time WebRTC video processing using **computer vision**.
 - Won **champion** at the [TrackTech Hackathon](https://github.com/TrackTech-Hackathon) 2026 - CPU CSS, outperforming 7 teams.
 
+### [Project HERMES](https://github.com/popcorn-prophets/project-hermes)
+
+<span class="text-muted-foreground">
+    <time datetime="Mar 2026 – Apr 2026">Mar 2026 – Apr 2026</time>
+</span>
+
+- Built an AI **chatbot** to automate incident reporting and information dissemination.
+- Integrated with Messenger and Telegram APIs.
+
 ### [renux](https://github.com/andrianllmm/renux)
 
 <span class="text-muted-foreground">
@@ -122,6 +131,6 @@ Developing the organization's website using modern web technologies, streamlinin
 
 ## Skills
 
-- Tools: TypeScript, React, Next.js, React Native, Expo, Astro, TailwindCSS, Python, Django, FastAPI, Pandas, TensorFlow, PyTorch
+- Tools: TypeScript, React, Next.js, React Native, Expo, Astro, TailwindCSS, Python, Django, FastAPI, Supabase, Pandas, TensorFlow, PyTorch
 - Industry Knowledge: Web development and design, machine learning, natural language processing, data analysis
 - Languages: English (Professional working proficiency), Tagalog (Professional working proficiency)
