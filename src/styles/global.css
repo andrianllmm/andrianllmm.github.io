@@ -8,26 +8,27 @@
 :root {
   --radius: 0.75rem;
 
-  /* --background: #f9f5d7;
-  --foreground: #7c6f64; */
-  --background: #fefef9;
-  --foreground: #514841;
+  --background: #ffffff;
+  --foreground: #171717;
 
-  --background-accent: #f5f5ee;
-  --foreground-accent: #72655b;
-  --background-dim: #f2f2f1;
-  --foreground-dim: #918276;
-  --foreground-border: #e1deda;
-  --gray: #b4aaa2;
-  --red: #c14a4a;
-  --orange: #c35e0a;
-  --yellow: #b47109;
-  --green: #6c782e;
-  --aqua: #4c7a5d;
-  --blue: #45707a;
-  --purple: #945e80;
+  --background-accent: #f5f5f5;
+  --foreground-accent: #404040;
 
-  --primary: var(--aqua);
+  --background-dim: #f0f0f0;
+  --foreground-dim: #737373;
+
+  --foreground-border: #e5e5e5;
+
+  --gray: #a1a1a1;
+
+  --red: #c45a5a;
+  --orange: #c8894a;
+  --yellow: #c2a24a;
+  --green: #5f8f6b;
+  --blue: #4f7f9e;
+  --purple: #7a6aa6;
+
+  --primary: var(--green);
   --primary-foreground: var(--foreground);
   --secondary: var(--yellow);
   --secondary-foreground: var(--foreground);
@@ -53,7 +54,7 @@
   --astro-code-token-keyword: var(--red);
   --astro-code-token-string: var(--yellow);
   --astro-code-token-function: var(--green);
-  --astro-code-token-constant: var(--aqua);
+  --astro-code-token-constant: var(--blue);
   --astro-code-token-parameter: var(--purple);
   --astro-code-token-string-expression: var(--yellow);
   --astro-code-token-punctuation: var(--muted-foreground);
@@ -61,26 +62,27 @@
 }
 
 .dark {
-  /* --background: #202020;
-  --foreground: #a89984; */
-  --background: #1d1d1d;
-  --foreground: #c0b6a6;
+  --background: #000000;
+  --foreground: #ededed;
 
-  --background-accent: #272727;
-  --foreground-accent: #b0a38f;
-  --background-dim: #313131;
-  --foreground-dim: #968e81;
-  --foreground-border: #2d2920;
-  --gray: #3c362b;
-  --red: #ea6962;
-  --orange: #e78a4e;
-  --yellow: #d8a657;
-  --green: #a9b665;
-  --aqua: #89b482;
-  --blue: #7daea3;
-  --purple: #d3869b;
+  --background-accent: #111111;
+  --foreground-accent: #a1a1a1;
 
-  --primary: var(--aqua);
+  --background-dim: #0a0a0a;
+  --foreground-dim: #737373;
+
+  --foreground-border: #1f1f1f;
+
+  --gray: #666666;
+
+  --red: #d96b63;
+  --orange: #c98a4e;
+  --yellow: #c7a84b;
+  --green: #5f9b7a;
+  --blue: #4f7fa8;
+  --purple: #8a6fb8;
+
+  --primary: var(--green);
   --primary-foreground: var(--foreground);
   --secondary: var(--yellow);
   --secondary-foreground: var(--foreground);
@@ -106,7 +108,7 @@
   --astro-code-token-keyword: var(--red);
   --astro-code-token-string: var(--yellow);
   --astro-code-token-function: var(--green);
-  --astro-code-token-constant: var(--aqua);
+  --astro-code-token-constant: var(--blue);
   --astro-code-token-parameter: var(--purple);
   --astro-code-token-string-expression: var(--yellow);
   --astro-code-token-punctuation: var(--muted-foreground);
@@ -326,6 +328,16 @@
   * {
     scrollbar-width: thin;
     scrollbar-color: var(--border) transparent;
+  }
+
+  /* Custom selection. */
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 25%, transparent);
+    color: var(--primary);
+  }
+  ::-moz-selection {
+    background: color-mix(in oklab, var(--primary) 25%, transparent);
+    color: var(--primary);
   }
 }
 
