@@ -329,6 +329,16 @@
     scrollbar-width: thin;
     scrollbar-color: var(--border) transparent;
   }
+
+  /* Custom selection. */
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 25%, transparent);
+    color: var(--primary);
+  }
+  ::-moz-selection {
+    background: color-mix(in oklab, var(--primary) 25%, transparent);
+    color: var(--primary);
+  }
 }
 
 @utility no-scrollbar {
