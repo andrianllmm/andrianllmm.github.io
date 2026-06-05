@@ -6,13 +6,18 @@ endDate: "2026-05"
 demoURL: "https://astra-plag.onrender.com"
 repoURL: "https://github.com/andrianllmm/astra"
 skills: ["python", "fastapi", "typescript", "react"]
+image: "./preview.jpg"
 ---
 
+import { Image } from "astro:assets";
+import preview from "./preview.jpg";
 import Callout from "@components/Callout.astro";
 
 Astra is a Python-based system that detects structural similarity between programming assignments using AST normalization and sequence alignment.
 
-<Callout>
+<Image src={preview} alt="Astra Preview" data-zoomable />
+
+<Callout type="info">
   You can read more about this project in this{" "}
   <a href="https://colab.research.google.com/github/andrianllmm/astra/blob/main/notebooks/astra-paper.ipynb">
     notebook
