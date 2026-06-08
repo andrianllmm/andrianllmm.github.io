@@ -68,6 +68,24 @@ cv:
         highlights:
           - "Built an AI **chatbot** to automate incident reporting and information dissemination."
           - "Integrated with Messenger and Telegram APIs."
+      - name: "[Iskommerce](https://github.com/andrianllmm/iskommerce)"
+        date:
+        start_date: 2026-03
+        end_date: 2026-05
+        location:
+        summary: "University-only C2C e-commerce marketplace platform for structured buying, selling, and exchange within an academic community."
+        highlights:
+          - "Built a full-stack C2C e-commerce marketplace with transactions and reviews using Next.js, NestJS, and PostgreSQL."
+          - "Implemented real-time messaging and notifications using **WebSockets**."
+      - name: "[MiaGo](https://github.com/andrianllmm/miago)"
+        date:
+        start_date: 2026-03
+        end_date: 2026-05
+        location:
+        summary: "Community-based food delivery platform connecting customers, vendors, and freelance riders through an ordering and dispatch system."
+        highlights:
+          - "Built a full-stack food delivery platform using React, Express, TypeScript, and PostgreSQL."
+          - "Designed an **RBAC** system for customers, riders, and vendors with structured order and delivery lifecycle management."
       - name: "[renux](https://github.com/andrianllmm/renux)"
         date:
         start_date: 2025
@@ -112,7 +130,7 @@ cv:
 
     skills:
       - label: Tools
-        details: "TypeScript, React, Next.js, React Native, Expo, Astro, TailwindCSS, Python, Django, FastAPI, Supabase, Pandas, TensorFlow, PyTorch"
+        details: "TypeScript, React, Next.js, Express.js, NestJS, React Native, Expo, Astro, TailwindCSS, Python, Django, FastAPI, Supabase, PostgreSQL, Pandas, TensorFlow, PyTorch"
       - label: Industry Knowledge
         details: "Web development and design, machine learning, natural language processing, data analysis"
       - label: Languages

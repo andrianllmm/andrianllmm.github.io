@@ -91,6 +91,24 @@ Developing the organization's website using modern web technologies, streamlinin
 - Built an AI **chatbot** to automate incident reporting and information dissemination.
 - Integrated with Messenger and Telegram APIs.
 
+### [Iskommerce](https://github.com/andrianllmm/iskommerce)
+
+<span class="text-muted-foreground">
+    <time datetime="Mar 2026 – May 2026">Mar 2026 – May 2026</time>
+</span>
+
+- Built a full-stack C2C e-commerce marketplace with transactions and reviews using Next.js, NestJS, and PostgreSQL.
+- Implemented real-time messaging and notifications using **WebSockets**.
+
+### [MiaGo](https://github.com/andrianllmm/miago)
+
+<span class="text-muted-foreground">
+    <time datetime="Mar 2026 – May 2026">Mar 2026 – May 2026</time>
+</span>
+
+- Built a full-stack food delivery platform using React, Express, TypeScript, and PostgreSQL.
+- Designed an **RBAC** system for customers, riders, and vendors with structured order and delivery lifecycle management.
+
 ### [renux](https://github.com/andrianllmm/renux)
 
 <span class="text-muted-foreground">
@@ -131,6 +149,6 @@ Developing the organization's website using modern web technologies, streamlinin
 
 ## Skills
 
-- Tools: TypeScript, React, Next.js, React Native, Expo, Astro, TailwindCSS, Python, Django, FastAPI, Supabase, Pandas, TensorFlow, PyTorch
+- Tools: TypeScript, React, Next.js, Express.js, NestJS, React Native, Expo, Astro, TailwindCSS, Python, Django, FastAPI, Supabase, PostgreSQL, Pandas, TensorFlow, PyTorch
 - Industry Knowledge: Web development and design, machine learning, natural language processing, data analysis
 - Languages: English (Professional working proficiency), Tagalog (Professional working proficiency)
