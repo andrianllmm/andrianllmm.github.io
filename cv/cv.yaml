@@ -8,9 +8,14 @@ cv:
       username: andrian-maagma
     - network: GitHub
       username: andrianllmm
+
   sections:
     Summary:
-      - "A Computer Science student who builds full-stack apps with machine learning. I aim to create tools that people actually use and find useful. I also value accessible software and contribute to open-source whenever I can."
+      - |
+        A Computer Science student who builds full-stack apps with machine learning.
+        I aim to create tools that people actually use and find useful.
+        I also value accessible software and contribute to open-source whenever I can.
+
     education:
       - institution: University of the Philippines Visayas
         area: Computer Science
@@ -59,6 +64,7 @@ cv:
         highlights:
           - "Led a team of five to build a **mobile app** with real-time WebRTC video processing using **computer vision**."
           - "Won **champion** at the [TrackTech Hackathon](https://github.com/TrackTech-Hackathon) 2026 - CPU CSS, outperforming 7 teams."
+
       - name: "[Project HERMES](https://github.com/popcorn-prophets/project-hermes)"
         date:
         start_date: 2026-03
@@ -68,6 +74,7 @@ cv:
         highlights:
           - "Built an AI **chatbot** to automate incident reporting and information dissemination."
           - "Integrated with Messenger and Telegram APIs."
+
       - name: "[Iskommerce](https://github.com/andrianllmm/iskommerce)"
         date:
         start_date: 2026-03
@@ -77,6 +84,7 @@ cv:
         highlights:
           - "Built a full-stack C2C e-commerce marketplace with transactions and reviews using Next.js, NestJS, and PostgreSQL."
           - "Implemented real-time messaging and notifications using **WebSockets**."
+
       - name: "[MiaGo](https://github.com/andrianllmm/miago)"
         date:
         start_date: 2026-03
@@ -86,6 +94,7 @@ cv:
         highlights:
           - "Built a full-stack food delivery platform using React, Express, TypeScript, and PostgreSQL."
           - "Designed an **RBAC** system for customers, riders, and vendors with structured order and delivery lifecycle management."
+
       - name: "[renux](https://github.com/andrianllmm/renux)"
         date:
         start_date: 2025
@@ -131,10 +140,13 @@ cv:
     skills:
       - label: Tools
         details: "TypeScript, React, Next.js, Express.js, NestJS, React Native, Expo, Astro, TailwindCSS, Python, Django, FastAPI, Supabase, PostgreSQL, Pandas, TensorFlow, PyTorch"
+
       - label: Industry Knowledge
         details: "Web development and design, machine learning, natural language processing, data analysis"
+
       - label: Languages
         details: "English (Professional working proficiency), Tagalog (Professional working proficiency)"
+
 
 design:
   theme: classic
@@ -240,6 +252,7 @@ design:
         AUTHORS
         JOURNAL
       date_and_location_column_template: DATE
+
 locale:
   language: en
   phone_number_format: international
@@ -278,6 +291,7 @@ locale:
     - October
     - November
     - December
+
 rendercv_settings:
   date: "2025-12-31"
   render_command:

@@ -14,7 +14,10 @@
 
 ## Summary
 
-A Computer Science student who builds full-stack apps with machine learning. I aim to create tools that people actually use and find useful. I also value accessible software and contribute to open-source whenever I can.
+A Computer Science student who builds full-stack apps with machine learning.
+I aim to create tools that people actually use and find useful.
+I also value accessible software and contribute to open-source whenever I can.
+
 
 ## Education
 
