@@ -293,7 +293,7 @@ locale:
     - December
 
 rendercv_settings:
-  date: "2025-12-31"
+  date: "2026-06-01"
   render_command:
     output_folder_name: output
     pdf_path: ../public/cv.pdf
