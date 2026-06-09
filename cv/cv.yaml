@@ -30,6 +30,14 @@ cv:
 
     experience:
 
+      - company: UP Data Science Society
+        position: Web Developer (Branding & Creative)
+        start_date: 2026-01
+        summary: "Contributed to web development and data-driven creative initiatives for the organization."
+        highlights:
+          - "Supported early-stage development of organization website."
+          - "Developed a Spotify Wrapped-inspired data visualization project featured on official organization social media."
+
       - company: Pagbutlak — Student Publication, College of Arts and Sciences
         position: Lead Web Developer
         start_date: 2025-09
@@ -37,14 +45,6 @@ cv:
         highlights:
           - "Designed system architecture and implemented CMS, authentication, user roles, and media uploads."
           - "Established content migration strategy and editorial workflows to ensure smooth transition from the legacy site."
-
-      - company: UP Data Science Society
-        position: Branding and Creative Fellow
-        start_date: 2026-01
-        summary: "Contributed to web development and data-driven creative initiatives for the organization."
-        highlights:
-          - "Supported early-stage development of organization website."
-          - "Developed a Spotify Wrapped-inspired data visualization project featured on official organization social media."
 
       - company: Komsai.Org — Computer Science Student Organization
         position: Web Developer

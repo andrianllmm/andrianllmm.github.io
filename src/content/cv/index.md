@@ -37,6 +37,19 @@ Experience includes full-stack web and mobile applications, real-time systems, a
 
 ## Experience
 
+### Web Developer (Branding & Creative), UP Data Science Society
+
+<span class="text-muted-foreground">
+    <time datetime="Jan 2026 – present">Jan 2026 – present</time>
+</span>
+
+<p>
+Contributed to web development and data-driven creative initiatives for the organization.
+</p>
+
+- Supported early-stage development of organization website.
+- Developed a Spotify Wrapped-inspired data visualization project featured on official organization social media.
+
 ### Lead Web Developer, Pagbutlak — Student Publication, College of Arts and Sciences
 
 <span class="text-muted-foreground">
@@ -49,19 +62,6 @@ Leading development of a publication platform replacing a legacy WordPress syste
 
 - Designed system architecture and implemented CMS, authentication, user roles, and media uploads.
 - Established content migration strategy and editorial workflows to ensure smooth transition from the legacy site.
-
-### Branding and Creative Fellow, UP Data Science Society
-
-<span class="text-muted-foreground">
-    <time datetime="Jan 2026 – present">Jan 2026 – present</time>
-</span>
-
-<p>
-Contributed to web development and data-driven creative initiatives for the organization.
-</p>
-
-- Supported early-stage development of organization website.
-- Developed a Spotify Wrapped-inspired data visualization project featured on official organization social media.
 
 ### Web Developer, Komsai.Org — Computer Science Student Organization
 
