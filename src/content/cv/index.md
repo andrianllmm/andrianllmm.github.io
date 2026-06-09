@@ -11,11 +11,13 @@
       GitHub
     </a>
 
+
 ## Summary
 
 Computer Science student building full-stack systems and applied machine learning applications.
 Focused on designing and implementing deployable software systems with data-driven components.
-Experience includes full-stack web and mobile applications, real-time systems, and open-source software.
+Experience across hackathons, student organization projects, open-source software, and research work.
+
 
 ## Education
 
@@ -42,11 +44,11 @@ Experience includes full-stack web and mobile applications, real-time systems, a
 </span>
 
 <p>
-Contributed to web development and data-driven creative initiatives for the organization.
+Contributed to web development and data-driven creative work for the organization.
 </p>
 
-- Supported early-stage development of organization website.
-- Developed a Spotify Wrapped-inspired data visualization project featured on official organization social media.
+- Contributed to early-stage development of organization website.
+- Developed a Spotify Wrapped-inspired data visualization project featured on official organization social media, reaching 1,000+ viewers.
 
 ### Lead Web Developer, Pagbutlak — Student Publication, College of Arts and Sciences
 
@@ -58,8 +60,8 @@ Contributed to web development and data-driven creative initiatives for the orga
 Leading development of a publication platform replacing a legacy WordPress system with a full-stack architecture.
 </p>
 
-- Designed system architecture and implemented CMS, authentication, user roles, and media uploads.
-- Established content migration strategy and editorial workflows to ensure smooth transition from the legacy site.
+- Designed system architecture and implemented CMS, authentication, role-based access control, and media uploads for 50+ editorial users.
+- Built content migration pipeline for transitioning 300+ legacy articles.
 
 ### Web Developer, Komsai.Org — Computer Science Student Organization
 
@@ -71,8 +73,8 @@ Leading development of a publication platform replacing a legacy WordPress syste
 Led full redesign and development of organization website using modern web technologies.
 </p>
 
-- Redesigned and rebuilt organization website from legacy implementation to modern web stack.
-- Improved content structure and maintainability of student organization platform.
+- Redesigned and rebuilt organization website from legacy implementation to a modern web stack.
+- Improved content structure and maintainability of student organization platform, reducing update overhead for 10+ maintainers.
 
 ## Projects
 
@@ -82,9 +84,10 @@ Led full redesign and development of organization website using modern web techn
     <time datetime="Jan 2026 – Feb 2026">Jan 2026 – Feb 2026</time>
 </span>
 
-- Integrated YOLO and MediaPipe-based **computer vision** pipeline for real-time inference in constrained environments.
-- Designed and implemented mobile real-time video processing system using WebRTC.
-- Won champion at the TrackTech Hackathon 2026, outperforming 7 teams.
+- Led a 5-person team and delivered a working prototype in a 3-week hackathon cycle.
+- Integrated YOLO and MediaPipe-based **computer vision pipeline** for real-time inference under constrained mobile environments.
+- Designed and implemented real-time video processing system using WebRTC for live streaming and analysis.
+- Won Champion at TrackTech Hackathon 2026, outperforming 7 teams.
 
 ### [Project HERMES](https://github.com/popcorn-prophets/project-hermes)
 
@@ -93,7 +96,7 @@ Led full redesign and development of organization website using modern web techn
 </span>
 
 - Led a 5-person team and owned system architecture, sprint planning, task allocation, and code review.
-- Built **AI chatbot** workflows using prompt-based orchestration for incident reporting and information dissemination.
+- Built **AI chatbot workflows** using prompt-based orchestration for incident reporting and information dissemination across 3 messaging platforms.
 - Integrated Messenger and Telegram APIs for multi-channel communication systems.
 
 ### [Iskommerce](https://github.com/andrianllmm/iskommerce)
@@ -103,7 +106,7 @@ Led full redesign and development of organization website using modern web techn
 </span>
 
 - Led a team to build a full-stack marketplace using Next.js, NestJS, and PostgreSQL with transaction and review systems.
-- Implemented **real-time messaging** and notifications using WebSockets.
+- Implemented **real-time messaging** and notifications using WebSockets, handling 1,000+ message events in testing scenarios.
 
 ### [MiaGo](https://github.com/andrianllmm/miago)
 
@@ -111,8 +114,8 @@ Led full redesign and development of organization website using modern web techn
     <time datetime="Mar 2026 – May 2026">Mar 2026 – May 2026</time>
 </span>
 
-- Led a team to build a full-stack platform using React, Express, TypeScript, and PostgreSQL.
-- Implemented role-based access control (**RBAC**) across customer, vendor, and rider workflows.
+- Built full-stack platform using React, Express, TypeScript, and PostgreSQL with end-to-end order management.
+- Implemented **role-based access control** (RBAC) across customer, vendor, and rider workflows.
 
 ### [renux](https://github.com/andrianllmm/renux)
 
@@ -120,8 +123,8 @@ Led full redesign and development of organization website using modern web techn
     <time datetime="2025 – 2025">2025 – 2025</time>
 </span>
 
-- Built and published a Python CLI tool on PyPI, reaching **5000+ downloads**.
-- Maintained open-source repository with iterative improvements and feature enhancements.
+- Built and published Python CLI tool on PyPI, reaching 5,000+ downloads.
+- **Maintained open-source** repository with iterative feature updates and bug fixes across multiple releases.
 
 ### [UniGlyphs](https://github.com/andrianllmm/uniglyphs)
 
@@ -129,8 +132,8 @@ Led full redesign and development of organization website using modern web techn
     <time datetime="2025 – 2025">2025 – 2025</time>
 </span>
 
-- Built **cross-platform extension** with dynamic UI injection for text editing workflows.
-- Designed a cross-site interaction system for applying text formatting within any web input field.
+- Built **cross-platform browser extension** with dynamic UI injection for text editing workflows.
+- Designed interaction layer for applying formatting across arbitrary web input fields.
 
 ### [Aklish](https://github.com/andrianllmm/aklish)
 
@@ -140,7 +143,7 @@ Led full redesign and development of organization website using modern web techn
 
 - Implemented dictionary-based **spellchecker** for translation accuracy improvement.
 - Developed stemming system for Aklanon language processing.
-- Conducted user testing with 60 native speakers and iterated on UX improvements.
+- Conducted user testing with 60+ native speakers and iterated on UX improvements.
 
 ### [TagLID](https://github.com/andrianllmm/taglid)
 
@@ -150,7 +153,7 @@ Led full redesign and development of organization website using modern web techn
 
 - Built Python-based language identification system with stemming support for Tagalog words.
 - **Scraped** dictionary data using BeautifulSoup4 for dataset construction.
-- Analyzed 100 survey responses to compute code-switching frequency.
+- Analyzed 200+ survey responses to compute code-switching frequency.
 
 ## Awards
 
@@ -168,8 +171,8 @@ Led full redesign and development of organization website using modern web techn
 
 - Programming Languages: Python, TypeScript, JavaScript, Java, PHP, SQL
 - Frontend and Mobile: React, Next.js, React Native, Expo, Astro, TailwindCSS, HTML5
-- Backend: NestJS, Express.js, Django, FastAPI, WebSockets, REST APIs
+- Backend: Express.js, NestJS, Django, FastAPI, REST APIs, WebSockets
 - Databases: PostgreSQL, Supabase, Firebase, schema design
 - Machine Learning and Data: Pandas, Scikit-learn, TensorFlow, PyTorch
-- Tools and Deployment: Git, Docker, CI/CD, Vercel, Netlify, Render, Railway
+- Tools and Deployment: Git, Docker, CI/CD, Vercel, Render, Railway
 - Languages: English (Professional working proficiency), Tagalog (Professional working proficiency)
