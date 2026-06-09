@@ -137,10 +137,10 @@ cv:
     skills:
 
       - label: Programming Languages
-        details: "Python, TypeScript, JavaScript, Java, SQL"
+        details: "Python, TypeScript, JavaScript, Java, PHP, SQL"
 
       - label: Frontend and Mobile
-        details: "React, Next.js, React Native, Expo, Astro, TailwindCSS"
+        details: "React, Next.js, React Native, Expo, Astro, TailwindCSS, HTML5"
 
       - label: Backend
         details: "NestJS, Express.js, Django, FastAPI, WebSockets, REST APIs"

@@ -11,13 +11,11 @@
       GitHub
     </a>
 
-
 ## Summary
 
 Computer Science student building full-stack systems and applied machine learning applications.
 Focused on designing and implementing deployable software systems with data-driven components.
 Experience includes full-stack web and mobile applications, real-time systems, and open-source software.
-
 
 ## Education
 
@@ -168,8 +166,8 @@ Led full redesign and development of organization website using modern web techn
 
 ## Skills
 
-- Programming Languages: Python, TypeScript, JavaScript, Java, SQL
-- Frontend and Mobile: React, Next.js, React Native, Expo, Astro, TailwindCSS
+- Programming Languages: Python, TypeScript, JavaScript, Java, PHP, SQL
+- Frontend and Mobile: React, Next.js, React Native, Expo, Astro, TailwindCSS, HTML5
 - Backend: NestJS, Express.js, Django, FastAPI, WebSockets, REST APIs
 - Databases: PostgreSQL, Supabase, Firebase, schema design
 - Machine Learning and Data: Pandas, Scikit-learn, TensorFlow, PyTorch
