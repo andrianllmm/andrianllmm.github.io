@@ -179,6 +179,9 @@ design:
   links:
     underline: false
     use_external_link_icon: true
+  header:
+    name_font_size: 24pt
+    horizontal_space_between_connections: 0.25cm
 
 locale:
   language: en
