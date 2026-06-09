@@ -10,6 +10,10 @@ import partytown from "@astrojs/partytown";
 // https://astro.build/config
 export default defineConfig({
   site: "https://andrianllmm.github.io",
+  redirects: {
+    "/resume": "/cv",
+    "/resume.pdf": "/cv.pdf",
+  },
   integrations: [
     sitemap(),
     mdx(),
