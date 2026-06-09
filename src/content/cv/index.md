@@ -14,9 +14,9 @@
 
 ## Summary
 
-A Computer Science student who builds full-stack apps with machine learning.
-I aim to create tools that people actually use and find useful.
-I also value accessible software and contribute to open-source whenever I can.
+Computer Science student building full-stack systems and applied machine learning applications.
+Focused on designing and implementing deployable software systems with data-driven components.
+Interested in building practical tools and contributing to open-source software.
 
 
 ## Education
@@ -25,29 +25,29 @@ I also value accessible software and contribute to open-source whenever I can.
 
 <span class="text-muted-foreground">
     <time datetime="Aug 2024 – present">Aug 2024 – present</time>
- •     <address style="display: inline;" class="text-muted-foreground">Miagao, Iloilo, Philippines</address>
+ •     <address style="display: inline;" class="text-muted-foreground">Iloilo, Philippines</address>
 </span>
 
 <p>
 
 </p>
 
-- Current Cumulative GWA: 1.15 (President's Lister)
-- Relevant Coursework: Web Programming, Database Systems
+- Cumulative GWA: 1.15 (President's Lister)
+- Relevant Coursework: Software Engineering, Web Programming, Database Systems
 
 ## Experience
 
-### Lead Web Developer, Pagbutlak — Student Publication of College of Arts and Sciences
+### Lead Web Developer, Pagbutlak — Student Publication, College of Arts and Sciences
 
 <span class="text-muted-foreground">
     <time datetime="Sept 2025 – present">Sept 2025 – present</time>
 </span>
 
 <p>
-Leading the development of a new publication website to replace a legacy WordPress platform with a modern system.
+Leading development of a publication platform replacing a legacy WordPress system with a full-stack architecture.
 </p>
 
-- Designed the project architecture and tech stack with Next.js, PayloadCMS, and TailwindCSS.
+- Designed system architecture and implemented CMS, authentication, user roles, and media uploads.
 - Established content migration strategy and editorial workflows to ensure smooth transition from the legacy site.
 
 ### Branding and Creative Fellow, UP Data Science Society
@@ -57,101 +57,121 @@ Leading the development of a new publication website to replace a legacy WordPre
 </span>
 
 <p>
-Supporting the society's branding and creative initiatives, with a focus on website development.
+Contributed to web development and data-driven creative initiatives for the organization.
 </p>
 
-- Contributed in the early-stage development of the organization's website.
-- Built a Spotify Wrapped–inspired data science website that was featured by the organization.
+- Supported early-stage development of organization website.
+- Developed a Spotify Wrapped-inspired data visualization project featured on official organization social media.
 
-### Web Developer, Komsai.Org — Organization for Computer Science Students
+### Web Developer, Komsai.Org — Computer Science Student Organization
 
 <span class="text-muted-foreground">
     <time datetime="Sept 2024 – present">Sept 2024 – present</time>
 </span>
 
 <p>
-Developing the organization's website using modern web technologies, streamlining content updates and improving the experience for student members.
+Led full redesign and development of organization website using modern web technologies.
 </p>
 
+- Redesigned and rebuilt organization website from legacy implementation to modern web stack.
+- Improved content structure and maintainability of student organization platform.
 
 ## Projects
 
-### [Manobela](https://github.com/popcorn-prophets/manobela)
+### Manobela
 
 <span class="text-muted-foreground">
     <time datetime="Jan 2026 – Feb 2026">Jan 2026 – Feb 2026</time>
 </span>
 
-- Led a team of five to build a **mobile app** with real-time WebRTC video processing using **computer vision**.
-- Won **champion** at the [TrackTech Hackathon](https://github.com/TrackTech-Hackathon) 2026 - CPU CSS, outperforming 7 teams.
+- Integrated YOLO and MediaPipe-based **computer vision** pipeline for real-time inference in constrained environments.
+- Designed and implemented mobile real-time video processing system using WebRTC.
+- Won champion at the TrackTech Hackathon 2026, outperforming 7 teams.
 
-### [Project HERMES](https://github.com/popcorn-prophets/project-hermes)
+### Project HERMES
 
 <span class="text-muted-foreground">
     <time datetime="Mar 2026 – Apr 2026">Mar 2026 – Apr 2026</time>
 </span>
 
-- Built an AI **chatbot** to automate incident reporting and information dissemination.
-- Integrated with Messenger and Telegram APIs.
+- Led a 5-person team and owned system architecture, sprint planning, task allocation, and code review.
+- Built **AI chatbot** workflows using prompt-based orchestration for incident reporting and information dissemination.
+- Integrated Messenger and Telegram APIs for multi-channel communication systems.
 
-### [Iskommerce](https://github.com/andrianllmm/iskommerce)
-
-<span class="text-muted-foreground">
-    <time datetime="Mar 2026 – May 2026">Mar 2026 – May 2026</time>
-</span>
-
-- Built a full-stack C2C e-commerce marketplace with transactions and reviews using Next.js, NestJS, and PostgreSQL.
-- Implemented real-time messaging and notifications using **WebSockets**.
-
-### [MiaGo](https://github.com/andrianllmm/miago)
+### Iskommerce
 
 <span class="text-muted-foreground">
     <time datetime="Mar 2026 – May 2026">Mar 2026 – May 2026</time>
 </span>
 
-- Built a full-stack food delivery platform using React, Express, TypeScript, and PostgreSQL.
-- Designed an **RBAC** system for customers, riders, and vendors with structured order and delivery lifecycle management.
+- Led a team to build a full-stack marketplace using Next.js, NestJS, and PostgreSQL with transaction and review systems.
+- Implemented **real-time messaging** and notifications using WebSockets.
 
-### [renux](https://github.com/andrianllmm/renux)
+### MiaGo
+
+<span class="text-muted-foreground">
+    <time datetime="Mar 2026 – May 2026">Mar 2026 – May 2026</time>
+</span>
+
+- Led a team to build a full-stack platform using React, Express, TypeScript, and PostgreSQL.
+- Implemented role-based access control (**RBAC**) across customer, vendor, and rider workflows.
+
+### renux
 
 <span class="text-muted-foreground">
     <time datetime="2025 – 2025">2025 – 2025</time>
 </span>
 
-- Packaged as an installable Python TUI application, accessible to users on all platforms.
-- Achieved **3,000+ downloads** on [PyPI](https://pypi.org/project/renux/) and 30+ stars on [GitHub](https://github.com/andrianllmm/renux/stargazers).
+- Built and published a Python CLI tool on PyPI, reaching **5000+ downloads**.
+- Maintained open-source repository with iterative improvements and feature enhancements.
 
-### [UniGlyphs](https://github.com/andrianllmm/uniglyphs)
+### UniGlyphs
 
 <span class="text-muted-foreground">
     <time datetime="2025 – 2025">2025 – 2025</time>
 </span>
 
-- Developed a flexible **browser extension** supporting complex interactions on any website input.
-- Gained 20+ users on [Chrome Web Store](https://chrome.google.com/webstore/detail/uniglyphs/hcnbmicjiggmklnmkpljeomkmagigkbc).
+- Built **cross-platform extension** with dynamic UI injection for text editing workflows.
+- Designed a cross-site interaction system for applying text formatting within any web input field.
 
-### [Aklish](https://github.com/andrianllmm/aklish)
+### Aklish
 
 <span class="text-muted-foreground">
     <time datetime="2024 – 2025">2024 – 2025</time>
 </span>
 
-- Implemented a dictionary-based Aklanon **spellchecker**, improving translation accuracy.
-- Developed an Aklanon word **stemming** library, enhancing spell-check precision.
-- Conducted user testing with 30 native speakers and iteratively improved UX, resulting in increased usability.
+- Implemented dictionary-based **spellchecker** for translation accuracy improvement.
+- Developed stemming system for Aklanon language processing.
+- Conducted user testing with 60 native speakers and iterated on UX improvements.
 
-### [TagLID](https://github.com/andrianllmm/taglid)
+### TagLID
 
 <span class="text-muted-foreground">
     <time datetime="2024 – 2024">2024 – 2024</time>
 </span>
 
-- Created a **Python library** for Tagalog word stemming to improve Tagalog language detection for inflected words.
-- **Scraped** from Tagalog and English dictionaries using BeautifulSoup4 to generate frequency-based lookup tables.
-- Computed code-switching frequency from 57 survey responses to automate data analysis for a language research study.
+- Built Python-based language identification system with stemming support for Tagalog words.
+- **Scraped** dictionary data using BeautifulSoup4 for dataset construction.
+- Analyzed 100 survey responses to compute code-switching frequency.
+
+## Awards
+
+### Hack4Gov National CTF 2025 (DICT & CERT-PH)
+
+<span class="text-muted-foreground">
+    <time datetime="Oct 2025">Oct 2025</time>
+ •     <address style="display: inline;" class="text-muted-foreground">Region VI, Philippines</address>
+</span>
+
+- Competed across web exploitation, OSINT, digital forensics, cryptography, reverse engineering, and network security challenges.
+- Solved challenges involving modern web application vulnerabilities, including a Next.js middleware authorization bypass scenario.
 
 ## Skills
 
-- Tools: TypeScript, React, Next.js, Express.js, NestJS, React Native, Expo, Astro, TailwindCSS, Python, Django, FastAPI, Supabase, PostgreSQL, Pandas, TensorFlow, PyTorch
-- Industry Knowledge: Web development and design, machine learning, natural language processing, data analysis
+- Programming Languages: Python, TypeScript, JavaScript, Java, SQL
+- Frontend and Mobile: React, Next.js, React Native, Expo, Astro, TailwindCSS
+- Backend: NestJS, Express.js, Django, FastAPI, WebSockets, REST APIs
+- Databases: PostgreSQL, Supabase, Firebase, schema design
+- Machine Learning and Data: Pandas, Scikit-learn, TensorFlow, PyTorch
+- Tools and Deployment: Git, Docker, CI/CD, Vercel, Netlify, Render, Railway
 - Languages: English (Professional working proficiency), Tagalog (Professional working proficiency)
