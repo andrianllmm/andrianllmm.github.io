@@ -16,7 +16,7 @@
 
 Computer Science student building full-stack systems and applied machine learning applications.
 Focused on designing and implementing deployable software systems with data-driven components.
-Interested in building practical tools and contributing to open-source software.
+Experience includes full-stack web and mobile applications, real-time systems, and open-source software.
 
 
 ## Education
