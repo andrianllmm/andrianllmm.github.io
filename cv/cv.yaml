@@ -56,8 +56,7 @@ cv:
 
     projects:
 
-      - name: Manobela
-        url: https://github.com/popcorn-prophets/manobela
+      - name: "[Manobela](https://github.com/popcorn-prophets/manobela)"
         start_date: 2026-01
         end_date: 2026-02
         summary: "Driver monitoring mobile app using real-time computer vision for in-vehicle safety."
@@ -66,8 +65,7 @@ cv:
           - "Designed and implemented mobile real-time video processing system using WebRTC."
           - "Won champion at the TrackTech Hackathon 2026, outperforming 7 teams."
 
-      - name: Project HERMES
-        url: https://github.com/popcorn-prophets/project-hermes
+      - name: "[Project HERMES](https://github.com/popcorn-prophets/project-hermes)"
         start_date: 2026-03
         end_date: 2026-04
         summary: "Disaster response communication system using AI-assisted chat workflows and multi-platform messaging integration."
@@ -76,8 +74,7 @@ cv:
           - "Built **AI chatbot** workflows using prompt-based orchestration for incident reporting and information dissemination."
           - "Integrated Messenger and Telegram APIs for multi-channel communication systems."
 
-      - name: Iskommerce
-        url: https://github.com/andrianllmm/iskommerce
+      - name: "[Iskommerce](https://github.com/andrianllmm/iskommerce)"
         start_date: 2026-03
         end_date: 2026-05
         summary: "University-based C2C marketplace platform modeling informal student trading behavior in a structured system."
@@ -85,8 +82,7 @@ cv:
           - "Led a team to build a full-stack marketplace using Next.js, NestJS, and PostgreSQL with transaction and review systems."
           - "Implemented **real-time messaging** and notifications using WebSockets."
 
-      - name: MiaGo
-        url: https://github.com/andrianllmm/miago
+      - name: "[MiaGo](https://github.com/andrianllmm/miago)"
         start_date: 2026-03
         end_date: 2026-05
         summary: "Community-based food delivery system connecting customers, vendors, and riders through structured workflows."
@@ -94,8 +90,7 @@ cv:
           - "Led a team to build a full-stack platform using React, Express, TypeScript, and PostgreSQL."
           - "Implemented role-based access control (**RBAC**) across customer, vendor, and rider workflows."
 
-      - name: renux
-        url: https://github.com/andrianllmm/renux
+      - name: "[renux](https://github.com/andrianllmm/renux)"
         start_date: 2025
         end_date: 2025
         summary: "Terminal-based bulk file renaming tool distributed as a Python CLI application."
@@ -103,8 +98,7 @@ cv:
           - "Built and published a Python CLI tool on PyPI, reaching **5000+ downloads**."
           - "Maintained open-source repository with iterative improvements and feature enhancements."
 
-      - name: UniGlyphs
-        url: https://github.com/andrianllmm/uniglyphs
+      - name: "[UniGlyphs](https://github.com/andrianllmm/uniglyphs)"
         start_date: 2025
         end_date: 2025
         summary: "Browser extension for inline text formatting across web applications."
@@ -112,8 +106,7 @@ cv:
           - "Built **cross-platform extension** with dynamic UI injection for text editing workflows."
           - "Designed a cross-site interaction system for applying text formatting within any web input field."
 
-      - name: Aklish
-        url: https://github.com/andrianllmm/aklish
+      - name: "[Aklish](https://github.com/andrianllmm/aklish)"
         start_date: 2024
         end_date: 2025
         summary: "Crowdsourced Aklanon-English translation platform with language processing tools."
@@ -122,8 +115,7 @@ cv:
           - "Developed stemming system for Aklanon language processing."
           - "Conducted user testing with 60 native speakers and iterated on UX improvements."
 
-      - name: TagLID
-        url: https://github.com/andrianllmm/taglid
+      - name: "[TagLID](https://github.com/andrianllmm/taglid)"
         start_date: 2024
         end_date: 2024
         summary: "Word-level language identification tool for Tagalog-English code-switched text."
@@ -176,6 +168,8 @@ design:
     right_margin: 1cm
     show_page_numbering: false
     show_last_updated_date: false
+  colors:
+    links: rgb(0, 0, 0)
   links:
     underline: false
     use_external_link_icon: true

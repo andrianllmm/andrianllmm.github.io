@@ -78,7 +78,7 @@ Led full redesign and development of organization website using modern web techn
 
 ## Projects
 
-### Manobela
+### [Manobela](https://github.com/popcorn-prophets/manobela)
 
 <span class="text-muted-foreground">
     <time datetime="Jan 2026 – Feb 2026">Jan 2026 – Feb 2026</time>
@@ -88,7 +88,7 @@ Led full redesign and development of organization website using modern web techn
 - Designed and implemented mobile real-time video processing system using WebRTC.
 - Won champion at the TrackTech Hackathon 2026, outperforming 7 teams.
 
-### Project HERMES
+### [Project HERMES](https://github.com/popcorn-prophets/project-hermes)
 
 <span class="text-muted-foreground">
     <time datetime="Mar 2026 – Apr 2026">Mar 2026 – Apr 2026</time>
@@ -98,7 +98,7 @@ Led full redesign and development of organization website using modern web techn
 - Built **AI chatbot** workflows using prompt-based orchestration for incident reporting and information dissemination.
 - Integrated Messenger and Telegram APIs for multi-channel communication systems.
 
-### Iskommerce
+### [Iskommerce](https://github.com/andrianllmm/iskommerce)
 
 <span class="text-muted-foreground">
     <time datetime="Mar 2026 – May 2026">Mar 2026 – May 2026</time>
@@ -107,7 +107,7 @@ Led full redesign and development of organization website using modern web techn
 - Led a team to build a full-stack marketplace using Next.js, NestJS, and PostgreSQL with transaction and review systems.
 - Implemented **real-time messaging** and notifications using WebSockets.
 
-### MiaGo
+### [MiaGo](https://github.com/andrianllmm/miago)
 
 <span class="text-muted-foreground">
     <time datetime="Mar 2026 – May 2026">Mar 2026 – May 2026</time>
@@ -116,7 +116,7 @@ Led full redesign and development of organization website using modern web techn
 - Led a team to build a full-stack platform using React, Express, TypeScript, and PostgreSQL.
 - Implemented role-based access control (**RBAC**) across customer, vendor, and rider workflows.
 
-### renux
+### [renux](https://github.com/andrianllmm/renux)
 
 <span class="text-muted-foreground">
     <time datetime="2025 – 2025">2025 – 2025</time>
@@ -125,7 +125,7 @@ Led full redesign and development of organization website using modern web techn
 - Built and published a Python CLI tool on PyPI, reaching **5000+ downloads**.
 - Maintained open-source repository with iterative improvements and feature enhancements.
 
-### UniGlyphs
+### [UniGlyphs](https://github.com/andrianllmm/uniglyphs)
 
 <span class="text-muted-foreground">
     <time datetime="2025 – 2025">2025 – 2025</time>
@@ -134,7 +134,7 @@ Led full redesign and development of organization website using modern web techn
 - Built **cross-platform extension** with dynamic UI injection for text editing workflows.
 - Designed a cross-site interaction system for applying text formatting within any web input field.
 
-### Aklish
+### [Aklish](https://github.com/andrianllmm/aklish)
 
 <span class="text-muted-foreground">
     <time datetime="2024 – 2025">2024 – 2025</time>
@@ -144,7 +144,7 @@ Led full redesign and development of organization website using modern web techn
 - Developed stemming system for Aklanon language processing.
 - Conducted user testing with 60 native speakers and iterated on UX improvements.
 
-### TagLID
+### [TagLID](https://github.com/andrianllmm/taglid)
 
 <span class="text-muted-foreground">
     <time datetime="2024 – 2024">2024 – 2024</time>
