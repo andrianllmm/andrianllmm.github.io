@@ -157,6 +157,16 @@ Led full redesign and development of organization website using modern web techn
 
 ## Awards
 
+### Quantum Computing and Cybersecurity Hackathon 2026 (QCSP)
+
+<span class="text-muted-foreground">
+    <time datetime="June 2026">June 2026</time>
+ •     <address style="display: inline;" class="text-muted-foreground">Visayas, Philippines</address>
+</span>
+
+- Competed in OSINT, Digital Forensics & Incident Response (DFIR), Cryptography, and Classical-Quantum challenge categories.
+- Specialized in solving Classical-Quantum challenges involving quantum gates, circuit behavior, and quantum information concepts.
+
 ### Hack4Gov National CTF 2025 (DICT & CERT-PH)
 
 <span class="text-muted-foreground">
