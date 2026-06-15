@@ -127,6 +127,14 @@ cv:
 
     awards:
 
+      - name: Quantum Computing and Cybersecurity Hackathon 2026 (QCSP)
+        date: 2026-06
+        location: Visayas, Philippines
+        summary: "Won 1st Place in the Philippines' first quantum-themed Capture-the-Flag (CTF) competition."
+        highlights:
+          - "Competed in OSINT, Digital Forensics & Incident Response (DFIR), Cryptography, and Classical-Quantum challenge categories."
+          - "Specialized in solving Classical-Quantum challenges involving quantum gates, circuit behavior, and quantum information concepts."
+
       - name: Hack4Gov National CTF 2025 (DICT & CERT-PH)
         date: 2025-10
         location: Region VI, Philippines
