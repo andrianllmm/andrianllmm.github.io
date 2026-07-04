@@ -30,9 +30,20 @@ cv:
 
     experience:
 
+      - company: MorpheLabs
+        position: AI Automation Engineer
+        start_date: 2026-06
+        summary: "Developing agentic AI and workflow automation solutions for real-world projects."
+
+      - company: FlyRank AI
+        position: Backend AI Engineer
+        start_date: 2026-07
+        summary: "Building reliable AI backend systems with retrieval-augmented generation (RAG), structured outputs, agent workflows, and evaluation pipelines."
+
       - company: UP Data Science Society
         position: Web Developer (Branding & Creative)
         start_date: 2026-01
+        end_date: 2026-05
         summary: "Contributed to web development and data-driven creative work for the organization."
         highlights:
           - "Contributed to early-stage development of organization website."
@@ -41,6 +52,7 @@ cv:
       - company: Pagbutlak — Student Publication, College of Arts and Sciences
         position: Lead Web Developer
         start_date: 2025-09
+        end_date: 2026-05
         summary: "Leading development of a publication platform replacing a legacy WordPress system with a full-stack architecture."
         highlights:
           - "Designed system architecture and implemented CMS, authentication, role-based access control, and media uploads for 50+ editorial users."
@@ -49,6 +61,7 @@ cv:
       - company: Komsai.Org — Computer Science Student Organization
         position: Web Developer
         start_date: 2024-09
+        end_date: 2025-09
         summary: "Led full redesign and development of organization website using modern web technologies."
         highlights:
           - "Redesigned and rebuilt organization website from legacy implementation to a modern web stack."
