@@ -20,6 +20,15 @@ export const education: EducationItem[] = [
     url: "https://www.upv.edu.ph/",
   },
   {
+    title: "Data Analyst",
+    category: "Certification",
+    provider: "DataCamp",
+    startDate: "2026",
+    endDate: "2026",
+    url: "https://www.datacamp.com/completed/statement-of-accomplishment/track/e79a50d814f987fb416e9a5329e95787737e410a",
+    image: "/images/certificates/datacamp-data-analyst-in-python.png",
+  },
+  {
     title: "fast.ai: Practical Deep Learning for Coders",
     category: "Online Course",
     provider: "fast.ai",
