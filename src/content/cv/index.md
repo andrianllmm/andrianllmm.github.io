@@ -62,7 +62,7 @@ Building reliable AI backend systems with retrieval-augmented generation (RAG), 
 ### Web Developer (Branding & Creative), UP Data Science Society
 
 <span class="text-muted-foreground">
-    <time datetime="Jan 2026 – present">Jan 2026 – present</time>
+    <time datetime="Jan 2026 – May 2026">Jan 2026 – May 2026</time>
 </span>
 
 <p>
@@ -75,7 +75,7 @@ Contributed to web development and data-driven creative work for the organizatio
 ### Lead Web Developer, Pagbutlak — Student Publication, College of Arts and Sciences
 
 <span class="text-muted-foreground">
-    <time datetime="Sept 2025 – present">Sept 2025 – present</time>
+    <time datetime="Sept 2025 – May 2026">Sept 2025 – May 2026</time>
 </span>
 
 <p>
@@ -88,7 +88,7 @@ Leading development of a publication platform replacing a legacy WordPress syste
 ### Web Developer, Komsai.Org — Computer Science Student Organization
 
 <span class="text-muted-foreground">
-    <time datetime="Sept 2024 – present">Sept 2024 – present</time>
+    <time datetime="Sept 2024 – Sept 2025">Sept 2024 – Sept 2025</time>
 </span>
 
 <p>
