@@ -35,6 +35,11 @@ cv:
         start_date: 2026-06
         summary: "Developing agentic AI and workflow automation solutions for real-world projects."
 
+      - company: FlyRank AI
+        position: Backend AI Engineer
+        start_date: 2026-07
+        summary: "Building reliable AI backend systems with retrieval-augmented generation (RAG), structured outputs, agent workflows, and evaluation pipelines."
+
       - company: UP Data Science Society
         position: Web Developer (Branding & Creative)
         start_date: 2026-01

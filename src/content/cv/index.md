@@ -48,6 +48,17 @@ Developing agentic AI and workflow automation solutions for real-world projects.
 </p>
 
 
+### Backend AI Engineer, FlyRank AI
+
+<span class="text-muted-foreground">
+    <time datetime="July 2026 – present">July 2026 – present</time>
+</span>
+
+<p>
+Building reliable AI backend systems with retrieval-augmented generation (RAG), structured outputs, agent workflows, and evaluation pipelines.
+</p>
+
+
 ### Web Developer (Branding & Creative), UP Data Science Society
 
 <span class="text-muted-foreground">
