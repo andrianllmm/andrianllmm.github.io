@@ -30,6 +30,11 @@ cv:
 
     experience:
 
+      - company: MorpheLabs
+        position: AI Automation Engineer
+        start_date: 2026-06
+        summary: "Developing agentic AI and workflow automation solutions for real-world projects."
+
       - company: UP Data Science Society
         position: Web Developer (Branding & Creative)
         start_date: 2026-01

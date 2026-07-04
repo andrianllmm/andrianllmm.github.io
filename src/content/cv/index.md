@@ -37,6 +37,17 @@ Experience across hackathons, student organization projects, open-source softwar
 
 ## Experience
 
+### AI Automation Engineer, MorpheLabs
+
+<span class="text-muted-foreground">
+    <time datetime="June 2026 – present">June 2026 – present</time>
+</span>
+
+<p>
+Developing agentic AI and workflow automation solutions for real-world projects.
+</p>
+
+
 ### Web Developer (Branding & Creative), UP Data Science Society
 
 <span class="text-muted-foreground">
