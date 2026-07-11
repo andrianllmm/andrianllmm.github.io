@@ -86,12 +86,5 @@ export const skillGroups = {
 
   Databases: ["sqlite", "postgresql", "prisma", "supabase", "firebase"],
 
-  "DevOps & Automation": [
-    "n8n",
-    "git",
-    "docker",
-    "vercel",
-    "render",
-    "railway",
-  ],
+  Tools: ["n8n", "git", "docker", "vercel", "render", "railway"],
 } satisfies Record<string, readonly SkillKey[]>;
