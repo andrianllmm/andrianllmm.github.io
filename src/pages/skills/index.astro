@@ -22,6 +22,8 @@ const groupedSkills = new Set(Object.values(skillGroups).flat());
 const otherSkills = Object.keys(skillData).filter(
   (skill) => !groupedSkills.has(skill as SkillKey),
 ) as SkillKey[];
+
+const hasSkills = Object.keys(skillData).length > 0;
 ---
 
 <Layout title="Skills" description="List of skills used.">
@@ -34,28 +36,32 @@ const otherSkills = Object.keys(skillData).filter(
       <h1 class="animate font-semibold">Skills</h1>
 
       {
-        Object.entries(skillGroups).map(([groupName, groupSkills]) => (
-          <div class="space-y-4">
-            <h2 class="text-lg font-semibold">{groupName}</h2>
-            <div class="flex flex-wrap gap-3">
-              {sortSkills(groupSkills).map((skill) => (
-                <SkillBadge skill={skill} showNum />
-              ))}
-            </div>
-          </div>
-        ))
-      }
+        hasSkills ? (
+          <>
+            {Object.entries(skillGroups).map(([groupName, groupSkills]) => (
+              <div class="space-y-4">
+                <h2 class="text-lg font-semibold">{groupName}</h2>
+                <div class="flex flex-wrap gap-3">
+                  {sortSkills(groupSkills).map((skill) => (
+                    <SkillBadge skill={skill} showNum />
+                  ))}
+                </div>
+              </div>
+            ))}
 
-      {
-        otherSkills.length > 0 && (
-          <div class="space-y-4">
-            <h2 class="text-lg font-semibold">Other</h2>
-            <div class="flex flex-wrap gap-3">
-              {sortSkills(otherSkills).map((skill) => (
-                <SkillBadge skill={skill} showNum />
-              ))}
-            </div>
-          </div>
+            {otherSkills.length > 0 && (
+              <div class="space-y-4">
+                <h2 class="text-lg font-semibold">Other</h2>
+                <div class="flex flex-wrap gap-3">
+                  {sortSkills(otherSkills).map((skill) => (
+                    <SkillBadge skill={skill} showNum />
+                  ))}
+                </div>
+              </div>
+            )}
+          </>
+        ) : (
+          <p class="animate text-muted-foreground">No skills available.</p>
         )
       }
     </div>

@@ -64,9 +64,14 @@ const sortedProjects = projects
             ))}
           </ul>
         ) : (
-          <p class="animate text-muted">
-            No projects yet, probably still learning :)
-          </p>
+          <div class="my-4 flex flex-col items-center justify-center gap-2">
+            <p class="animate text-muted-foreground text-center text-4xl font-bold">
+              （￣～￣;）
+            </p>
+            <p class="animate text-muted-foreground text-center">
+              No projects yet, probably still learning...
+            </p>
+          </div>
         )
       }
     </div>
