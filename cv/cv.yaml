@@ -13,16 +13,15 @@ cv:
 
     Summary:
       - |
-        Computer Science student building full-stack systems and applied machine learning applications.
-        Focused on designing and implementing deployable software systems with data-driven components.
-        Experience across hackathons, student organization projects, open-source software, and research work.
+        Computer Science student with industry experience developing AI systems and full-stack applications,
+        alongside technical leadership across student organizations and award-winning hackathon teams.
+        Seeking AI/ML engineering roles focused on building production-ready intelligent systems.
 
     education:
       - institution: University of the Philippines Visayas
         area: Computer Science
         degree: BS
         start_date: 2024-08
-        end_date: present
         location: Iloilo, Philippines
         highlights:
           - "Cumulative GWA: 1.15 (President's Lister)"
@@ -33,152 +32,107 @@ cv:
       - company: MorpheLabs
         position: AI Automation Engineer
         start_date: 2026-06
-        summary: "Developing agentic AI and workflow automation solutions for real-world projects."
+        highlights:
+          - Building production AI agents using modern LLM orchestration frameworks for enterprise applications.
+          - Developing enterprise automation workflows with n8n, integrating AI services, APIs, and business systems.
 
       - company: FlyRank AI
         position: Backend AI Engineer
         start_date: 2026-07
-        summary: "Building reliable AI backend systems with retrieval-augmented generation (RAG), structured outputs, agent workflows, and evaluation pipelines."
+        highlights:
+          - "Building backend workflows with hybrid retrieval, structured LLM outputs, and RAG pipelines."
+          - "Designing and maintaining evaluation pipelines to assess retrieval quality and structured output correctness."
 
       - company: UP Data Science Society
         position: Web Developer (Branding & Creative)
         start_date: 2026-01
         end_date: 2026-05
-        summary: "Contributed to web development and data-driven creative work for the organization."
         highlights:
-          - "Contributed to early-stage development of organization website."
-          - "Developed a Spotify Wrapped-inspired data visualization project featured on official organization social media, reaching 1,000+ viewers."
+          - "Contributed to the planning and implementation of the organization's website during its initial development."
+          - "Developed a Spotify Wrapped-style data visualization website featured by the organization, reaching 1,000+ viewers."
 
       - company: Pagbutlak — Student Publication, College of Arts and Sciences
         position: Lead Web Developer
         start_date: 2025-09
         end_date: 2026-05
-        summary: "Leading development of a publication platform replacing a legacy WordPress system with a full-stack architecture."
         highlights:
           - "Designed system architecture and implemented CMS, authentication, role-based access control, and media uploads for 50+ editorial users."
-          - "Built content migration pipeline for transitioning 300+ legacy articles."
+          - "Built content migration pipeline for transitioning 300+ legacy articles from a WordPress system to a modern full-stack architecture."
 
       - company: Komsai.Org — Computer Science Student Organization
         position: Web Developer
         start_date: 2024-09
         end_date: 2025-09
-        summary: "Led full redesign and development of organization website using modern web technologies."
         highlights:
           - "Redesigned and rebuilt organization website from legacy implementation to a modern web stack."
-          - "Improved content structure and maintainability of student organization platform, reducing update overhead for 10+ maintainers."
+          - "Improved content structure and maintainability, reducing update overhead for 10+ maintainers."
 
     projects:
-
-      - name: "[Manobela](https://github.com/popcorn-prophets/manobela)"
-        start_date: 2026-01
-        end_date: 2026-02
-        summary: "Driver monitoring system using real-time computer vision for in-vehicle safety."
-        highlights:
-          - "Led a 5-person team and delivered a working prototype in a 3-week hackathon cycle."
-          - "Integrated YOLO and MediaPipe-based **computer vision pipeline** for real-time inference under constrained mobile environments."
-          - "Designed and implemented real-time video processing system using WebRTC for live streaming and analysis."
-          - "Won Champion at TrackTech Hackathon 2026, outperforming 7 teams."
-
-      - name: "[Project HERMES](https://github.com/popcorn-prophets/project-hermes)"
-        start_date: 2026-03
-        end_date: 2026-04
-        summary: "Disaster response communication system using AI-assisted chat workflows and multi-platform messaging integration."
-        highlights:
-          - "Led a 5-person team and owned system architecture, sprint planning, task allocation, and code review."
-          - "Built **AI chatbot workflows** using prompt-based orchestration for incident reporting and information dissemination across 3 messaging platforms."
-          - "Integrated Messenger and Telegram APIs for multi-channel communication systems."
 
       - name: "[Iskommerce](https://github.com/andrianllmm/iskommerce)"
         start_date: 2026-03
         end_date: 2026-05
         summary: "University-based C2C marketplace platform modeling informal student trading behavior in a structured system."
         highlights:
-          - "Led a team to build a full-stack marketplace using Next.js, NestJS, and PostgreSQL with transaction and review systems."
-          - "Implemented **real-time messaging** and notifications using WebSockets, handling 1,000+ message events in testing scenarios."
+          - "Led a team through a 3-month Agile development cycle to build a full-stack marketplace."
+          - "Implemented real-time messaging and notifications using WebSockets."
 
-      - name: "[MiaGo](https://github.com/andrianllmm/miago)"
+      - name: "[Project HERMES](https://github.com/popcorn-prophets/project-hermes)"
         start_date: 2026-03
-        end_date: 2026-05
-        summary: "Community-based food delivery system connecting customers, vendors, and riders through structured workflows."
+        end_date: 2026-04
+        summary: "Disaster response communication system using AI-assisted chat workflows and multi-platform messaging integration."
         highlights:
-          - "Built full-stack platform using React, Express, TypeScript, and PostgreSQL with end-to-end order management."
-          - "Implemented **role-based access control** (RBAC) across customer, vendor, and rider workflows."
+          - "Led a 5-person team, owning system architecture, sprint planning, task allocation, and code review."
+          - "Built AI chatbot workflows for incident reporting and information dissemination across 3 messaging platforms."
+          - "Integrated Messenger and Telegram APIs for multi-channel communication."
 
-      - name: "[renux](https://github.com/andrianllmm/renux)"
-        start_date: 2025
-        end_date: 2025
-        summary: "Terminal-based bulk file renaming tool distributed as a Python CLI application."
+      - name: "[Manobela](https://github.com/popcorn-prophets/manobela) (TrackTech Hackathon Winner)"
+        start_date: 2025-12
+        end_date: 2026-02
+        summary: "Driver monitoring system using real-time computer vision for in-vehicle safety."
         highlights:
-          - "Built and published Python CLI tool on PyPI, reaching 5,000+ downloads."
-          - "**Maintained open-source** repository with iterative feature updates and bug fixes across multiple releases."
-
-      - name: "[UniGlyphs](https://github.com/andrianllmm/uniglyphs)"
-        start_date: 2025
-        end_date: 2025
-        summary: "Browser extension for inline text formatting across web applications."
-        highlights:
-          - "Built **cross-platform browser extension** with dynamic UI injection for text editing workflows."
-          - "Designed interaction layer for applying formatting across arbitrary web input fields."
+          - "Led a 5-person team and delivered a deployed system in a 3-week sprint."
+          - "Integrated YOLO and MediaPipe-based computer vision pipeline under constrained mobile environments."
+          - "Designed real-time video processing system using WebRTC for live streaming and analysis."
 
       - name: "[Aklish](https://github.com/andrianllmm/aklish)"
-        start_date: 2024
-        end_date: 2025
-        summary: "Crowdsourced Aklanon-English translation platform with language processing tools."
+        start_date: 2025-01
+        end_date: 2025-07
+        summary: "Crowdsourced Aklanon-English translation platform with NLP tools for an underserved Philippine language."
         highlights:
-          - "Implemented dictionary-based **spellchecker** for translation accuracy improvement."
-          - "Developed stemming system for Aklanon language processing."
-          - "Conducted user testing with 60+ native speakers and iterated on UX improvements."
-
-      - name: "[TagLID](https://github.com/andrianllmm/taglid)"
-        start_date: 2024
-        end_date: 2024
-        summary: "Word-level language identification tool for Tagalog-English code-switched text."
-        highlights:
-          - "Built Python-based language identification system with stemming support for Tagalog words."
-          - "**Scraped** dictionary data using BeautifulSoup4 for dataset construction."
-          - "Analyzed 200+ survey responses to compute code-switching frequency."
+          - "Implemented dictionary-based spellchecker and stemming system for Aklanon language processing."
+          - "Conducted user testing with 100+ native speakers and iterated on UX improvements."
 
     awards:
 
       - name: Quantum Computing and Cybersecurity Hackathon 2026 (QCSP)
         date: 2026-06
-        location: Visayas, Philippines
-        summary: "Won 1st Place in the Philippines' first quantum-themed Capture-the-Flag (CTF) competition."
+        summary: "1st Place — Philippines' first quantum-themed cybersecurity hackathon, specialized in Classical-Quantum challenges."
         highlights:
-          - "Competed in OSINT, Digital Forensics & Incident Response (DFIR), Cryptography, and Classical-Quantum challenge categories."
-          - "Specialized in solving Classical-Quantum challenges involving quantum gates, circuit behavior, and quantum information concepts."
 
       - name: Hack4Gov National CTF 2025 (DICT & CERT-PH)
         date: 2025-10
-        location: Region VI, Philippines
-        summary: "Placed 1st Runner-Up in the Team Category and 2nd Runner-Up in the Individual Category of a national cybersecurity competition."
-        highlights:
-          - "Competed across web exploitation, OSINT, digital forensics, cryptography, reverse engineering, and network security challenges."
-          - "Solved challenges involving modern web application vulnerabilities, including a Next.js middleware authorization bypass scenario."
+        summary: "1st Runner-Up (Team) and 2nd Runner-Up (Individual) — national cybersecurity competition, specialized in web security."
 
     skills:
 
       - label: Programming Languages
-        details: "Python, TypeScript, JavaScript, Java, PHP, SQL"
+        details: "Python, TypeScript, JavaScript, Java"
 
-      - label: Frontend and Mobile
-        details: "React, Next.js, React Native, Expo, Astro, TailwindCSS, HTML5"
+      - label: AI / ML
+        details: "PyTorch, TensorFlow, Scikit-learn, Pandas, LangChain, LangGraph, vector databases"
+
+      - label: Frontend
+        details: "React, Next.js, React Native, Expo, Astro, TailwindCSS"
 
       - label: Backend
-        details: "Express.js, NestJS, Django, FastAPI, REST APIs, WebSockets"
+        details: "FastAPI, Django, Express.js, NestJS"
 
       - label: Databases
-        details: "PostgreSQL, Supabase, Firebase, schema design"
+        details: "PostgreSQL, Supabase, Firebase"
 
-      - label: Machine Learning and Data
-        details: "Pandas, Scikit-learn, TensorFlow, PyTorch"
-
-      - label: Tools and Deployment
-        details: "Git, Docker, CI/CD, Vercel, Render, Railway"
-
-      - label: Languages
-        details: "English (Professional working proficiency), Tagalog (Professional working proficiency)"
-
+      - label: Tools
+        details: "n8n, Git, Docker, CI/CD, Vercel, Render, Railway"
 
 design:
   theme: sb2nov
