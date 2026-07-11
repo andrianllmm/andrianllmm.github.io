@@ -1,6 +1,6 @@
 ---
 import Container from "@components/Container.astro";
-import { SITE } from "@consts";
+import Link from "@components/Link.astro";
 import BackToTop from "@components/BackToTop.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 ---
@@ -16,7 +16,10 @@ import ThemeToggle from "./ThemeToggle.astro";
       class="flex flex-col flex-wrap items-end justify-center gap-4 sm:flex-row sm:items-center sm:justify-between"
     >
       <div class="order-2 text-xs text-nowrap sm:order-1">
-        &copy; {new Date().getFullYear()} • Andrian Lloyd Maagma
+        &copy; {new Date().getFullYear()} Andrian Lloyd Maagma / <Link
+          href={"https://github.com/andrianllmm/andrianllmm.github.io"}
+          >source code</Link
+        >
       </div>
       <ThemeToggle />
     </div>

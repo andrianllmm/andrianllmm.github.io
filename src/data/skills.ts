@@ -19,7 +19,6 @@ export const skills = {
   fastapi: { name: "FastAPI", icon: "simple-icons:fastapi" },
   flask: { name: "Flask", icon: "simple-icons:flask" },
   tailwind: { name: "Tailwind", icon: "simple-icons:tailwindcss" },
-  solidity: { name: "Solidity", icon: "simple-icons:solidity" },
   html: { name: "HTML", icon: "simple-icons:html5" },
   css: { name: "CSS", icon: "simple-icons:css3" },
   sass: { name: "Sass", icon: "simple-icons:sass" },
@@ -29,31 +28,45 @@ export const skills = {
   sklearn: { name: "Scikit-learn", icon: "simple-icons:scikitlearn" },
   tensorflow: { name: "TensorFlow", icon: "simple-icons:tensorflow" },
   pytorch: { name: "PyTorch", icon: "simple-icons:pytorch" },
+  langchain: { name: "LangChain", icon: "simple-icons:langchain" },
+  langgraph: { name: "LangGraph", icon: "simple-icons:langgraph" },
+  huggingface: { name: "Hugging Face", icon: "simple-icons:huggingface" },
   opencv: { name: "OpenCV", icon: "simple-icons:opencv" },
+  yolo: { name: "YOLO" },
+  mediapipe: { name: "MediaPipe" },
   sqlite: { name: "SQLite", icon: "simple-icons:sqlite" },
   postgresql: { name: "PostgreSQL", icon: "simple-icons:postgresql" },
   prisma: { name: "Prisma", icon: "simple-icons:prisma" },
   supabase: { name: "Supabase", icon: "simple-icons:supabase" },
   firebase: { name: "Firebase", icon: "simple-icons:firebase" },
+  n8n: { name: "n8n", icon: "simple-icons:n8n" },
   git: { name: "Git", icon: "simple-icons:git" },
   docker: { name: "Docker", icon: "simple-icons:docker" },
   vercel: { name: "Vercel", icon: "simple-icons:vercel" },
+  render: { name: "Render", icon: "simple-icons:render" },
   railway: { name: "Railway", icon: "simple-icons:railway" },
-  azure: { name: "Azure", icon: "simple-icons:microsoftazure" },
-  crypto: { name: "Cryptography", icon: "lucide:message-square-lock" },
-  reversing: { name: "Reverse Engineering", icon: "lucide:bug" },
-  networkSec: { name: "Network Security", icon: "lucide:network" },
-  webSec: { name: "Web Security", icon: "lucide:globe-lock" },
-  forensics: { name: "Digital Forensics", icon: "lucide:file-search" },
-  osint: { name: "OSINT" },
-  webScraping: { name: "Web Scraping" },
 } as const;
 
 export type SkillKey = keyof typeof skills;
 
 export const skillGroups = {
-  Languages: ["python", "javascript", "typescript", "java", "solidity"],
-  Web: [
+  Languages: ["python", "javascript", "typescript", "java"],
+
+  "AI / ML": [
+    "numpy",
+    "pandas",
+    "sklearn",
+    "tensorflow",
+    "pytorch",
+    "langchain",
+    "langgraph",
+    "huggingface",
+    "opencv",
+    "yolo",
+    "mediapipe",
+  ],
+
+  "Web / Mobile": [
     "html",
     "css",
     "react",
@@ -70,25 +83,8 @@ export const skillGroups = {
     "fastapi",
     "flask",
   ],
+
   Databases: ["sqlite", "postgresql", "prisma", "supabase", "firebase"],
-  "Data Science": [
-    "numpy",
-    "pandas",
-    "sklearn",
-    "tensorflow",
-    "pytorch",
-    "webScraping",
-    "opencv",
-  ],
 
-  Cybersecurity: [
-    "crypto",
-    "reversing",
-    "networkSec",
-    "webSec",
-    "forensics",
-    "osint",
-  ],
-
-  Tools: ["git", "docker", "vercel", "railway", "azure"],
+  Tools: ["n8n", "git", "docker", "vercel", "render", "railway"],
 } satisfies Record<string, readonly SkillKey[]>;

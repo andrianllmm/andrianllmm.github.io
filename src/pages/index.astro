@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import Link from "@components/Link.astro";
+import { Icon } from "astro-icon/components";
 import ProjectCard from "@components/ProjectCard.astro";
 import PostCard from "@components/PostCard.astro";
 import AchievementCard from "@components/AchievementCard.astro";
@@ -84,6 +85,23 @@ const websiteData = {
     "query-input": "required name=search_term_string",
   },
 };
+
+const bio = "...and I make software smarter";
+
+const positions = [
+  {
+    title: "Bachelor of Science in Computer Science",
+    abbr: "BSCS",
+    at: "University of the Philippines",
+    atLink: "https://upv.edu.ph",
+    atAbbr: "UP Visayas",
+  },
+  {
+    title: "AI Automation Intern",
+    at: "MorpheLabs",
+    atLink: "https://morphelabs.org",
+  },
+];
 ---
 
 <Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
@@ -95,25 +113,55 @@ const websiteData = {
     <aside data-pagefind-ignore>
       <div class="space-y-16">
         <section>
-          <div class="grid grid-cols-6 items-center gap-4">
+          <div class="grid grid-cols-5 items-center gap-4">
             <div class="animate col-span-2 sm:col-span-1">
               <Avatar />
             </div>
             <div
-              class="animate col-span-4 space-y-1 sm:col-span-5 sm:space-y-2"
+              class="animate col-span-3 space-y-1 sm:col-span-4 sm:space-y-2"
             >
+              <!-- Name -->
               <h1 class="text-2xl font-semibold sm:text-3xl">
                 This is Andrian
               </h1>
+
+              <!-- Bio -->
               <p class="text-muted-foreground text-xs sm:text-sm">
-                <abbr title="Computer Science" class="no-underline">CS</abbr> Student
-                @
-                <Link href="https://upv.edu.ph" external>
-                  <abbr title="University of the Philippines Visayas">UPV</abbr>
-                </Link>
+                <i>{bio}</i>
               </p>
 
-              <!-- Contact inline on sm and up -->
+              <!-- Current professional position -->
+              <p
+                class="flex flex-wrap items-center gap-x-1 gap-y-1 text-xs sm:text-sm"
+              >
+                {
+                  positions.map((position, index) => (
+                    <>
+                      {index > 0 && (
+                        <span aria-hidden="true" class="shrink-0">
+                          /
+                        </span>
+                      )}
+
+                      <span class="inline-flex whitespace-nowrap">
+                        <abbr title={position.title} class="no-underline">
+                          {position.abbr || position.title}
+                        </abbr>
+
+                        <span>&nbsp;@&nbsp;</span>
+
+                        <Link href={position.atLink} external>
+                          <abbr title={position.at}>
+                            {position.atAbbr || position.at}
+                          </abbr>
+                        </Link>
+                      </span>
+                    </>
+                  ))
+                }
+              </p>
+
+              <!-- Contact -->
               <nav aria-label="Contact links" class="mt-2">
                 <Contact />
               </nav>
@@ -122,10 +170,35 @@ const websiteData = {
 
           <article class="animate space-y-4">
             <p>
-              I'm a Computer Science student who builds full-stack apps with
-              machine learning. I aim to create tools that people actually use
-              and find useful, or at least I do. I also value accessible
-              software and contribute to open-source whenever I can.
+              I'm an aspiring <abbr
+                title="Artificial Intelligence / Machine Learning Engineer"
+                >AI/ML engineer</abbr
+              > who enjoys bringing machine learning out of notebooks and into people's
+              hands.
+            </p>
+            <p>
+              I'm broadly interested in working across the pipeline, from
+              training models to designing the software around them. I'm
+              particularly interested in solving problems for underserved
+              communities, such as improving the state of Filipino NLP.
+            </p>
+            <p class="flex flex-wrap items-center">
+              I'm always happy to connect, so feel free to
+              <Link href={"https://cal.com/andrianllmm"} external>
+                <span
+                  class="mx-1.5 inline-flex items-center gap-1 underline decoration-dotted"
+                >
+                  <Icon
+                    name="lucide:calendar"
+                    class="size-3.5"
+                    aria-hidden="true"
+                  />
+                  reach out
+                </span>
+              </Link>
+              and chat <span class="text-muted-foreground mx-2 font-bold"
+                >:D</span
+              >
             </p>
           </article>
         </section>

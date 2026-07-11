@@ -4,16 +4,18 @@ import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import BackToPrevious from "@components/BackToPrevious.astro";
 import TagBadge from "@components/TagBadge.astro";
+import { tags as tagDefinitions } from "@data/tags";
 
 const posts = await getCollection("posts", ({ data }) => !data.draft);
-const tags = [...new Set(posts.flatMap((p) => p.data.tags || []))].sort(
-  (a, b) => {
-    // Sort tags by the number of posts they have, descending
-    const countA = posts.filter((post) => post.data.tags?.includes(a)).length;
-    const countB = posts.filter((post) => post.data.tags?.includes(b)).length;
-    return countB - countA || a.localeCompare(b); // Secondary sort by name
-  },
-);
+
+const tags = Object.keys(tagDefinitions)
+  .map((tag) => ({
+    tag,
+    count: posts.filter((post) => post.data.tags?.includes(tag)).length,
+  }))
+  .sort((a, b) => {
+    return b.count - a.count || a.tag.localeCompare(b.tag);
+  });
 ---
 
 <Layout title="Tags" description="List of tags used.">
@@ -25,9 +27,17 @@ const tags = [...new Set(posts.flatMap((p) => p.data.tags || []))].sort(
     <div class="space-y-6">
       <h1 class="animate font-semibold">Tags</h1>
 
-      <div class="animate flex flex-wrap gap-3">
-        {tags.map((tag) => <TagBadge tag={tag} showNum />)}
-      </div>
+      {
+        tags.length > 0 ? (
+          <div class="animate flex flex-wrap gap-3">
+            {tags.map(({ tag, count }) => (
+              <TagBadge tag={tag} count={count} showNum />
+            ))}
+          </div>
+        ) : (
+          <p class="animate text-muted-foreground">No tags available.</p>
+        )
+      }
     </div>
   </Container>
 </Layout>

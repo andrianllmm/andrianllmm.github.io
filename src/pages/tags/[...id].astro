@@ -5,15 +5,12 @@ import Container from "@components/Container.astro";
 import BackToPrevious from "@components/BackToPrevious.astro";
 import PostCard from "@components/PostCard.astro";
 import TagBadge from "@components/TagBadge.astro";
+import { tags as tagDefinitions } from "@data/tags";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts", ({ data }) => !data.draft);
 
-  // Get unique tags
-  const tags = [...new Set(posts.flatMap((post) => post.data.tags || []))];
-
-  // Create paths for each tag
-  return tags.map((tag) => ({
+  return Object.keys(tagDefinitions).map((tag) => ({
     params: { id: tag },
     props: {
       posts: posts.filter((post) => post.data.tags?.includes(tag)),
@@ -24,24 +21,47 @@ export async function getStaticPaths() {
 const { id } = Astro.params;
 const { posts } = Astro.props;
 
-// Sort posts by date, most recent first
+const tag = tagDefinitions[id];
+
 const sortedPosts = posts.sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
 );
 ---
 
-<Layout title={`Tag: ${id}`} description={`Posts with the tag: ${id}`}>
+<Layout title={`Tag: ${tag.name}`} description={tag.description}>
   <Container>
     <div class="animate mb-6">
       <BackToPrevious href="/tags">All tags</BackToPrevious>
     </div>
-    <div class="space-y-10" data-pagefind-ignore>
-      <h1 class="animate flex items-center gap-1 font-semibold">
-        Posts tagged with <TagBadge tag={id} showNum class="border-none" />
-      </h1>
-      <ul class="animate flex flex-col gap-4">
-        {sortedPosts.map((post) => <PostCard post={post} />)}
-      </ul>
+
+    <div class="space-y-6" data-pagefind-ignore>
+      <div class="animate space-y-2">
+        <h1 class="flex items-center gap-1 font-semibold">
+          Posts tagged with <TagBadge tag={id} showNum class="border-none" />
+        </h1>
+        <p class="text-muted-foreground">
+          {tag.description}
+        </p>
+      </div>
+
+      {
+        sortedPosts.length > 0 ? (
+          <ul class="animate flex flex-col gap-4">
+            {sortedPosts.map((post) => (
+              <PostCard post={post} />
+            ))}
+          </ul>
+        ) : (
+          <div class="my-4 flex flex-col items-center justify-center gap-2">
+            <p class="animate text-muted-foreground text-center text-4xl font-bold">
+              （￣～￣;）
+            </p>
+            <p class="animate text-muted-foreground text-center">
+              No posts yet, probably still writing...
+            </p>
+          </div>
+        )
+      }
     </div>
   </Container>
 </Layout>
