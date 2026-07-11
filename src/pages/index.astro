@@ -4,6 +4,7 @@ import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import Link from "@components/Link.astro";
+import { Icon } from "astro-icon/components";
 import ProjectCard from "@components/ProjectCard.astro";
 import PostCard from "@components/PostCard.astro";
 import AchievementCard from "@components/AchievementCard.astro";
@@ -181,9 +182,21 @@ const positions = [
               particularly interested in solving problems for underserved
               communities, such as improving the state of Filipino NLP.
             </p>
-            <p>
+            <p class="flex flex-wrap items-center">
               I'm always happy to connect, so feel free to
-              <Link href={"/"} external>reach out</Link> and chat :D
+              <Link href={"https://cal.com/andrianllmm"} external>
+                <span
+                  class="mx-1.5 inline-flex items-center gap-1 underline decoration-dotted"
+                >
+                  <Icon
+                    name="lucide:calendar"
+                    class="size-3.5"
+                    aria-hidden="true"
+                  />
+                  reach out
+                </span>
+              </Link>
+              and chat :D
             </p>
           </article>
         </section>
