@@ -1,6 +1,6 @@
 /* TEAM */
 Developer: Andrian Lloyd Maagma
-Site: https://andrianllmm.github.io
+Site: https://andrianllmm.dev
 LinkedIn: https://linkedin.com/in/andrian-maagma/
 GitHub: https://github.com/andrianllmm
 Twitter: @andrianllmm

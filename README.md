@@ -1,10 +1,10 @@
 # Andrian Lloyd Maagma's
 
-This is the source code for my [personal website](https://andrianllmm.github.io), built with [Astro](https://astro.build).
+This is the source code for my [personal website](https://andrianllmm.dev), built with [Astro](https://astro.build).
 
 ## Issues
 
-If you encounter any issues or bugs, please report them on the [GitHub issues page](https://github.com/andrianllmm/andrianllmm.github.io/issues).
+If you encounter any issues or bugs, please report them on the [GitHub issues page](https://github.com/andrianllmm/andrianllmm.dev/issues).
 
 ## Contributing
 

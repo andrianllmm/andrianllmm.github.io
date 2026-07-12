@@ -9,7 +9,7 @@ import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://andrianllmm.github.io",
+  site: "https://andrianllmm.dev",
   redirects: {
     "/resume": "/cv",
     "/resume.pdf": "/cv.pdf",
