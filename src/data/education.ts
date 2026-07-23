@@ -20,6 +20,15 @@ export const education: EducationItem[] = [
     url: "https://www.upv.edu.ph/",
   },
   {
+    title: "Machine Learning Engineer",
+    category: "Certification",
+    provider: "DataCamp",
+    startDate: "2026",
+    endDate: "2026",
+    url: "https://www.datacamp.com/completed/statement-of-accomplishment/track/1cf699c08e23695dbca607329b41d0dfe5445cf8",
+    image: "/images/certificates/datacamp-ml-engineer.png",
+  },
+  {
     title: "Associate AI Engineer",
     category: "Certification",
     provider: "DataCamp",
