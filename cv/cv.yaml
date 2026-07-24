@@ -10,7 +10,6 @@ cv:
       username: andrianllmm
 
   sections:
-
     Summary:
       - |
         Computer Science student with industry experience developing AI systems and full-stack applications,
@@ -28,7 +27,6 @@ cv:
           - "Relevant Coursework: Software Engineering, Web Programming, Database Systems"
 
     experience:
-
       - company: MorpheLabs
         position: AI Automation Engineer
         start_date: 2026-06
@@ -68,7 +66,6 @@ cv:
           - "Improved content structure and maintainability, reducing update overhead for 10+ maintainers."
 
     projects:
-
       - name: "[Iskommerce](https://github.com/andrianllmm/iskommerce)"
         start_date: 2026-03
         end_date: 2026-05
@@ -104,7 +101,6 @@ cv:
           - "Conducted user testing with 100+ native speakers and iterated on UX improvements."
 
     awards:
-
       - name: Quantum Computing and Cybersecurity Hackathon 2026 (QCSP)
         date: 2026-06
         summary: "1st Place — Philippines' first quantum-themed cybersecurity hackathon, specialized in Classical-Quantum challenges."
@@ -115,7 +111,6 @@ cv:
         summary: "1st Runner-Up (Team) and 2nd Runner-Up (Individual) — national cybersecurity competition, specialized in web security."
 
     skills:
-
       - label: Programming Languages
         details: "Python, TypeScript, JavaScript, Java"
 

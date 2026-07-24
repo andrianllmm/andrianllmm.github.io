@@ -55,14 +55,22 @@ const { Content, headings } = await render(project);
             (project.data.demoURL || project.data.repoURL) && (
               <nav class="flex gap-1">
                 {project.data.demoURL && (
-                  <Link href={project.data.demoURL} external class="flex items-center gap-1">
+                  <Link
+                    href={project.data.demoURL}
+                    external
+                    class="flex items-center gap-1"
+                  >
                     <Icon name="lucide:external-link" class="h-4 w-4" />
                     <span class="sr-only sm:not-sr-only">demo</span>
                   </Link>
                 )}
                 {project.data.demoURL && project.data.repoURL && <span>/</span>}
                 {project.data.repoURL && (
-                  <Link href={project.data.repoURL} external class="flex items-center gap-1">
+                  <Link
+                    href={project.data.repoURL}
+                    external
+                    class="flex items-center gap-1"
+                  >
                     <Icon name="lucide:github" class="h-4 w-4" />
                     <span class="sr-only sm:not-sr-only">repo</span>
                   </Link>
