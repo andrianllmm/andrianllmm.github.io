@@ -9,6 +9,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "cv": "node cv/cv.js",
     "prepare": "husky"
   },
