@@ -11,13 +11,11 @@
       GitHub
     </a>
 
-
 ## Summary
 
 Computer Science student with industry experience developing AI systems and full-stack applications,
 alongside technical leadership across student organizations and award-winning hackathon teams.
 Seeking AI/ML engineering roles focused on building production-ready intelligent systems.
-
 
 ## Education
 
@@ -150,13 +148,11 @@ Seeking AI/ML engineering roles focused on building production-ready intelligent
     <time datetime="June 2026">June 2026</time>
 </span>
 
-
 ### Hack4Gov National CTF 2025 (DICT & CERT-PH)
 
 <span class="text-muted-foreground">
     <time datetime="Oct 2025">Oct 2025</time>
 </span>
-
 
 ## Skills
 

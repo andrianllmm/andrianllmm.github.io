@@ -22,7 +22,7 @@ const { post } = Astro.props as {
 >
   {
     post.data.image && (
-      <div class="aspect-video w-24 overflow-hidden rounded-lg sm:w-36 md:w-48 text-xs text-muted">
+      <div class="text-muted aspect-video w-24 overflow-hidden rounded-lg text-xs sm:w-36 md:w-48">
         <Image
           src={post.data.image}
           alt="Preview"

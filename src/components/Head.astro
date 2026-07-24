@@ -135,8 +135,8 @@ const {
 
 <script is:inline type="text/partytown">
   window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
+  function gtag(...args) {
+    dataLayer.push(...args);
   }
   gtag("js", new Date());
   gtag("config", "G-QW0PRPDDD3");
@@ -215,7 +215,7 @@ const {
 
     document.documentElement.classList.toggle("dark", isDark);
 
-    window.getComputedStyle(css).opacity;
+    void window.getComputedStyle(css).opacity;
     document.head.removeChild(css);
 
     setGiscusTheme();
@@ -279,7 +279,7 @@ const {
   function addCopyCodeButtons() {
     const codeBlocks = Array.from(document.querySelectorAll("pre"));
 
-    for (let codeBlock of codeBlocks) {
+    for (const codeBlock of codeBlocks) {
       const wrapper = document.createElement("div");
       wrapper.style.position = "relative";
 
