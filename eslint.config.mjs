@@ -14,6 +14,8 @@ export default defineConfig(
       "public/pagefind/",
       "cv/venv/",
       "cv/output/",
+      "cv/classic/",
+      "cv/markdown/",
     ],
   },
 
