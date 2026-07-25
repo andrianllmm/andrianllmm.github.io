@@ -1,0 +1,102 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+import Container from "@components/Container.astro";
+import FormattedDateRange from "@components/FormattedDateRange.astro";
+import BackToPrevious from "@components/BackToPrevious.astro";
+import Link from "@components/Link.astro";
+import SkillBadge from "@components/SkillBadge.astro";
+import RelatedContent from "@components/RelatedContent.astro";
+import { work } from "@data/work";
+import { resolveRelatedContent } from "@lib/relatedContent";
+
+export async function getStaticPaths() {
+  return work.map((item) => ({
+    params: { id: item.id },
+    props: item,
+  }));
+}
+
+const item = Astro.props;
+const { posts, caseStudies } = await resolveRelatedContent(
+  item.relatedPosts,
+  item.relatedCaseStudies,
+);
+---
+
+<Layout title={item.title} description={item.description ?? item.company}>
+  <Container>
+    <div class="animate">
+      <BackToPrevious href="/work">Back to work</BackToPrevious>
+    </div>
+
+    <div class="animate my-10 space-y-1">
+      <div class="mb-4">
+        <div class="mb-1 flex items-center gap-2">
+          {
+            item.companyLogo && (
+              <div class="bg-muted text-muted-foreground flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-full">
+                <Icon
+                  name={item.companyLogo}
+                  aria-label={item.company}
+                  class="size-4.5 text-current"
+                />
+              </div>
+            )
+          }
+          {
+            item.companyURL ? (
+              <Link
+                href={item.companyURL}
+                external
+                class="text-accent-foreground"
+              >
+                {item.company}
+              </Link>
+            ) : (
+              <span class="text-accent-foreground">{item.company}</span>
+            )
+          }
+        </div>
+
+        {
+          (item.location || item.employmentType) && (
+            <p class="text-muted-foreground text-sm">
+              {[item.employmentType, item.location].filter(Boolean).join(" · ")}
+            </p>
+          )
+        }
+      </div>
+
+      <div class="mb-4">
+        <h1 class="mb-1 text-3xl font-semibold">
+          {item.title}
+        </h1>
+
+        <div class="font-base text-muted-foreground text-sm">
+          <FormattedDateRange
+            startDate={new Date(item.startDate)}
+            endDate={item.endDate ? new Date(item.endDate) : undefined}
+            formatOptions={{ year: "numeric", month: "short" }}
+          />
+        </div>
+      </div>
+
+      {
+        item.skills && item.skills.length > 0 ? (
+          <div class="animate text-muted-foreground mb-4 flex flex-wrap gap-1">
+            {item.skills.map((skill) => (
+              <SkillBadge skill={skill} class="border-none" />
+            ))}
+          </div>
+        ) : null
+      }
+
+      {item.description && <p class="mb-4">{item.description}</p>}
+    </div>
+
+    <div class="animate">
+      <RelatedContent posts={posts} caseStudies={caseStudies} />
+    </div>
+  </Container>
+</Layout>

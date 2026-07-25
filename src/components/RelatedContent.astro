@@ -1,0 +1,46 @@
+---
+import type { CollectionEntry } from "astro:content";
+import PostCard from "./PostCard.astro";
+import CaseStudyCard from "./CaseStudyCard.astro";
+
+type Props = {
+  posts: CollectionEntry<"posts">[];
+  caseStudies: CollectionEntry<"caseStudies">[];
+};
+
+const { posts, caseStudies } = Astro.props as Props;
+
+const hasRelated = posts.length > 0 || caseStudies.length > 0;
+---
+
+{
+  hasRelated && (
+    <section class="animate space-y-8">
+      {caseStudies.length > 0 && (
+        <div class="space-y-4">
+          <h2 class="text-lg font-semibold">Case Studies</h2>
+          <ul class="not-prose flex flex-col gap-4">
+            {caseStudies.map((caseStudy) => (
+              <li>
+                <CaseStudyCard caseStudy={caseStudy} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {posts.length > 0 && (
+        <div class="space-y-4">
+          <h2 class="text-lg font-semibold">Posts</h2>
+          <ul class="not-prose flex flex-col gap-4">
+            {posts.map((post) => (
+              <li>
+                <PostCard post={post} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </section>
+  )
+}

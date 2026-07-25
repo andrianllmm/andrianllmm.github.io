@@ -1,0 +1,76 @@
+---
+title: "Breaking Through a CTF Slump With One CVE"
+description: "Reflecting on Hack4Gov 2025, where a long stretch of stagnation ended with a Next.js middleware exploit that secured 1st runner-up."
+tags: ["reflection"]
+date: "2025-10-20"
+image: "./photos/team.png"
+---
+
+import Callout from "@components/Callout.astro";
+import { Image } from "astro:assets";
+import teamImg from "./photos/team.png";
+import individualImg from "./photos/individual.png";
+import solveStats from "./photos/solve-stats.png";
+import solveHistory from "./photos/solve-history.png";
+
+## About the competition
+
+_Hack4Gov_ is the national Capture-The-Flag (CTF) cybersecurity competition organized
+by <abbr title="Department of Information and Communications Technology"> DICT </abbr> and <abbr title="National Computer Emergency Response Team">CERT-PH</abbr>.
+It brings together students from across the Philippines to solve security challenges and promote ethical hacking.
+
+The event tested participants in core cybersecurity domains:
+Web Exploitation, Forensics, Network Security, and <abbr title="Open-Source Intelligence">OSINT</abbr>.
+
+## How it turned out
+
+<Callout type="award">
+  1st Runner-Up for Team Category out of 11 teams (830 points).
+</Callout>
+<Callout type="award">
+  2nd Runner-Up for Individual Category (480 points).
+</Callout>
+
+<div class="flex gap-4 my-4">
+    <Image
+      src={teamImg}
+      alt="Hack4Gov 2025 Team Category"
+      class="w-full"
+    />
+
+    <Image
+      src={individualImg}
+      alt="Hack4Gov 2025 Individual Category"
+      class="w-full"
+    />
+
+</div>
+
+## My experience
+
+I didn't really solve many challenges overall, finishing with a solve rate of about 17%,
+while focusing entirely on Web Exploitation (43%) and partially on OSINT (57%).
+I started strong by clearing two web problems early, but then hit a long stretch of stagnation, managing only a few low-point OSINT challenges.
+
+<Image
+  src={solveStats}
+  alt="Hack4Gov 2025 Solve Stats"
+  class="my-4 w-full max-w-120"
+  data-zoomable
+/>
+
+Near the end of the competition, I finally broke through with a 200-point challenge involving Next.js middleware[^1],
+which significantly boosted our score and ended the experience on a high note.
+
+<Image
+  src={solveHistory}
+  alt="Hack4Gov 2025 Solve History"
+  class="my-4 w-full max-w-120"
+  data-zoomable
+/>
+
+---
+
+[^1]:
+    The challenge involved exploiting a critical Next.js middleware authorization bypass (CVE-2025-29927).
+    See the <a href="https://github.com/advisories/GHSA-f82v-jwr5-mffw" target="_blank">official advisory</a> for more details.

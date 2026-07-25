@@ -1,0 +1,30 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import BackToPrevious from "@components/BackToPrevious.astro";
+import Timeline from "@components/Timeline.astro";
+import { WORK } from "@consts";
+import { work as allWork } from "@data/work";
+
+const work = [...allWork];
+---
+
+<Layout title={WORK.TITLE} description={WORK.DESCRIPTION}>
+  <Container>
+    <aside data-pagefind-ignore>
+      <div class="animate mb-6">
+        <BackToPrevious href="/">Back to home</BackToPrevious>
+      </div>
+
+      <div class="space-y-6">
+        <h1 class="animate font-semibold">Work</h1>
+
+        <p class="text-muted-foreground">
+          A timeline of my professional experience.
+        </p>
+
+        <Timeline items={work} />
+      </div>
+    </aside>
+  </Container>
+</Layout>

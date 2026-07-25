@@ -1,17 +1,18 @@
 export type EducationItem = {
+  id: string;
   title: string;
-  category: "Degree" | "Certification" | "Online Course" | "Workshop";
+  category: "Degree" | "Certification";
   institution?: string;
   provider?: string;
   startDate?: string;
   endDate?: string;
   url?: string;
-  description?: string;
   image?: string;
 };
 
 export const education: EducationItem[] = [
   {
+    id: "upv-bscs",
     title: "Bachelor of Science in Computer Science",
     category: "Degree",
     institution: "University of the Philippines Visayas",
@@ -20,6 +21,7 @@ export const education: EducationItem[] = [
     url: "https://www.upv.edu.ph/",
   },
   {
+    id: "datacamp-ml-engineer",
     title: "Machine Learning Engineer",
     category: "Certification",
     provider: "DataCamp",
@@ -29,6 +31,7 @@ export const education: EducationItem[] = [
     image: "/images/certificates/datacamp-ml-engineer.png",
   },
   {
+    id: "datacamp-ai-engineer-for-developers",
     title: "Associate AI Engineer",
     category: "Certification",
     provider: "DataCamp",
@@ -38,6 +41,7 @@ export const education: EducationItem[] = [
     image: "/images/certificates/datacamp-ai-engineer-for-developers.png",
   },
   {
+    id: "datacamp-data-analyst-in-python",
     title: "Data Analyst",
     category: "Certification",
     provider: "DataCamp",
@@ -47,26 +51,7 @@ export const education: EducationItem[] = [
     image: "/images/certificates/datacamp-data-analyst-in-python.png",
   },
   {
-    title: "fast.ai: Practical Deep Learning for Coders",
-    category: "Online Course",
-    provider: "fast.ai",
-    startDate: "2025",
-    endDate: "2026",
-    url: "https://course.fast.ai/",
-    description:
-      "Applied deep learning with PyTorch covering vision, NLP, and deployment.",
-  },
-  {
-    title: "Machine Learning Specialization",
-    category: "Certification",
-    provider: "DeepLearning.AI & Stanford University",
-    startDate: "2025",
-    endDate: "2025",
-    url: "https://www.coursera.org/specializations/machine-learning-introduction",
-    description:
-      "Foundations of machine learning including supervised and unsupervised learning.",
-  },
-  {
+    id: "cs50w",
     title: "CS50's Web Programming with Python and JavaScript",
     category: "Certification",
     provider: "Harvard University",
@@ -76,6 +61,7 @@ export const education: EducationItem[] = [
     image: "/images/certificates/cs50w.png",
   },
   {
+    id: "cs50x",
     title: "CS50's Introduction to Computer Science",
     category: "Certification",
     provider: "Harvard University",
@@ -85,6 +71,7 @@ export const education: EducationItem[] = [
     image: "/images/certificates/cs50x.png",
   },
   {
+    id: "cs50p",
     title: "CS50's Introduction to Programming with Python",
     category: "Certification",
     provider: "Harvard University",

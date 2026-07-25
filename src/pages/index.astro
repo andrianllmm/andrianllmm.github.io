@@ -1,5 +1,14 @@
 ---
-import { PINNED_PROJECTS, PINNED_SKILLS, SITE, HOME, SOCIALS } from "@consts";
+import {
+  PINNED_PROJECTS,
+  PINNED_WORK,
+  PINNED_ACHIEVEMENTS,
+  PINNED_EDUCATION,
+  PINNED_SKILLS,
+  SITE,
+  HOME,
+  SOCIALS,
+} from "@consts";
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
@@ -7,51 +16,76 @@ import Link from "@components/Link.astro";
 import { Icon } from "astro-icon/components";
 import ProjectCard from "@components/ProjectCard.astro";
 import PostCard from "@components/PostCard.astro";
+import CaseStudyCard from "@components/CaseStudyCard.astro";
 import AchievementCard from "@components/AchievementCard.astro";
 import EducationCard from "@components/EducationCard.astro";
+import DegreeCard from "@components/DegreeCard.astro";
 import SkillBadge from "@components/SkillBadge.astro";
 import TagBadge from "@components/TagBadge.astro";
 import Badge from "@components/Badge.astro";
 import Avatar from "@components/Avatar.astro";
 import Contact from "@components/Contact.astro";
 import StructuredData from "@components/StructuredData.astro";
+import Timeline from "@components/Timeline.astro";
 import { tags as allTags } from "@data/tags";
 import { education } from "@data/education";
+import { projects as allProjectsData } from "@data/projects";
+import { work as allWorkData } from "@data/work";
+import { achievements as allAchievementsData } from "@data/achievements";
 
-const skills = PINNED_SKILLS;
 const tags = Object.keys(allTags).slice(0, SITE.NUM_TAGS_ON_HOMEPAGE);
-
-const allProjects = (await getCollection("projects")).filter(
-  (p) => !p.data.draft,
-);
-const projects = PINNED_PROJECTS.map((id) =>
-  allProjects.find((p) => p.id === id),
-)
-  .filter((p): p is (typeof allProjects)[number] => p !== undefined)
-  .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
 
 const allPosts = (await getCollection("posts")).filter((p) => !p.data.draft);
 const posts = allPosts
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
 
-const allAchievements = (await getCollection("achievements")).filter(
-  (a) => !a.data.draft,
+const allCaseStudies = (await getCollection("caseStudies")).filter(
+  (p) => !p.data.draft,
 );
-const achievements = [...allAchievements]
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, SITE.NUM_ACHIEVEMENTS_ON_HOMEPAGE || 3);
 
-const stillLearning = education
-  .sort((a, b) => {
-    const aEnd = a.endDate ? new Date(a.endDate).getTime() : Infinity;
-    const bEnd = b.endDate ? new Date(b.endDate).getTime() : Infinity;
-    if (bEnd !== aEnd) return bEnd - aEnd;
-    const aStart = a.startDate ? new Date(a.startDate).getTime() : 0;
-    const bStart = b.startDate ? new Date(b.startDate).getTime() : 0;
-    return bStart - aStart;
-  })
-  .slice(0, SITE.NUM_EDUCATION_ON_HOMEPAGE || 3);
+const caseStudies = allCaseStudies
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, SITE.NUM_CASE_STUDIES_ON_HOMEPAGE);
+
+const work = PINNED_WORK.map((id) =>
+  allWorkData.find((w) => w.id === id),
+).filter((w): w is (typeof allWorkData)[number] => w !== undefined);
+
+const allProjects = allProjectsData.filter((p) => !p.draft);
+const projects = PINNED_PROJECTS.map((id) =>
+  allProjects.find((p) => p.id === id),
+).filter((p): p is (typeof allProjects)[number] => p !== undefined);
+
+const achievements = PINNED_ACHIEVEMENTS.map((id) =>
+  allAchievementsData.find((a) => a.id === id),
+).filter((a): a is (typeof allAchievementsData)[number] => a !== undefined);
+
+const skills = PINNED_SKILLS;
+
+const sortByRecency = (
+  a: (typeof education)[number],
+  b: (typeof education)[number],
+) => {
+  const aEnd = a.endDate ? new Date(a.endDate).getTime() : Infinity;
+  const bEnd = b.endDate ? new Date(b.endDate).getTime() : Infinity;
+  if (bEnd !== aEnd) return bEnd - aEnd;
+  const aStart = a.startDate ? new Date(a.startDate).getTime() : 0;
+  const bStart = b.startDate ? new Date(b.startDate).getTime() : 0;
+  return bStart - aStart;
+};
+
+const pinnedEducation = PINNED_EDUCATION.map((id) =>
+  education.find((item) => item.id === id),
+).filter((item): item is (typeof education)[number] => item !== undefined);
+
+const learningDegrees = pinnedEducation
+  .filter((item) => item.category === "Degree")
+  .sort(sortByRecency);
+
+const stillLearning = pinnedEducation
+  .filter((item) => item.category !== "Degree")
+  .sort(sortByRecency);
 
 // Create Person structured data
 const personData = {
@@ -97,7 +131,7 @@ const positions = [
     atAbbr: "UP Visayas",
   },
   {
-    title: "AI Automation Intern",
+    title: "Intern",
     at: "MorpheLabs",
     atLink: "https://morphelabs.org",
   },
@@ -205,7 +239,16 @@ const positions = [
 
         <section class="animate space-y-6">
           <div class="flex flex-wrap items-center justify-between gap-y-2">
-            <h2 class="text-lg font-semibold">Recent projects</h2>
+            <h2 class="text-lg font-semibold">Work</h2>
+            <Link href="/work">See my experience</Link>
+          </div>
+
+          <Timeline items={work} />
+        </section>
+
+        <section class="animate space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-y-2">
+            <h2 class="text-lg font-semibold">Projects</h2>
             <Link href="/projects">See all projects</Link>
           </div>
 
@@ -237,6 +280,54 @@ const positions = [
 
         <section class="animate space-y-6">
           <div class="flex flex-wrap items-center justify-between gap-y-2">
+            <h2 class="text-lg font-semibold">Achievements</h2>
+            <Link href="/achievements">See all achievements</Link>
+          </div>
+
+          <ul class="not-prose grid grid-cols-1 gap-4 sm:grid-cols-2">
+            {
+              achievements.map((achievement) => (
+                <li>
+                  <AchievementCard achievement={achievement} />
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        {
+          (learningDegrees.length > 0 || stillLearning.length > 0) && (
+            <section class="animate space-y-6">
+              <div class="flex flex-wrap items-center justify-between gap-y-2">
+                <h2 class="text-lg font-semibold">Still learning...</h2>
+                <Link href="/education">See education</Link>
+              </div>
+
+              {learningDegrees.length > 0 && (
+                <ul class="not-prose flex flex-col gap-3">
+                  {learningDegrees.map((item) => (
+                    <li>
+                      <DegreeCard item={item} />
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {stillLearning.length > 0 && (
+                <ul class="not-prose grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {stillLearning.map((item) => (
+                    <li>
+                      <EducationCard item={item} />
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </section>
+          )
+        }
+
+        <section class="animate space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-y-2">
             <h2 class="text-lg font-semibold">Latest posts</h2>
             <Link href="/posts">See all posts</Link>
           </div>
@@ -261,39 +352,20 @@ const positions = [
 
         <section class="animate space-y-6">
           <div class="flex flex-wrap items-center justify-between gap-y-2">
-            <h2 class="text-lg font-semibold">Recent achievements</h2>
-            <Link href="/achievements">See all achievements</Link>
+            <h2 class="text-lg font-semibold">Case studies</h2>
+            <Link href="/case-studies">See all case studies</Link>
           </div>
 
           <ul class="not-prose flex flex-col gap-4">
             {
-              achievements.map((achievement) => (
+              caseStudies.map((caseStudy) => (
                 <li>
-                  <AchievementCard achievement={achievement} />
+                  <CaseStudyCard caseStudy={caseStudy} />
                 </li>
               ))
             }
           </ul>
         </section>
-
-        {
-          stillLearning.length > 0 && (
-            <section class="animate space-y-6">
-              <div class="flex flex-wrap items-center justify-between gap-y-2">
-                <h2 class="text-lg font-semibold">Still learning...</h2>
-                <Link href="/education">See education</Link>
-              </div>
-
-              <ul class="not-prose flex flex-col gap-4">
-                {stillLearning.map((item) => (
-                  <li>
-                    <EducationCard item={item} />
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )
-        }
       </div>
     </aside>
   </Container>

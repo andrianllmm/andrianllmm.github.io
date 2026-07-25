@@ -1,0 +1,66 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import BackToPrevious from "@components/BackToPrevious.astro";
+import CaseStudyCard from "@components/CaseStudyCard.astro";
+import { CASE_STUDIES } from "@consts";
+
+const data = (await getCollection("caseStudies"))
+  .filter((caseStudy) => !caseStudy.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+type Acc = {
+  [year: string]: CollectionEntry<"caseStudies">[];
+};
+
+const caseStudies = data.reduce((acc: Acc, caseStudy) => {
+  const year = caseStudy.data.date.getFullYear().toString();
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(caseStudy);
+  return acc;
+}, {});
+
+const years = Object.keys(caseStudies).sort(
+  (a, b) => parseInt(b) - parseInt(a),
+);
+---
+
+<Layout title={CASE_STUDIES.TITLE} description={CASE_STUDIES.DESCRIPTION}>
+  <Container>
+    <aside data-pagefind-ignore>
+      <div class="animate mb-6">
+        <BackToPrevious href="/">Back to home</BackToPrevious>
+      </div>
+
+      <div class="space-y-6">
+        <h1 class="animate font-semibold">Case Studies</h1>
+
+        <p class="text-muted-foreground">
+          Engineering deep dives into how I built and shipped my projects.
+        </p>
+
+        <div class="space-y-4">
+          {
+            years.map((year) => (
+              <section class="animate space-y-4">
+                <div class="font-semibold">{year}</div>
+                <div>
+                  <ul class="not-prose flex flex-col gap-4">
+                    {caseStudies[year].map((caseStudy) => (
+                      <li>
+                        <CaseStudyCard caseStudy={caseStudy} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </section>
+            ))
+          }
+        </div>
+      </div>
+    </aside>
+  </Container>
+</Layout>

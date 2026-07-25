@@ -1,0 +1,72 @@
+---
+import type { WorkItem } from "@data/work";
+import FormattedDateRange from "./FormattedDateRange.astro";
+import Link from "./Link.astro";
+import { formatDuration } from "@lib/utils";
+
+const { item } = Astro.props as { item: WorkItem };
+
+const duration = formatDuration(
+  new Date(item.startDate),
+  item.endDate ? new Date(item.endDate) : undefined,
+);
+---
+
+<div class="not-prose flex w-full flex-1 flex-col gap-1.5 rounded-lg px-3 py-2">
+  <div>
+    <div>
+      {
+        item.companyURL ? (
+          <Link
+            href={item.companyURL}
+            external
+            class="text-accent-foreground font-semibold"
+          >
+            {item.company}
+          </Link>
+        ) : (
+          <span class="text-accent-foreground font-semibold">
+            {item.company}
+          </span>
+        )
+      }
+    </div>
+
+    <div
+      class="text-muted-foreground flex flex-wrap items-center gap-x-1.5 text-xs"
+    >
+      <span>{item.employmentType || ""}</span>
+      {
+        item.employmentType && item.location && (
+          <span aria-hidden="true">&bull;</span>
+        )
+      }
+      <span>{item.location || ""}</span>
+    </div>
+  </div>
+
+  <div>
+    <div class="mt-1 font-semibold">{item.title}</div>
+
+    <div
+      class="text-muted-foreground flex flex-wrap items-center gap-1.5 text-xs"
+    >
+      <FormattedDateRange
+        startDate={new Date(item.startDate)}
+        endDate={item.endDate ? new Date(item.endDate) : undefined}
+        formatOptions={{ year: "numeric", month: "short" }}
+      />
+      <span aria-hidden="true">&bull;</span>
+      <span>{duration}</span>
+    </div>
+  </div>
+
+  <p class="mt-1 text-sm">{item.description || "—"}</p>
+
+  <Link
+    href={`/work/${item.id}`}
+    class="text-muted-foreground mt-2 w-fit text-sm"
+  >
+    See more
+  </Link>
+</div>

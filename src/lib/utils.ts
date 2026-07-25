@@ -13,6 +13,24 @@ export function formatDate(date: Date) {
   }).format(date);
 }
 
+export function formatDuration(start: Date, end: Date = new Date()) {
+  let months =
+    (end.getFullYear() - start.getFullYear()) * 12 +
+    (end.getMonth() - start.getMonth()) +
+    1;
+  months = Math.max(months, 1);
+
+  const years = Math.floor(months / 12);
+  const remainingMonths = months % 12;
+
+  const parts: string[] = [];
+  if (years > 0) parts.push(`${years} yr${years > 1 ? "s" : ""}`);
+  if (remainingMonths > 0)
+    parts.push(`${remainingMonths} mo${remainingMonths > 1 ? "s" : ""}`);
+
+  return parts.join(" ");
+}
+
 export function readingTime(html: string) {
   const textOnly = html.replace(/<[^>]+>/g, "");
   const wordCount = textOnly.split(/\s+/).length;

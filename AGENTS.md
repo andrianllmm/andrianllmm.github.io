@@ -16,13 +16,17 @@ Every change should strengthen that claim.
 
 ## Architecture
 
-The repository is organized around four Astro content collections (`projects`, `posts`, `achievements`, `cv`) and two data files (`skills`, `tags`) that define enums used by content schemas.
+The site separates **content** (things I write) from **entities** (things in my career).
 
-- **Projects**: Portfolio projects with associated case studies and skills.
-- **Posts**: Writing with associated tags.
-- **Achievements**: Awards, hackathons, and other competitions.
-- **Education**: Degrees, certifications, online courses, and workshops. (Data file, not a content collection.)
-- **Skills** and **Tags**: TypeScript data files at `src/data/` that define the vocabularies used across content.
+- **Content**: `posts` and `case-studies`, the only long-form Astro content collections (MDX, defined in `src/content.config.ts`, live under `src/content/`). Posts carry `tags`; case studies don't.
+- **Entities**: `work`,`projects`, `achievements`, `education` are plain TypeScript data modules in `src/data/` (`work.ts`, `projects.ts`, `achievements.ts`, `education.ts`). No MDX body, no zod schema.
+- **Skills** and **Tags**: TypeScript data files at `src/data/` (`skills.ts`, `tags.ts`) that define the vocabularies used across content and entities. Skills attach only to `projects` and `work`; tags are exclusive to `posts`.
+
+Entities and content are linked one way only: an entity can carry `relatedPosts`/`relatedCaseStudies` (arrays of slugs) pointing at content. Content never references entities back. Don't add back-references or auto-inferred relationships; if a page needs a reverse lookup, do it as a page-level query, not a schema field.
+
+Each entity type has an index page (`/work`, `/projects`, `/achievements`, `/education`); `projects` and `work` also have per-item detail pages (`/projects/[id]`, `/work/[id]`) that render entity fields plus any related posts/case studies via `src/lib/relatedContent.ts` + `src/components/RelatedContent.astro`.
+
+`cv` remains a separate Astro content collection generated from `cv/cv.yaml` (see below) and is not unified with `work.ts`.
 
 ### CV
 

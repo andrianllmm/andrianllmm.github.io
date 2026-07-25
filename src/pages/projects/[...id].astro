@@ -1,34 +1,32 @@
 ---
-import { type CollectionEntry, getCollection, render } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
 import Container from "@components/Container.astro";
 import FormattedDateRange from "@components/FormattedDateRange.astro";
-import { readingTime } from "@lib/utils";
 import BackToPrevious from "@components/BackToPrevious.astro";
 import Link from "@components/Link.astro";
-import TableOfContents from "@components/TableOfContents.astro";
 import SkillBadge from "@components/SkillBadge.astro";
-import Giscus from "@components/Giscus.astro";
+import RelatedContent from "@components/RelatedContent.astro";
+import { projects } from "@data/projects";
+import { resolveRelatedContent } from "@lib/relatedContent";
 
 export async function getStaticPaths() {
-  const projects = (await getCollection("projects")).filter(
-    (project) => !project.data.draft,
-  );
-
-  return projects.map((project) => ({
-    params: { id: project.id },
-    props: project,
-  }));
+  return projects
+    .filter((project) => !project.draft)
+    .map((project) => ({
+      params: { id: project.id },
+      props: project,
+    }));
 }
 
-type Props = CollectionEntry<"projects">;
-
 const project = Astro.props;
-const { Content, headings } = await render(project);
+const { posts, caseStudies } = await resolveRelatedContent(
+  project.relatedPosts,
+  project.relatedCaseStudies,
+);
 ---
 
-<Layout title={project.data.title} description={project.data.description}>
+<Layout title={project.title} description={project.description}>
   <Container>
     <div class="animate">
       <BackToPrevious href="/projects">Back to projects</BackToPrevious>
@@ -38,25 +36,19 @@ const { Content, headings } = await render(project);
         <div class="flex items-center gap-1.5">
           <div class="font-base text-sm">
             <FormattedDateRange
-              startDate={project.data.startDate}
-              endDate={project.data.endDate}
+              startDate={new Date(project.startDate)}
+              endDate={project.endDate ? new Date(project.endDate) : undefined}
               formatOptions={{ year: "numeric", month: "short" }}
             />
           </div>
-          &bull;
-          {
-            project.body && (
-              <div class="font-base text-sm">{readingTime(project.body)}</div>
-            )
-          }
         </div>
         <div class="flex items-center gap-1.5">
           {
-            (project.data.demoURL || project.data.repoURL) && (
+            (project.demoURL || project.repoURL) && (
               <nav class="flex gap-1">
-                {project.data.demoURL && (
+                {project.demoURL && (
                   <Link
-                    href={project.data.demoURL}
+                    href={project.demoURL}
                     external
                     class="flex items-center gap-1"
                   >
@@ -64,10 +56,10 @@ const { Content, headings } = await render(project);
                     <span class="sr-only sm:not-sr-only">demo</span>
                   </Link>
                 )}
-                {project.data.demoURL && project.data.repoURL && <span>/</span>}
-                {project.data.repoURL && (
+                {project.demoURL && project.repoURL && <span>/</span>}
+                {project.repoURL && (
                   <Link
-                    href={project.data.repoURL}
+                    href={project.repoURL}
                     external
                     class="flex items-center gap-1"
                   >
@@ -82,25 +74,25 @@ const { Content, headings } = await render(project);
       </div>
 
       <h1 class="my-4 text-3xl font-semibold">
-        {project.data.title}
+        {project.title}
       </h1>
 
+      <p class="text-muted-foreground">
+        {project.description}
+      </p>
+
       {
-        project.data.skills && project.data.skills?.length > 0 ? (
+        project.skills && project.skills?.length > 0 ? (
           <div class="animate flex flex-wrap gap-1">
-            {project.data.skills.map((skill) => (
+            {project.skills.map((skill) => (
               <SkillBadge skill={skill} class="border-none" />
             ))}
           </div>
         ) : null
       }
     </div>
-    <TableOfContents headings={headings} />
-    <article class="animate">
-      <Content />
-      <div class="mt-24">
-        <Giscus />
-      </div>
-    </article>
+    <div class="animate">
+      <RelatedContent posts={posts} caseStudies={caseStudies} />
+    </div>
   </Container>
 </Layout>

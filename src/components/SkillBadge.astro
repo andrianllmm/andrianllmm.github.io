@@ -1,10 +1,10 @@
 ---
-import { getCollection } from "astro:content";
 import { cn } from "@lib/utils";
 import { skills, type SkillKey, type Skill } from "@data/skills";
+import { projects } from "@data/projects";
+import { work } from "@data/work";
 import Badge from "./Badge.astro";
 
-const projects = await getCollection("projects", ({ data }) => !data.draft);
 const {
   skill,
   hideName = false,
@@ -21,8 +21,8 @@ const skillObj = skills[skill] as Skill | undefined;
 const name = skillObj?.name ?? skill;
 const icon = skillObj?.icon;
 
-const projectCount = projects.filter((project) =>
-  project.data.skills?.includes(skill),
+const usageCount = [...projects.filter((p) => !p.draft), ...work].filter(
+  (entity) => entity.skills?.includes(skill),
 ).length;
 ---
 
@@ -30,7 +30,7 @@ const projectCount = projects.filter((project) =>
   <Badge
     iconName={icon}
     hideName={hideName}
-    indicator={showNum && projectCount}
+    indicator={showNum && usageCount}
     class={cn("hover:-translate-y-0.75 transition-transform", className)}
   >
     {name}
