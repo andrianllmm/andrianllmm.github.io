@@ -1,18 +1,12 @@
-import type { SkillKey } from "@data/skills";
-
 export type EducationItem = {
   title: string;
-  category: "Degree" | "Certification" | "Online Course" | "Workshop";
+  category: "Degree" | "Certification";
   institution?: string;
   provider?: string;
   startDate?: string;
   endDate?: string;
   url?: string;
-  description?: string;
   image?: string;
-  skills?: SkillKey[];
-  relatedPosts?: string[];
-  relatedCaseStudies?: string[];
 };
 
 export const education: EducationItem[] = [
@@ -50,26 +44,6 @@ export const education: EducationItem[] = [
     endDate: "2026",
     url: "https://www.datacamp.com/completed/statement-of-accomplishment/track/e79a50d814f987fb416e9a5329e95787737e410a",
     image: "/images/certificates/datacamp-data-analyst-in-python.png",
-  },
-  {
-    title: "fast.ai: Practical Deep Learning for Coders",
-    category: "Online Course",
-    provider: "fast.ai",
-    startDate: "2025",
-    endDate: "2026",
-    url: "https://course.fast.ai/",
-    description:
-      "Applied deep learning with PyTorch covering vision, NLP, and deployment.",
-  },
-  {
-    title: "Machine Learning Specialization",
-    category: "Certification",
-    provider: "DeepLearning.AI & Stanford University",
-    startDate: "2025",
-    endDate: "2025",
-    url: "https://www.coursera.org/specializations/machine-learning-introduction",
-    description:
-      "Foundations of machine learning including supervised and unsupervised learning.",
   },
   {
     title: "CS50's Web Programming with Python and JavaScript",
