@@ -3,6 +3,7 @@ import {
   PINNED_PROJECTS,
   PINNED_WORK,
   PINNED_ACHIEVEMENTS,
+  PINNED_EDUCATION,
   PINNED_SKILLS,
   SITE,
   HOME,
@@ -15,6 +16,7 @@ import Link from "@components/Link.astro";
 import { Icon } from "astro-icon/components";
 import ProjectCard from "@components/ProjectCard.astro";
 import PostCard from "@components/PostCard.astro";
+import CaseStudyCard from "@components/CaseStudyCard.astro";
 import AchievementCard from "@components/AchievementCard.astro";
 import EducationCard from "@components/EducationCard.astro";
 import DegreeCard from "@components/DegreeCard.astro";
@@ -31,28 +33,35 @@ import { projects as allProjectsData } from "@data/projects";
 import { work as allWorkData } from "@data/work";
 import { achievements as allAchievementsData } from "@data/achievements";
 
-const skills = PINNED_SKILLS;
 const tags = Object.keys(allTags).slice(0, SITE.NUM_TAGS_ON_HOMEPAGE);
-
-const allProjects = allProjectsData.filter((p) => !p.draft);
-const projects = PINNED_PROJECTS.map((id) =>
-  allProjects.find((p) => p.id === id),
-)
-  .filter((p): p is (typeof allProjects)[number] => p !== undefined)
-  .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
-
-const work = PINNED_WORK.map((id) =>
-  allWorkData.find((w) => w.id === id),
-).filter((w): w is (typeof allWorkData)[number] => w !== undefined);
 
 const allPosts = (await getCollection("posts")).filter((p) => !p.data.draft);
 const posts = allPosts
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
 
+const allCaseStudies = (await getCollection("caseStudies")).filter(
+  (p) => !p.data.draft,
+);
+
+const caseStudies = allCaseStudies
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, SITE.NUM_CASE_STUDIES_ON_HOMEPAGE);
+
+const work = PINNED_WORK.map((id) =>
+  allWorkData.find((w) => w.id === id),
+).filter((w): w is (typeof allWorkData)[number] => w !== undefined);
+
+const allProjects = allProjectsData.filter((p) => !p.draft);
+const projects = PINNED_PROJECTS.map((id) =>
+  allProjects.find((p) => p.id === id),
+).filter((p): p is (typeof allProjects)[number] => p !== undefined);
+
 const achievements = PINNED_ACHIEVEMENTS.map((id) =>
   allAchievementsData.find((a) => a.id === id),
 ).filter((a): a is (typeof allAchievementsData)[number] => a !== undefined);
+
+const skills = PINNED_SKILLS;
 
 const sortByRecency = (
   a: (typeof education)[number],
@@ -66,14 +75,17 @@ const sortByRecency = (
   return bStart - aStart;
 };
 
-const learningDegrees = education
+const pinnedEducation = PINNED_EDUCATION.map((id) =>
+  education.find((item) => item.id === id),
+).filter((item): item is (typeof education)[number] => item !== undefined);
+
+const learningDegrees = pinnedEducation
   .filter((item) => item.category === "Degree")
   .sort(sortByRecency);
 
-const stillLearning = education
+const stillLearning = pinnedEducation
   .filter((item) => item.category !== "Degree")
-  .sort(sortByRecency)
-  .slice(0, SITE.NUM_EDUCATION_ON_HOMEPAGE || 3);
+  .sort(sortByRecency);
 
 // Create Person structured data
 const personData = {
@@ -236,7 +248,7 @@ const positions = [
 
         <section class="animate space-y-6">
           <div class="flex flex-wrap items-center justify-between gap-y-2">
-            <h2 class="text-lg font-semibold">Recent projects</h2>
+            <h2 class="text-lg font-semibold">Projects</h2>
             <Link href="/projects">See all projects</Link>
           </div>
 
@@ -268,31 +280,7 @@ const positions = [
 
         <section class="animate space-y-6">
           <div class="flex flex-wrap items-center justify-between gap-y-2">
-            <h2 class="text-lg font-semibold">Latest posts</h2>
-            <Link href="/posts">See all posts</Link>
-          </div>
-
-          <div class="animate flex flex-wrap gap-1">
-            {tags.map((tag) => <TagBadge tag={tag} class="border-none" />)}
-            <a href="/tags" aria-label="See all tags" title="See all tags">
-              <Badge class="border-none">. . .</Badge>
-            </a>
-          </div>
-
-          <ul class="not-prose flex flex-col gap-4">
-            {
-              posts.map((post) => (
-                <li>
-                  <PostCard post={post} />
-                </li>
-              ))
-            }
-          </ul>
-        </section>
-
-        <section class="animate space-y-6">
-          <div class="flex flex-wrap items-center justify-between gap-y-2">
-            <h2 class="text-lg font-semibold">Recent achievements</h2>
+            <h2 class="text-lg font-semibold">Achievements</h2>
             <Link href="/achievements">See all achievements</Link>
           </div>
 
@@ -337,6 +325,47 @@ const positions = [
             </section>
           )
         }
+
+        <section class="animate space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-y-2">
+            <h2 class="text-lg font-semibold">Latest posts</h2>
+            <Link href="/posts">See all posts</Link>
+          </div>
+
+          <div class="animate flex flex-wrap gap-1">
+            {tags.map((tag) => <TagBadge tag={tag} class="border-none" />)}
+            <a href="/tags" aria-label="See all tags" title="See all tags">
+              <Badge class="border-none">. . .</Badge>
+            </a>
+          </div>
+
+          <ul class="not-prose flex flex-col gap-4">
+            {
+              posts.map((post) => (
+                <li>
+                  <PostCard post={post} />
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+
+        <section class="animate space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-y-2">
+            <h2 class="text-lg font-semibold">Case studies</h2>
+            <Link href="/case-studies">See all case studies</Link>
+          </div>
+
+          <ul class="not-prose flex flex-col gap-4">
+            {
+              caseStudies.map((caseStudy) => (
+                <li>
+                  <CaseStudyCard caseStudy={caseStudy} />
+                </li>
+              ))
+            }
+          </ul>
+        </section>
       </div>
     </aside>
   </Container>
