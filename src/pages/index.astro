@@ -2,6 +2,7 @@
 import {
   PINNED_PROJECTS,
   PINNED_WORK,
+  PINNED_ACHIEVEMENTS,
   PINNED_SKILLS,
   SITE,
   HOME,
@@ -48,10 +49,9 @@ const posts = allPosts
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
 
-const allAchievements = allAchievementsData.filter((a) => !a.draft);
-const achievements = [...allAchievements]
-  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-  .slice(0, SITE.NUM_ACHIEVEMENTS_ON_HOMEPAGE || 3);
+const achievements = PINNED_ACHIEVEMENTS.map((id) =>
+  allAchievementsData.find((a) => a.id === id),
+).filter((a): a is (typeof allAchievementsData)[number] => a !== undefined);
 
 const stillLearning = education
   .sort((a, b) => {
@@ -285,7 +285,7 @@ const positions = [
             <Link href="/achievements">See all achievements</Link>
           </div>
 
-          <ul class="not-prose flex flex-col gap-4">
+          <ul class="not-prose grid grid-cols-1 gap-4 sm:grid-cols-2">
             {
               achievements.map((achievement) => (
                 <li>

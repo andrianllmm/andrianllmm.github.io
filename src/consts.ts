@@ -21,6 +21,8 @@ export const PINNED_PROJECTS = [
 
 export const PINNED_WORK = ["morphelabs"];
 
+export const PINNED_ACHIEVEMENTS = ["tracktech26", "hack4gov25"];
+
 export const PINNED_SKILLS = [
   "typescript",
   "react",
