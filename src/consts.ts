@@ -37,6 +37,7 @@ export const PINNED_PROJECTS = [
 export const PINNED_ACHIEVEMENTS = ["tracktech26", "hack4gov25"];
 
 export const PINNED_EDUCATION = [
+  "upv-bscs",
   "datacamp-ml-engineer",
   "datacamp-ai-engineer-for-developers",
   "datacamp-data-analyst-in-python",
