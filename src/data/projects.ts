@@ -34,7 +34,7 @@ export const projects: Project[] = [
       "sqlite",
       "railway",
     ],
-    image: "/images/case-studies/aklish/cover.png",
+    image: "/images/projects/aklish/cover.png",
     relatedCaseStudies: ["aklish"],
   },
   {
@@ -45,7 +45,7 @@ export const projects: Project[] = [
     endDate: "2024-05",
     repoURL: "https://github.com/andrianllmm/aklanon-stemmer",
     skills: ["python"],
-    image: "/images/case-studies/aklstemmer/cover.png",
+    image: "/images/projects/aklstemmer/cover.png",
     relatedCaseStudies: ["aklstemmer"],
   },
   {
@@ -57,7 +57,7 @@ export const projects: Project[] = [
     demoURL: "https://astra.andrianllmm.dev",
     repoURL: "https://github.com/andrianllmm/astra",
     skills: ["python", "fastapi", "typescript", "react"],
-    image: "/images/case-studies/astra/cover.jpg",
+    image: "/images/projects/astra/cover.jpg",
     relatedCaseStudies: ["astra"],
   },
   {
@@ -69,7 +69,7 @@ export const projects: Project[] = [
     endDate: "2025-05",
     skills: ["django", "python", "javascript", "html", "css", "bootstrap"],
     repoURL: "https://github.com/andrianllmm/backlogs",
-    image: "/images/case-studies/backlogs/cover.gif",
+    image: "/images/projects/backlogs/cover.gif",
     relatedCaseStudies: ["backlogs"],
   },
   {
@@ -81,7 +81,7 @@ export const projects: Project[] = [
     demoURL: "https://ehalalan.vercel.app",
     repoURL: "https://github.com/eHalalan/ehalalan",
     skills: ["nextjs", "firebase", "tailwind"],
-    image: "/images/case-studies/ehalalan/cover.gif",
+    image: "/images/projects/ehalalan/cover.gif",
     relatedCaseStudies: ["ehalalan"],
     relatedPosts: ["komsaihack25"],
   },
@@ -101,7 +101,7 @@ export const projects: Project[] = [
       "prisma",
       "tailwind",
     ],
-    image: "/images/case-studies/iskommerce/cover.jpg",
+    image: "/images/projects/iskommerce/cover.jpg",
     relatedCaseStudies: ["iskommerce"],
   },
   {
@@ -123,7 +123,7 @@ export const projects: Project[] = [
       "mediapipe",
       "nextjs",
     ],
-    image: "/images/case-studies/manobela/cover.jpg",
+    image: "/images/projects/manobela/cover.jpg",
     relatedCaseStudies: ["manobela"],
     relatedPosts: ["tracktech26"],
   },
@@ -136,7 +136,7 @@ export const projects: Project[] = [
     demoURL: "https://miago.andrianllmm.dev",
     repoURL: "https://github.com/andrianllmm/miago",
     skills: ["react", "express", "typescript", "postgresql", "tailwind"],
-    image: "/images/case-studies/miago/cover.jpg",
+    image: "/images/projects/miago/cover.jpg",
     relatedCaseStudies: ["miago"],
   },
   {
@@ -149,7 +149,7 @@ export const projects: Project[] = [
     demoURL: "https://hermes.andrianllmm.dev",
     repoURL: "https://github.com/popcorn-prophets/project-hermes",
     skills: ["typescript", "nextjs", "postgresql", "supabase"],
-    image: "/images/case-studies/project-hermes/cover.gif",
+    image: "/images/projects/project-hermes/cover.gif",
     relatedCaseStudies: ["project-hermes"],
     relatedPosts: ["komsaihack26"],
   },
@@ -162,7 +162,7 @@ export const projects: Project[] = [
     skills: ["python"],
     demoURL: "https://pypi.org/project/renux",
     repoURL: "https://github.com/andrianllmm/renux",
-    image: "/images/case-studies/renux/cover.png",
+    image: "/images/projects/renux/cover.png",
     relatedCaseStudies: ["renux"],
   },
   {
@@ -174,7 +174,7 @@ export const projects: Project[] = [
     endDate: "2024-06",
     skills: ["python", "pandas"],
     repoURL: "https://github.com/andrianllmm/taglid",
-    image: "/images/case-studies/taglid/cover.png",
+    image: "/images/projects/taglid/cover.png",
     relatedCaseStudies: ["taglid"],
   },
   {
@@ -185,7 +185,7 @@ export const projects: Project[] = [
     endDate: "2024-03",
     repoURL: "https://github.com/andrianllmm/tagalog-stemmer",
     skills: ["python"],
-    image: "/images/case-studies/tglstemmer/cover.png",
+    image: "/images/projects/tglstemmer/cover.png",
     relatedCaseStudies: ["tglstemmer"],
   },
   {
@@ -198,7 +198,7 @@ export const projects: Project[] = [
     skills: ["java"],
     demoURL: "https://andrianllmm.itch.io/tidal-island",
     repoURL: "https://github.com/andrianllmm/tidal-island",
-    image: "/images/case-studies/tidal-island/cover.gif",
+    image: "/images/projects/tidal-island/cover.gif",
     relatedCaseStudies: ["tidal-island"],
   },
   {
@@ -211,7 +211,7 @@ export const projects: Project[] = [
     skills: ["nextjs", "react", "typescript", "tailwind", "vercel"],
     demoURL: "https://uniglyphs.andrianllmm.dev",
     repoURL: "https://github.com/andrianllmm/uniglyphs",
-    image: "/images/case-studies/uniglyphs/cover.gif",
+    image: "/images/projects/uniglyphs/cover.gif",
     relatedCaseStudies: ["uniglyphs"],
   },
   {
@@ -223,7 +223,7 @@ export const projects: Project[] = [
     endDate: "2025-12",
     skills: ["python"],
     repoURL: "https://github.com/andrianllmm/zipzap",
-    image: "/images/case-studies/zipzap/cover.png",
+    image: "/images/projects/zipzap/cover.png",
     relatedCaseStudies: ["zipzap"],
   },
 ];
