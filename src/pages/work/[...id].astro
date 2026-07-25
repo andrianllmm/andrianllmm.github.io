@@ -44,13 +44,19 @@ const { posts, caseStudies } = await resolveRelatedContent(
               </div>
             )
           }
-          <Link
-            href={item.companyURL || "#"}
-            external
-            class="text-accent-foreground"
-          >
-            {item.company}
-          </Link>
+          {
+            item.companyURL ? (
+              <Link
+                href={item.companyURL}
+                external
+                class="text-accent-foreground"
+              >
+                {item.company}
+              </Link>
+            ) : (
+              <span class="text-accent-foreground">{item.company}</span>
+            )
+          }
         </div>
 
         {

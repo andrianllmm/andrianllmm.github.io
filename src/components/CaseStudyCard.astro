@@ -23,7 +23,7 @@ const { caseStudy } = Astro.props as Props;
       <div class="text-muted aspect-video w-24 overflow-hidden rounded-lg text-xs sm:w-36 md:w-48">
         <Image
           src={caseStudy.data.image}
-          alt="Preview"
+          alt={caseStudy.data.title}
           class="transition-transform duration-300 ease-in-out group-hover:scale-105"
         />
       </div>

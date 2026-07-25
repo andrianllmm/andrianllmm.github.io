@@ -10,8 +10,8 @@ type Props = {
 const { achievement } = Astro.props as Props;
 
 const { posts, caseStudies } = await resolveRelatedContent(
-  achievement.relatedPost ? [achievement.relatedPost] : [],
-  achievement.relatedCaseStudy ? [achievement.relatedCaseStudy] : [],
+  achievement.relatedPosts,
+  achievement.relatedCaseStudies,
 );
 
 const post = posts[0];

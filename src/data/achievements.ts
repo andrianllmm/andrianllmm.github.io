@@ -12,8 +12,8 @@ export type Achievement = {
     | "Other";
   date: string;
   url?: string;
-  relatedPost?: string;
-  relatedCaseStudy?: string;
+  relatedPosts?: string[];
+  relatedCaseStudies?: string[];
 };
 
 export const achievements: Achievement[] = [
@@ -24,7 +24,7 @@ export const achievements: Achievement[] = [
     type: "CTF",
     position: "Champion",
     date: "2026-06-13",
-    relatedPost: "qcsp26",
+    relatedPosts: ["qcsp26"],
   },
   {
     id: "komsaihack26",
@@ -33,7 +33,7 @@ export const achievements: Achievement[] = [
     type: "Hackathon",
     position: "Participant",
     date: "2026-04-06",
-    relatedPost: "komsaihack26",
+    relatedPosts: ["komsaihack26"],
   },
   {
     id: "tracktech26",
@@ -42,8 +42,8 @@ export const achievements: Achievement[] = [
     type: "Hackathon",
     position: "Champion",
     date: "2026-01-24",
-    relatedPost: "tracktech26",
-    relatedCaseStudy: "manobela",
+    relatedPosts: ["tracktech26"],
+    relatedCaseStudies: ["manobela"],
   },
   {
     id: "hack4gov25",
@@ -52,7 +52,7 @@ export const achievements: Achievement[] = [
     type: "CTF",
     position: "1st Runner-Up",
     date: "2025-10-20",
-    relatedPost: "hack4gov25",
+    relatedPosts: ["hack4gov25"],
   },
   {
     id: "komsaihack25",
@@ -61,7 +61,7 @@ export const achievements: Achievement[] = [
     type: "Hackathon",
     position: "Participant",
     date: "2025-04-11",
-    relatedPost: "komsaihack25",
+    relatedPosts: ["komsaihack25"],
   },
   {
     id: "buildablock24",
@@ -70,7 +70,7 @@ export const achievements: Achievement[] = [
     type: "Hackathon",
     position: "Winner",
     date: "2024-10-21",
-    relatedPost: "buildablock24",
+    relatedPosts: ["buildablock24"],
   },
   {
     id: "psc7",
@@ -79,6 +79,6 @@ export const achievements: Achievement[] = [
     type: "Competition",
     position: "Participant",
     date: "2022-07-01",
-    relatedPost: "psc7",
+    relatedPosts: ["psc7"],
   },
 ];
