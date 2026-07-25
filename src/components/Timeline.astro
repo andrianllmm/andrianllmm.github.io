@@ -1,0 +1,42 @@
+---
+import type { WorkItem } from "@data/work";
+import { Icon } from "astro-icon/components";
+import WorkCard from "./WorkCard.astro";
+
+const { items } = Astro.props as { items: WorkItem[] };
+
+function getInitials(name: string) {
+  const words = name.split(/[\s—-]+/).filter(Boolean);
+  return words
+    .slice(0, 2)
+    .map((word) => word[0])
+    .join("")
+    .toUpperCase();
+}
+---
+
+<ol class="not-prose relative flex flex-col gap-4 pl-9 sm:pl-11">
+  <div
+    class="bg-border absolute top-4 bottom-4 left-3 w-px sm:left-3.5"
+    aria-hidden="true"
+  >
+  </div>
+  {
+    items.map((item) => (
+      <li class="relative">
+        <div class="border-background bg-muted text-muted-foreground absolute top-2 -left-10 z-10 flex size-8 items-center justify-center overflow-hidden rounded-full border-2 text-[0.6rem] font-semibold sm:-left-12 sm:size-9">
+          {item.companyLogo ? (
+            <Icon
+              name={item.companyLogo}
+              aria-label={item.company}
+              class="size-5 text-current sm:size-5.5"
+            />
+          ) : (
+            getInitials(item.company)
+          )}
+        </div>
+        <WorkCard item={item} />
+      </li>
+    ))
+  }
+</ol>

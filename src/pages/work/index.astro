@@ -2,21 +2,11 @@
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import BackToPrevious from "@components/BackToPrevious.astro";
-import WorkCard from "@components/WorkCard.astro";
+import Timeline from "@components/Timeline.astro";
 import { WORK } from "@consts";
 import { work as allWork } from "@data/work";
 
-const work = [...allWork].sort((a, b) => {
-  const aEnd = a.endDate;
-  const bEnd = b.endDate;
-  if (aEnd === undefined && bEnd !== undefined) return -1; // a is current
-  if (bEnd === undefined && aEnd !== undefined) return 1; // b is current
-  if (aEnd !== undefined && bEnd !== undefined) {
-    const endCompare = new Date(bEnd).getTime() - new Date(aEnd).getTime();
-    if (endCompare !== 0) return endCompare;
-  }
-  return new Date(b.startDate).getTime() - new Date(a.startDate).getTime();
-});
+const work = [...allWork];
 ---
 
 <Layout title={WORK.TITLE} description={WORK.DESCRIPTION}>
@@ -33,15 +23,7 @@ const work = [...allWork].sort((a, b) => {
           A timeline of my professional experience.
         </p>
 
-        <ul class="not-prose flex flex-col gap-4">
-          {
-            work.map((item) => (
-              <li>
-                <WorkCard item={item} />
-              </li>
-            ))
-          }
-        </ul>
+        <Timeline items={work} />
       </div>
     </aside>
   </Container>
