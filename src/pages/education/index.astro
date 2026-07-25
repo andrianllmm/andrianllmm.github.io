@@ -3,10 +3,14 @@ import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import BackToPrevious from "@components/BackToPrevious.astro";
 import EducationCard from "@components/EducationCard.astro";
+import DegreeCard from "@components/DegreeCard.astro";
 import { education, educationProfiles } from "@data/education";
 import Badge from "@components/Badge.astro";
 
-const sortedEducation = [...education].sort((a, b) => {
+const sortByRecency = (
+  a: (typeof education)[number],
+  b: (typeof education)[number],
+) => {
   const aEnd = a.endDate ? new Date(a.endDate).getTime() : 0;
   const bEnd = b.endDate ? new Date(b.endDate).getTime() : 0;
 
@@ -16,7 +20,14 @@ const sortedEducation = [...education].sort((a, b) => {
   const bStart = b.startDate ? new Date(b.startDate).getTime() : 0;
 
   return bStart - aStart;
-});
+};
+
+const degrees = education
+  .filter((item) => item.category === "Degree")
+  .sort(sortByRecency);
+const sortedEducation = education
+  .filter((item) => item.category !== "Degree")
+  .sort(sortByRecency);
 
 const TITLE = "Education & Certifications";
 const DESCRIPTION =
@@ -42,15 +53,31 @@ const DESCRIPTION =
         }
       </div>
 
-      <ul class="not-prose flex flex-col gap-4">
-        {
-          sortedEducation.map((item) => (
-            <li>
-              <EducationCard item={item} />
-            </li>
-          ))
-        }
-      </ul>
+      {
+        degrees.length > 0 && (
+          <ul class="not-prose flex flex-col gap-3 space-y-2">
+            {degrees.map((item) => (
+              <li>
+                <DegreeCard item={item} />
+              </li>
+            ))}
+          </ul>
+        )
+      }
+
+      {
+        sortedEducation.length > 0 && (
+          <div class="space-y-2">
+            <ul class="not-prose grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {sortedEducation.map((item) => (
+                <li>
+                  <EducationCard item={item} />
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
     </div>
   </Container>
 </Layout>

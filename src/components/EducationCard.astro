@@ -2,105 +2,92 @@
 import type { EducationItem } from "@data/education";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
-import { skills as skillsData, type Skill, type SkillKey } from "@data/skills";
 
 const { item } = Astro.props as { item: EducationItem };
 
-// Format years for display
 let yearDisplay = "";
 if (item.startDate) {
   const startYear = new Date(item.startDate).getFullYear();
+
   if (item.endDate) {
     const endYear = new Date(item.endDate).getFullYear();
     yearDisplay =
-      startYear === endYear ? `${startYear}` : `${startYear} - ${endYear}`;
+      startYear === endYear ? `${startYear}` : `${startYear}–${endYear}`;
   } else {
     yearDisplay = `${startYear}`;
   }
 }
 
-// Determine if completed
-const today = new Date();
 const isCompleted =
-  item.endDate && new Date(item.endDate).getTime() <= today.getTime();
+  !!item.endDate && new Date(item.endDate).getTime() <= Date.now();
 
 const statusIcon = isCompleted
-  ? "lucide:circle-check"
-  : "lucide:circle-dot-dashed";
+  ? "lucide:circle-check-big"
+  : "lucide:circle-dashed";
 
-const skills = item.skills
-  ?.filter((skill) => (skillsData[skill as SkillKey] as Skill)?.icon)
-  .slice(0, 3);
+const provider = item.institution ?? item.provider;
+
+const placeholderIcons = {
+  Degree: "lucide:graduation-cap",
+  Certification: "lucide:badge-check",
+  "Online Course": "lucide:laptop-minimal",
+  Workshop: "lucide:hammer",
+} as const;
+
+const placeholderIcon =
+  placeholderIcons[item.category as keyof typeof placeholderIcons] ??
+  "lucide:file-badge";
 ---
 
 <a
   href={item.url ?? "#"}
-  class:list={[
-    "not-prose group flex h-full w-full flex-1 items-start gap-2 rounded-lg px-3 py-2 sm:items-center sm:gap-3",
-    "hover:bg-accent hover:text-accent-foreground focus-visible:bg-accent focus-visible:text-accent-foreground transition-all duration-300 ease-in-out",
-  ]}
   target={item.url ? "_blank" : undefined}
   rel={item.url ? "noopener noreferrer" : undefined}
+  class:list={[
+    "group block !no-underline",
+    !item.url && "pointer-events-none cursor-default",
+  ]}
 >
   {
-    item.image && (
-      <div class="text-muted aspect-video w-24 overflow-hidden rounded-lg text-xs sm:w-24 md:w-32">
+    item.image ? (
+      <div class="flex aspect-[1.414] w-full items-center justify-center">
         <Image
           src={item.image}
-          alt="Preview"
-          width={600}
-          height={400}
-          class="h-full w-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-105"
+          alt={item.title}
+          width={700}
+          height={495}
+          class="max-h-full w-auto max-w-full rounded-lg shadow-xs transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl hover:shadow-black/10 dark:hover:shadow-black/30"
         />
+      </div>
+    ) : (
+      <div class="border-border/60 bg-muted/20 flex aspect-[1.414] w-full items-center justify-center rounded-lg border border-dashed shadow-xs transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:shadow-xl hover:shadow-black/10 dark:hover:shadow-black/30">
+        <Icon name={placeholderIcon} class="text-muted-foreground/35 size-12" />
       </div>
     )
   }
 
-  <div class="flex flex-1 flex-col">
-    <div class="line-clamp-2 flex items-center gap-1 font-semibold">
+  <div class="px-1 pt-3 text-center">
+    <h3 class="line-clamp-2 text-sm leading-snug font-semibold">
       {item.title}
-    </div>
-    <div class="line-clamp-3 text-sm text-wrap sm:line-clamp-2">
-      {item.description}
-    </div>
+    </h3>
+
     <div
-      class="text-muted-foreground mt-0.5 flex flex-wrap items-center gap-1 text-xs"
+      class="text-muted-foreground mt-1 flex items-center justify-center gap-1.5 text-[11px]"
     >
-      <Icon name={statusIcon} class="text-accent-foreground h-3 w-3" />
       {item.category && <span>{item.category}</span>}
-      {
-        item.institution && (
-          <>
-            &bull;{" "}
-            <span class="text-accent-foreground font-medium">
-              {item.institution}
-            </span>
-          </>
-        )
-      }
-      {
-        item.provider && !item.institution && (
-          <>
-            &bull;{" "}
-            <span class="text-accent-foreground font-medium">
-              {item.provider}
-            </span>
-          </>
-        )
-      }
+
       {
         yearDisplay && (
           <>
-            &bull; <span>{yearDisplay}</span>
+            <span>·</span>
+            <span>{yearDisplay}</span>
           </>
         )
       }
-      {
-        skills?.map((skill) => {
-          const { icon } = skillsData[skill as SkillKey] as Skill;
-          return icon && <Icon name={icon} class="size-3.5" />;
-        })
-      }
+
+      <Icon name={statusIcon} class="size-3 shrink-0" />
     </div>
+
+    {provider && <p class="text-muted-foreground mt-1 text-xs">{provider}</p>}
   </div>
 </a>

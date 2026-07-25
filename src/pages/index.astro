@@ -17,6 +17,7 @@ import ProjectCard from "@components/ProjectCard.astro";
 import PostCard from "@components/PostCard.astro";
 import AchievementCard from "@components/AchievementCard.astro";
 import EducationCard from "@components/EducationCard.astro";
+import DegreeCard from "@components/DegreeCard.astro";
 import SkillBadge from "@components/SkillBadge.astro";
 import TagBadge from "@components/TagBadge.astro";
 import Badge from "@components/Badge.astro";
@@ -53,15 +54,25 @@ const achievements = PINNED_ACHIEVEMENTS.map((id) =>
   allAchievementsData.find((a) => a.id === id),
 ).filter((a): a is (typeof allAchievementsData)[number] => a !== undefined);
 
+const sortByRecency = (
+  a: (typeof education)[number],
+  b: (typeof education)[number],
+) => {
+  const aEnd = a.endDate ? new Date(a.endDate).getTime() : Infinity;
+  const bEnd = b.endDate ? new Date(b.endDate).getTime() : Infinity;
+  if (bEnd !== aEnd) return bEnd - aEnd;
+  const aStart = a.startDate ? new Date(a.startDate).getTime() : 0;
+  const bStart = b.startDate ? new Date(b.startDate).getTime() : 0;
+  return bStart - aStart;
+};
+
+const learningDegrees = education
+  .filter((item) => item.category === "Degree")
+  .sort(sortByRecency);
+
 const stillLearning = education
-  .sort((a, b) => {
-    const aEnd = a.endDate ? new Date(a.endDate).getTime() : Infinity;
-    const bEnd = b.endDate ? new Date(b.endDate).getTime() : Infinity;
-    if (bEnd !== aEnd) return bEnd - aEnd;
-    const aStart = a.startDate ? new Date(a.startDate).getTime() : 0;
-    const bStart = b.startDate ? new Date(b.startDate).getTime() : 0;
-    return bStart - aStart;
-  })
+  .filter((item) => item.category !== "Degree")
+  .sort(sortByRecency)
   .slice(0, SITE.NUM_EDUCATION_ON_HOMEPAGE || 3);
 
 // Create Person structured data
@@ -297,20 +308,32 @@ const positions = [
         </section>
 
         {
-          stillLearning.length > 0 && (
+          (learningDegrees.length > 0 || stillLearning.length > 0) && (
             <section class="animate space-y-6">
               <div class="flex flex-wrap items-center justify-between gap-y-2">
                 <h2 class="text-lg font-semibold">Still learning...</h2>
                 <Link href="/education">See education</Link>
               </div>
 
-              <ul class="not-prose flex flex-col gap-4">
-                {stillLearning.map((item) => (
-                  <li>
-                    <EducationCard item={item} />
-                  </li>
-                ))}
-              </ul>
+              {learningDegrees.length > 0 && (
+                <ul class="not-prose flex flex-col gap-3">
+                  {learningDegrees.map((item) => (
+                    <li>
+                      <DegreeCard item={item} />
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {stillLearning.length > 0 && (
+                <ul class="not-prose grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {stillLearning.map((item) => (
+                    <li>
+                      <EducationCard item={item} />
+                    </li>
+                  ))}
+                </ul>
+              )}
             </section>
           )
         }

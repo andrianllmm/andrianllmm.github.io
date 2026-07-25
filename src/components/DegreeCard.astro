@@ -1,0 +1,54 @@
+---
+import type { EducationItem } from "@data/education";
+import { Icon } from "astro-icon/components";
+
+const { item } = Astro.props as { item: EducationItem };
+
+let yearDisplay = "";
+if (item.startDate) {
+  const startYear = new Date(item.startDate).getFullYear();
+
+  if (item.endDate) {
+    const endYear = new Date(item.endDate).getFullYear();
+    yearDisplay =
+      startYear === endYear ? `${startYear}` : `${startYear}–${endYear}`;
+  } else {
+    yearDisplay = `${startYear}`;
+  }
+}
+
+const isCompleted =
+  !!item.endDate && new Date(item.endDate).getTime() <= Date.now();
+
+const statusIcon = isCompleted
+  ? "lucide:circle-check-big"
+  : "lucide:circle-dashed";
+
+const provider = item.institution ?? item.provider;
+---
+
+<a
+  href={item.url ?? "#"}
+  target={item.url ? "_blank" : undefined}
+  rel={item.url ? "noopener noreferrer" : undefined}
+  class:list={[
+    "group border-border bg-muted/10 flex items-center gap-4 rounded-lg border border-dashed px-5 py-4 !no-underline transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.01] hover:shadow-md hover:shadow-black/10 dark:hover:shadow-black/30",
+    !item.url && "pointer-events-none cursor-default",
+  ]}
+>
+  <div
+    class="text-accent-foreground flex shrink-0 items-center justify-center rounded-full"
+  >
+    <Icon name="lucide:graduation-cap" class="size-5" />
+  </div>
+
+  <div class="min-w-0 flex-1">
+    <h3 class="line-clamp-2 leading-snug font-semibold">{item.title}</h3>
+    {provider && <p class="text-muted-foreground text-sm">{provider}</p>}
+  </div>
+
+  <div class="text-muted-foreground flex shrink-0 items-center gap-1.5 text-xs">
+    {yearDisplay && <span>{yearDisplay}</span>}
+    <Icon name={statusIcon} class="size-3.5 shrink-0" />
+  </div>
+</a>

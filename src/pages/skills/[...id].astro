@@ -109,7 +109,7 @@ const hasAny =
             {education.length > 0 && (
               <div class="space-y-4">
                 <h2 class="text-lg font-semibold">Education</h2>
-                <ul class="not-prose flex flex-col gap-4">
+                <ul class="not-prose grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {education.map((item) => (
                     <li>
                       <EducationCard item={item} />
