@@ -1,6 +1,6 @@
 ---
 name: tailored-resume-generator
-description: Analyzes job descriptions and generates tailored resumes that highlight relevant experience, skills, and achievements to maximize interview chances
+description: Analyzes job descriptions and generates tailored resumes from cv/cv.yaml, highlighting relevant experience, skills, and achievements to maximize interview chances.
 ---
 
 # Tailored Resume Generator
@@ -23,53 +23,44 @@ description: Analyzes job descriptions and generates tailored resumes that highl
 5. **Formats Professionally**: Creates clean, professional resume layouts suitable for various formats
 6. **Provides Recommendations**: Suggests improvements and highlights gaps to address
 
+## Data Source
+
+This skill reads from `cv/cv.yaml` by default. The YAML file contains the complete professional background: contact info, education, experience, projects, awards, and skills. Do not ask the user to provide information that already exists in the YAML.
+
+The tailored resume is a separate artifact from the website CV. Both draw from the same data, but the website CV is comprehensive while a tailored resume is selectively emphasized for a specific role. Tailored resumes are output to `cv/custom/` and are gitignored.
+
 ## How to Use
 
 ### Basic Usage
 
-Provide a job description and your background information:
+Provide a job description. The skill reads your background from `cv/cv.yaml` automatically:
 
 ```
 I'm applying for this job:
 
 [paste job description]
-
-Here's my background:
-- 5 years as software engineer at TechCorp
-- Led team of 3 developers on mobile app project
-- Expert in Python, JavaScript, React
-- Computer Science degree from State University
 ```
 
-### With Existing Resume
+### Override Fields
 
-Upload or paste your current resume along with the job description:
+To override specific fields without editing the YAML:
 
 ```
-Please tailor my resume for this position:
+Please tailor my resume for this position. Override the summary to emphasize [X].
 
 Job Description:
 [paste job description]
-
-My Current Resume:
-[paste resume content]
 ```
 
 ### Career Transition
 
-When changing industries or roles:
+When changing industries, the skill reads from `cv/cv.yaml` and reorganizes emphasis. Add transferable context if needed:
 
 ```
 I'm transitioning from marketing to product management.
 Here's the job I'm applying for:
 
 [paste job description]
-
-My transferable experience:
-- 7 years in digital marketing
-- Led cross-functional teams
-- Managed product launches
-- Data analysis and A/B testing
 ```
 
 ## Example
@@ -173,8 +164,9 @@ When a user requests resume tailoring:
 
 **Candidate Background**:
 
-- If user provides existing resume, use it as the foundation
-- If not, request:
+- Read `cv/cv.yaml` as the default data source. This contains work history, education, skills, projects, and awards.
+- If user provides an existing resume, use it as the foundation instead
+- If the YAML is missing information the user wants included, request:
   - Work history (job titles, companies, dates, responsibilities)
   - Education background
   - Key skills and technical proficiencies
@@ -263,6 +255,16 @@ For each job requirement:
 - **Markdown**: Clean, readable, easy to copy
 - **Plain Text**: ATS-optimized, safe for all systems
 - **Tips for Word/PDF**: Provide formatting guidance
+
+**Output**: Tailored resumes are generated to `cv/custom/output/` and are gitignored. The main `cv/cv.yaml` and its artifacts (`public/cv.pdf`, `src/content/cv/index.md`) are never modified.
+
+**Generate the tailored resume**:
+
+```bash
+npm run cv -- cv/custom/<slug>.yaml --output-folder-name custom --pdf-path custom/output/<slug>.pdf --dont-generate-markdown
+```
+
+Where `<slug>` is a URL-safe version of the company name or job title (e.g., `google-ml-engineer`). The PDF will be generated to `cv/custom/output/<slug>.pdf`.
 
 **Resume Structure Guidelines**:
 
