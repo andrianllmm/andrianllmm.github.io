@@ -1,34 +1,33 @@
 ---
-import { type CollectionEntry, getCollection, render } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import BackToPrevious from "@components/BackToPrevious.astro";
-import Giscus from "@components/Giscus.astro";
 import SkillBadge from "@components/SkillBadge.astro";
-import TableOfContents from "@components/TableOfContents.astro";
+import RelatedContent from "@components/RelatedContent.astro";
+import { achievements } from "@data/achievements";
+import { resolveRelatedContent } from "@lib/relatedContent";
 
 export async function getStaticPaths() {
-  const achievements = (await getCollection("achievements"))
-    .filter((a) => !a.data.draft)
-    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-  return achievements.map((achievement) => ({
-    params: { id: achievement.id },
-    props: achievement,
-  }));
+  return achievements
+    .filter((a) => !a.draft)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .map((achievement) => ({
+      params: { id: achievement.id },
+      props: achievement,
+    }));
 }
 
-type Props = CollectionEntry<"achievements">;
-
 const achievement = Astro.props;
-const { Content, headings } = await render(achievement);
-
-const achievementSkills = achievement.data.skills;
+const { posts, caseStudies } = await resolveRelatedContent(
+  achievement.relatedPosts,
+  achievement.relatedCaseStudies,
+);
 ---
 
 <Layout
-  title={achievement.data.title}
-  description={achievement.data.description || "An achievement."}
+  title={achievement.title}
+  description={achievement.description || "An achievement."}
 >
   <Container>
     <div class="animate">
@@ -40,26 +39,32 @@ const achievementSkills = achievement.data.skills;
         class="text-muted-foreground animate flex flex-wrap items-center gap-2"
       >
         <div class="text-accent-foreground text-sm font-medium">
-          {achievement.data.position}
+          {achievement.position}
         </div>
         &bull;
         <div class="text-sm">
-          {achievement.data.type}
+          {achievement.type}
         </div>
         &bull;
         <div class="text-sm">
-          <FormattedDate date={achievement.data.date} />
+          <FormattedDate date={new Date(achievement.date)} />
         </div>
       </div>
 
       <h1 class="animate my-3 text-3xl font-semibold">
-        {achievement.data.title}
+        {achievement.title}
       </h1>
 
       {
-        achievementSkills && achievementSkills.length > 0 && (
+        achievement.description && (
+          <p class="text-muted-foreground">{achievement.description}</p>
+        )
+      }
+
+      {
+        achievement.skills && achievement.skills.length > 0 && (
           <div class="animate mt-2 flex flex-wrap gap-1">
-            {achievementSkills.map((skill) => (
+            {achievement.skills.map((skill) => (
               <SkillBadge skill={skill} class="border-none" />
             ))}
           </div>
@@ -67,13 +72,8 @@ const achievementSkills = achievement.data.skills;
       }
     </div>
 
-    {headings.length > 0 && <TableOfContents headings={headings} />}
-
-    <article class="animate">
-      <Content />
-      <div class="mt-24">
-        <Giscus />
-      </div>
-    </article>
+    <div class="animate">
+      <RelatedContent posts={posts} caseStudies={caseStudies} />
+    </div>
   </Container>
 </Layout>

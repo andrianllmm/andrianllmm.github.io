@@ -56,6 +56,17 @@ export const ACHIEVEMENTS = {
   DESCRIPTION: "A collection of competitions and notable accomplishments.",
 };
 
+export const CASE_STUDIES: Metadata = {
+  TITLE: "Case Studies",
+  DESCRIPTION:
+    "Engineering deep dives into how I built and shipped my projects.",
+};
+
+export const WORK: Metadata = {
+  TITLE: "Work",
+  DESCRIPTION: "A timeline of my professional experience.",
+};
+
 export const SOCIALS: Socials = [
   {
     NAME: "LinkedIn",

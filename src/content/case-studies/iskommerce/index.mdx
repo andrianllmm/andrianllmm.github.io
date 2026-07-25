@@ -1,0 +1,117 @@
+---
+title: "Iskommerce"
+description: "A closed-campus C2C ecommerce marketplace for UPV students"
+date: "2026-05"
+image: "./preview.jpg"
+---
+
+import { Image } from "astro:assets";
+import preview from "./preview.jpg";
+
+Iskommerce is a university only C2C marketplace that enables students to buy, sell, and exchange items within a trusted academic community.
+
+<Image src={preview} alt="Iskommerce Preview" data-zoomable />
+
+At the <a href="https://www.upv.edu.ph/">University of the Philippines Visayas</a>, student to student commerce has long lived inside Facebook groups, Messenger threads, and informal campus networks.
+
+Listings are typically unstructured posts using tags like **#forsale**, **#LF**, or **#mine**, which makes discovery dependent on scrolling behavior instead of structured search.
+
+This leads to an active but inefficient marketplace layer inside the campus ecosystem.
+
+Iskommerce was built to turn this informal system into a structured, searchable, trust aware platform designed specifically for students.
+
+## How it turned out
+
+### Listings
+
+Each item is represented as a persistent listing with standardized fields for price, condition, category, and status.
+
+This replaces fragmented social posts with a consistent marketplace model.
+
+### Discovery
+
+Listings are surfaced through homepage feeds, search, filtering, and sorting.
+
+### Messaging
+
+Each listing supports a dedicated conversation thread between buyer and seller.
+
+This centralizes negotiation away from external messaging apps.
+
+### Transactions
+
+Iskommerce formalizes the exchange process.
+
+Each transaction is explicitly tied to listing state transitions to prevent conflicts and duplicate deals.
+
+### Reviews
+
+A bidirectional review system captures post transaction feedback.
+
+This introduces structured trust signals instead of purely social inference.
+
+## How we built it
+
+### System architecture
+
+Iskommerce uses a modular monolith architecture built around a 3 tier system:
+
+- Presentation layer: Next.js frontend
+- Application layer: NestJS backend
+
+Turborepo is used to manage the monorepo structure across services.
+
+### Modules
+
+- Auth module for UP email verification and session handling
+- Listing module for CRUD, status transitions, and feed generation
+- Messaging module for conversation threads per listing
+- Transaction module for the buying flow state machine
+- Review module for post transaction reputation system
+- Notification module for activity updates
+
+### Data model design
+
+Core entities are built around transactional integrity:
+
+- Listings enforce strict state transitions from draft to available to reserved to sold to archived
+- Transactions enforce a single active transaction per listing
+- Conversations are uniquely bound per buyer per listing
+- Reviews are restricted to completed transactions only
+
+Relational constraints ensure consistency across listings, transactions, and messaging.
+
+### Real time communication
+
+Messaging and notifications use a lightweight real time layer with optional WebSocket support
+for instant chat updates and notifications.
+
+### Tech stack
+
+| Layer      | Stack                            |
+| ---------- | -------------------------------- |
+| Frontend   | Next.js, Tailwind CSS, shadcn/ui |
+| Backend    | NestJS, TypeScript               |
+| Database   | PostgreSQL, Prisma               |
+| Monorepo   | Turborepo                        |
+| DevOps     | Docker, GitHub Actions           |
+| Deployment | Vercel, Supabase                 |
+
+## What I learned
+
+This was my first time building a full stack system purely in TypeScript.
+I was previously more used to Python backends like Django or relying on BaaS like Supabase,
+so owning both frontend and backend made me think more about how the entire system fits together.
+
+It was also my first time really architecting a codebase the way I wanted.
+I went with a modular monolith kind of inspired by Django "apps".
+I really liked the structure since made it obvious where features belong, and how they connect across modules.
+Adding new features felt like a chore since you know what to add and where to add them.
+
+Given that we're using TS in both frontend and backend, a monorepo with Turborepo tied everything together.
+Shared packages, containing Zod schemas, made types, DTOs, and validation consistent.
+This was the kind of thing that annoyed me when I was using Python in the backend.
+
+Probably what stood out to me the most is Better Auth.
+It is not a hosted service, and it is not a low level library that forces you to wire everything yourself.
+It is by far cleanest way I have seen to handle auth.

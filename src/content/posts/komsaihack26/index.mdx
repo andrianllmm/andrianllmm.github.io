@@ -1,0 +1,30 @@
+---
+title: "KomsaiHack RiskReady"
+description: "Built a DRRM communication control center through AI-powered chatbots"
+tags: ["reflection"]
+date: "2026-04-06"
+---
+
+import { projects } from "@data/projects";
+import ProjectCard from "@components/ProjectCard.astro";
+
+export const hermes = (() => {
+  const project = projects.find((p) => p.id === "project-hermes");
+  if (!project) throw new Error("Project not found");
+  return project;
+})();
+
+## About the competition
+
+_Komsai Hack 2026: RiskReady Hackathon_ is a hackathon organized by <a href="https://www.komsai.org" target="_blank">Komsai.org</a>
+that invites college students from Western Visayas
+to create tech-driven solutions that strengthen disaster risk reduction and management.
+
+Participants are tasked to ideate, design, and build applications aimed at improving awareness of disaster reduction procedures,
+beneficial and relevant information gathering and usage, and accessibility in community preparedness.
+
+## How it turned out
+
+We developed a DRRM communication control center through AI-powered chatbots.
+
+<ProjectCard project={hermes} />

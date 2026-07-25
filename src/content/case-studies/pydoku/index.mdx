@@ -1,0 +1,32 @@
+---
+title: "Pydoku"
+description: "A Sudoku game using Python Tkinter with puzzle generation and solver"
+date: "2024-12"
+image: "./preview.png"
+---
+
+import { Image } from "astro:assets";
+import preview from "./preview.png";
+
+<Image
+  src={preview}
+  alt="Preview"
+  class="my-4 w-full max-w-100"
+  data-zoomable
+/>
+
+Pydoku is a Sudoku game built in Python using <a href="https://docs.python.org/3/library/tkinter.html" target="_blank">Tkinter</a>.
+It generates random puzzles, lets users solve them, and offers hints. It also includes a solver that uses backtracking to find solutions.
+The interface is designed to be minimal and easy to use.
+
+## Why I built it
+
+Pydoku was built as a final project for <a href="https://upvdpsm.com/courses/computer-science/cmsc-11.html" target="_blank">CMSC 11</a>
+(Introduction to Computer Science).[^1]
+The task was to create a <abbr title="Graphical User Interface">GUI</abbr> using Tkinter and Python fundamentals that we learned in the class.
+
+---
+
+[^1]:
+    CMSC 11 is the first programming course I took at <abbr title="University of the Philippines Visayas">UPV</abbr>.
+    It discusses about Computer Science and the basics of programming with Python.

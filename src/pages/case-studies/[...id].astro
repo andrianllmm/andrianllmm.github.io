@@ -1,0 +1,112 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+import FormattedDate from "@components/FormattedDate.astro";
+import { readingTime } from "@lib/utils";
+import BackToPrevious from "@components/BackToPrevious.astro";
+import TableOfContents from "@components/TableOfContents.astro";
+import Giscus from "@components/Giscus.astro";
+import StructuredData from "@components/StructuredData.astro";
+import Link from "@components/Link.astro";
+import { projects } from "@data/projects";
+
+export async function getStaticPaths() {
+  const caseStudies = (await getCollection("caseStudies")).filter(
+    (caseStudy) => !caseStudy.data.draft,
+  );
+  return caseStudies.map((caseStudy) => ({
+    params: { id: caseStudy.id },
+    props: caseStudy,
+  }));
+}
+type Props = CollectionEntry<"caseStudies">;
+
+const caseStudy = Astro.props;
+const { Content, headings } = await render(caseStudy);
+
+// Best-effort reverse lookup for a "part of" breadcrumb — UI convenience only,
+// case studies stay unaware of which project references them.
+const parentProject = projects.find((project) =>
+  project.relatedCaseStudies?.includes(caseStudy.id),
+);
+
+// Create Article structured data
+const article = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: caseStudy.data.title,
+  description: caseStudy.data.description,
+  image: caseStudy.data.image
+    ? new URL(caseStudy.data.image.src, Astro.site).toString()
+    : new URL("/images/meta-image.png", Astro.site).toString(),
+  datePublished: caseStudy.data.date.toISOString(),
+  dateModified: caseStudy.data.date.toISOString(),
+  author: {
+    "@type": "Person",
+    name: "Andrian Lloyd Maagma",
+    url: Astro.site,
+  },
+  publisher: {
+    "@type": "Person",
+    name: "Andrian Lloyd Maagma",
+    url: Astro.site,
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": new URL(Astro.url.pathname, Astro.site).toString(),
+  },
+};
+---
+
+<Layout
+  title={caseStudy.data.title}
+  description={caseStudy.data.description}
+  type="article"
+  publishedDate={caseStudy.data.date}
+>
+  <Fragment slot="head">
+    <StructuredData data={article} />
+  </Fragment>
+  <Container>
+    <div class="animate">
+      <BackToPrevious href="/case-studies">Back to case studies</BackToPrevious>
+    </div>
+    <div class="my-10 space-y-1">
+      <div class="animate flex items-center gap-1.5">
+        <div class="font-base text-sm">
+          <FormattedDate date={caseStudy.data.date} />
+        </div>
+        {
+          caseStudy.body && (
+            <div class="font-base text-sm">
+              &bull; {readingTime(caseStudy.body)}
+            </div>
+          )
+        }
+      </div>
+
+      <h1 class="animate my-3 text-3xl font-semibold">
+        {caseStudy.data.title}
+      </h1>
+
+      {
+        parentProject && (
+          <div class="text-muted-foreground animate text-sm">
+            Part of{" "}
+            <Link href={`/projects/${parentProject.id}`}>
+              {parentProject.title}
+            </Link>
+          </div>
+        )
+      }
+    </div>
+    {headings.length > 0 && <TableOfContents headings={headings} />}
+    <article class="animate">
+      <Content />
+      <div class="mt-24">
+        <Giscus />
+      </div>
+    </article>
+  </Container>
+</Layout>

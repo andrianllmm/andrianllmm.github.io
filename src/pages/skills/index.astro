@@ -1,18 +1,26 @@
 ---
-import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import BackToPrevious from "@components/BackToPrevious.astro";
 import SkillBadge from "@components/SkillBadge.astro";
 import { skills as skillData, skillGroups, type SkillKey } from "@data/skills";
+import { projects } from "@data/projects";
+import { work } from "@data/work";
+import { achievements } from "@data/achievements";
+import { education } from "@data/education";
 
-const projects = await getCollection("projects", ({ data }) => !data.draft);
+const entities = [
+  ...projects.filter((p) => !p.draft),
+  ...work,
+  ...achievements.filter((a) => !a.draft),
+  ...education,
+];
 
-// Function to sort skills by number of projects
+// Function to sort skills by number of entities using them
 const sortSkills = (skillKeys: SkillKey[]) => {
   return skillKeys.sort((a, b) => {
-    const countA = projects.filter((p) => p.data.skills?.includes(a)).length;
-    const countB = projects.filter((p) => p.data.skills?.includes(b)).length;
+    const countA = entities.filter((e) => e.skills?.includes(a)).length;
+    const countB = entities.filter((e) => e.skills?.includes(b)).length;
     return countB - countA || a.localeCompare(b);
   });
 };

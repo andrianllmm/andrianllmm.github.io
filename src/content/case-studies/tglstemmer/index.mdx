@@ -1,0 +1,84 @@
+---
+title: "Tagalog Stemmer"
+description: "A Python library for Tagalog word stemming."
+date: "2024-03"
+image: "./preview.png"
+---
+
+TglStemmer is a library that finds the root form of <a href="https://www.ethnologue.com/language/tgl" target="_blank">Tagalog</a> words.
+It works on inflected words, even those with mixed Tagalog-English (Taglish) terms or those not found in dictionaries.
+It removes affixes, reduces repeated syllables, and applies transformation rules to find possible root forms.
+These are filtered using a list of valid words and conditions. The best root is then chosen based on how much was changed during the process.
+
+## Why I built it
+
+TglStemmer was originally developed as a supplementary tool for the algorithm used in the [TagLID project](/projects/taglid).
+It was specifically designed to improve the Language Identification (LID) tool,
+as inflected words are often not included in word lists.
+Today, it serves as a reusable tool for stemming any Tagalog-inflected words.
+
+## How it turned out
+
+TglStemmer can be used as a Python library by importing it into a Python script.
+Check the repository for complete <a href="https://github.com/andrianllmm/tagalog-stemmer/#usage" target="_blank">instructions</a>.
+
+```python
+>>> from tglstemmer import stemmer
+
+>>> stem = stemmer.get_stem("nagsulat")  # "nagsulat" = "wrote"
+
+>>> stem.word  # Stemmed form: "sulat" = "write"
+'sulat'
+
+>>> stem.pre  # Prefix: "nag" = past tense marker
+'nag'
+
+>>> stem.suf  # No suffix found
+None
+```
+
+## How I built it
+
+TglStemmer performs stemming by applying a modular sequence of affix-removal and transformation rules to input words.
+Here's how it works under the hood:
+
+### Tokenization
+
+Since the input text can contain multiple words, it is first tokenized using <a href="https://www.nltk.org/" target="_blank">NLTK</a>,
+with optional punctuation filtering. Each token is then processed individually.
+
+### Affix Removal
+
+TglStemmer removes prefixes, infixes, and suffixes based on curated lists and advanced transformation rules.
+
+- **Prefix removal**: strips leading affixes (nag-, pa-, etc.), and also handles:
+  - **Phoneme change** (d/r) (e.g. parami → dami).
+  - **Assimilation**:
+    - -ng (k/null) (e.g. pangailangan → kailangan)
+    - -m (b/p) (e.g. pamigay → bigay, pamagitan → pagitan)
+    - -n (d/s/t) (e.g. panamit → damit, panigarilyo → sigarilyo, panahi → tahi)
+- **Infix removal**: detects and removes mid-word infixes like \<in\> (e.g. sinulat → sulat).
+- **Suffix removal**: strips trailing affixes (-an, -in, etc.) and also handles:
+  - **Contractions** (ending with "ng", "g", "'t", "'y")
+  - **Phoneme change**:
+    - (d/r) (e.g. bayaran => bayad)
+    - (o/u) (e.g. tauhan => tao, inuman => inom)
+    - (e/i) (e.g. kingkihan => kingke, paitin => paet)
+  - **Vowel loss** (e.g. buksan => bukas)
+  - **Metathesis** (e.g. tamnin => tanim)
+
+### Reduplication
+
+TglStemmer can identify and reduce repetition in words which can occur in Tagalog:
+
+- **Partial reduplication**: when part of the word repeats (e.g. aalis → alis, bibili → bili)
+- **Full duplication**: when the whole word repeats (e.g. ano-ano → ano, including altered forms e.g. anu-ano → ano, iba't-iba → iba)
+
+### Choosing the Stem
+
+After applying the affix removal and transformations, TglStemmer can generate multiple candidate stems.
+For example, the word 'pinakamahusay't' might produce 'husay', 'mahusay', and 'pinakamahusay'.
+
+These candidates are evaluated and ranked using a custom scoring system that favors
+fewer transformations, longer removed affixes or reduplication, and more morphologically plausible stems.
+The top-ranked candidate is picked as the final stem.

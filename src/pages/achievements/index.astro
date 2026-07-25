@@ -1,21 +1,24 @@
 ---
-import { type CollectionEntry, getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import BackToPrevious from "@components/BackToPrevious.astro";
 import AchievementCard from "@components/AchievementCard.astro";
 import { ACHIEVEMENTS } from "@consts";
+import {
+  achievements as allAchievements,
+  type Achievement,
+} from "@data/achievements";
 
-const data = (await getCollection("achievements")).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
-);
+const data = allAchievements
+  .filter((a) => !a.draft)
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
 type Acc = {
-  [year: string]: CollectionEntry<"achievements">[];
+  [year: string]: Achievement[];
 };
 
 const achievements = data.reduce((acc: Acc, item) => {
-  const year = item.data.date.getFullYear().toString();
+  const year = new Date(item.date).getFullYear().toString();
   if (!acc[year]) {
     acc[year] = [];
   }

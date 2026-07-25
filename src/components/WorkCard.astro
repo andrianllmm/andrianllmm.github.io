@@ -1,0 +1,100 @@
+---
+import type { WorkItem } from "@data/work";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import { skills as skillsData, type Skill, type SkillKey } from "@data/skills";
+import FormattedDateRange from "./FormattedDateRange.astro";
+import Link from "./Link.astro";
+import { resolveRelatedContent } from "@lib/relatedContent";
+
+const { item } = Astro.props as { item: WorkItem };
+
+const isCurrent = !item.endDate;
+const statusIcon = isCurrent
+  ? "lucide:circle-dot-dashed"
+  : "lucide:circle-check";
+
+const skills = item.skills
+  ?.filter((skill) => (skillsData[skill as SkillKey] as Skill)?.icon)
+  .slice(0, 3);
+
+const { posts, caseStudies } = await resolveRelatedContent(
+  item.relatedPosts,
+  item.relatedCaseStudies,
+);
+---
+
+<div
+  class="not-prose flex w-full flex-1 items-start gap-2 rounded-lg px-3 py-2 sm:items-center sm:gap-3"
+>
+  {
+    item.image && (
+      <div class="text-muted aspect-video w-24 overflow-hidden rounded-lg text-xs sm:w-24 md:w-32">
+        <Image
+          src={item.image}
+          alt="Preview"
+          width={600}
+          height={400}
+          class="h-full w-full object-cover"
+        />
+      </div>
+    )
+  }
+
+  <div class="flex flex-1 flex-col gap-1">
+    <div class="line-clamp-2 flex items-center gap-1 font-semibold">
+      {item.title}
+    </div>
+    {
+      item.description && (
+        <div class="line-clamp-3 text-sm text-wrap sm:line-clamp-2">
+          {item.description}
+        </div>
+      )
+    }
+    <div
+      class="text-muted-foreground mt-0.5 flex flex-wrap items-center gap-1 text-xs"
+    >
+      <Icon name={statusIcon} class="text-accent-foreground h-3 w-3" />
+      {
+        item.companyURL ? (
+          <Link
+            href={item.companyURL}
+            external
+            class="text-accent-foreground font-medium"
+          >
+            {item.company}
+          </Link>
+        ) : (
+          <span class="text-accent-foreground font-medium">{item.company}</span>
+        )
+      }
+      &bull;
+      <FormattedDateRange
+        startDate={new Date(item.startDate)}
+        endDate={item.endDate ? new Date(item.endDate) : undefined}
+        formatOptions={{ year: "numeric", month: "short" }}
+      />
+      {
+        skills?.map((skill) => {
+          const { icon } = skillsData[skill as SkillKey] as Skill;
+          return icon && <Icon name={icon} class="size-3.5" />;
+        })
+      }
+    </div>
+    {
+      (posts.length > 0 || caseStudies.length > 0) && (
+        <div class="mt-1 flex flex-wrap items-center gap-2 text-xs">
+          {caseStudies.map((caseStudy) => (
+            <Link href={`/case-studies/${caseStudy.id}`}>
+              {caseStudy.data.title}
+            </Link>
+          ))}
+          {posts.map((post) => (
+            <Link href={`/posts/${post.id}`}>{post.data.title}</Link>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</div>

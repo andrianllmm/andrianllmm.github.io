@@ -17,13 +17,13 @@ import Contact from "@components/Contact.astro";
 import StructuredData from "@components/StructuredData.astro";
 import { tags as allTags } from "@data/tags";
 import { education } from "@data/education";
+import { projects as allProjectsData } from "@data/projects";
+import { achievements as allAchievementsData } from "@data/achievements";
 
 const skills = PINNED_SKILLS;
 const tags = Object.keys(allTags).slice(0, SITE.NUM_TAGS_ON_HOMEPAGE);
 
-const allProjects = (await getCollection("projects")).filter(
-  (p) => !p.data.draft,
-);
+const allProjects = allProjectsData.filter((p) => !p.draft);
 const projects = PINNED_PROJECTS.map((id) =>
   allProjects.find((p) => p.id === id),
 )
@@ -35,11 +35,9 @@ const posts = allPosts
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
 
-const allAchievements = (await getCollection("achievements")).filter(
-  (a) => !a.data.draft,
-);
+const allAchievements = allAchievementsData.filter((a) => !a.draft);
 const achievements = [...allAchievements]
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
   .slice(0, SITE.NUM_ACHIEVEMENTS_ON_HOMEPAGE || 3);
 
 const stillLearning = education

@@ -1,0 +1,29 @@
+---
+title: "KomsaiHack Democratech"
+description: "Built a decentralized election system using blockchain technology"
+tags: ["reflection"]
+date: "2025-04-11"
+---
+
+import { projects } from "@data/projects";
+import ProjectCard from "@components/ProjectCard.astro";
+
+export const ehalalan = (() => {
+  const project = projects.find((p) => p.id === "ehalalan");
+  if (!project) throw new Error("Project not found");
+  return project;
+})();
+
+## About the competition
+
+_Komsai Hack 2025: Democratech Hackathon_ is a hackathon organized by <a href="https://www.komsai.org" target="_blank">Komsai.org</a>
+that invites college students from Western Visayas
+to create tech-driven solutions that enhance democratic processes.
+
+Participants are tasked with brainstorming, designing, and developing applications that promote civic engagement, ensure election integrity, and improve accessibility in governance.
+
+## How it turned out
+
+We developed a decentralized election system that uses blockchain technology to ensure transparency and security.
+
+<ProjectCard project={ehalalan} />

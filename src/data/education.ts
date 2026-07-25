@@ -1,3 +1,5 @@
+import type { SkillKey } from "@data/skills";
+
 export type EducationItem = {
   title: string;
   category: "Degree" | "Certification" | "Online Course" | "Workshop";
@@ -8,6 +10,9 @@ export type EducationItem = {
   url?: string;
   description?: string;
   image?: string;
+  skills?: SkillKey[];
+  relatedPosts?: string[];
+  relatedCaseStudies?: string[];
 };
 
 export const education: EducationItem[] = [

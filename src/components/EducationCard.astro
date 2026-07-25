@@ -2,6 +2,7 @@
 import type { EducationItem } from "@data/education";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
+import { skills as skillsData, type Skill, type SkillKey } from "@data/skills";
 
 const { item } = Astro.props as { item: EducationItem };
 
@@ -26,6 +27,10 @@ const isCompleted =
 const statusIcon = isCompleted
   ? "lucide:circle-check"
   : "lucide:circle-dot-dashed";
+
+const skills = item.skills
+  ?.filter((skill) => (skillsData[skill as SkillKey] as Skill)?.icon)
+  .slice(0, 3);
 ---
 
 <a
@@ -89,6 +94,12 @@ const statusIcon = isCompleted
             &bull; <span>{yearDisplay}</span>
           </>
         )
+      }
+      {
+        skills?.map((skill) => {
+          const { icon } = skillsData[skill as SkillKey] as Skill;
+          return icon && <Icon name={icon} class="size-3.5" />;
+        })
       }
     </div>
   </div>

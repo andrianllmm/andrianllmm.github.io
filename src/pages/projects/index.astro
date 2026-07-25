@@ -1,23 +1,23 @@
 ---
-import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import BackToPrevious from "@components/BackToPrevious.astro";
 import ProjectCard from "@components/ProjectCard.astro";
 import { PROJECTS } from "@consts";
+import { projects as allProjects } from "@data/projects";
 
-const projects = (await getCollection("projects"))
-  .filter((project) => !project.data.draft)
+const projects = allProjects
+  .filter((project) => !project.draft)
   .sort((a, b) => {
-    const aEnd = a.data.endDate;
-    const bEnd = b.data.endDate;
+    const aEnd = a.endDate;
+    const bEnd = b.endDate;
     if (aEnd === undefined && bEnd !== undefined) return -1; // a is ongoing
     if (bEnd === undefined && aEnd !== undefined) return 1; // b is ongoing
     if (aEnd !== undefined && bEnd !== undefined) {
-      const endCompare = bEnd.getTime() - aEnd.getTime();
+      const endCompare = new Date(bEnd).getTime() - new Date(aEnd).getTime();
       if (endCompare !== 0) return endCompare;
     }
-    return a.data.startDate.getTime() - b.data.startDate.getTime();
+    return new Date(a.startDate).getTime() - new Date(b.startDate).getTime();
   });
 ---
 
