@@ -73,16 +73,6 @@ export const projects: Project[] = [
     relatedCaseStudies: ["backlogs"],
   },
   {
-    id: "byteblast",
-    title: "ByteBlast",
-    description: "A BlockBlast clone and solver in PyGame",
-    startDate: "2024-10",
-    endDate: "2024-12",
-    skills: ["python"],
-    repoURL: "https://github.com/andrianllmm/byteblast",
-    image: "/images/projects/byteblast.gif",
-  },
-  {
     id: "ehalalan",
     title: "eHalalan",
     description: "A decentralized election system using blockchain",
