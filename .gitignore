@@ -25,3 +25,10 @@ pnpm-debug.log*
 
 # Python
 __pycache__/
+
+# AI tools
+.claude/
+.codex/
+.cursor/
+.cursorrules
+.gemini/
