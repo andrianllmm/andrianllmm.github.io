@@ -6,15 +6,8 @@ import SkillBadge from "@components/SkillBadge.astro";
 import { skills as skillData, skillGroups, type SkillKey } from "@data/skills";
 import { projects } from "@data/projects";
 import { work } from "@data/work";
-import { achievements } from "@data/achievements";
-import { education } from "@data/education";
 
-const entities = [
-  ...projects.filter((p) => !p.draft),
-  ...work,
-  ...achievements.filter((a) => !a.draft),
-  ...education,
-];
+const entities = [...projects.filter((p) => !p.draft), ...work];
 
 // Function to sort skills by number of entities using them
 const sortSkills = (skillKeys: SkillKey[]) => {

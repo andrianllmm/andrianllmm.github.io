@@ -9,9 +9,9 @@ import {
   type Achievement,
 } from "@data/achievements";
 
-const data = allAchievements
-  .filter((a) => !a.draft)
-  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+const data = allAchievements.sort(
+  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+);
 
 type Acc = {
   [year: string]: Achievement[];

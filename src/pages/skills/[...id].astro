@@ -4,14 +4,10 @@ import Container from "@components/Container.astro";
 import BackToPrevious from "@components/BackToPrevious.astro";
 import ProjectCard from "@components/ProjectCard.astro";
 import WorkCard from "@components/WorkCard.astro";
-import AchievementCard from "@components/AchievementCard.astro";
-import EducationCard from "@components/EducationCard.astro";
 import SkillBadge from "@components/SkillBadge.astro";
 import { skills, type SkillKey } from "@data/skills";
 import { projects as allProjects } from "@data/projects";
 import { work as allWork } from "@data/work";
-import { achievements as allAchievements } from "@data/achievements";
-import { education as allEducation } from "@data/education";
 
 export async function getStaticPaths() {
   return (Object.keys(skills) as SkillKey[]).map((skill) => ({
@@ -21,16 +17,12 @@ export async function getStaticPaths() {
         (p) => !p.draft && p.skills?.includes(skill),
       ),
       work: allWork.filter((w) => w.skills?.includes(skill)),
-      achievements: allAchievements.filter(
-        (a) => !a.draft && a.skills?.includes(skill),
-      ),
-      education: allEducation.filter((e) => e.skills?.includes(skill)),
     },
   }));
 }
 
 const { id } = Astro.params as { id: SkillKey };
-const { projects, work, achievements, education } = Astro.props;
+const { projects, work } = Astro.props;
 
 const sortedProjects = [...projects].sort((a, b) => {
   const aEnd = a.endDate;
@@ -44,11 +36,7 @@ const sortedProjects = [...projects].sort((a, b) => {
   return new Date(a.startDate).getTime() - new Date(b.startDate).getTime();
 });
 
-const hasAny =
-  sortedProjects.length > 0 ||
-  work.length > 0 ||
-  achievements.length > 0 ||
-  education.length > 0;
+const hasAny = sortedProjects.length > 0 || work.length > 0;
 ---
 
 <Layout
@@ -87,32 +75,6 @@ const hasAny =
                   {work.map((item) => (
                     <li>
                       <WorkCard item={item} />
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {achievements.length > 0 && (
-              <div class="space-y-4">
-                <h2 class="text-lg font-semibold">Achievements</h2>
-                <ul class="not-prose flex flex-col gap-4">
-                  {achievements.map((achievement) => (
-                    <li>
-                      <AchievementCard achievement={achievement} />
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {education.length > 0 && (
-              <div class="space-y-4">
-                <h2 class="text-lg font-semibold">Education</h2>
-                <ul class="not-prose grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                  {education.map((item) => (
-                    <li>
-                      <EducationCard item={item} />
                     </li>
                   ))}
                 </ul>
