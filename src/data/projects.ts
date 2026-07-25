@@ -154,18 +154,6 @@ export const projects: Project[] = [
     relatedPosts: ["komsaihack26"],
   },
   {
-    id: "pydoku",
-    title: "Pydoku",
-    description:
-      "A Sudoku game using Python Tkinter with puzzle generation and solver",
-    startDate: "2024-11",
-    endDate: "2024-12",
-    skills: ["python"],
-    repoURL: "https://github.com/andrianllmm/pydoku",
-    image: "/images/case-studies/pydoku/cover.png",
-    relatedCaseStudies: ["pydoku"],
-  },
-  {
     id: "renux",
     title: "renux",
     description: "A terminal-based bulk file renamer with a TUI",
