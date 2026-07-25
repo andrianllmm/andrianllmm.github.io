@@ -19,6 +19,8 @@ export const PINNED_PROJECTS = [
   "miago",
 ];
 
+export const PINNED_WORK = ["morphelabs"];
+
 export const PINNED_SKILLS = [
   "typescript",
   "react",

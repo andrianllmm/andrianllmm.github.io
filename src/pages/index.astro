@@ -1,5 +1,12 @@
 ---
-import { PINNED_PROJECTS, PINNED_SKILLS, SITE, HOME, SOCIALS } from "@consts";
+import {
+  PINNED_PROJECTS,
+  PINNED_WORK,
+  PINNED_SKILLS,
+  SITE,
+  HOME,
+  SOCIALS,
+} from "@consts";
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
@@ -15,9 +22,11 @@ import Badge from "@components/Badge.astro";
 import Avatar from "@components/Avatar.astro";
 import Contact from "@components/Contact.astro";
 import StructuredData from "@components/StructuredData.astro";
+import Timeline from "@components/Timeline.astro";
 import { tags as allTags } from "@data/tags";
 import { education } from "@data/education";
 import { projects as allProjectsData } from "@data/projects";
+import { work as allWorkData } from "@data/work";
 import { achievements as allAchievementsData } from "@data/achievements";
 
 const skills = PINNED_SKILLS;
@@ -29,6 +38,10 @@ const projects = PINNED_PROJECTS.map((id) =>
 )
   .filter((p): p is (typeof allProjects)[number] => p !== undefined)
   .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
+
+const work = PINNED_WORK.map((id) =>
+  allWorkData.find((w) => w.id === id),
+).filter((w): w is (typeof allWorkData)[number] => w !== undefined);
 
 const allPosts = (await getCollection("posts")).filter((p) => !p.data.draft);
 const posts = allPosts
@@ -95,7 +108,7 @@ const positions = [
     atAbbr: "UP Visayas",
   },
   {
-    title: "AI Automation Intern",
+    title: "Intern",
     at: "MorpheLabs",
     atLink: "https://morphelabs.org",
   },
@@ -199,6 +212,15 @@ const positions = [
               >
             </p>
           </article>
+        </section>
+
+        <section class="animate space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-y-2">
+            <h2 class="text-lg font-semibold">Work</h2>
+            <Link href="/work">See my experience</Link>
+          </div>
+
+          <Timeline items={work} />
         </section>
 
         <section class="animate space-y-6">
