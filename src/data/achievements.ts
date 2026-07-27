@@ -24,7 +24,7 @@ export const achievements: Achievement[] = [
     type: "CTF",
     position: "Champion",
     date: "2026-06-13",
-    relatedPosts: ["qcsp26"],
+    relatedPosts: ["qcsp26-reflections"],
   },
   {
     id: "komsaihack26",
@@ -33,7 +33,7 @@ export const achievements: Achievement[] = [
     type: "Hackathon",
     position: "Participant",
     date: "2026-04-06",
-    relatedPosts: ["komsaihack26"],
+    relatedPosts: ["komsaihack26-reflections"],
   },
   {
     id: "tracktech26",
@@ -42,7 +42,7 @@ export const achievements: Achievement[] = [
     type: "Hackathon",
     position: "Champion",
     date: "2026-01-24",
-    relatedPosts: ["tracktech26"],
+    relatedPosts: ["tracktech26-reflections"],
     relatedCaseStudies: ["manobela"],
   },
   {
@@ -52,7 +52,7 @@ export const achievements: Achievement[] = [
     type: "CTF",
     position: "1st Runner-Up",
     date: "2025-10-20",
-    relatedPosts: ["hack4gov25"],
+    relatedPosts: ["hack4gov25-reflections"],
   },
   {
     id: "komsaihack25",
@@ -61,7 +61,7 @@ export const achievements: Achievement[] = [
     type: "Hackathon",
     position: "Participant",
     date: "2025-04-11",
-    relatedPosts: ["komsaihack25"],
+    relatedPosts: ["komsaihack25-reflections"],
   },
   {
     id: "buildablock24",
@@ -70,7 +70,7 @@ export const achievements: Achievement[] = [
     type: "Hackathon",
     position: "Winner",
     date: "2024-10-21",
-    relatedPosts: ["buildablock24"],
+    relatedPosts: ["build-a-block-reflections"],
   },
   {
     id: "psc7",
@@ -79,6 +79,6 @@ export const achievements: Achievement[] = [
     type: "Competition",
     position: "Participant",
     date: "2022-07-01",
-    relatedPosts: ["psc7"],
+    relatedPosts: ["psc7-reflections"],
   },
 ];
