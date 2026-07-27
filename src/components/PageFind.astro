@@ -1,61 +1,45 @@
 ---
-import Search from "astro-pagefind/components/Search";
+import PagefindConfig from "astro-pagefind/components/PagefindConfig.astro";
 ---
 
-<aside data-pagefind-ignore>
-  <div
-    transition:persist
-    id="backdrop"
-    class="bg-background/10 invisible fixed top-0 left-0 z-50 flex h-screen w-full justify-center p-6 backdrop-blur-xs"
-  >
-    <div
-      id="pagefind-container"
-      class="bg-background text-foreground m-0 flex h-fit max-h-[80%] w-full max-w-(--breakpoint-sm) flex-col overflow-auto rounded-lg border p-2 px-4 py-3 shadow-lg"
-    >
-      <Search
-        id="search"
-        className="pagefind-ui"
-        uiOptions={{
-          showImages: false,
-          excerptLength: 15,
-          resetStyles: false,
-        }}
-      />
-      <div class="mr-2 pt-4 pb-1 text-right text-xs">
-        Press <kbd>Esc</kbd> or click anywhere to close
-      </div>
-    </div>
-  </div>
-</aside>
+<PagefindConfig />
+<pagefind-modal id="search" reset-on-close></pagefind-modal>
 
-<script is:inline>
-  const magnifyingGlass = document.getElementById("magnifying-glass");
-  const backdrop = document.getElementById("backdrop");
+<script>
+  // PageFind.astro is re-rendered on every client-side navigation (it isn't
+  // transition:persist'ed), so `#search` is a fresh element each time. Look
+  // it up on demand rather than caching it, since this script only runs once.
+  function getModal() {
+    return document.getElementById("search") as
+      | (HTMLElement & { open: () => void; close: () => void })
+      | null;
+  }
 
   function openPagefind() {
-    const searchDiv = document.getElementById("search");
-    const search = searchDiv.querySelector("input");
-    setTimeout(() => {
-      search.focus();
-    }, 0);
-    backdrop?.classList.remove("invisible");
-    backdrop?.classList.add("visible");
+    getModal()?.open();
   }
 
   function closePagefind() {
-    const search = document.getElementById("search");
-    search.value = "";
-    backdrop?.classList.remove("visible");
-    backdrop?.classList.add("invisible");
+    getModal()?.close();
   }
 
-  // open pagefind
-  magnifyingGlass?.addEventListener("click", () => {
-    openPagefind();
+  document.addEventListener("click", (event) => {
+    const target = event.target as HTMLElement;
+    if (target.closest("#magnifying-glass")) {
+      openPagefind();
+    } else if (target.closest(".pf-result-link")) {
+      closePagefind();
+    }
   });
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "/") {
+    const target = e.target as HTMLElement | null;
+    const isTyping =
+      target &&
+      (target.tagName === "INPUT" ||
+        target.tagName === "TEXTAREA" ||
+        target.isContentEditable);
+    if (e.key === "/" && !isTyping) {
       e.preventDefault();
       openPagefind();
     } else if ((e.metaKey || e.ctrlKey) && e.key === "k") {
@@ -63,60 +47,30 @@ import Search from "astro-pagefind/components/Search";
       openPagefind();
     }
   });
-
-  // close pagefind
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      closePagefind();
-    }
-  });
-
-  // close pagefind when searched result(link) clicked
-  document.addEventListener("click", (event) => {
-    if (event.target.classList.contains("pagefind-ui__result-link")) {
-      closePagefind();
-    }
-  });
-
-  backdrop?.addEventListener("click", (event) => {
-    if (!event.target.closest("#pagefind-container")) {
-      closePagefind();
-    }
-  });
-
-  // prevent form submission
-  const form = document.getElementById("form");
-  form?.addEventListener("submit", (event) => {
-    event.preventDefault();
-  });
 </script>
 
 <style is:global>
   :root {
-    --pagefind-ui-scale: 0.75;
-    --pagefind-ui-border-radius: var(--radius-lg);
-    --pagefind-ui-font: var(--font-sans);
-    --pagefind-ui-primary: var(--primary);
-    --pagefind-ui-text: var(--foreground);
-    --pagefind-ui-background: var(--background);
-    --pagefind-ui-border: var(--border);
-    --pagefind-ui-tag: var(--primary);
+    --pf-border-radius: var(--radius-lg);
+    --pf-font: var(--font-sans);
+    --pf-text: var(--foreground);
+    --pf-text-secondary: var(--muted-foreground);
+    --pf-text-muted: var(--muted-foreground);
+    --pf-background: var(--background);
+    --pf-border: var(--border);
+    --pf-border-focus: var(--primary);
+    --pf-mark: var(--primary);
+    --pf-outline-focus: var(--primary);
+    --pf-hover: var(--background-accent);
+    --pf-skeleton: var(--background-accent);
+    --pf-skeleton-shine: var(--background-dim);
+    --pf-error-bg: var(--background-accent);
+    --pf-error-border: var(--border);
+    --pf-error-text: var(--foreground);
+    --pf-error-text-secondary: var(--muted-foreground);
   }
 
-  #search input {
-    font-weight: normal;
-  }
-
-  #search p {
-    font-weight: normal;
-  }
-
-  #search .pagefind-ui__result-title {
+  #search .pf-result-title {
     font-weight: 600;
-  }
-
-  #search .pagefind-ui__message {
-    padding: 0;
-    padding-bottom: 0.75rem;
   }
 </style>

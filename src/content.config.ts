@@ -33,7 +33,7 @@ const posts = defineCollection({
 });
 
 const cv = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/cv" }),
   schema: z.object({ title: z.string().optional() }),
 });
 
