@@ -5,16 +5,18 @@ import Arrow from "./Arrow.astro";
 const { prevPost, nextPost } = Astro.props;
 ---
 
-<div class="grid grid-cols-2 gap-1.5 sm:gap-3">
+<div class="grid grid-cols-2 items-stretch gap-1.5 sm:gap-3">
   {
     prevPost?.id ? (
-      <a href={`/posts/${prevPost?.id}`} class="not-prose no-underline">
-        <Button class="group relative w-full justify-center rounded-lg p-2">
+      <a href={`/posts/${prevPost.id}`} class="not-prose flex no-underline">
+        <Button class="group relative flex h-full w-full items-center rounded-lg px-8 py-2">
           <Arrow
             direction="left"
             class="absolute top-1/2 left-2 size-5 -translate-y-1/2"
           />
-          <div class="text-center text-sm">{prevPost?.data.title}</div>
+          <div class="w-full text-center text-sm break-words">
+            {prevPost.data.title}
+          </div>
         </Button>
       </a>
     ) : (
@@ -24,9 +26,11 @@ const { prevPost, nextPost } = Astro.props;
 
   {
     nextPost?.id ? (
-      <a href={`/posts/${nextPost?.id}`} class="not-prose no-underline">
-        <Button class="group relative w-full justify-center rounded-lg p-2">
-          <div class="text-center text-sm">{nextPost?.data.title}</div>
+      <a href={`/posts/${nextPost.id}`} class="not-prose flex no-underline">
+        <Button class="group relative flex h-full w-full items-center rounded-lg px-8 py-2">
+          <div class="w-full text-center text-sm break-words">
+            {nextPost.data.title}
+          </div>
           <Arrow
             direction="right"
             class="absolute top-1/2 right-2 size-5 -translate-y-1/2"
