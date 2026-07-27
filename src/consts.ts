@@ -44,35 +44,43 @@ export const PINNED_EDUCATION = [
 ];
 
 export const HOME: Metadata = {
-  TITLE: "Home",
-  DESCRIPTION: "This is Andrian Lloyd Maagma's personal website.",
+  TITLE: "AI/ML Engineer",
+  DESCRIPTION: "This is Andrian Lloyd Maagma's portfolio.",
 };
 
 export const POSTS: Metadata = {
   TITLE: "Posts",
-  DESCRIPTION: "A collection of articles on topics I am passionate about.",
+  DESCRIPTION:
+    "A collection of thoughts, reflections, and notes on things I've built, I've joined, learned, and found interesting over the years.",
 };
 
 export const CASE_STUDIES: Metadata = {
   TITLE: "Case Studies",
   DESCRIPTION:
-    "Engineering deep dives into how I built and shipped my projects.",
+    "Breakdowns of the problems I explored, the systems I built, and the engineering decisions behind them.",
 };
 
 export const WORK: Metadata = {
   TITLE: "Work",
-  DESCRIPTION: "A timeline of my professional experience.",
+  DESCRIPTION: "A timeline of my professional and volunteer experience.",
 };
 
 export const PROJECTS: Metadata = {
   TITLE: "Projects",
   DESCRIPTION:
-    "A collection of my projects with links to repositories and live demos.",
+    "Projects I've built over the past few years, including libraries, TUIs, websites, and mobile apps.",
 };
 
 export const ACHIEVEMENTS = {
   TITLE: "Achievements",
-  DESCRIPTION: "A collection of competitions and notable accomplishments.",
+  DESCRIPTION:
+    "Some of the competitions, awards, and milestones I've picked up over the years.",
+};
+
+export const EDUCATION = {
+  TITLE: "Education & Certifications",
+  DESCRIPTION:
+    "A list of my formal education, online courses, and certifications.",
 };
 
 export const SOCIALS: Socials = [
