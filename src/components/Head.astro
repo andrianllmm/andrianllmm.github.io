@@ -245,7 +245,9 @@ const {
     if (!giscus) return;
 
     const isDark = document.documentElement.classList.contains("dark");
-    const theme = isDark ? "noborder_dark" : "noborder_light";
+    const theme = isDark
+      ? `${window.location.origin}/giscus-dark.css`
+      : `${window.location.origin}/giscus-light.css`;
 
     const url = new URL(giscus.src);
     url.searchParams.set("theme", theme);
