@@ -27,6 +27,7 @@ import Avatar from "@components/Avatar.astro";
 import Contact from "@components/Contact.astro";
 import StructuredData from "@components/StructuredData.astro";
 import Timeline from "@components/Timeline.astro";
+import GithubContributions from "@components/GithubContributions.astro";
 import { tags as allTags } from "@data/tags";
 import { education } from "@data/education";
 import { projects as allProjectsData } from "@data/projects";
@@ -367,6 +368,17 @@ const positions = [
           </ul>
         </section>
       </div>
+
+      <section class="animate mt-12 space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-y-2">
+          <h2 class="text-lg font-semibold">I do open source</h2>
+          <Link href="https://github.com/andrianllmm" external>
+            See my contributions
+          </Link>
+        </div>
+
+        <GithubContributions username="andrianllmm" />
+      </section>
     </aside>
   </Container>
 </Layout>

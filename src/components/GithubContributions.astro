@@ -1,0 +1,129 @@
+---
+interface Props {
+  username: string;
+  class?: string;
+}
+
+const { username, class: className } = Astro.props;
+
+interface ContributionDay {
+  date: string;
+  contributionCount: number;
+}
+
+interface ContributionWeek {
+  contributionDays: ContributionDay[];
+}
+
+let weeks: ContributionWeek[] = [];
+let totalContributions = 0;
+
+const token = import.meta.env.GITHUB_TOKEN;
+
+if (token) {
+  const query = `
+    query ($username: String!) {
+      user(login: $username) {
+        contributionsCollection {
+          contributionCalendar {
+            totalContributions
+            weeks {
+              contributionDays {
+                date
+                contributionCount
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  const res = await fetch("https://api.github.com/graphql", {
+    method: "POST",
+    headers: {
+      Authorization: `bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ query, variables: { username } }),
+  });
+
+  if (res.ok) {
+    const json = await res.json();
+    const calendar =
+      json?.data?.user?.contributionsCollection?.contributionCalendar;
+    if (calendar) {
+      weeks = calendar.weeks;
+      totalContributions = calendar.totalContributions;
+    }
+  }
+}
+
+const maxCount = Math.max(
+  1,
+  ...weeks.flatMap((week) =>
+    week.contributionDays.map((day) => day.contributionCount),
+  ),
+);
+
+// Scale radius by sqrt so circle *area* (not radius) tracks contribution count.
+const cell = 12;
+const minRadius = 1.5;
+const maxRadius = cell / 2 - 1;
+
+function radiusFor(count: number) {
+  if (count === 0) return minRadius;
+  const scale = Math.sqrt(count / maxCount);
+  return minRadius + scale * (maxRadius - minRadius);
+}
+
+const width = weeks.length * cell;
+const height = 7 * cell;
+---
+
+{
+  weeks.length > 0 && (
+    <div class={className}>
+      <svg
+        viewBox={`0 0 ${width} ${height}`}
+        width="100%"
+        height="auto"
+        preserveAspectRatio="xMinYMin meet"
+        class="text-foreground"
+        role="img"
+        aria-label={`${totalContributions} GitHub contributions in the last year`}
+      >
+        {weeks.map((week, weekIndex) =>
+          week.contributionDays.map((day, dayIndex) => (
+            <circle
+              class="contribution-dot"
+              cx={weekIndex * cell + cell / 2}
+              cy={dayIndex * cell + cell / 2}
+              r={radiusFor(day.contributionCount)}
+              fill="currentColor"
+            >
+              <title>
+                {day.contributionCount} contributions on {day.date}
+              </title>
+            </circle>
+          )),
+        )}
+      </svg>
+    </div>
+  )
+}
+
+<style>
+  .contribution-dot {
+    transform-box: fill-box;
+    transform-origin: center;
+    transition:
+      transform 0.15s ease-out,
+      opacity 0.15s ease-out;
+  }
+
+  .contribution-dot:hover {
+    transform: scale(1.6);
+    opacity: 0.7;
+  }
+</style>
