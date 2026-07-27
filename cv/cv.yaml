@@ -137,25 +137,28 @@ design:
     bottom_margin: 1cm
     left_margin: 1cm
     right_margin: 1cm
-    show_page_numbering: false
-    show_last_updated_date: false
+    show_footer: false
+    show_top_note: false
   colors:
     links: rgb(0, 0, 0)
+  typography:
+    font_size:
+      name: 24pt
   links:
     underline: false
-    use_external_link_icon: true
+    show_external_link_icon: true
   header:
-    name_font_size: 24pt
-    horizontal_space_between_connections: 0.25cm
+    connections:
+      phone_number_format: international
+      space_between_connections: 0.25cm
 
 locale:
-  language: en
-  phone_number_format: international
+  language: english
 
-rendercv_settings:
-  date: "2026-06-01"
+settings:
+  current_date: "2026-06-01"
   render_command:
-    output_folder_name: output
+    output_folder: output
     pdf_path: ../public/cv.pdf
     markdown_path: ../src/content/cv/index.md
   bold_keywords: []

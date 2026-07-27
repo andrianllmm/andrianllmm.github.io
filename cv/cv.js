@@ -21,9 +21,7 @@ function getArg(name) {
   return idx !== -1 ? args[idx + 1] : null;
 }
 
-// RenderCV v2.3+ uses --output-folder-name; accept the old --output-folder too.
-const outputFolder =
-  getArg("--output-folder-name") || getArg("--output-folder");
+const outputFolder = getArg("--output-folder");
 const pdfPath = getArg("--pdf-path");
 const markdownPath = getArg("--markdown-path");
 const dontGenerateMarkdown = args.includes("--dont-generate-markdown");
@@ -33,7 +31,7 @@ const watch = args.includes("--watch");
 const flags = [];
 
 if (outputFolder) {
-  flags.push(`--output-folder-name "${outputFolder}"`);
+  flags.push(`--output-folder "${outputFolder}"`);
 }
 
 // RenderCV resolves --pdf-path relative to the YAML file's directory, which
