@@ -32,7 +32,7 @@ const { caseStudy } = Astro.props as Props;
   <div class="flex flex-1 flex-col gap-1">
     <div class="line-clamp-2 font-semibold">{caseStudy.data.title}</div>
     <div
-      class="line-clamp-1 text-sm text-wrap group-hover:line-clamp-6 sm:line-clamp-2"
+      class="max-h-5 overflow-hidden text-sm text-wrap transition-[max-height] duration-300 ease-in-out group-hover:max-h-32 sm:max-h-10"
     >
       {caseStudy.data.description}
     </div>
