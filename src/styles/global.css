@@ -311,6 +311,30 @@
     @apply hover:text-accent-foreground hover:decoration-accent-foreground/60 inline-block text-current decoration-current/30 transition-colors duration-300 ease-in-out;
     @apply underline underline-offset-[0.2rem];
   }
+
+  /*
+    astro-mermaid injects this styling via a runtime <style> tag, which
+    Astro's ClientRouter strips on client-side navigation since it isn't
+    part of either page's server-rendered head. Defining it here instead
+    keeps it in the persistent, bundled stylesheet.
+  */
+  pre.mermaid {
+    @apply my-8 flex items-center justify-center overflow-auto border-none bg-transparent p-4;
+    min-height: 200px;
+  }
+
+  pre.mermaid:not([data-processed]) {
+    @apply bg-muted animate-pulse;
+  }
+
+  pre.mermaid[data-processed] {
+    min-height: auto;
+  }
+
+  pre.mermaid svg {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 @layer utilities {
