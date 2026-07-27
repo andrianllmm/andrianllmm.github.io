@@ -4,6 +4,7 @@ import Container from "@components/Container.astro";
 import BackToPrevious from "@components/BackToPrevious.astro";
 import EducationCard from "@components/EducationCard.astro";
 import DegreeCard from "@components/DegreeCard.astro";
+import { EDUCATION } from "@consts";
 import { education, educationProfiles } from "@data/education";
 import Badge from "@components/Badge.astro";
 
@@ -28,13 +29,9 @@ const degrees = education
 const sortedEducation = education
   .filter((item) => item.category !== "Degree")
   .sort(sortByRecency);
-
-const TITLE = "Education & Certifications";
-const DESCRIPTION =
-  "A list of my formal education, online courses, and certifications.";
 ---
 
-<Layout title={TITLE} description={DESCRIPTION}>
+<Layout title={EDUCATION.TITLE} description={EDUCATION.DESCRIPTION}>
   <Container>
     <div class="animate mb-6">
       <BackToPrevious href="/">Back to home</BackToPrevious>
@@ -42,6 +39,10 @@ const DESCRIPTION =
 
     <div class="space-y-6">
       <h1 class="animate font-semibold">Education</h1>
+
+      <p class="text-muted-foreground">
+        A list of my formal education, online courses, and certifications.
+      </p>
 
       <div class="mb-4 flex gap-2">
         {
