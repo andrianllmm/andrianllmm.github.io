@@ -1,7 +1,7 @@
 ---
-title: "Formatting Text on Sites That Don't Let You"
-description: "Most platforms strip bold, italic, and custom fonts from posts and comments, so UniGlyphs uses Unicode character substitution to sneak real formatting past that restriction, wherever the text ends up pasted."
-date: "2025-07"
+title: "Formatting text on sites that don't let you"
+description: "I got tired of opening sketchy Unicode text generators every time I wanted bold text on LinkedIn or Facebook, so I built a browser extension that brings it directly into the page."
+date: "2025-07-02"
 image: "./preview.gif"
 ---
 
@@ -17,22 +17,68 @@ import preview from "./preview.gif";
 
 <abbr title="UniGlyphs">𝔘𝐧𝗂𝒢𝑙𝗒𝕡h𝚜</abbr> is a browser extension that lets you
 format text directly on sites like Facebook, X (formerly Twitter), LinkedIn, and
-many more. Just highlight some text, and an inline toolbar pops up, so you can
-format it on the spot. There's also a full-page editor and a popup version if
-you want more space to work.
+many more. Just highlight some text, and an inline toolbar appears so you can
+format it without leaving the page. There's also a full-page editor and a popup
+version if you want more room to work.
 
-With UniGlyphs, you can make your posts and comments stand out—even on platforms
-that don't normally allow it. Behind the scenes, it uses <a href="https://en.wikipedia.org/wiki/Unicode" target="_blank">Unicode</a>
-characters that mimic different "fonts", like 𝐛𝐨𝐥𝐝, 𝑖𝑡𝑎𝑙𝑖𝑐, and 𝔤𝔬𝔱𝔥𝔦𝔠, so the
-styling sticks no matter where you paste it.
+Instead of relying on platform-specific formatting, UniGlyphs converts text into
+Unicode characters that resemble styles like **bold**, _italic_, or
+𝔤𝔬𝔱𝔥𝔦𝔠. Since they're actual Unicode characters rather than HTML formatting, the
+styling stays intact wherever the text is pasted.
 
 ## Why I built it
 
-UniGlyphs was initially developed as a final project for <a href="https://cs50.harvard.edu/x/2025" target="_blank">Harvard's CS50x</a>.[^1]
-The task was to build something of interest to me or that solves an actual problem—something that outlives the course.
-I chose to build a browser extension because I had never made one before, and it wasn't covered in the curriculum.
-It was a chance to explore something new while solving a real problem and apply the foundations I learned in the course.
-What started as a course project is now a reusable tool available on the <a href="https://chromewebstore.google.com/detail/hcnbmicjiggmklnmkpljeomkmagigkbc" target="_blank">Chrome Web Store</a>.
+I first noticed people posting formatted text on platforms that don't officially
+support formatting, especially Facebook, Messenger, and LinkedIn.
+
+When I started using LinkedIn more often, I wanted to do the same thing. I was
+surprised that there was still no built-in way to make text bold or italic, even
+though I kept seeing posts that somehow managed to do it.
+
+After looking around, I realized almost every solution was the same: open a
+website, paste your text, generate Unicode characters, copy everything back,
+then return to whatever site you were writing on.
+
+The formatting itself wasn't the problem. The workflow was.
+
+UniGlyphs started as my final project for Harvard's CS50x[^1] , but I wanted it to solve an annoyance I actually had. Instead of another Unicode generator website, I built the tool I wished existed.
+
+## How it turned out
+
+### Inline formatting toolbar
+
+The main feature is an inline toolbar that appears while editing text.
+
+Instead of switching tabs to generate formatted text, users can apply formatting
+without leaving the page. The selected text is replaced immediately, making the
+experience feel much closer to a native rich text editor.
+
+### Multiple editing modes
+
+Not every website behaves the same way.
+
+Besides the inline toolbar, UniGlyphs also provides a popup editor and a
+full-page editor for situations where users want more space to write before
+copying their text elsewhere.
+
+### Unicode-based formatting
+
+Rather than injecting HTML or relying on platform support, UniGlyphs converts
+characters into their Unicode equivalents.
+
+That means formatting works almost anywhere text can be pasted, including sites
+that normally strip HTML formatting.
+
+Supported styles include:
+
+- **Bold**
+- _Italic_
+- Underlined text
+- Monospace
+- 𝒮𝒸𝓇𝒾𝓅𝓉
+- 𝔊𝔬𝔱𝔥𝔦𝔠
+- 🄲🄸🅁🄲🄻🄴🄳
+- and many more
 
 ## How I built it
 
@@ -45,6 +91,45 @@ What started as a course project is now a reusable tool available on the <a href
 | **Styling**   | Tailwind CSS, shadcn/ui |
 | **Monorepo**  | Turborepo               |
 
+Building the browser extension turned out to be much harder than I expected.
+
+Unlike a normal web application where you control the entire page, an extension
+has to coexist with whatever website it's running on. Every platform has its own
+DOM structure, CSS, and input behavior, so even something as simple as showing a
+toolbar consistently becomes surprisingly tricky.
+
+One challenge was injecting the toolbar without interfering with the host page.
+I also had to make sure the extension behaved consistently across different
+types of editable fields instead of assuming every website worked the same way.
+
+The formatting engine itself is relatively straightforward. Each style maps
+ordinary characters to their Unicode equivalents before replacing the selected
+text. Since not every Unicode style supports every character, the extension also
+surfaces this limitation so users know when some letters can't be transformed.
+
+## What I learned
+
+This project showed me how different browser extensions are from traditional web
+applications.
+
+With a normal website, you own the environment. With an extension, you're
+building on top of someone else's. Every website has different assumptions,
+different HTML structures, and different edge cases that you have no control
+over.
+
+It also reinforced something I've noticed across many of my projects: I enjoy
+building tools that fit naturally into existing workflows instead of forcing
+people to change them.
+
+Unicode text generators already existed. The interesting problem was making the experience feel like formatting was built
+into the websites themselves.
+
+Even though UniGlyphs only has a small number of users today, it's a project I'm
+still proud of because it solved a problem I genuinely had while pushing me into
+a platform I had never worked with before.
+
 ---
 
-[^1]: _Harvard's Introduction to Computer Science_ (CS50x) was one of the first online CS courses I completed. This project served as my final capstone.
+[^1]:
+    _Harvard's Introduction to Computer Science_ (CS50x) was one of the first
+    online CS courses I completed. This project served as my final capstone.

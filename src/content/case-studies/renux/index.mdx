@@ -1,7 +1,7 @@
 ---
-title: "Renaming Hundreds of Files Without Hundreds of Clicks"
-description: "Batch renaming by hand doesn't scale past a handful of files, so renux brings regex, placeholders, and text transforms into a terminal UI for cleaning up folders and enforcing naming conventions at scale."
-date: "2025-06"
+title: "Building the TUI file renamer I wanted and discovering 5K people wanted it too"
+description: "I got tired of leaving the terminal just to rename files, so I built the tool I actually wanted to use. It turns out I wasn't the only one."
+date: "2025-06-22"
 image: "./preview.png"
 ---
 
@@ -10,18 +10,107 @@ import demo from "./demo.gif";
 
 <Image src={demo} alt="Demo" class="my-4 w-full max-w-100" data-zoomable />
 
-`renux` is a tool with a text-based (or terminal) user interface (TUI) that automates file renaming.
-It simplifies this task with features like regex, placeholders, and text transformations,
-making it ideal for situations such as renaming photos, cleaning up download folders, or enforcing consistent naming conventions.
+`renux` is a terminal-based bulk file renamer for developers who spend most of their time in the command line.
+It combines regex, placeholders, and text transformations inside an interactive terminal interface, making it easy to clean up photo collections, download folders, or enforce consistent naming conventions.
 
 ## Why I built it
 
-`renux` was initially developed as a final project for <a href="https://cs50.harvard.edu/python/2022" target="_blank">Harvard's CS50p</a>.[^1]
-The task was to implement a Python program of our very own. I figured a file renamer would be a good way to reinforce
-what I learned in the course, such as regex, string manipulation, and file handling.
-I also wanted to try out new tools such as the <a href="https://textual.textualize.io/" target="_blank">Textual</a> library for TUI development.
-What started as a course project is now a reusable tool that is available in <a href="https://pypi.org/project/renux" target="_blank">PyPI</a>.
+I'm weirdly particular about naming things.
+
+Whether it's Git branches, commit messages, folders, or files, I want everything to follow the same naming convention.
+I'm the person who insists on Conventional Commits and gets bothered by a folder full of inconsistent filenames.
+
+For a while I used Microsoft's PowerRename whenever I needed to rename files in bulk.
+It worked well, but as I spent more time living in the terminal, I found myself wishing I could do the same thing without opening another GUI.
+
+`renux` started as my final project for Harvard's CS50p[^1], but it quickly became something I genuinely wanted to use myself.
+Instead of constantly switching back to a GUI, I wanted something that felt at home in the terminal while still being safe and easy to use.
+
+## How it turned out
+
+### Interactive terminal interface
+
+Unlike traditional batch renamers that require memorizing long command invocations, `renux` provides a text-based user interface where users can preview every rename before applying it.
+
+The preview updates live as search patterns and replacement rules change, making it much easier to catch mistakes before touching the filesystem.
+
+### Regex-powered renaming
+
+Simple find-and-replace works for many cases, but real folders are usually messier than that.
+
+`renux` supports regular expressions, capturing groups, and replacements, allowing users to preserve parts of existing filenames while restructuring others.
+
+For example:
+
+```sh
+renux my_documents "document (\d).pdf" "doc (\1).pdf"
+```
+
+becomes
+
+```
+document 1.pdf  ->  doc 1.pdf
+document 2.pdf  ->  doc 2.pdf
+```
+
+### Placeholders and text transformations
+
+Beyond regex, `renux` includes placeholders that generate values automatically.
+
+Users can:
+
+- append incremental counters
+- insert creation or modification dates
+- transform filenames into `snake_case`, `camelCase`, `kebab-case`, slugified text, uppercase, lowercase, and more
+
+These features make it useful for organizing photos, datasets, exported files, and other collections where filenames follow predictable patterns.
+
+### Traditional CLI support
+
+Although the main interface is interactive, I still wanted `renux` to behave like a normal command-line tool.
+
+It can be called directly from scripts and shell commands without going through the TUI, making it easy to automate repetitive workflows.
+
+I use it regularly to rename photos, downloaded files, and project assets.
+It started as a CS50 assignment, but somewhere along the way it became the tool I instinctively reach for whenever I need to clean up a messy folder.
+
+## How I built it
+
+The project is written in Python using <a href="https://textual.textualize.io/" target="_blank">Textual</a> for the terminal interface.
+
+Internally, the rename engine separates the matching phase from the transformation phase.
+
+A filename first passes through pattern matching, where regex or plain text determines which parts should change.
+The replacement string is then parsed for placeholders like counters, dates, and text transformations before producing the final filename.
+
+Keeping those two stages separate made it much easier to add new features without every capability interfering with the others.
+
+I also wanted renaming to feel safe.
+
+Instead of immediately applying changes, the interface previews every rename before touching the filesystem.
+The tool also supports undo and redo, allowing changes to be reverted if something goes wrong.
+
+One design decision I'm still happy with is keeping the core rename engine independent from the interface.
+The same logic powers both the interactive TUI and the traditional command-line mode, which means the tool remains useful for both interactive use and shell scripting.
+
+## What I learned
+
+This project made me appreciate that developer tools are products too.
+
+Building a good rename engine wasn't enough. The experience mattered just as much. Features like live previews, keyboard shortcuts, and undo ended up being just as important as regex support because they made the tool feel safe to use.
+
+It was also my first time building a proper terminal application.
+Before this project, I mostly thought of terminals as places where commands printed text.
+`renux` showed me they could provide rich, interactive experiences without ever opening a graphical window.
+
+The most rewarding part has been seeing people actually use it.
+What started as a course project has grown into an open-source tool with over **5,000+ PyPI downloads** and **20+ GitHub stars**.
+
+It reminded me that good developer tools don't have to be revolutionary.
+Sometimes solving one everyday annoyance well is enough for people to keep coming back.
 
 ---
 
-[^1]: _Harvard's Introduction to Programming with Python_ (CS50p) was one of the first online CS courses I completed. This project served as my final capstone.
+[^1]:
+    _Harvard's Introduction to Programming with Python_ (CS50p) was one of the first online CS courses I completed.
+    This project served as my final capstone.

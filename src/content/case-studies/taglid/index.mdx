@@ -1,87 +1,47 @@
 ---
 title: "Telling Tagalog and English Apart Inside the Same Sentence"
-description: "Taglish mixes both languages word by word, which breaks standard language detection, so TagLID labels each word individually using dictionary lookups, stemming, and rules for slang and misspellings."
-date: "2024-06"
+description: "I built TagLID after existing language detectors failed on Taglish during a research project."
+date: "2023-12-21"
 image: "./preview.png"
 ---
 
-TagLID is a library that labels each word in a Taglish (Tagalog-English mix)
-text by language. It gives either a simple tag (`tgl` or `eng`) or detailed
-frequency info with flags indicating how the word was identified. It is a
-rule-based and opinionated system that mostly uses dictionary lookups. It also
-handles cases like skipping numbers, names, and interjections, and includes
-logic for dealing with slang, abbreviations, contractions, stemming or
-lemmatizing inflected words, intrawords, and correcting misspellings.
+Taglish is messy.
 
-<script
-  src="https://asciinema.org/a/674332.js"
-  id="asciicast-674332"
-  async="true"
-></script>
+A single sentence can switch between Tagalog and English several times, sometimes every few words. Most language detection tools assume an entire sentence belongs to one language, so they fall apart as soon as the two start mixing.
 
-## Why I built it
+I ran into this problem during Grade 12 while working on our Practical Research 2 paper. We asked over a hundred students to fill in the dialogue of comic strips using their own words. The responses were naturally written in Taglish, and part of our analysis required counting how often students switched between Tagalog and English.
 
-TagLID was originally developed as a data analysis tool for our <abbr title="Senior High School">SHS</abbr> Practical Research 2 project
-to calculate the frequency of Tagalog and English words in Taglish texts. [^1]
-Since then, it has evolved into a reusable and general-purpose tool for Taglish language detection.
+We could have labeled every word by hand. It would have worked. It also would have been painfully slow.
 
-## How it turned out
+Instead, I wrote TagLID.
 
-### Library mode
+TagLID is a Python library and command-line tool that identifies the language of each individual word in Taglish text. It uses dictionary lookups as its foundation, then adds rules to handle the kinds of things people actually write: slang, abbreviations, contractions, misspellings, inflected words, interjections, names, and numbers.
 
-Users can use TagLID as a library by importing it into their Python script.
+## From a research script to a reusable tool
 
-```python
-from taglid.lid import lang_identify, simplify
+The first version wasn't meant for anyone else.
 
-labeled_text = lang_identify("hello, mundo")
-print(simplify(labeled_text))
-```
+It was a script that automated part of our research so we wouldn't have to classify every word ourselves. Once the research was finished, I realized the tool could be useful beyond that one project.
 
-Output:
+So I cleaned it up, packaged it properly, added a command-line interface, and published it as a library that anyone could install and use.
 
-```sh
-[('hello', 'eng'), ('mundo', 'tgl')]
-```
+I liked the idea that the work wouldn't end with our paper. Maybe another student researching Taglish could use it. Maybe another developer working on Filipino NLP could build on it.
 
-### CLI mode
+## Building a rule-based language identifier
 
-Users can also use TagLID as a CLI tool.
+The core idea is simple.
 
-```sh
-python -m taglid.lid
-```
+If a word appears in the Tagalog dictionary, classify it as Tagalog. If it appears in the English dictionary, classify it as English.
 
-Example input:
+Reality wasn't nearly that simple.
 
-```sh
-text: hello, mundo
-```
+I built the dictionaries by scraping entries from Pinoy Dictionary and parsing the GCIDE English dictionary. I also incorporated frequency lists from the Leipzig Corpora Collection so the classifier had another signal to work with.
 
-Output:
+That became important for words that exist in both languages.
 
-```
-word      eng    tgl  flag    correction
-------  -----  -----  ------  ------------
-hello       1      0  DICT
-mundo       0      1  DICT
-```
+Take the word **"at."** In English, it's a preposition. In Tagalog, it means "and."
 
-## How I built it
-
-The core algorithm utilizes dictionary lookups to identify language.
-Dictionaries were web scraped from the <a href="https://tagalog.pinoydictionary.com/" target="_blank">Pinoy Dictionary</a>
-and parsed from the XML version of the <a href="https://ibiblio.org/webster/" target="_blank">GCIDE</a> English dictionary
-using <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/" target="_blank">BeautifulSoup4</a>.
-To assign frequencies to words, an additional list from
-the <a href="https://wortschatz.uni-leipzig.de/en/download/" target="_blank">Leipzig Corpora Collection</a> was integrated.
-
-This algorithm checks if the word appears in Tagalog and English dictionaries and labels its language accordingly.
-This initial algorithm is in line with the one employed by <a href="https://aclanthology.org/2022.lrec-1.225" target="_blank">Herrera, et al. (2022)</a>.
-
-To address ambiguous cases where a word is present in both dictionaries such as
-the English preposition 'at' and the Tagalog conjunction '<i>at</i>' (and),
-the word frequency in both languages will be compared.
+A dictionary lookup alone can't tell which language it belongs to because both are technically correct. Instead, TagLID compares how frequently the word appears in each language and chooses the more likely match.
 
 ```python
 function LangIdentify(word):
@@ -98,24 +58,57 @@ function LangIdentify(word):
     return lang
 ```
 
-Before the main function, there are <a href="https://github.com/andrianllmm/tagLID/blob/main/src/taglid/lid.py" target="_blank">supplementary functions</a>
-to exclude certain words from the count since they are not specific to English or Tagalog.
-It is then followed by other supplementary functions to handle special cases that the word frequency lists cannot catch.
+Even that wasn't enough.
+
+People don't always write dictionary words. They shorten them, misspell them, mix languages, and invent slang. Before classification, TagLID runs a series of preprocessing rules to normalize words, skip tokens that don't belong to either language, and handle cases that simple dictionary lookups miss.
+
+The longer I worked on it, the more I realized language isn't nearly as clean as I had assumed.
+
+## Using TagLID
+
+TagLID can be used as either a Python library or a command-line tool.
+
+```python
+from taglid.lid import lang_identify, simplify
+
+labeled_text = lang_identify("hello, mundo")
+print(simplify(labeled_text))
+```
+
+Output:
+
+```sh
+[('hello', 'eng'), ('mundo', 'tgl')]
+```
+
+Or from the command line:
+
+```sh
+python -m taglid.lid
+```
+
+Example input:
+
+```text
+hello, mundo
+```
+
+Output:
+
+```text
+word      eng    tgl  flag    correction
+hello       1      0  DICT
+mundo       0      1  DICT
+```
 
 ## What I learned
 
-This is one of the first coding projects I've written, so a lot of things were new.
-I learned how to package a Python library and a CLI tool, clean data better, scrape the web, and parse XML.
-I also realized that building something I actually wanted to reuse later made me care more about code structure and maintainability.
+This was one of the first projects where programming solved a real problem I had.
 
-At first, it felt like labeling words as English or Tagalog should be simple—just check a dictionary, right?
-But once I ran into tricky edge cases like "at", slang, misspellings, and inflections, I knew it wasn't going to be that straightforward.
-Dictionary lookups helped, but I still had to write a bunch of rules to deal with
-the nuances of Taglish and how people actually talk, especially when grammar goes out the window.
+We had repetitive work that nobody wanted to do, and I realized I could just... write a script for it.
 
----
+I also learned how quickly simple ideas become complicated. At first, I thought language detection would mostly be dictionary lookups. Then I started running into ambiguous words, slang, misspellings, and inflections. Every time I thought I had finished, another edge case showed up.
 
-[^1]:
-    This was essential for our research
-    _Correlation Between the Level of Language Dominance and the Relative Frequency of Taglish Code-Switching of STEM Students_ (Maagma & Salido, 2023),
-    conducted for Practical Research 2, since we were dealing with a large dataset collected from respondents.
+On the technical side, this project taught me how to scrape data, parse XML, package a Python library, build a CLI, and organize code that I wanted to keep using after the original project ended.
+
+Looking back, TagLID matters to me because it was the first project where I built software not because someone asked me to, but because I wanted to make my own work easier. It was the first time I felt the leverage programming gives you. Instead of accepting a tedious task, I could automate it.
