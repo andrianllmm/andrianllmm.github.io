@@ -1,22 +1,57 @@
 ---
-title: "Making an Election Result Verifiable Without a Trusted Middleman"
-description: "Centralized vote tallying asks voters to trust a black box, so eHalalan records ballots on a blockchain, letting anyone verify the count without exposing who cast which vote."
-date: "2025-04"
+title: "Making an election result verifiable without a trusted middleman"
+description: "We built eHalalan to explore whether blockchain could make election results publicly verifiable without relying on a single authority to tally the votes."
+date: "2025-04-05"
 image: "./preview.gif"
 ---
 
 import { Image } from "astro:assets";
 import Mockup from "./mockup.png";
 
-eHalalan is a decentralized election system that uses blockchain technology to ensure transparency and security.
+eHalalan is a decentralized online voting system built during KomsaiHack 2025. The idea was simple: instead of asking voters to trust a central server to count votes correctly, every ballot would be recorded on a blockchain so anyone could independently verify the final tally.
+
+<Image src={Mockup} alt="Preview" data-zoomable />
 
 ## Why we built it
 
-eHalalan was built as a hackathon project for the <a href="/achievements/komsaihack25" target="_blank">KomsaiHack 2025: Democratech Hackathon</a>.
+Our team built eHalalan for KomsaiHack 2025: Democratech Hackathon.
 
-We chose to build an e-voting system because we believed that it would be a great opportunity to learn about blockchain technology
-and its potential applications in the real world.
+Online voting has an obvious trust problem. If votes are stored in a traditional database, people have to trust whoever controls that database to count everything correctly and not modify the results afterward.
 
-## How it turned out
+Blockchain seemed like an interesting fit because it makes records publicly verifiable and difficult to alter once they're written.
 
-<Image src={Mockup} alt="Preview" data-zoomable />
+I wasn't completely convinced blockchain solved online elections as a whole. Identity verification, voter privacy, and accessibility are still hard problems. But I thought it was a good opportunity to learn where blockchain actually makes sense instead of treating it as another buzzword.
+
+## How it worked
+
+The voting flow was intentionally straightforward.
+
+A voter connects a wallet, casts a ballot, and submits it to the blockchain. Once the transaction is confirmed, the vote becomes part of the public ledger and contributes to the election results.
+
+Instead of trusting a central database, anyone can inspect the blockchain and verify that the recorded votes produce the published totals.
+
+## My role
+
+I worked across the project, but I spent most of my time on the frontend.
+
+One thing we kept asking ourselves was, "How do you make this feel approachable?"
+
+Our target users weren't crypto enthusiasts. They were ordinary Filipino voters who would potentially be moving from paper ballots to an online system. Even if the blockchain worked perfectly underneath, none of that mattered if the interface felt confusing or intimidating.
+
+That led me to focus on simplifying the user experience and reducing unnecessary friction wherever possible.
+
+## What I learned
+
+This project changed how I think about blockchain.
+
+Before the hackathon, blockchain mostly felt like a buzzword that people attached to projects whether they needed it or not.
+
+Building something with it forced me to think more critically. I came away realizing that blockchain is good at solving certain trust problems, like making records publicly verifiable, but it doesn't automatically solve every problem around digital voting.
+
+One challenge we never fully solved was privacy.
+
+Making votes verifiable while also keeping each voter's identity anonymous is much harder than simply recording transactions on a blockchain. That tradeoff ended up being one of the biggest technical questions in the project.
+
+Another practical limitation was onboarding. Requiring every voter to create and use a MetaMask wallet introduces a level of complexity that would make adoption difficult in a real national election.
+
+Even though eHalalan was a hackathon prototype, it gave me something more valuable than another project to add to my portfolio. It taught me to look past the technology itself and ask whether it's actually the right tool for the problem.

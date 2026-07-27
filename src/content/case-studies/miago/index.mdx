@@ -1,95 +1,76 @@
 ---
-title: "Turning Messenger Orders Into a Real Delivery System"
-description: "Miagao has no UberEats or GrabFood, so food ordering runs on scattered Messenger threads between customers, vendors, and riders; MiaGo replaces that with structured orders, dispatch, and role-based workflows."
-date: "2026-05"
+title: "Turning Messenger food orders into a real delivery system"
+description: "Miagao's food delivery runs through scattered Messenger conversations, so MiaGo turns informal orders into a structured system for customers, vendors, and riders."
+date: "2026-05-24"
 image: "./preview.jpg"
 ---
 
 import { Image } from "astro:assets";
 import preview from "./preview.jpg";
-import Callout from "@components/Callout.astro";
 
-MiaGo is a campus and municipality based food delivery platform that connects customers, vendors, and freelance riders through a structured ordering and dispatch system.
+MiaGo is a campus and municipality-based food delivery platform that turns informal Messenger-based ordering into a structured system connecting customers, vendors, and riders.
 
 <Image src={preview} alt="MiaGo Preview" data-zoomable />
 
 ## Why we built it
 
-Around the municipality of Miagao, Iloilo, food ordering is usually handled through
-Messenger chats, Facebook posts, and direct coordination between customers, vendors, and riders.
+While staying in Miagao for university, I experienced the same problem many students there had.
 
-Since food delivery apps like UberEats and Grab Food are not available in local areas like Miagao,
-we built our own.
+When ordering food, the process usually happened through Messenger chats, Facebook posts, and direct coordination. Customers had to message vendors manually, vendors had to track orders through conversations, and riders had to coordinate deliveries separately.
 
-MiaGo was built to turn this informal system into a structured job based delivery system where
-orders become dispatchable tasks for riders instead of informal requests.
+The system worked, but it was informal.
+
+As the number of orders increased, conversations became difficult to manage. There was no clear order status, no centralized catalog, and no reliable way to coordinate between customers, vendors, and riders.
+
+We built MiaGo to turn that informal process into a proper delivery workflow.
 
 ## How it turned out
 
-### Users and their roles
+MiaGo became a multi-role delivery platform with separate workflows for customers, vendors, and riders.
 
-The system is split into three roles:
+### A system built around roles
 
-- Customers create orders and track status
-- Riders browse and accept open delivery jobs
-- Vendors act as pickup points and manage menu items
+The biggest difference between MiaGo and a simple ordering app is that every user has a specific role in the workflow.
 
-Each role has a separate workflow but shares the same underlying order system.
+Customers browse stores, manage their carts, place orders, and track delivery progress.
 
-### Stores and their items
+Vendors manage their stores and menu items while handling incoming orders.
 
-Vendors manage stores and items through a simple catalog system:
+Riders act as the connection between both sides by viewing available delivery jobs, accepting orders, and updating delivery status.
 
-- Create and update store profiles
-- Manage item availability
-- Control pricing and menu visibility
+Designing these separate experiences was one of the harder parts of the project. Every feature had to consider not only what users could do, but also what they should not be allowed to do.
 
-Customers browse stores and items directly before placing orders.
+### Modeling the delivery workflow
 
-### Orders
+The hardest part was not creating the screens or endpoints. It was deciding how the system should behave in real situations.
 
-Orders are treated as structured jobs that move through a clear lifecycle from draft to delivered.
+Real orders are not always straightforward.
 
-This removes ambiguity in coordination between customers and riders.
+What happens if a customer cancels an order halfway through? What happens if a vendor runs out of an item after someone already ordered it? What happens if two riders try to accept the same delivery?
 
-### Riders
+These questions forced us to think beyond basic CRUD operations and design controlled state transitions.
 
-Riders operate through a job board where they can view open orders, accept delivery jobs, and update pickup and delivery status.
+Orders became more than just records in a database. They became processes with rules about who can change them and when those changes are valid.
 
-Once accepted, an order is locked to a single rider to prevent conflicts.
+### Stores and ordering
+
+Vendors can create stores and manage their available items.
+
+Customers can browse these catalogs directly instead of relying on scattered messages to know what is available.
+
+When an order is placed, MiaGo stores the relevant details at that moment, keeping the order history consistent even if menu items or prices change later.
+
+### Rider workflow
+
+Riders use a job-based system where they can see available deliveries and accept jobs.
+
+Once a rider accepts an order, it becomes assigned to them to prevent conflicts.
+
+This converts delivery from an informal agreement into a structured workflow where responsibilities are clear.
 
 ## How we built it
 
-### System architecture
-
-MiaGo uses a modular monolith style backend with a 3 tier structure:
-
-- Frontend built with React and Vite
-- Backend built with Express in a controller service repository pattern
-- PostgreSQL database accessed through Slonik with dbmate migrations
-
-Turborepo is used to manage shared packages and keep the system consistent.
-
-### Modules
-
-- Auth module for login and registration
-- Users module for role based profiles
-- Stores module for vendor store and item management
-- Orders module for cart, order creation, and lifecycle tracking
-- Deliveries module for job browsing and delivery updates
-
-### Data model approach
-
-Key entities include users, stores, store items, orders, and order items.
-
-The design focuses on:
-
-- clear separation between order state and delivery state
-- snapshot pricing at order time
-- strict role based access control
-- controlled state transitions to avoid inconsistent updates
-
-### Tech stack
+### Technologies we used
 
 | Layer      | Stack                                |
 | ---------- | ------------------------------------ |
@@ -101,18 +82,34 @@ The design focuses on:
 | DevOps     | Docker, GitHub Actions               |
 | Deployment | Vercel, Render, Neon                 |
 
+### Backend architecture
+
+MiaGo uses a modular monolith architecture with separate modules for authentication, users, stores, orders, and deliveries.
+
+The backend follows a controller-service-repository structure, keeping business logic separate from database operations.
+
+The database was built directly with PostgreSQL instead of using an ORM.
+
+This was an intentional choice. Working directly with SQL gave me a better understanding of how data was actually being stored and queried instead of relying on abstractions.
+
+Type safety was maintained through Slonik and Zod, which helped ensure that data moving between the database and application stayed consistent.
+
+### Role-based access control
+
+The three user roles made authorization one of the more challenging parts of the system.
+
+It was not enough to simply hide features from different users. Every action had to be checked against the user's permissions and the current state of the order.
+
+A customer should not be able to modify a completed delivery. A rider should not be able to update an order they do not own. A vendor should only manage their own store.
+
+Keeping these boundaries consistent across both the backend and frontend required careful design.
+
 ## What I learned
 
-First time using Express for a full backend.
-It was more manual compared to frameworks I used before,
-but it gave me a clearer understanding of request flow, controllers, and services.
+MiaGo taught me that software engineering is often about translating messy real-world processes into clear systems.
 
-No ORM in this project.
-I worked directly with SQL using Postgres and enforced type safety using Slonik together with Zod on raw queries.
-It made database work more explicit and forced me to be careful with data shape and validation.
+The hardest problems were questions about how the real world should be represented in software.
 
-I also learned how to deal with a more complicated RBAC system.
-The app has three roles: customer, rider, and vendor.
-Handling this was not just business logic but also UI complexity.
-Every feature had to account for what each role can and cannot do,
-and keeping those boundaries consistent across the system was harder than expected.
+Building a delivery system forced me to think about states, permissions, edge cases, and how different people interact with the same data.
+
+It also gave me deeper experience with backend development. Working with Express, raw SQL, and PostgreSQL made the request flow and data handling much more visible compared to higher-level frameworks I had used before.

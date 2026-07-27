@@ -1,29 +1,31 @@
 ---
-title: "Proving Custom Data Structures Actually Work"
-description: "Writing a priority queue, binary tree, and hash map from scratch is easy to get subtly wrong, so ZipZap puts them to the test by building a working Huffman-coding file compressor around them."
-date: "2025-12"
+title: "Building a file compressor from scratch to test my data structures"
+description: "Huffman coding needs trees, heaps, and hash maps to work, making it a good test for implementing core data structures from scratch."
+date: "2025-12-20"
 image: "./preview.png"
 ---
 
-ZipZap is a CLI tool that compresses text files using Huffman coding.
-It is made from scratch with custom data structures.
+ZipZap is a CLI tool that compresses text files using <a href="https://en.wikipedia.org/wiki/Huffman_coding" target="_blank"> Huffman coding </a> . It was built as an experiment in implementing data structures and algorithms from scratch, including priority queues, binary trees, and hash maps.
 
 ## Why I built it
 
-ZipZap was initially developed as a final project
-for <a href="https://upvdpsm.com/courses/computer-science/cmsc-123.html" target="_blank">CMSC 123</a>
+I was already interested in how compression worked before this project.
+
+When I learned that Huffman coding relies heavily on data structures, it became
+a natural choice for my final project in <a href="https://upvdpsm.com/courses/computer-science/cmsc-123.html" target="_blank">CMSC 123</a>
 (Data Structures).[^1]
 
-I chose to build a compressor using Huffman coding because the algorithm itself
-incorporates a lot of data structures: priority queues for building the tree, binary trees for encoding, and hash maps for the codebook.
+The course required us to implement data structures ourselves, so I wanted a
+project where those implementations were not just isolated exercises.
+A compressor was a good fit because the algorithm depends on multiple structures
+working together.
 
-Considering that I would write all these data structures from scratch,
-it can be a good quantitative indicator of how well I implemented them.
+Instead of just checking whether my data structures passed tests, ZipZap gave
+them a real workload.
 
 ## How it turned out
 
-Users can use ZipZap as a CLI tool to compress files
-to `.zz` and decompress them back to `.txt`.
+Users can use ZipZap as a CLI tool to compress and decompress text files.
 
 ```sh
 zipzap zip original.txt -o compressed.zz
@@ -33,20 +35,34 @@ zipzap zip original.txt -o compressed.zz
 zipzap zap compressed.zz -o decompressed.txt
 ```
 
-The tool includes some neat features beyond basic compression.
-You can view timing stats with `--time`, inspect the Huffman tree with `--tree`,
-or examine the generated codebook with `--codebook`.
-There's even a `--contents` flag to see the actual encoded bitstream if you're curious about what's happening under the hood.
+The tool achieves around 50-60% size reduction on typical text files. It is not intended to compete with production compression tools like <a href="https://www.gnu.org/software/gzip/" target="_blank"> gzip </a>, but it successfully demonstrates the complete compression and decompression
+pipeline.
 
-Even though it runs slower than production compression tools like <a href="https://www.gnu.org/software/gzip/" target="_blank">gzip</a> (which is expected),
-it functionally works as intended.
-On typical text files, ZipZap achieves around 50-60% size reduction.
+Beyond basic compression, ZipZap includes inspection features:
+
+- `--time` shows compression timing information
+- `--tree` displays the generated Huffman tree
+- `--codebook` shows the character-to-bit mappings
+- `--contents` displays the encoded bitstream
+
+These were originally added during development, but they also make the algorithm
+easier to understand by exposing what normally happens behind the scenes.
 
 ## How I built it
 
-The core algorithm is based on the <a href="https://en.wikipedia.org/wiki/Huffman_coding" target="_blank">Huffman coding</a> algorithm.
-This algorithm builds a tree from a set of frequencies and assigns codes to each character.
-Here's how the Huffman tree looks like given the input "aaaabbcde":
+The core algorithm follows Huffman coding.
+
+Given a text file, ZipZap first counts character frequencies. It then builds a
+tree by repeatedly combining the least frequent nodes using a priority queue.
+
+For example, given the input:
+
+```
+aaaabbcde
+```
+
+the frequencies are used to construct a tree where frequently occurring
+characters receive shorter binary codes.
 
 ```mermaid
 ---
@@ -72,10 +88,9 @@ flowchart TD
     style Root fill:#1f2020
 ```
 
-Specifically, it uses <a href="https://en.wikipedia.org/wiki/Canonical_Huffman_code" target="_blank">canonical Huffman codes</a> to encode text,
-which makes the compressed format more efficient to store and decode.
+ZipZap uses <a href="https://en.wikipedia.org/wiki/Canonical_Huffman_code" target="_blank">canonical Huffman codes</a> for encoding. Instead of storing the entire tree, the compressor stores enough metadata to reconstruct the codebook during decompression.
 
-Here's how the compression pipeline works:
+The compression pipeline looks like this:
 
 ```mermaid
 ---
@@ -84,33 +99,51 @@ config:
 ---
 
 flowchart TD
-    START([Input: original.txt]) --> READ[Read text file] --> FREQ_COUNT[Count char frequencies]
-    FREQ_COUNT --> |"{'a':5,'b':3,'c':2}"| HEAP_INIT[Init min-heap] --> HEAP_LOOP{Heap size > 1?}
-    HEAP_LOOP -->|Yes| POP2[Pop 2 min nodes] --> MERGE[Merge into parent] --> PUSH[Push parent back] --> HEAP_LOOP
-    HEAP_LOOP -->|No| TREE_DONE[Huffman Tree complete]
-    TREE_DONE --> TRAVERSE[DFS code lengths] --> |"{'a':2,'b':3,'c':3}"| CANONICAL[Make codebook with canonical codes] --> ENCODE_CHARS[Encode chars]
-    ENCODE_CHARS --> WRITE[Write metadata and packed bytes] --> END([Output: compressed.zz])
+    START([Input: original.txt]) --> READ[Read text file] --> FREQ_COUNT[Count character frequencies]
+    FREQ_COUNT --> |"{'a':5,'b':3,'c':2}"| HEAP_INIT[Initialize min-heap]
+    HEAP_INIT --> HEAP_LOOP{Heap size > 1?}
+    HEAP_LOOP -->|Yes| POP2[Pop 2 minimum nodes]
+    POP2 --> MERGE[Merge into parent node]
+    MERGE --> PUSH[Push parent back]
+    PUSH --> HEAP_LOOP
+    HEAP_LOOP -->|No| TREE_DONE[Huffman tree complete]
+    TREE_DONE --> TRAVERSE[Traverse tree and get code lengths]
+    TRAVERSE --> CANONICAL[Generate canonical codebook]
+    CANONICAL --> ENCODE_CHARS[Encode characters]
+    ENCODE_CHARS --> WRITE[Write metadata and packed bytes]
+    WRITE --> END([Output: compressed.zz])
 
     style START fill:#1f2020
 ```
 
-All the data structures (deque, hash maps, binary trees, priority queues) used were implemented from scratch.
-No importing `heapq` or `defaultdict` here.
+All major data structures were implemented from scratch.
+The project does not rely on Python's built-in equivalents like `heapq` or
+`defaultdict`.
+
+The most challenging part was not the data structures themselves, but handling
+the actual bits.
+
+Working with individual bits instead of normal bytes introduced many edge cases:
+packing encoded data, tracking unused padding bits, and reconstructing the
+original text exactly during decompression.
 
 ## What I learned
 
-This project taught me a lot about data structures in a practical setting.
-Abstract concepts like "amortized O(1) operations" or "load factor in hash tables" suddenly mattered when they directly affected compression speed or memory usage.
+ZipZap gave me a different perspective on data structures.
 
-I also learned that implementing data structures from scratch is humbling.
-Things that seem simple in theory like collision resolution in hash maps require careful attention to edge cases.
+Before this project, concepts like heaps, trees, and hash maps were mostly things
+I implemented because a course required them. Building a working compressor
+showed why those structures exist and how they interact inside a larger system.
 
-Most importantly, I learned that compression is fascinating.
-There's something just deeply satisfying about watching a 50KB text file shrink down to 25KB
-without actually losing any information.
+It also reinforced the importance of correctness. Compression is unforgiving:
+a small mistake in encoding or decoding can make the entire output unusable.
+
+This project was not meant to replace existing compression tools. It was an
+experiment to understand the algorithms behind them and prove that I could turn
+abstract computer science concepts into working software.
 
 ---
 
 [^1]:
-    CMSC 123 is a computer science course I took at <abbr title="University of the Philippines Visayas">UPV</abbr>.
-    It covers topics such as stacks, queues, trees, and hash maps.
+    CMSC 123 is a computer science course I took at <abbr title="University of the Philippines Visayas">UPV</abbr>. It covers
+    topics such as stacks, queues, trees, and hash maps.

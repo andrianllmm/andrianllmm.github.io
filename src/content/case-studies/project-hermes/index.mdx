@@ -1,7 +1,7 @@
 ---
-title: "Turning Panicked Chat Messages Into Structured Incident Reports"
-description: "Disaster reports arrive as messy, human chat messages, not clean forms, so Project HERMES uses an AI chatbot to extract location, severity, and details into structured data responders can act on immediately."
-date: "2026-04"
+title: "Integrating AI into critical systems without making it critical"
+description: "Project HERMES uses AI to turn natural disaster reports into structured incident data while keeping human validation and reliable workflows in control."
+date: "2026-04-25"
 image: "./preview.gif"
 ---
 
@@ -10,7 +10,9 @@ import { YouTube } from "@astro-community/astro-embed-youtube";
 import preview from "./preview.gif";
 import Callout from "@components/Callout.astro";
 
-Project HERMES turns messy, informal incident reports into structured data DRRM responders can act on immediately, using an AI-powered chatbot as the intake layer.
+Project HERMES is a disaster response coordination system that bridges the gap between how people naturally report incidents and how responders need to process information.
+
+It uses AI to help transform informal chat messages into structured incident data, but the system is designed so that AI remains a helper rather than a dependency.
 
 <Image src={preview} alt="Preview" data-zoomable />
 
@@ -27,82 +29,73 @@ Project HERMES turns messy, informal incident reports into structured data DRRM 
 
 ## Why we built it
 
-Project HERMES started from a simple observation: incident reports are usually messy.
-People send messages in chat apps the way they normally talk.
-That is good for humans, but not great for systems that need structure, speed, and clarity.
+Emergency reports rarely arrive in a clean format.
 
-In DRRM operations, that gap becomes a real problem.
-A single report might mention location, severity, and description all in one message, or sometimes none of it clearly.
-Someone still has to read, interpret, and reformat everything manually.
+During a disaster, people do not think about filling out structured forms. They send messages the way they normally communicate:
 
-We wanted to reduce that friction.
+> "May baha na dito sa amin, mataas na yung tubig."
 
-So we built HERMES as a bridge between informal human communication and structured incident data.
-It sits in the middle, listening to chat messages and turning them into something usable in real time.
+For responders, however, that same message needs to become something actionable. They need information like location, incident type, and severity to organize a response.
+
+The challenge is bridging these two different workflows.
+
+We built HERMES around that idea: residents should be able to communicate naturally, while responders should receive structured information that is easier to manage.
+
+The obvious solution today would be to put an AI chatbot in charge of the entire interaction. However, for a critical system, that introduces another problem. AI models can misunderstand messages, produce incorrect outputs, or behave inconsistently.
+
+Instead of making AI the foundation of HERMES, we made it one part of a larger system.
+
+AI handles the part where it is useful: understanding messy human language and extracting relevant information. The rest of the workflow remains controlled, predictable, and validated by humans.
 
 ## How it turned out
 
-HERMES ended up as a live incident intake and coordination system that runs entirely through chat interfaces and a responder control center.
+HERMES became a chat-based incident reporting system connected to a responder control center.
 
-### Messaging-based reporting
+### Chat-based reporting
 
-Residents report incidents through Telegram or Messenger. On first contact, they go through a simple onboarding flow where we collect basic profile details like language and location.
+Residents can submit reports through messaging platforms such as Telegram and Messenger.
 
-They can submit reports in two ways:
+The system supports two ways of reporting. Users can either send a freeform message in their own words, or follow a guided reporting flow that collects information step by step.
 
-- Freeform messages that get parsed by the NLP pipeline
-- Guided form-based reporting using structured prompts
+This allows the system to work with both natural communication and structured data collection. Regardless of the input method, reports eventually enter the same incident management workflow.
 
-Both routes end up in the same incident pipeline.
+### AI-assisted information extraction
 
-### Incident feed
+The AI pipeline helps convert unstructured messages into structured incident information.
 
-Responders monitor a real-time feed. Incoming incidents appear instantly in the dashboard.
+Instead of requiring residents to understand technical forms, they can simply describe what happened. The system then extracts relevant details that responders can review.
 
-We built multiple ways to view and manage incidents:
+The important design choice is that AI does not make operational decisions.
 
-- List view for fast scanning
-- Table view for detailed inspection
-- Kanban view for workflow-style tracking
+It does not determine whether an incident is valid, decide the required response, assign resources, or close reports. Those decisions remain with responders.
 
-### Incident view
+The model is there to reduce the manual work of interpreting messages, not to replace the people responsible for making decisions.
 
-Each incident has a dedicated panel where responders can:
+### Human validation as part of the workflow
 
-- Read full chat history
-- Review parsed structured fields
-- Edit or validate extracted data
-- Update incident status (new, ongoing, resolved, etc.)
+Because HERMES deals with disaster-related information, incorrect data can have serious consequences.
 
-This edit step is important because the system is not fully automated. Human validation is part of the workflow.
+Every AI-generated result remains editable and reviewable by responders before becoming part of the official incident record.
 
-### Map visualization
+If the AI produces an incorrect extraction, the system still works. Responders can correct the information manually, and the rest of the workflow continues normally.
 
-Responders can have a spatial live view of incidents on a map.
+This fallback approach was intentional. A critical system should not fail just because one AI component makes a mistake.
 
-- Incidents are plotted as markers
-- Severity is visualized using color coding
-- Clusters or heatmap-style views help with dense areas
+### Incident management dashboard
 
-### Advisory system
+Responders can monitor incoming reports through a centralized dashboard.
 
-Responders can broadcast advisories back to residents through chat.
+Each incident includes the original conversation history, extracted information, and current status. Responders can review reports, modify details, and track progress from initial report to resolution.
 
-- Custom message composer
-- Predefined templates for common alerts
-- Target residents' locations by drawing on the map
+The dashboard provides different views depending on the workflow. A feed allows responders to see new incidents quickly, while table and kanban views help organize larger volumes of reports.
 
-### Data export
+### Mapping and communication
 
-Incident and advisory data can be exported as PDF or CSV for reporting and offline analysis.
+HERMES also provides a geographic view of incidents by plotting reports on a map.
 
-### Admin and access control
+This helps responders understand where incidents are occurring and identify areas that may require attention.
 
-We built a full admin layer with:
-
-- Role-based access control for responders and admins
-- User invitation system (via email)
-- Ability to manage accounts
+The system also supports sending advisories back to residents through connected messaging platforms, creating a two-way communication channel between communities and responders.
 
 ## How we built it
 
@@ -110,19 +103,33 @@ We built a full admin layer with:
 
 |                      |                                                              |
 | -------------------- | ------------------------------------------------------------ |
-| **Frontend**         | Next.js with PWA support + Tailwind CSS + shadcn/ui          |
+| **Frontend**         | Next.js + Tailwind CSS + shadcn/ui                           |
 | **Backend**          | Next.js API routes + Supabase (PostgreSQL + Auth + Realtime) |
-| **Chat Integration** | Vercel Chat SDK (Telegram/Messenger adapters)                |
+| **Chat Integration** | Vercel Chat SDK                                              |
 | **AI Integration**   | Vercel AI SDK                                                |
 | **Maps Integration** | MapLibre GL                                                  |
 | **Deployment**       | Vercel                                                       |
 
+### Designing AI boundaries
+
+The most important engineering decision in HERMES was deciding where AI belongs.
+
+The chatbot combines rule-based logic and AI capabilities instead of relying entirely on an LLM.
+
+Predictable interactions such as onboarding, guided reporting, and system flows are handled through deterministic logic. These parts need consistency and should behave the same way every time.
+
+AI is only introduced where flexibility is valuable: interpreting natural language reports.
+
+This hybrid approach gives the system the benefits of AI while avoiding the risks of making every interaction dependent on a model response.
+
 ## What I learned
 
-This project taught me a lot about building systems where AI is not the product, but just one component in a larger pipeline.
-The hardest part was not making the model extract fields.
-The harder part was designing the whole system around it.
+HERMES changed how I approach AI integration.
 
-I also learned that integrating chat platforms made me appreciate how constrained those environments are.
-You do not control formatting, structure, or even consistency.
-You only get messages. Designing around that constraint was one of the more interesting parts of this project.
+It is easy to add an LLM to an application and call it an AI product. The harder engineering problem is understanding where AI actually provides value and where it creates unnecessary risk.
+
+For critical systems, reliability matters more than automation.
+
+A good AI system is not always the one that gives the model the most control. Sometimes the better design is giving AI a smaller, clearly defined role inside a larger workflow.
+
+This project taught me that building AI-powered applications is not only about making models produce outputs. It is about designing the surrounding system so those outputs remain useful, verifiable, and safe.

@@ -1,92 +1,99 @@
 ---
-title: "Replacing #ForSale Hashtags With an Actual Marketplace"
-description: "UPV students already buy and sell through scattered Facebook posts tagged #forsale, so Iskommerce replaces the endless scroll with structured listings, search, and built-in buyer-seller messaging."
-date: "2026-05"
+title: "Replacing students' #ForSale posts with an actual marketplace"
+description: "Students already buy and sell through scattered Facebook posts, so Iskommerce turns those into a structured marketplace while exploring whether more structure actually makes a better experience."
+date: "2026-05-26"
 image: "./preview.jpg"
 ---
 
 import { Image } from "astro:assets";
 import preview from "./preview.jpg";
 
-Iskommerce is a university only C2C marketplace that enables students to buy, sell, and exchange items within a trusted academic community.
+Iskommerce is a university-only C2C marketplace designed to help students buy, sell, and exchange items within a trusted academic community.
 
 <Image src={preview} alt="Iskommerce Preview" data-zoomable />
 
-At the <a href="https://www.upv.edu.ph/">University of the Philippines Visayas</a>, student to student commerce has long lived inside Facebook groups, Messenger threads, and informal campus networks.
+At the <a href="https://www.upv.edu.ph/">UP Visayas</a>, student commerce already existed.
 
-Listings are typically unstructured posts using tags like **#forsale**, **#LF**, or **#mine**, which makes discovery dependent on scrolling behavior instead of structured search.
+Students bought and sold items through Facebook groups, Messenger conversations, and posts using tags like **#ForSale**, **#LF**, or **#mine**.
 
-This leads to an active but inefficient marketplace layer inside the campus ecosystem.
+The problem was not that students had no way to trade. The marketplace already existed. It was just built on tools that were never designed for it.
 
-Iskommerce was built to turn this informal system into a structured, searchable, trust aware platform designed specifically for students.
+Finding items depended on scrolling through posts. Negotiations were scattered across conversations. There was no structured way to know whether something was still available, already sold, or who was responsible for the next step.
+
+Iskommerce was built to explore what happens when this informal process is turned into a dedicated marketplace.
+
+## Why we built it
+
+The idea came from observing how students already traded with each other.
+
+Facebook groups worked well enough because they were familiar and convenient, but they also created friction. Sellers had to constantly repost items to stay visible. Buyers had to search manually. Trust depended mostly on personal judgment.
+
+We wanted to build something designed specifically for a university community.
+
+Instead of competing with general marketplaces, Iskommerce focused on the advantages of a smaller network. Users already shared a common identity as students, which allowed us to build around trust features like UP email verification and student profiles.
+
+The goal was not just to create another place to post items. It was to make the existing process more structured.
 
 ## How it turned out
 
-### Listings
+### A marketplace built around structured listings
 
-Each item is represented as a persistent listing with standardized fields for price, condition, category, and status.
+Instead of treating items as temporary social media posts, Iskommerce represents each item as a persistent listing.
 
-This replaces fragmented social posts with a consistent marketplace model.
+Each listing has defined information such as price, condition, category, and availability status.
 
-### Discovery
+This gives buyers a consistent way to browse items while allowing the system to understand what is happening with each item.
 
-Listings are surfaced through homepage feeds, search, filtering, and sorting.
+### A discovery system instead of endless scrolling
 
-### Messaging
+Listings can be discovered through feeds, search, filtering, and sorting.
 
-Each listing supports a dedicated conversation thread between buyer and seller.
+The idea was to replace passive scrolling with intentional discovery.
 
-This centralizes negotiation away from external messaging apps.
+### Conversations connected to transactions
 
-### Transactions
+Each listing has its own conversation thread between buyers and sellers.
 
-Iskommerce formalizes the exchange process.
+Instead of moving immediately to external messaging apps, discussions remain connected to the item being negotiated.
 
-Each transaction is explicitly tied to listing state transitions to prevent conflicts and duplicate deals.
+This keeps context together and makes it easier to understand the history of a transaction.
 
-### Reviews
+### Modeling real transactions
 
-A bidirectional review system captures post transaction feedback.
+The hardest part of the system was not managing listings. It was representing what happens when real people interact with them.
 
-This introduces structured trust signals instead of purely social inference.
+A marketplace needs rules. A listing cannot be sold twice. A buyer should not reserve an item forever. A review should only exist after a completed transaction.
+
+This led us to design transaction states such as available, reserved, sold, and archived. Thinking through these states revealed edge cases that are easy to miss when building simple applications: what happens when a buyer changes their mind? what happens when multiple people want the same item? These decisions shaped both the database design and application logic.
+
+### Building trust into the exchange
+
+Iskommerce includes a review system tied to completed transactions.
+
+The goal was to create structured trust signals instead of relying entirely on social reputation.
 
 ## How we built it
 
-### System architecture
+### A modular system that mirrors the product
 
-Iskommerce uses a modular monolith architecture built around a 3 tier system:
+Iskommerce uses a modular monolith architecture with a shared TypeScript codebase.
 
-- Presentation layer: Next.js frontend
-- Application layer: NestJS backend
+The system is divided into feature-based modules:
 
-Turborepo is used to manage the monorepo structure across services.
+- Authentication for account management and UP email verification
+- Listings for item creation, discovery, and lifecycle management
+- Messaging for buyer-seller conversations
+- Transactions for purchase workflows
+- Reviews for reputation building
+- Notifications for activity updates
 
-### Modules
+The structure was inspired by Django applications. Each feature has a clear boundary while still working together as part of one system.
 
-- Auth module for UP email verification and session handling
-- Listing module for CRUD, status transitions, and feed generation
-- Messaging module for conversation threads per listing
-- Transaction module for the buying flow state machine
-- Review module for post transaction reputation system
-- Notification module for activity updates
+### A full-stack TypeScript application
 
-### Data model design
+This was my first time building a full-stack application where both frontend and backend used TypeScript.
 
-Core entities are built around transactional integrity:
-
-- Listings enforce strict state transitions from draft to available to reserved to sold to archived
-- Transactions enforce a single active transaction per listing
-- Conversations are uniquely bound per buyer per listing
-- Reviews are restricted to completed transactions only
-
-Relational constraints ensure consistency across listings, transactions, and messaging.
-
-### Real time communication
-
-Messaging and notifications use a lightweight real time layer with optional WebSocket support
-for instant chat updates and notifications.
-
-### Tech stack
+The stack included:
 
 | Layer      | Stack                            |
 | ---------- | -------------------------------- |
@@ -94,24 +101,32 @@ for instant chat updates and notifications.
 | Backend    | NestJS, TypeScript               |
 | Database   | PostgreSQL, Prisma               |
 | Monorepo   | Turborepo                        |
-| DevOps     | Docker, GitHub Actions           |
 | Deployment | Vercel, Supabase                 |
+
+Using TypeScript across the entire stack made sharing types and validation rules much easier.
+
+Shared packages allowed the frontend and backend to use the same schemas and assumptions instead of duplicating data definitions.
+
+### Designing around consistency
+
+The system relies on strict rules to keep data consistent.
+
+Listings, transactions, conversations, and reviews are connected through controlled workflows instead of being treated as isolated records.
+
+For example, a review cannot exist without a completed transaction. A listing cannot have multiple active buyers. Actions are restricted depending on the user's role.
+
+These constraints forced me to think beyond making features work and focus on making the system behave correctly.
 
 ## What I learned
 
-This was my first time building a full stack system purely in TypeScript.
-I was previously more used to Python backends like Django or relying on BaaS like Supabase,
-so owning both frontend and backend made me think more about how the entire system fits together.
+The biggest lesson from Iskommerce was not about NestJS, TypeScript, or architecture. It was about understanding existing behavior.
 
-It was also my first time really architecting a codebase the way I wanted.
-I went with a modular monolith kind of inspired by Django "apps".
-I really liked the structure since made it obvious where features belong, and how they connect across modules.
-Adding new features felt like a chore since you know what to add and where to add them.
+When building products, it is easy to see an inefficient process and assume the solution is simply building a better version. But that ignores why people use the current system.
 
-Given that we're using TS in both frontend and backend, a monorepo with Turborepo tied everything together.
-Shared packages, containing Zod schemas, made types, DTOs, and validation consistent.
-This was the kind of thing that annoyed me when I was using Python in the backend.
+Students already had a marketplace. It was Facebook groups. It was messy, but it had advantages. It was free, familiar, and where students already spent their time. The lack of structure was a problem, but the convenience of the existing workflow was also what made it work.
 
-Probably what stood out to me the most is Better Auth.
-It is not a hosted service, and it is not a low level library that forces you to wire everything yourself.
-It is by far cleanest way I have seen to handle auth.
+This changed how I think about product development. A product does not only compete against other products. It competes against the default behavior people already have.
+
+Building software is not just about improving a workflow. It is about understanding why the workflow exists in the first place and whether users actually need to change.
+
+Iskommerce taught me that turning an informal process into software is only half the challenge. The harder part is understanding the human behavior behind it.
