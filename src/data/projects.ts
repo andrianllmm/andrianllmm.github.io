@@ -22,7 +22,7 @@ export const projects: Project[] = [
     description: "A web app for crowdsourcing Aklanon-English translations",
     startDate: "2024-03",
     endDate: "2024-08",
-    demoURL: "https://aklish.up.railway.app",
+    demoURL: "https://aklish.andrianllmm.dev",
     repoURL: "https://github.com/andrianllmm/aklish",
     skills: [
       "django",
