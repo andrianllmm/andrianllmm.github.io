@@ -163,7 +163,7 @@ export const projects: Project[] = [
     skills: ["python"],
     demoURL: "https://pypi.org/project/renux",
     repoURL: "https://github.com/andrianllmm/renux",
-    image: "/images/projects/renux/cover.png",
+    image: "/images/projects/renux/demo.gif",
     relatedCaseStudies: ["renux"],
   },
   {
