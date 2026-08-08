@@ -34,7 +34,7 @@ export const projects: Project[] = [
       "sqlite",
       "railway",
     ],
-    image: "/images/projects/aklish/cover.png",
+    image: "/images/projects/aklish/preview.png",
     relatedCaseStudies: ["aklish"],
   },
   {
@@ -57,7 +57,7 @@ export const projects: Project[] = [
     demoURL: "https://astra.andrianllmm.dev",
     repoURL: "https://github.com/andrianllmm/astra",
     skills: ["python", "fastapi", "typescript", "react"],
-    image: "/images/projects/astra/cover.jpg",
+    image: "/images/projects/astra/preview.jpg",
     relatedCaseStudies: ["astra"],
   },
   {
@@ -69,7 +69,7 @@ export const projects: Project[] = [
     endDate: "2025-05",
     skills: ["django", "python", "javascript", "html", "css", "bootstrap"],
     repoURL: "https://github.com/andrianllmm/backlogs",
-    image: "/images/projects/backlogs/cover.gif",
+    image: "/images/projects/backlogs/preview.gif",
     relatedCaseStudies: ["backlogs"],
   },
   {
@@ -81,7 +81,7 @@ export const projects: Project[] = [
     demoURL: "https://ehalalan.vercel.app",
     repoURL: "https://github.com/eHalalan/ehalalan",
     skills: ["nextjs", "firebase", "tailwind"],
-    image: "/images/projects/ehalalan/cover.gif",
+    image: "/images/projects/ehalalan/preview.gif",
     relatedCaseStudies: ["ehalalan"],
     relatedPosts: ["komsaihack25"],
   },
@@ -101,7 +101,7 @@ export const projects: Project[] = [
       "prisma",
       "tailwind",
     ],
-    image: "/images/projects/iskommerce/cover.jpg",
+    image: "/images/projects/iskommerce/preview.jpg",
     relatedCaseStudies: ["iskommerce"],
   },
   {
@@ -123,7 +123,7 @@ export const projects: Project[] = [
       "mediapipe",
       "nextjs",
     ],
-    image: "/images/projects/manobela/cover.jpg",
+    image: "/images/projects/manobela/preview.jpg",
     relatedCaseStudies: ["manobela"],
     relatedPosts: ["tracktech26"],
   },
@@ -136,7 +136,7 @@ export const projects: Project[] = [
     demoURL: "https://miago.andrianllmm.dev",
     repoURL: "https://github.com/andrianllmm/miago",
     skills: ["react", "express", "typescript", "postgresql", "tailwind"],
-    image: "/images/projects/miago/cover.jpg",
+    image: "/images/projects/miago/preview.jpg",
     relatedCaseStudies: ["miago"],
   },
   {
@@ -149,7 +149,7 @@ export const projects: Project[] = [
     demoURL: "https://hermes.andrianllmm.dev",
     repoURL: "https://github.com/popcorn-prophets/project-hermes",
     skills: ["typescript", "nextjs", "postgresql", "supabase"],
-    image: "/images/projects/project-hermes/cover.gif",
+    image: "/images/projects/project-hermes/preview.gif",
     relatedCaseStudies: ["project-hermes"],
     relatedPosts: ["komsaihack26"],
   },
@@ -162,7 +162,7 @@ export const projects: Project[] = [
     skills: ["python"],
     demoURL: "https://pypi.org/project/renux",
     repoURL: "https://github.com/andrianllmm/renux",
-    image: "/images/projects/renux/demo.gif",
+    image: "/images/projects/renux/preview.gif",
     relatedCaseStudies: ["renux"],
   },
   {
@@ -198,7 +198,7 @@ export const projects: Project[] = [
     skills: ["java"],
     demoURL: "https://andrianllmm.itch.io/tidal-island",
     repoURL: "https://github.com/andrianllmm/tidal-island",
-    image: "/images/projects/tidal-island/cover.gif",
+    image: "/images/projects/tidal-island/preview.gif",
     relatedCaseStudies: ["tidal-island"],
   },
   {
@@ -211,7 +211,7 @@ export const projects: Project[] = [
     skills: ["nextjs", "react", "typescript", "tailwind", "vercel"],
     demoURL: "https://uniglyphs.andrianllmm.dev",
     repoURL: "https://github.com/andrianllmm/uniglyphs",
-    image: "/images/projects/uniglyphs/cover.gif",
+    image: "/images/projects/uniglyphs/preview.gif",
     relatedCaseStudies: ["uniglyphs"],
   },
   {
@@ -223,7 +223,7 @@ export const projects: Project[] = [
     endDate: "2025-12",
     skills: ["python"],
     repoURL: "https://github.com/andrianllmm/zipzap",
-    image: "/images/projects/zipzap/cover.png",
+    image: "/images/projects/zipzap/preview.png",
     relatedCaseStudies: ["zipzap"],
   },
 ];
