@@ -35,3 +35,41 @@ The CV is generated from `/cv/cv.yaml`, the single source of truth, using the Py
 After modifying the YAML, activate the Python venv in `cv/` and regenerate with `npm run cv`. This produces both `src/content/cv/index.md` and `public/cv.pdf`.
 
 Generated artifacts should never be edited directly.
+
+## Code Conventions
+
+### Style
+
+Enforced with **Prettier** and **ESLint**.
+
+### Git
+
+- Use Conventional Commits: `type(scope): concise description`. `content` is a special type for this repo for content-related changes such as updating a post or adding a case study.
+- Keep commits atomic.
+- Keep commit messages concise. Add a description only when necessary.
+- Do not co-author commits or include yourself in commit messages.
+- Do not use `--no-verify` or otherwise bypass Git hooks.
+- Do not bypass GPG signing. If a commit cannot be signed because GPG is locked or requires user interaction, stop and ask the user to unlock GPG before continuing.
+- When updating a branch with changes from its base branch, prefer rebasing over merging.
+
+#### Branches
+
+- Use descriptive branch names with the format `type/<short-description>` (e.g., `feat/add-search`, `content/update-post`); prefer `feat/` over `feature/`.
+- Do not include issue number in branch names.
+- Keep branches focused on a single issue or logical change.
+- Create a dedicated branch for each change. Do not make changes directly on the default branch.
+
+#### Issues
+
+- Follow the GitHub issue template.
+- Add relevant GitHub labels; do not add labels speculatively.
+- Add relevant issue type.
+- Assign the issue to the current user.
+
+#### Pull Requests
+
+- Follow the GitHub PR template.
+- Add relevant GitHub labels; do not add labels speculatively.
+- Assign the PR to the current user.
+- Link the PR to its corresponding issue using `Closes #<issue-number>` when the PR fully resolves the issue.
+- Keep PRs focused and reasonably sized.
