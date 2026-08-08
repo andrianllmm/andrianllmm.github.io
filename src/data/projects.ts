@@ -46,7 +46,6 @@ export const projects: Project[] = [
     demoURL: "https://pypi.org/project/aklstemmer",
     repoURL: "https://github.com/andrianllmm/aklanon-stemmer",
     skills: ["python"],
-    image: "/images/projects/aklstemmer/cover.png",
     relatedCaseStudies: ["aklstemmer"],
   },
   {
@@ -176,7 +175,6 @@ export const projects: Project[] = [
     skills: ["python", "pandas"],
     demoURL: "https://pypi.org/project/taglid",
     repoURL: "https://github.com/andrianllmm/taglid",
-    image: "/images/projects/taglid/cover.png",
     relatedCaseStudies: ["taglid"],
   },
   {
@@ -188,7 +186,6 @@ export const projects: Project[] = [
     demoURL: "https://pypi.org/project/tglstemmer",
     repoURL: "https://github.com/andrianllmm/tagalog-stemmer",
     skills: ["python"],
-    image: "/images/projects/tglstemmer/cover.png",
     relatedCaseStudies: ["tglstemmer"],
   },
   {
