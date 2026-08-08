@@ -91,6 +91,17 @@ const { posts, caseStudies } = await resolveRelatedContent(
         ) : null
       }
     </div>
+    {
+      project.image && (
+        <div class="animate text-muted my-10 aspect-video overflow-hidden rounded-lg text-xs">
+          <img
+            src={project.image}
+            alt={project.title}
+            class="h-full w-full object-cover"
+          />
+        </div>
+      )
+    }
     <div class="animate">
       <RelatedContent posts={posts} caseStudies={caseStudies} />
     </div>
