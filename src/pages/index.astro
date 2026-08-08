@@ -146,7 +146,7 @@ const positions = [
   </Fragment>
   <Container>
     <aside data-pagefind-ignore>
-      <div class="space-y-16">
+      <div class="space-y-24">
         <section>
           <div class="grid grid-cols-5 items-center gap-4">
             <div class="animate col-span-2 sm:col-span-1">
@@ -367,18 +367,18 @@ const positions = [
             }
           </ul>
         </section>
+
+        <section class="animate space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-y-2">
+            <h2 class="text-lg font-semibold">I do open source</h2>
+            <Link href="https://github.com/andrianllmm" external>
+              See my contributions
+            </Link>
+          </div>
+
+          <GithubContributions username="andrianllmm" />
+        </section>
       </div>
-
-      <section class="animate mt-12 space-y-6">
-        <div class="flex flex-wrap items-center justify-between gap-y-2">
-          <h2 class="text-lg font-semibold">I do open source</h2>
-          <Link href="https://github.com/andrianllmm" external>
-            See my contributions
-          </Link>
-        </div>
-
-        <GithubContributions username="andrianllmm" />
-      </section>
     </aside>
   </Container>
 </Layout>
