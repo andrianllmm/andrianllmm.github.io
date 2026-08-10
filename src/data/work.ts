@@ -30,7 +30,7 @@ export const work: WorkItem[] = [
     description:
       "Building production AI agents and enterprise automation workflows.",
     skills: ["n8n", "langchain", "langgraph", "python", "fastapi", "nextjs"],
-    relatedCaseStudies: ["event-photo-match", "morphestate"],
+    relatedCaseStudies: ["morphevents", "morphestate"],
   },
   {
     id: "flyrank-ai",
