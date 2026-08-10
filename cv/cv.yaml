@@ -23,7 +23,7 @@ cv:
         start_date: 2024-08
         location: Iloilo, Philippines
         highlights:
-          - "Cumulative GWA: 1.15 (President's Lister)"
+          - "Cumulative GWA: 1.15/1.00 (President's Lister; 1.00 is the highest possible grade)"
           - "Relevant Coursework: Software Engineering, Web Programming, Database Systems"
 
     experience:
@@ -31,39 +31,39 @@ cv:
         position: AI Automation Engineer
         start_date: 2026-06
         highlights:
-          - Building production AI agents using modern LLM orchestration frameworks for enterprise applications.
-          - Developing enterprise automation workflows with n8n, integrating AI services, APIs, and business systems.
+          - "Replaced a fully manual property-viewing booking form with an AI voice agent and n8n automation layer, automating conflict checks, calendar sync, and rescheduling/cancellation across every booking so staff no longer cross-reference calendars by hand."
+          - "Redesigned an event photo search platform's matching pipeline from one-time selfie lookups to persistent face clustering, moving recognition in-house (DeepFace, RetinaFace, pgvector) so 1,000+ attendees can browse and re-find themselves without re-uploading a selfie on every visit."
 
       - company: FlyRank AI
         position: Backend AI Engineer
         start_date: 2026-07
         highlights:
-          - "Building backend workflows with hybrid retrieval, structured LLM outputs, and RAG pipelines."
-          - "Designing and maintaining evaluation pipelines to assess retrieval quality and structured output correctness."
+          - "Built a usage metering and billing engine with idempotent event recording, quota enforcement, and Stripe test-mode webhook sync, guaranteeing zero duplicate charges under request retries and replayed events."
+          - "Built an AI image-matching engine with a mismatch guard that combines vision-model tagging, semantic embeddings, and similarity thresholds, rejecting incorrect image-to-article pairings and reporting top-1 match precision on a labeled eval set."
 
       - company: UP Data Science Society
         position: Web Developer (Branding & Creative)
         start_date: 2026-01
         end_date: 2026-05
         highlights:
-          - "Contributed to the planning and implementation of the organization's website during its initial development."
-          - "Developed a Spotify Wrapped-style data visualization website featured by the organization, reaching 1,000+ viewers."
+          - "Co-planned and built the organization's website from initial development through launch, shipping the branding and creative team's first production site."
+          - "Built a Spotify Wrapped-style personal-data visualization site featured by the organization, reaching 1,000+ viewers."
 
       - company: Pagbutlak — Student Publication, College of Arts and Sciences
         position: Lead Web Developer
         start_date: 2025-09
         end_date: 2026-05
         highlights:
-          - "Designed system architecture and implemented CMS, authentication, role-based access control, and media uploads for 50+ editorial users."
-          - "Built content migration pipeline for transitioning 300+ legacy articles from a WordPress system to a modern full-stack architecture."
+          - "Architected and built a CMS with authentication, role-based access control, and media uploads from scratch, replacing WordPress for 50+ editorial users."
+          - "Built a content migration pipeline that moved 300+ legacy articles from WordPress into the new full-stack architecture."
 
       - company: Komsai.Org — Computer Science Student Organization
         position: Web Developer
         start_date: 2024-09
         end_date: 2025-09
         highlights:
-          - "Redesigned and rebuilt organization website from legacy implementation to a modern web stack."
-          - "Improved content structure and maintainability, reducing update overhead for 10+ maintainers."
+          - "Rebuilt the organization's website from a legacy implementation to a modern web stack."
+          - "Restructured content organization across the site, reducing update overhead for 10+ maintainers."
 
     projects:
       - name: "[Iskommerce](https://github.com/andrianllmm/iskommerce)"
@@ -71,40 +71,40 @@ cv:
         end_date: 2026-05
         summary: "University-based C2C marketplace platform modeling informal student trading behavior in a structured system."
         highlights:
-          - "Led a team through a 3-month Agile development cycle to build a full-stack marketplace."
-          - "Implemented real-time messaging and notifications using WebSockets."
+          - "Led a team through a 3-month Agile development cycle to design and ship a full-stack C2C marketplace with a modular monolith architecture (auth, listings, messaging, transactions, reviews, notifications) across a Turborepo monorepo."
+          - "Designed transaction-state modeling (available, reserved, sold, archived) and real-time messaging with WebSockets to keep buyer-seller negotiations tied to each listing."
 
       - name: "[Project HERMES](https://github.com/popcorn-prophets/project-hermes)"
         start_date: 2026-03
         end_date: 2026-04
         summary: "Disaster response communication system using AI-assisted chat workflows and multi-platform messaging integration."
         highlights:
-          - "Led a 5-person team, owning system architecture, sprint planning, task allocation, and code review."
-          - "Built AI chatbot workflows for incident reporting and information dissemination across 3 messaging platforms."
-          - "Integrated Messenger and Telegram APIs for multi-channel communication."
+          - "Led a 5-person team as system architect, owning sprint planning, task allocation, and code review to ship a disaster-response coordination platform in 1 month."
+          - "Designed a hybrid AI/rule-based chatbot that extracts structured incident data (location, type, severity) from freeform disaster reports while keeping validation and response decisions human-reviewed, deployed across Messenger and Telegram."
+          - "Built a responder dashboard with feed, table, and kanban views plus a live incident map, giving responders real-time visibility from initial report to resolution."
 
       - name: "[Manobela](https://github.com/popcorn-prophets/manobela) (TrackTech Hackathon Winner)"
         start_date: 2025-12
         end_date: 2026-02
         summary: "Driver monitoring system using real-time computer vision for in-vehicle safety."
         highlights:
-          - "Led a 5-person team and delivered a deployed system in a 3-week sprint."
-          - "Integrated YOLO and MediaPipe-based computer vision pipeline under constrained mobile environments."
-          - "Designed real-time video processing system using WebRTC for live streaming and analysis."
+          - "Led a 5-person team to deliver a deployed driver-monitoring system in a 3-week hackathon sprint, winning 1st place among 8 teams at TrackTech Hackathon 2026."
+          - "Built a real-time computer vision pipeline (MediaPipe, YOLOv8, OpenCV, ONNX Runtime) detecting drowsiness, distraction, and phone use via eye-aspect-ratio, PERCLOS, and gaze-tracking models."
+          - "Designed a WebRTC video streaming architecture that offloads inference to the backend, keeping the mobile app lightweight while processing live camera frames for real-time alerts."
 
       - name: "[Aklish](https://github.com/andrianllmm/aklish)"
         start_date: 2025-01
         end_date: 2025-07
         summary: "Crowdsourced Aklanon-English translation platform with NLP tools for an underserved Philippine language."
         highlights:
-          - "Implemented dictionary-based spellchecker and stemming system for Aklanon language processing."
-          - "Conducted user testing with 100+ native speakers and iterated on UX improvements."
+          - "Manually encoded 5,000+ dictionary entries from a printed source into a crowdsourced Aklanon-English dictionary with community voting and a Stack Overflow-style reputation system."
+          - "Built a spellchecker combining SymSpellPy, LemmInflect, and a custom-built Aklanon stemmer (AklStemmer) to catch inflected-word errors in both languages."
+          - "Conducted user testing with 100+ native speakers and iterated on UX improvements based on their feedback."
 
     awards:
       - name: Quantum Computing and Cybersecurity Hackathon 2026 (QCSP)
         date: 2026-06
         summary: "1st Place — Philippines' first quantum-themed cybersecurity hackathon, specialized in Classical-Quantum challenges."
-        highlights:
 
       - name: Hack4Gov National CTF 2025 (DICT & CERT-PH)
         date: 2025-10
@@ -115,7 +115,7 @@ cv:
         details: "Python, TypeScript, JavaScript, Java"
 
       - label: AI / ML
-        details: "PyTorch, TensorFlow, Scikit-learn, Pandas, LangChain, LangGraph, vector databases"
+        details: "PyTorch, TensorFlow, Scikit-learn, Pandas, LangChain, LangGraph, RAG pipelines, vector databases (pgvector), LLM evaluation"
 
       - label: Frontend
         details: "React, Next.js, React Native, Expo, Astro, TailwindCSS"
@@ -127,7 +127,7 @@ cv:
         details: "PostgreSQL, Supabase, Firebase"
 
       - label: Tools
-        details: "n8n, Git, Docker, CI/CD, Vercel, Render, Railway"
+        details: "n8n, Git, Docker, CI/CD, Stripe, Vercel, Render, Railway"
 
 design:
   theme: sb2nov
