@@ -8,7 +8,7 @@ import BackToPrevious from "@components/BackToPrevious.astro";
 import TableOfContents from "@components/TableOfContents.astro";
 import Giscus from "@components/Giscus.astro";
 import StructuredData from "@components/StructuredData.astro";
-import Link from "@components/Link.astro";
+import ProjectCard from "@components/ProjectCard.astro";
 import { projects } from "@data/projects";
 
 export async function getStaticPaths() {
@@ -25,7 +25,7 @@ type Props = CollectionEntry<"caseStudies">;
 const caseStudy = Astro.props;
 const { Content, headings } = await render(caseStudy);
 
-// Best-effort reverse lookup for a "part of" breadcrumb — UI convenience only,
+// Best-effort reverse lookup for the linked project card (UI convenience only),
 // case studies stay unaware of which project references them.
 const parentProject = projects.find((project) =>
   project.relatedCaseStudies?.includes(caseStudy.id),
@@ -89,19 +89,15 @@ const article = {
       <h1 class="animate my-3 text-3xl font-semibold">
         {caseStudy.data.title}
       </h1>
-
-      {
-        parentProject && (
-          <div class="text-muted-foreground animate text-sm">
-            Part of{" "}
-            <Link href={`/projects/${parentProject.id}`}>
-              {parentProject.title}
-            </Link>
-          </div>
-        )
-      }
     </div>
     {headings.length > 0 && <TableOfContents headings={headings} />}
+    {
+      parentProject && (
+        <div class="animate my-10">
+          <ProjectCard project={parentProject} />
+        </div>
+      )
+    }
     <article class="animate">
       <Content />
       <div class="mt-24">
