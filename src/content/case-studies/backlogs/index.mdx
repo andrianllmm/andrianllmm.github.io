@@ -5,17 +5,9 @@ date: "2025-05-17"
 ---
 
 import { Image } from "astro:assets";
-import preview from "./preview.gif";
 import input from "./screenshots/input.png";
 import dragAndDrop from "./screenshots/drag-and-drop.png";
 import taskView from "./screenshots/task-view.png";
-
-<Image
-  src={preview}
-  alt="Preview"
-  class="my-4 w-full max-w-100"
-  data-zoomable
-/>
 
 Backlogs is a kanban-based to-do list application that lets users create tasks using natural language. Instead of filling out separate fields for a title, due date, and priority, users can type something like "Finish CS assignment tomorrow" or "Buy groceries next Friday high priority." The parser extracts the deadline and priority automatically while leaving the rest as the task title.
 
