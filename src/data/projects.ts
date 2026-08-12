@@ -57,7 +57,7 @@ export const projects: Project[] = [
     demoURL: "https://astra.andrianllmm.dev",
     repoURL: "https://github.com/andrianllmm/astra",
     skills: ["python", "fastapi", "typescript", "react"],
-    image: "/images/projects/astra/preview.jpg",
+    image: "/images/projects/astra/preview.png",
     relatedCaseStudies: ["astra"],
   },
   {
