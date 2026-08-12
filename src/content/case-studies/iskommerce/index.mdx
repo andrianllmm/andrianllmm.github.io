@@ -1,6 +1,6 @@
 ---
-title: "Replacing students' #ForSale posts with an actual marketplace"
-description: "Students already buy and sell through scattered Facebook posts, so Iskommerce turns those into a structured marketplace while exploring whether more structure actually makes a better experience."
+title: "Replacing students' #ForSale posts with a marketplace that knows what you want"
+description: "Students already buy and sell through scattered Facebook posts, so Iskommerce turns those into a structured marketplace with personalized suggestions."
 date: "2026-05-26"
 ---
 
@@ -43,6 +43,26 @@ This gives buyers a consistent way to browse items while allowing the system to 
 Listings can be discovered through feeds, search, filtering, and sorting.
 
 The idea was to replace passive scrolling with intentional discovery.
+
+### Search that understands what you meant, not just what you typed
+
+Keyword search breaks down fast in a small marketplace. A student searching "laptop bag" should also see listings titled "backpack for laptop" or "sling bag, fits 14-inch", even if none of those words match exactly.
+
+So listings are embedded, not just indexed. Every listing gets a 384-dimension vector from a local sentence-transformer model (`all-MiniLM-L6-v2`, run in-process through Transformers.js), computed in the background whenever a listing is created or edited. The vectors live in Postgres itself, through pgvector, with an HNSW index so nearest-neighbor lookups stay fast as the catalog grows.
+
+Search queries get embedded the same way and compared against listing vectors by cosine distance. Every listing page also shows similar listings, which is the same nearest-neighbor query run against one listing's own vector instead of a search query.
+
+None of this needed a hosted embeddings API or a separate ML service. The model runs on the same machine as the API, which kept the system simple and meant search worked the same in development as it did in production.
+
+### A homepage that learns what you're into
+
+The default feed for a logged-in student isn't just "everything, newest first." It's a mix of what looks similar to things they've engaged with, interleaved with a recency pool so the feed doesn't collapse into one category.
+
+Every view, click, like, message, and purchase gets logged as an event. Periodically, those events are turned into a per-user preference vector: a weighted average of the embeddings of the listings a student interacted with, weighted more heavily for stronger signals (a purchase counts more than a view) and decayed over time so a user's taste can drift.
+
+Ranking the homepage then becomes the same nearest-neighbor problem as search and similar listings, just against a user's vector instead of a query's. A new user with no history simply falls back to the recency feed until they have one.
+
+It's content-based filtering, which was the right call for a marketplace this size. Collaborative filtering needs a lot of users behaving similarly before it says anything useful, and Iskommerce doesn't have that scale. Content-based filtering only needs one listing's worth of signal to start working.
 
 ### Conversations connected to transactions
 
@@ -89,13 +109,14 @@ This was my first time building a full-stack application where both frontend and
 
 The stack included:
 
-| Layer      | Stack                            |
-| ---------- | -------------------------------- |
-| Frontend   | Next.js, Tailwind CSS, shadcn/ui |
-| Backend    | NestJS, TypeScript               |
-| Database   | PostgreSQL, Prisma               |
-| Monorepo   | Turborepo                        |
-| Deployment | Vercel, Supabase                 |
+| Layer      | Stack                                       |
+| ---------- | ------------------------------------------- |
+| Frontend   | Next.js, Tailwind CSS, shadcn/ui            |
+| Backend    | NestJS, TypeScript                          |
+| Database   | PostgreSQL, Prisma, pgvector                |
+| Search/ML  | Transformers.js, local sentence-transformer |
+| Monorepo   | Turborepo                                   |
+| Deployment | Vercel, Supabase                            |
 
 Using TypeScript across the entire stack made sharing types and validation rules much easier.
 
@@ -124,3 +145,5 @@ This changed how I think about product development. A product does not only comp
 Building software is not just about improving a workflow. It is about understanding why the workflow exists in the first place and whether users actually need to change.
 
 Iskommerce taught me that turning an informal process into software is only half the challenge. The harder part is understanding the human behavior behind it.
+
+The embeddings work reinforced something similar from a different angle. It would have been easy to bolt on a recommendation feature because it sounded impressive, but the actual justification was narrower: keyword search fails on a marketplace where nobody agrees on how to name things, and a small user base rules out collaborative filtering before it even gets a chance to work. Content-based filtering with local embeddings was the fit for those specific constraints, not a default I reached for.

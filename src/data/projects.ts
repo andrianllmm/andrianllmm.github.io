@@ -98,6 +98,7 @@ export const projects: Project[] = [
       "nestjs",
       "typescript",
       "postgresql",
+      "pgvector",
       "prisma",
       "tailwind",
     ],
