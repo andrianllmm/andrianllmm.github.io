@@ -6,14 +6,11 @@ date: "2026-04-25"
 
 import { Image } from "astro:assets";
 import { YouTube } from "@astro-community/astro-embed-youtube";
-import preview from "./preview.gif";
 import Callout from "@components/Callout.astro";
 
 Project HERMES is a disaster response coordination system that bridges the gap between how people naturally report incidents and how responders need to process information.
 
 It uses AI to help transform informal chat messages into structured incident data, but the system is designed so that AI remains a helper rather than a dependency.
-
-<Image src={preview} alt="Preview" data-zoomable />
 
 <br />
 
@@ -58,6 +55,14 @@ The system supports two ways of reporting. Users can either send a freeform mess
 
 This allows the system to work with both natural communication and structured data collection. Regardless of the input method, reports eventually enter the same incident management workflow.
 
+### Reading intent before reacting to it
+
+A free-text message first goes through a small classification step: is this reporting an incident, asking about an existing report's status, changing a setting, or none of those?
+
+Unclear cases, greetings, small talk, anything the model isn't confident about, get a plain command hint instead of a guess. Classification sits on top of the existing flows rather than replacing them, so a wrong or failed read just falls back to that hint instead of breaking anything.
+
+When a message does read as an incident report, the same model call pulls out what it can: incident type, severity, a description, a rough location. None of it is final. It pre-fills the guided reporting flow and skips straight to whatever question wasn't already answered, instead of re-asking what the resident already said.
+
 ### AI-assisted information extraction
 
 The AI pipeline helps convert unstructured messages into structured incident information.
@@ -88,6 +93,16 @@ Each incident includes the original conversation history, extracted information,
 
 The dashboard provides different views depending on the workflow. A feed allows responders to see new incidents quickly, while table and kanban views help organize larger volumes of reports.
 
+The kanban board and report table also update live. Both subscribe to Supabase Realtime on the incidents table and reload whenever a row changes, so a new report or a status change shows up for every responder watching the board without anyone hitting refresh.
+
+### Staying usable when the connection drops
+
+Disaster response is exactly when a connection gets shaky, so the dashboard can't just go blank the moment it does.
+
+HERMES is installable as a PWA, and a service worker caches the app shell and recent incident data so the dashboard still renders something offline instead of a blank screen.
+
+This is deliberately light: it caches read data, not writes. Submitting or updating a report still needs an active connection and fails offline like it always would. Losing connectivity just no longer means losing the dashboard itself.
+
 ### Mapping and communication
 
 HERMES also provides a geographic view of incidents by plotting reports on a map.
@@ -107,6 +122,7 @@ The system also supports sending advisories back to residents through connected 
 | **Chat Integration** | Vercel Chat SDK                                              |
 | **AI Integration**   | Vercel AI SDK                                                |
 | **Maps Integration** | MapLibre GL                                                  |
+| **Offline Support**  | Service worker + Web App Manifest (installable PWA)          |
 | **Deployment**       | Vercel                                                       |
 
 ### Designing AI boundaries

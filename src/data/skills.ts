@@ -36,6 +36,7 @@ export const skills = {
   mediapipe: { name: "MediaPipe" },
   sqlite: { name: "SQLite", icon: "simple-icons:sqlite" },
   postgresql: { name: "PostgreSQL", icon: "simple-icons:postgresql" },
+  pgvector: { name: "pgvector" },
   prisma: { name: "Prisma", icon: "simple-icons:prisma" },
   supabase: { name: "Supabase", icon: "simple-icons:supabase" },
   firebase: { name: "Firebase", icon: "simple-icons:firebase" },
@@ -84,7 +85,14 @@ export const skillGroups = {
     "flask",
   ],
 
-  Databases: ["sqlite", "postgresql", "prisma", "supabase", "firebase"],
+  Databases: [
+    "sqlite",
+    "postgresql",
+    "pgvector",
+    "prisma",
+    "supabase",
+    "firebase",
+  ],
 
   Tools: ["n8n", "git", "docker", "vercel", "render", "railway"],
 } satisfies Record<string, readonly SkillKey[]>;
