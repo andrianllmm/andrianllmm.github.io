@@ -1,0 +1,63 @@
+---
+title: "Generalizing a crowdsourced dictionary I built for one language"
+description: "Aklish worked for Aklanon. Kulasisi is what happens when I stop treating that as a one-off and build it for every Philippine language that needs it."
+date: "2025-03-31"
+---
+
+import Callout from "@components/Callout.astro";
+
+<Callout type="info">
+  Kulasisi grew out of [Aklish](/case-studies/aklish), a crowdsourced dictionary
+  I built for Aklanon, my own language. This case study covers what changed when
+  I tried to make the same idea work for any Philippine language, not just mine.
+</Callout>
+
+Aklish solved my problem. I could finally look up Aklanon words without asking my parents.
+
+But Aklanon isn't special. The Philippines has around 175 languages, and most of them are in the same spot Aklanon was: spoken every day, barely present online. Wiktionary has an English entry for practically anything. It has almost nothing for most Philippine languages, because nobody who speaks them has a place to put that knowledge down.
+
+Aklish proved the model works for one language. Kulasisi is the attempt to make it work for many.
+
+## Why one dictionary wasn't the point
+
+The interesting part of Aklish was never "a dictionary for Aklanon." It was the pattern underneath it: give a community a place to contribute words, let voting sort good translations from bad ones, and the language ends up with a digital presence it didn't have before.
+
+That pattern doesn't care which language you plug into it. So instead of cloning Aklish and swapping the word list, I rebuilt it around the idea that "language" is just another variable, not something wired into the code.
+
+That sounds like a small distinction. It wasn't.
+
+## Rebuilding around a variable that used to be fixed
+
+Aklish assumed Aklanon and English everywhere. Model fields, view logic, even some of the copy in the templates. None of that scales to a platform meant to hold dozens of languages at once, each with its own contributors and its own quirks.
+
+So the backend became a proper Django REST Framework API instead of server-rendered templates, with a `languages` app that every other piece of content points back to. Phrases, dictionary entries, translations, and votes all reference a language instead of assuming one. The frontend moved to Next.js, partly because a real API needed a real client, and partly because I'd learned React since building Aklish and didn't want to write another Bootstrap interface.
+
+None of this was a rewrite for the sake of rewriting. It was the minimum needed to stop hardcoding assumptions Aklish could get away with because it only ever had to be right about one language.
+
+## Splitting "translation" into phrasebook and dictionary
+
+Aklish had one kind of contribution: a translation. That was fine for a dictionary, but it flattened two pretty different things into one model. A word definition and a common phrase don't behave the same way. A phrase needs context and usage notes more than it needs a part-of-speech tag; a dictionary entry needs the opposite.
+
+Kulasisi splits them into separate apps. Phrases carry categories, source, and usage notes. Dictionary entries carry part-of-speech tags, source, usage notes, and synonyms/antonyms. Both are still contributed and voted on the same way Aklish did it, but the data underneath is honest about what it's holding instead of forcing everything through one shape.
+
+## Keeping what actually worked
+
+Not everything needed rebuilding. Aklish taught me that voting and reputation were the right way to keep quality up without a team of moderators, so that carried over almost unchanged: users vote on entries, reputation accumulates from good contributions, and a leaderboard gives people a reason to check back.
+
+The proofreader survived too, in spirit. Aklish's spell checker leaned on AklStemmer for Aklanon specifically, which obviously doesn't generalize. Kulasisi's proofreader is built to plug in per-language resources instead of assuming one language's stemming rules apply everywhere.
+
+The games are still there for the same reason they were in Aklish: contribution alone wasn't enough to keep people around. People kept playing Aklish's Wordle clone far more than they added new words, so Kulasisi treats games as a first-class way to engage a community, not an afterthought bolted on at the end.
+
+## Where it actually stands
+
+Kulasisi is not done, and I don't want this case study to pretend otherwise. The core is there: CRUD for phrases and dictionary entries, auth, voting, reputation, the proofreader, games, branding. What's still open is getting it in front of actual language communities, reliable deployment, and starter data, none of which matter if nobody outside my own testing has used it yet.
+
+That's a very different position than Aklish, which I could point to as a finished capstone project. Kulasisi is closer to infrastructure I'm still building than a product I'm shipping.
+
+## What generalizing actually taught me
+
+Building Aklish taught me full-stack development. Building Kulasisi taught me that generalizing something personal is a different kind of hard.
+
+When I built Aklish, every decision had an obvious answer, because I was the user. I knew what Aklanon needed because I speak it. Kulasisi removes that shortcut. I don't speak most of the languages this is meant to serve, which means I can't rely on instinct for what a phrase entry should look like in Hiligaynon versus what it should look like in Aklanon. I have to design for communities I'm not part of, which is a much harder problem than designing for myself.
+
+I don't think Kulasisi is finished proving that this generalization works. But the pieces from Aklish that mattered all still hold once you stop assuming there's only one language on the other end.

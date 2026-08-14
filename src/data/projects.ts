@@ -106,6 +106,27 @@ export const projects: Project[] = [
     relatedCaseStudies: ["iskommerce"],
   },
   {
+    id: "kulasisi",
+    title: "Kulasisi",
+    description:
+      "A collaborative platform for preserving and revitalizing Philippine languages",
+    startDate: "2024-09",
+    endDate: "2025-03",
+    demoURL: "https://kulasisi.andrianllmm.dev",
+    repoURL: "https://github.com/Miagao-Valley/kulasisi",
+    skills: [
+      "django",
+      "nextjs",
+      "react",
+      "typescript",
+      "python",
+      "postgresql",
+      "docker",
+    ],
+    image: "/images/projects/kulasisi/preview.png",
+    relatedCaseStudies: ["kulasisi"],
+  },
+  {
     id: "manobela",
     title: "Manobela",
     description: "A driver monitoring mobile app using computer vision",
