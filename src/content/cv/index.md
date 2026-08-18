@@ -1,5 +1,6 @@
 # Andrian Lloyd Maagma's CV
 
+- Phone: +63 998 391 1727
 - Email: [maagmaandrian@gmail.com](mailto:maagmaandrian@gmail.com)
 - Location: Aklan, Philippines
 - Website: [andrianllmm.dev](https://andrianllmm.dev/)
@@ -22,7 +23,7 @@ _Aug 2024 – present_
 
 _BS_ _in_ _Computer Science_
 
-- Cumulative GWA: 1.15/1.00 (President's Lister; 1.00 is the highest possible grade)
+- Cumulative GWA: 1.15/1.00 (President's Lister)
 
 - Relevant Coursework: Software Engineering, Web Programming, Database Systems
 
@@ -46,7 +47,7 @@ _FlyRank AI_
 
 - Built a usage metering and billing engine with idempotent event recording and Stripe webhook sync, eliminating duplicate charges under request retries.
 
-- Built an AI image-matching engine combining vision-model tagging and semantic embeddings to catch incorrect image-to-article pairings, benchmarked on a labeled eval set.
+- Engineered a hybrid retrieval-augmented answer pipeline combining keyword and semantic search with source grounding and citations, validated against a labeled evaluation set to catch unsupported claims.
 
 ## **Web Developer (Branding & Creative)**
 
@@ -56,7 +57,7 @@ _UP Data Science Society_
 
 - Co-planned and built the organization's website from initial development through launch, shipping the branding and creative team's first production site.
 
-- Built a Spotify Wrapped-style personal-data visualization site featured by the organization, reaching 1,000+ viewers.
+- Developed a Spotify Wrapped-style personal-data visualization site featured by the organization, reaching 1,000+ viewers.
 
 ## **Lead Web Developer**
 
@@ -88,9 +89,9 @@ University-based C2C marketplace platform modeling informal student trading beha
 
 - Led a team through a 3-month Agile cycle to ship a full-stack C2C marketplace with a modular monolith architecture.
 
-- Built WebSocket-based messaging and notifications, keeping buyer-seller conversations tied to each listing and users updated in real time.
+- Implemented WebSocket-based messaging and notifications, keeping buyer-seller conversations tied to each listing and users updated in real time.
 
-- Built semantic search, similar-listing recommendations, and a personalized homepage on pgvector and local embeddings.
+- Developed semantic search, similar-listing recommendations, and a personalized homepage on pgvector and local embeddings.
 
 ## **[Project HERMES](https://github.com/popcorn-prophets/project-hermes)**
 
@@ -102,7 +103,7 @@ Disaster response communication system using AI-assisted chat workflows and mult
 
 - Designed a hybrid AI/rule-based chatbot that classifies intent and extracts incident data from freeform reports across Messenger and Telegram, with human-reviewed validation.
 
-- Built a responder dashboard with feed, kanban, and map views, adding Supabase Realtime for instant updates and an installable PWA with offline caching.
+- Developed a responder dashboard with feed, kanban, and map views, adding Supabase Realtime for instant updates and an installable PWA with offline caching.
 
 ## **[Manobela](https://github.com/popcorn-prophets/manobela) (TrackTech Hackathon Winner)**
 
@@ -124,7 +125,7 @@ Crowdsourced Aklanon-English translation platform with NLP tools for an underser
 
 - Encoded 5,000+ dictionary entries from a printed source into a crowdsourced Aklanon-English dictionary.
 
-- Built a spellchecker combining SymSpellPy, LemmInflect, and a custom-built Aklanon stemmer (AklStemmer) to catch inflected-word errors in both languages.
+- Implemented a spellchecker combining SymSpellPy, LemmInflect, and a custom-built Aklanon stemmer (AklStemmer) to catch inflected-word errors in both languages.
 
 - Conducted user testing with 100+ native speakers and iterated on UX improvements based on their feedback.
 
