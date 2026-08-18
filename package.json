@@ -17,7 +17,7 @@
   "dependencies": {
     "@astro-community/astro-embed-youtube": "^0.5.10",
     "@astrojs/check": "^0.9.10",
-    "@astrojs/mdx": "^6.0.3",
+    "@astrojs/mdx": "^7.0.4",
     "@astrojs/partytown": "^2.1.7",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.3",
@@ -26,7 +26,7 @@
     "@iconify-json/lucide": "^1.2.51",
     "@mermaid-js/layout-elk": "^0.2.0",
     "@tailwindcss/vite": "^4.1.10",
-    "astro": "^6.4.8",
+    "astro": "^7.1.4",
     "astro-icon": "^1.1.5",
     "astro-mermaid": "^2.1.0",
     "astro-pagefind": "^2.0.1",
