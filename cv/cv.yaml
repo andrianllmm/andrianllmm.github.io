@@ -1,6 +1,7 @@
 cv:
   name: Andrian Lloyd Maagma
   location: Aklan, Philippines
+  phone: "+639983911727"
   email: maagmaandrian@gmail.com
   website: https://andrianllmm.dev
   social_networks:
@@ -23,7 +24,7 @@ cv:
         start_date: 2024-08
         location: Iloilo, Philippines
         highlights:
-          - "Cumulative GWA: 1.15/1.00 (President's Lister; 1.00 is the highest possible grade)"
+          - "Cumulative GWA: 1.15/1.00 (President's Lister)"
           - "Relevant Coursework: Software Engineering, Web Programming, Database Systems"
 
     experience:
@@ -41,7 +42,7 @@ cv:
         end_date: 2026-08
         highlights:
           - "Built a usage metering and billing engine with idempotent event recording and Stripe webhook sync, eliminating duplicate charges under request retries."
-          - "Built an AI image-matching engine combining vision-model tagging and semantic embeddings to catch incorrect image-to-article pairings, benchmarked on a labeled eval set."
+          - "Engineered a hybrid retrieval-augmented answer pipeline combining keyword and semantic search with source grounding and citations, validated against a labeled evaluation set to catch unsupported claims."
 
       - company: UP Data Science Society
         position: Web Developer (Branding & Creative)
@@ -49,7 +50,7 @@ cv:
         end_date: 2026-05
         highlights:
           - "Co-planned and built the organization's website from initial development through launch, shipping the branding and creative team's first production site."
-          - "Built a Spotify Wrapped-style personal-data visualization site featured by the organization, reaching 1,000+ viewers."
+          - "Developed a Spotify Wrapped-style personal-data visualization site featured by the organization, reaching 1,000+ viewers."
 
       - company: Pagbutlak — Student Publication, College of Arts and Sciences
         position: Lead Web Developer
@@ -74,8 +75,8 @@ cv:
         summary: "University-based C2C marketplace platform modeling informal student trading behavior in a structured system."
         highlights:
           - "Led a team through a 3-month Agile cycle to ship a full-stack C2C marketplace with a modular monolith architecture."
-          - "Built WebSocket-based messaging and notifications, keeping buyer-seller conversations tied to each listing and users updated in real time."
-          - "Built semantic search, similar-listing recommendations, and a personalized homepage on pgvector and local embeddings."
+          - "Implemented WebSocket-based messaging and notifications, keeping buyer-seller conversations tied to each listing and users updated in real time."
+          - "Developed semantic search, similar-listing recommendations, and a personalized homepage on pgvector and local embeddings."
 
       - name: "[Project HERMES](https://github.com/popcorn-prophets/project-hermes)"
         start_date: 2026-03
@@ -84,7 +85,7 @@ cv:
         highlights:
           - "Led a 5-person team as system architect, owning sprint planning, task allocation, and code review to ship a disaster-response coordination platform in 1 month."
           - "Designed a hybrid AI/rule-based chatbot that classifies intent and extracts incident data from freeform reports across Messenger and Telegram, with human-reviewed validation."
-          - "Built a responder dashboard with feed, kanban, and map views, adding Supabase Realtime for instant updates and an installable PWA with offline caching."
+          - "Developed a responder dashboard with feed, kanban, and map views, adding Supabase Realtime for instant updates and an installable PWA with offline caching."
 
       - name: "[Manobela](https://github.com/popcorn-prophets/manobela) (TrackTech Hackathon Winner)"
         start_date: 2025-12
@@ -101,7 +102,7 @@ cv:
         summary: "Crowdsourced Aklanon-English translation platform with NLP tools for an underserved Philippine language."
         highlights:
           - "Encoded 5,000+ dictionary entries from a printed source into a crowdsourced Aklanon-English dictionary."
-          - "Built a spellchecker combining SymSpellPy, LemmInflect, and a custom-built Aklanon stemmer (AklStemmer) to catch inflected-word errors in both languages."
+          - "Implemented a spellchecker combining SymSpellPy, LemmInflect, and a custom-built Aklanon stemmer (AklStemmer) to catch inflected-word errors in both languages."
           - "Conducted user testing with 100+ native speakers and iterated on UX improvements based on their feedback."
 
     awards:
