@@ -30,7 +30,7 @@ _BS_ _in_ _Computer Science_
 
 ## **AI Automation Engineer**
 
-_June 2026 – present_
+_June 2026 – Aug 2026_
 
 _MorpheLabs_
 
@@ -40,7 +40,7 @@ _MorpheLabs_
 
 ## **Backend AI Engineer**
 
-_July 2026 – present_
+_June 2026 – Aug 2026_
 
 _FlyRank AI_
 
