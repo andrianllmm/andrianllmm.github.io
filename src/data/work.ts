@@ -27,6 +27,7 @@ export const work: WorkItem[] = [
     employmentType: "Internship",
     location: "Remote",
     startDate: "2026-06",
+    endDate: "2026-08",
     description:
       "Building production AI agents and enterprise automation workflows.",
     skills: ["n8n", "langchain", "langgraph", "python", "fastapi", "nextjs"],
@@ -40,7 +41,8 @@ export const work: WorkItem[] = [
     companyLogo: "flyrank-logo",
     employmentType: "Internship",
     location: "Remote",
-    startDate: "2026-07",
+    startDate: "2026-06",
+    endDate: "2026-08",
     description:
       "Building backend workflows with hybrid retrieval, structured LLM outputs, and RAG pipelines.",
     skills: ["python", "fastapi", "javascript", "express"],

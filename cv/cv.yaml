@@ -30,13 +30,15 @@ cv:
       - company: MorpheLabs
         position: AI Automation Engineer
         start_date: 2026-06
+        end_date: 2026-08
         highlights:
           - "Replaced a real estate manual booking form with an AI voice agent and n8n automation, handling conflict checks, calendar sync, and rescheduling for every booking."
           - "Redesigned an event photo platform's matching pipeline from one-time selfie lookups to persistent face clustering, moving recognition in-house (DeepFace, pgvector) for 1,000+ attendees."
 
       - company: FlyRank AI
         position: Backend AI Engineer
-        start_date: 2026-07
+        start_date: 2026-06
+        end_date: 2026-08
         highlights:
           - "Built a usage metering and billing engine with idempotent event recording and Stripe webhook sync, eliminating duplicate charges under request retries."
           - "Built an AI image-matching engine combining vision-model tagging and semantic embeddings to catch incorrect image-to-article pairings, benchmarked on a labeled eval set."
