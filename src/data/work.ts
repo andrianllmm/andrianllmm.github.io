@@ -29,7 +29,7 @@ export const work: WorkItem[] = [
     startDate: "2026-06",
     endDate: "2026-08",
     description:
-      "Building production AI agents and enterprise automation workflows.",
+      "Built an AI voice booking agent and a face clustering pipeline for photo search.",
     skills: ["n8n", "langchain", "langgraph", "python", "fastapi", "nextjs"],
     relatedCaseStudies: ["morphevents", "morphestate"],
   },
@@ -44,8 +44,9 @@ export const work: WorkItem[] = [
     startDate: "2026-06",
     endDate: "2026-08",
     description:
-      "Building backend workflows with hybrid retrieval, structured LLM outputs, and RAG pipelines.",
+      "Built an LLM metering and billing engine and a hybrid retrieval answer pipeline.",
     skills: ["python", "fastapi", "javascript", "express"],
+    relatedCaseStudies: ["llm-metering-billing-engine"],
   },
   {
     id: "updssoc",
@@ -58,7 +59,7 @@ export const work: WorkItem[] = [
     startDate: "2026-01",
     endDate: "2026-05",
     description:
-      "Contributed to the organization's website and built a Spotify Wrapped-style data visualization site featured by the organization, reaching 1,000+ viewers.",
+      "Contributed to the organization's website and built a data visualization site featured by the organization, reaching 1,000+ viewers.",
     skills: [
       "python",
       "pandas",
@@ -81,7 +82,7 @@ export const work: WorkItem[] = [
     startDate: "2025-09",
     endDate: "2026-05",
     description:
-      "Designed system architecture and implemented a CMS, authentication, role-based access control, and media uploads for 50+ editorial users; built a content migration pipeline for 300+ legacy articles.",
+      "Designed system architecture and implemented a CMS, authentication, RBAC, and media uploads for 50+ editorial users; built a content migration pipeline for 300+ legacy articles.",
     skills: [
       "react",
       "nextjs",
