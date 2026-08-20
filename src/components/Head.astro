@@ -287,7 +287,7 @@ const {
 
       const copyButton = document.createElement("button");
       copyButton.innerText = copyButtonLabel;
-      copyButton.classList = "copy-code";
+      copyButton.classList.add("copy-code");
 
       codeBlock.setAttribute("tabindex", "0");
       codeBlock.appendChild(copyButton);
