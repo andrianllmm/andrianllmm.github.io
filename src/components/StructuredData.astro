@@ -12,6 +12,7 @@ const { data } = Astro.props;
 ---
 
 <script
+  is:inline
   type="application/ld+json"
   set:html={JSON.stringify(data).replace(/</g, "\\u003c")}
 />
