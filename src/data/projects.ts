@@ -83,7 +83,7 @@ export const projects: Project[] = [
     skills: ["nextjs", "firebase", "tailwind"],
     image: "/images/projects/ehalalan/preview.gif",
     relatedCaseStudies: ["ehalalan"],
-    relatedPosts: ["komsaihack25"],
+    relatedPosts: ["komsaihack25-reflections"],
   },
   {
     id: "iskommerce",
@@ -147,7 +147,7 @@ export const projects: Project[] = [
     ],
     image: "/images/projects/manobela/preview.jpg",
     relatedCaseStudies: ["manobela"],
-    relatedPosts: ["tracktech26"],
+    relatedPosts: ["tracktech26-reflections"],
   },
   {
     id: "miago",
@@ -173,7 +173,7 @@ export const projects: Project[] = [
     skills: ["typescript", "nextjs", "postgresql", "supabase"],
     image: "/images/projects/project-hermes/preview.gif",
     relatedCaseStudies: ["project-hermes"],
-    relatedPosts: ["komsaihack26"],
+    relatedPosts: ["komsaihack26-reflections"],
   },
   {
     id: "renux",
