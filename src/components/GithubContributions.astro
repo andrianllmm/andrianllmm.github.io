@@ -39,23 +39,31 @@ if (token) {
     }
   `;
 
-  const res = await fetch("https://api.github.com/graphql", {
-    method: "POST",
-    headers: {
-      Authorization: `bearer ${token}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ query, variables: { username } }),
-  });
+  try {
+    const res = await fetch("https://api.github.com/graphql", {
+      method: "POST",
+      headers: {
+        Authorization: `bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ query, variables: { username } }),
+    });
 
-  if (res.ok) {
-    const json = await res.json();
-    const calendar =
-      json?.data?.user?.contributionsCollection?.contributionCalendar;
-    if (calendar) {
-      weeks = calendar.weeks;
-      totalContributions = calendar.totalContributions;
+    if (res.ok) {
+      const json = await res.json();
+      const calendar =
+        json?.data?.user?.contributionsCollection?.contributionCalendar;
+      if (calendar) {
+        weeks = calendar.weeks;
+        totalContributions = calendar.totalContributions;
+      }
+    } else {
+      console.warn(
+        `GithubContributions: fetch failed with status ${res.status} ${res.statusText}`,
+      );
     }
+  } catch (err) {
+    console.warn("GithubContributions: fetch failed", err);
   }
 }
 
