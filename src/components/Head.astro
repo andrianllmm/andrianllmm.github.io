@@ -302,9 +302,9 @@ const {
   }
 
   async function copyCode(codeBlock, copyButton) {
-    const codeText = codeBlock.innerText;
-    const buttonText = copyButton.innerText;
-    const textToCopy = codeText.replace(buttonText, "");
+    const clone = codeBlock.cloneNode(true);
+    clone.querySelector(".copy-code")?.remove();
+    const textToCopy = clone.textContent ?? "";
 
     await navigator.clipboard.writeText(textToCopy);
     copyButton.innerText = copiedButtonLabel;
