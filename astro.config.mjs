@@ -16,9 +16,6 @@ export default defineConfig({
   },
   integrations: [
     sitemap(),
-    mdx(),
-    pagefind(),
-    icon(),
     mermaid({
       theme: "dark",
       autoTheme: true,
@@ -28,6 +25,9 @@ export default defineConfig({
         securityLevel: "strict",
       },
     }),
+    mdx({ optimize: true }),
+    pagefind(),
+    icon(),
     partytown(),
   ],
   vite: {
