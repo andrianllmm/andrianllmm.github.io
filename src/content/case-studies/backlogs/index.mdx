@@ -15,13 +15,7 @@ Backlogs is a kanban-based to-do list application that lets users create tasks u
 
 I built Backlogs as my final project for Harvard's CS50 Web Programming course.[^1]
 
-On the surface, it's another to-do list app. But I wasn't interested in rebuilding CRUD for the hundredth time. I wanted to recreate one of my favorite productivity features without relying on an LLM.
-
-Around that time, it felt like many "AI-powered" features were really just wrappers around an API. I wanted to prove that this particular problem didn't need one.
-
-A rule-based parser should be enough.
-
-The kanban board was another challenge I wanted to take on. At that point, I had never built drag-and-drop interactions or an interface this dynamic using only Django templates, HTML, CSS, and JavaScript.
+On the surface it's another to-do list app, but I wasn't interested in rebuilding CRUD for the hundredth time. I wanted to recreate my favorite feature without reaching for an LLM. Since a lot of "AI" features at the time were just wrappers around an API call, I wanted to try if a rule-based parser could handle this one on its own. The kanban board was the other good challenge: I'd never built drag and drop, or an interface this dynamic.
 
 ## How it turned out
 
@@ -75,33 +69,15 @@ Users can register, log in, and manage their own personal backlog.
 
 ## How I built it
 
-The parser is entirely rule based.
+The parser is entirely rule based, built from scratch with regular expressions instead of calling an LLM. It recognizes relative dates like "tomorrow" and "next Friday," explicit dates, and priority keywords before converting them into structured task data. As I kept adding rules I ran into the same lesson from my NLP projects: language is messy, and every time I thought I'd covered all the edge cases, another input proved me wrong.
 
-I built it from scratch using regular expressions and a growing collection of parsing rules instead of calling an LLM. It recognizes relative dates like "tomorrow" and "next Friday," explicit dates, and priority keywords before converting them into structured task data.
-
-As I kept adding rules, I ran into the same lesson I'd already learned from my NLP projects: language is messy. Every time I thought I had covered all the edge cases, another input proved me wrong.
-
-One part I'm particularly happy with is the highlighted input.
-
-Instead of using a rich text editor, I overlaid a `div` on top of a normal text input. The `div` renders highlighted keywords while the input continues handling typing. It's a bit hacky, but it gave me complete control over the experience without introducing a much heavier editor.
-
-Task creation and updates happen through AJAX, so users can create, edit, and move tasks without refreshing the page.
-
-The kanban board itself uses the native HTML5 drag-and-drop API together with JavaScript event handlers such as `dragstart`, `dragenter`, and `drop`. Managing all those interactions turned into one of the biggest JavaScript modules I'd written at the time, but it ended up working surprisingly well.
-
-On the frontend, I leaned heavily on Django template includes to keep components reusable. Even small pieces like task cards and checkboxes became reusable templates instead of duplicated HTML. That habit probably came from using React. It just made sense.
+One part I'm particularly happy with is the highlighted input. Instead of a rich text editor, I overlaid a `div` on top of a normal text input, rendering highlighted keywords while the input handles typing. A bit hacky, but it gave me full control without a much heavier editor. Task creation and updates happen through AJAX so users can work without refreshing, and the kanban board uses the native HTML5 drag-and-drop API with handlers like `dragstart`, `dragenter`, and `drop`. It became one of the biggest JavaScript modules I'd written at the time, but it worked surprisingly well.
 
 ## What I learned
 
-Backlogs reinforced something I'd been noticing across several of my projects.
+Not every language feature needs an LLM. For problems with clear rules and predictable behavior, a deterministic parser is simpler, faster, and easier to debug. If I rebuilt this today I'd probably go hybrid: rules for the predictable cases, an LLM only when input gets genuinely ambiguous.
 
-Not every language feature needs a large language model.
-
-For problems with clear rules and predictable behavior, a deterministic parser can be simpler, faster, easier to debug, and easier to explain. If I rebuilt this today, I'd probably use a hybrid approach, letting rules handle predictable cases while using an LLM only when the input becomes genuinely ambiguous.
-
-The project also pushed my frontend skills much further than I expected. Building a responsive kanban board, implementing drag and drop from scratch, and designing an interactive parser without React forced me to understand how browsers actually work instead of relying on a framework.
-
-Looking back, that's probably what I'm most proud of: almost every interesting part of this project was built from scratch.
+It also pushed my frontend skills further than expected. Building a responsive kanban board, drag and drop from scratch, and an interactive parser without React forced me to understand how browsers actually work instead of leaning on a framework. That's probably what I'm most proud of here: almost everything was built from scratch.
 
 ---
 

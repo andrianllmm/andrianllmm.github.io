@@ -25,23 +25,13 @@ It uses AI to help transform informal chat messages into structured incident dat
 
 ## Why we built it
 
-Emergency reports rarely arrive in a clean format.
-
-During a disaster, people do not think about filling out structured forms. They send messages the way they normally communicate:
+Emergency reports rarely arrive in a clean format. During a disaster, people don't fill out structured forms, they send messages the way they normally communicate:
 
 > "May baha na dito sa amin, mataas na yung tubig."
 
-For responders, however, that same message needs to become something actionable. They need information like location, incident type, and severity to organize a response.
+Responders need that same message to become something actionable: location, incident type, severity. HERMES bridges the two so residents can communicate naturally while responders still get structured information.
 
-The challenge is bridging these two different workflows.
-
-We built HERMES around that idea: residents should be able to communicate naturally, while responders should receive structured information that is easier to manage.
-
-The obvious solution today would be to put an AI chatbot in charge of the entire interaction. However, for a critical system, that introduces another problem. AI models can misunderstand messages, produce incorrect outputs, or behave inconsistently.
-
-Instead of making AI the foundation of HERMES, we made it one part of a larger system.
-
-AI handles the part where it is useful: understanding messy human language and extracting relevant information. The rest of the workflow remains controlled, predictable, and validated by humans.
+Handing the whole interaction to an AI chatbot was the obvious move, but risky for a critical system since models can misread messages or behave inconsistently. So AI only handles what it's good at, understanding messy language and extracting information. Everything else stays controlled and validated by humans.
 
 ## How it turned out
 
@@ -49,67 +39,33 @@ HERMES became a chat-based incident reporting system connected to a responder co
 
 ### Chat-based reporting
 
-Residents can submit reports through messaging platforms such as Telegram and Messenger.
-
-The system supports two ways of reporting. Users can either send a freeform message in their own words, or follow a guided reporting flow that collects information step by step.
-
-This allows the system to work with both natural communication and structured data collection. Regardless of the input method, reports eventually enter the same incident management workflow.
+Residents submit reports through Telegram or Messenger, either as a freeform message in their own words or through a guided flow that collects information step by step. Either way, reports end up in the same incident management workflow.
 
 ### Reading intent before reacting to it
 
-A free-text message first goes through a small classification step: is this reporting an incident, asking about an existing report's status, changing a setting, or none of those?
+A free-text message first goes through a small classification step: is this an incident report, a status check, a settings change, or none of those? Unclear cases, greetings, small talk, get a plain command hint instead of a guess, and a wrong or failed read just falls back to that hint instead of breaking anything.
 
-Unclear cases, greetings, small talk, anything the model isn't confident about, get a plain command hint instead of a guess. Classification sits on top of the existing flows rather than replacing them, so a wrong or failed read just falls back to that hint instead of breaking anything.
-
-When a message does read as an incident report, the same model call pulls out what it can: incident type, severity, a description, a rough location. None of it is final. It pre-fills the guided reporting flow and skips straight to whatever question wasn't already answered, instead of re-asking what the resident already said.
+When a message does read as an incident report, the same model call pulls out what it can: incident type, severity, description, rough location, none of it final. It pre-fills the guided reporting flow and skips straight to whatever wasn't already answered.
 
 ### AI-assisted information extraction
 
-The AI pipeline helps convert unstructured messages into structured incident information.
-
-Instead of requiring residents to understand technical forms, they can simply describe what happened. The system then extracts relevant details that responders can review.
-
-The important design choice is that AI does not make operational decisions.
-
-It does not determine whether an incident is valid, decide the required response, assign resources, or close reports. Those decisions remain with responders.
-
-The model is there to reduce the manual work of interpreting messages, not to replace the people responsible for making decisions.
+The AI pipeline converts unstructured messages into structured data, so residents describe what happened instead of learning a form. AI doesn't make operational decisions. It doesn't decide if an incident is valid, assign resources, or close reports. It just reduces the manual work of interpreting messages. Decisions stay with responders.
 
 ### Human validation as part of the workflow
 
-Because HERMES deals with disaster-related information, incorrect data can have serious consequences.
-
-Every AI-generated result remains editable and reviewable by responders before becoming part of the official incident record.
-
-If the AI produces an incorrect extraction, the system still works. Responders can correct the information manually, and the rest of the workflow continues normally.
-
-This fallback approach was intentional. A critical system should not fail just because one AI component makes a mistake.
+Bad data has real consequences here, so every AI-generated result stays editable and reviewable before it becomes part of the official record. If the extraction is wrong, responders correct it and the workflow continues. A critical system shouldn't fail because one AI component makes a mistake.
 
 ### Incident management dashboard
 
-Responders can monitor incoming reports through a centralized dashboard.
-
-Each incident includes the original conversation history, extracted information, and current status. Responders can review reports, modify details, and track progress from initial report to resolution.
-
-The dashboard provides different views depending on the workflow. A feed allows responders to see new incidents quickly, while table and kanban views help organize larger volumes of reports.
-
-The kanban board and report table also update live. Both subscribe to Supabase Realtime on the incidents table and reload whenever a row changes, so a new report or a status change shows up for every responder watching the board without anyone hitting refresh.
+Responders monitor incoming reports through a centralized dashboard: original conversation history, extracted information, status, all in one place, reviewable and editable. A feed view handles fast triage; table and kanban views handle larger volumes. Both update live through Supabase Realtime, so a new report shows up for every responder watching without a refresh.
 
 ### Staying usable when the connection drops
 
-Disaster response is exactly when a connection gets shaky, so the dashboard can't just go blank the moment it does.
-
-HERMES is installable as a PWA, and a service worker caches the app shell and recent incident data so the dashboard still renders something offline instead of a blank screen.
-
-This is deliberately light: it caches read data, not writes. Submitting or updating a report still needs an active connection and fails offline like it always would. Losing connectivity just no longer means losing the dashboard itself.
+Disaster response is exactly when a connection gets shaky. HERMES is installable as a PWA, and a service worker caches the app shell and recent incident data so it still renders offline, read-only. Submitting or updating a report still needs a connection.
 
 ### Mapping and communication
 
-HERMES also provides a geographic view of incidents by plotting reports on a map.
-
-This helps responders understand where incidents are occurring and identify areas that may require attention.
-
-The system also supports sending advisories back to residents through connected messaging platforms, creating a two-way communication channel between communities and responders.
+HERMES plots incidents on a map and can send advisories back to residents through the same messaging platforms, making it a two-way channel.
 
 ## How we built it
 
@@ -127,24 +83,8 @@ The system also supports sending advisories back to residents through connected 
 
 ### Designing AI boundaries
 
-The most important engineering decision in HERMES was deciding where AI belongs.
-
-The chatbot combines rule-based logic and AI capabilities instead of relying entirely on an LLM.
-
-Predictable interactions such as onboarding, guided reporting, and system flows are handled through deterministic logic. These parts need consistency and should behave the same way every time.
-
-AI is only introduced where flexibility is valuable: interpreting natural language reports.
-
-This hybrid approach gives the system the benefits of AI while avoiding the risks of making every interaction dependent on a model response.
+The most important decision was where AI belongs. Predictable interactions like onboarding and guided reporting run on deterministic logic, since they need to behave the same way every time. AI only comes in where flexibility matters, interpreting natural language. That hybrid gives the system AI's benefits without making every interaction dependent on a model response.
 
 ## What I learned
 
-HERMES changed how I approach AI integration.
-
-It is easy to add an LLM to an application and call it an AI product. The harder engineering problem is understanding where AI actually provides value and where it creates unnecessary risk.
-
-For critical systems, reliability matters more than automation.
-
-A good AI system is not always the one that gives the model the most control. Sometimes the better design is giving AI a smaller, clearly defined role inside a larger workflow.
-
-This project taught me that building AI-powered applications is not only about making models produce outputs. It is about designing the surrounding system so those outputs remain useful, verifiable, and safe.
+HERMES changed how I approach AI integration. It's easy to slap an LLM onto an app and call it an AI product. The harder problem is knowing where AI actually adds value and where it just adds risk. For critical systems, reliability matters more than automation. Sometimes the better design gives the model a smaller, clearly defined role inside a larger workflow, one where the outputs stay useful, verifiable, and safe.

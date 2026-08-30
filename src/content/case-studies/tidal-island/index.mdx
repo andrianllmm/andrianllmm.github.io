@@ -31,21 +31,9 @@ submerges everything.
 
 ## Why I built it
 
-Tidal Island was initially developed as a final project for <a href="https://upvdpsm.com/courses/computer-science/cmsc-22.html" target="_blank">CMSC 22</a> (Fundamentals of Object-Oriented Programming).[^1]
+Tidal Island started as a final project for <a href="https://upvdpsm.com/courses/computer-science/cmsc-22.html" target="_blank">CMSC 22</a> (Fundamentals of Object-Oriented Programming).[^1] The requirement was a Java app applying OOP concepts, but I probably would've built a game anyway. I'd never made one, and games have a lot of interacting objects: players, items, resources, inventories, crafting, world events. Much easier to understand OOP when you can see it working than when you're just reading textbook examples.
 
-The requirement was to build a Java application that applies object-oriented
-programming concepts. Even without the requirement, I probably would have still
-chosen to build a game.
-
-I had never built one before, and games felt like a good way to practice OOP.
-A game naturally has many interacting objects: players, items, resources,
-inventories, crafting systems, and world events. These are much easier to
-understand when you can actually see them working together instead of just
-reading examples in a textbook.
-
-The idea itself was inspired by survival games like Minecraft. I wanted to make
-something simple but still have a complete gameplay loop: gather resources,
-craft tools, and eventually escape.
+The idea was inspired by survival games like Minecraft. I wanted something simple but with a complete loop: gather resources, craft tools, escape.
 
 ## How it turned out
 
@@ -75,13 +63,7 @@ The game is now available on <a href="https://andrianllmm.itch.io/tidal-island/"
   <Image src={playingImg} alt="Playing still" class="w-full max-w-[300px]" />
 </div>
 
-The main gameplay loop revolves around surviving the island long enough to build
-a raft.
-
-Players collect materials, craft items, and manage their inventory while the
-tide slowly rises over time. The tide mechanic became one of the more unique
-parts of the game because it required not only making it functional, but making
-the flooding feel natural.
+The gameplay loop is about surviving long enough to build a raft: collect materials, craft items, manage inventory, all while the tide slowly rises. The tide mechanic ended up being one of the more unique parts, not just because it had to work but because the flooding had to feel natural.
 
 ## How I built it
 
@@ -91,18 +73,11 @@ Java
 
 (yep, that's it...)
 
-No game engine was used. Everything was built from scratch using Java.
-
-This meant implementing systems that game engines usually handle for you:
-rendering, input handling, collision detection, object management, and game
-state.
+No game engine, everything built from scratch in Java. That meant implementing rendering, input handling, collision detection, object management, and game state myself, things an engine usually hands you for free.
 
 ### Architecture and design
 
-The project started small, but the architecture evolved as more features were
-added.
-
-The final version is organized into several systems:
+The project started small and the architecture grew with it. The final version is organized into several systems:
 
 - Game engine
 - Entity system
@@ -137,22 +112,11 @@ stateDiagram
     GameOver --> Title: Exit
 ```
 
-Throughout development, I applied design patterns such as <a href="https://refactoring.guru/design-patterns" target="_blank"> Singleton, Builder, Factory/Registry, Observer, State, and Template Method </a> . I also tried following <a href="https://www.oodesign.com/design-principles/" target="_blank"> SOLID </a> principles where they made sense.
-
-What made these concepts finally click was seeing them represented as actual
-game objects.
-
-A piece of wood is not just a variable. It is an item with properties. An inventory is a system that manages those items. Different objects have different behaviors, but they still interact inside the same world.
-
-These ideas were much easier to understand when I had to design them for a
-working game.
+I applied design patterns like <a href="https://refactoring.guru/design-patterns" target="_blank">Singleton, Builder, Factory/Registry, Observer, State, and Template Method</a>, and tried to follow <a href="https://www.oodesign.com/design-principles/" target="_blank">SOLID</a> where it made sense. What made these finally click was seeing them as actual game objects: a piece of wood isn't just a variable, it's an item with properties, and an inventory is a system that manages those items.
 
 ### Developer experience
 
-While building the game, I also created tools to make development easier.
-
-The most useful was a debug rendering system that visualizes collision boxes,
-UI elements, and other internal states while playing.
+I also built tools to make development easier. The most useful was a debug rendering system that visualizes collision boxes, UI elements, and other internal state while playing.
 
 <div class="flex flex-wrap items-center justify-center gap-4">
   <Image
@@ -169,20 +133,11 @@ UI elements, and other internal states while playing.
   />
 </div>
 
-I also built a World Builder for designing maps visually.
-It allows painting tiles, placing objects, undoing changes, and exporting the
-world data as JSON that the game loads.
-
-The project also includes a JUnit test suite covering important systems.
+I also built a World Builder for designing maps visually, with tile painting, object placement, undo, and JSON export that the game loads directly. The project also has a JUnit test suite covering the important systems.
 
 ### Art
 
-For graphics, I chose pixel art and created most of the sprites myself using <a href="https://www.aseprite.org/" target="_blank">Aseprite</a>.
-
-I was still learning pixel art during development, so there was a lot of trial
-and error in getting sprites and animations to look right.
-
-For the player character, I started from a base sprite by <a href="https://otterisk.itch.io/hana-caraka-base-character" target="_blank">Hana Caraka</a> because it already included animation states that made development easier. I modified it with my own colors and adjustments.
+For graphics, I chose pixel art and made most of the sprites myself in <a href="https://www.aseprite.org/" target="_blank">Aseprite</a>, still learning as I went, so a lot of trial and error getting animations to look right. For the player character, I started from a base sprite by <a href="https://otterisk.itch.io/hana-caraka-base-character" target="_blank">Hana Caraka</a> since it already had the animation states I needed, and modified it with my own colors.
 
 <div class="flex gap-12 p-12 justify-center items-center">
   <div class="w-1/3">
@@ -214,15 +169,9 @@ For the player character, I started from a base sprite by <a href="https://otter
 
 ## What I learned
 
-This project changed how I understood OOP.
+This project changed how I understood OOP. Before this, SOLID principles, inheritance, polymorphism, and design patterns felt abstract. Building a game gave them a concrete purpose.
 
-Before this, concepts like SOLID principles, inheritance, polymorphism, and
-design patterns felt abstract. Building a game gave them a concrete purpose.
-
-I also learned that game development is much harder than it looks. Even a simple 2D game requires solving problems across many areas:
-graphics, physics, input handling, state management, tools, and user experience.
-
-The most rewarding part was building something purely because it was fun. Games are one of those things where engineering and creativity meet.
+I also learned game dev is harder than it looks: even a simple 2D game touches graphics, physics, input handling, state management, tooling, and UX.
 
 ---
 

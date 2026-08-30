@@ -6,108 +6,55 @@ date: "2026-05-26"
 
 Iskommerce is a university-only C2C marketplace designed to help students buy, sell, and exchange items within a trusted academic community.
 
-At the <a href="https://www.upv.edu.ph/">UP Visayas</a>, student commerce already existed.
+At <a href="https://www.upv.edu.ph/">UP Visayas</a>, student commerce already existed. Students bought and sold through Facebook groups, Messenger, and posts tagged **#ForSale**, **#LF**, or **#mine**.
 
-Students bought and sold items through Facebook groups, Messenger conversations, and posts using tags like **#ForSale**, **#LF**, or **#mine**.
-
-The problem was not that students had no way to trade. The marketplace already existed. It was just built on tools that were never designed for it.
-
-Finding items depended on scrolling through posts. Negotiations were scattered across conversations. There was no structured way to know whether something was still available, already sold, or who was responsible for the next step.
-
-Iskommerce was built to explore what happens when this informal process is turned into a dedicated marketplace.
+The problem wasn't that students had no way to trade, it's that the marketplace ran on tools never designed for it: finding items meant scrolling posts, negotiations got scattered across conversations, and no one could tell if something was still available.
 
 ## Why we built it
 
-The idea came from observing how students already traded with each other.
+Facebook groups worked because they were familiar, but sellers had to keep reposting to stay visible, buyers had to search manually, and trust depended entirely on personal judgment.
 
-Facebook groups worked well enough because they were familiar and convenient, but they also created friction. Sellers had to constantly repost items to stay visible. Buyers had to search manually. Trust depended mostly on personal judgment.
-
-We wanted to build something designed specifically for a university community.
-
-Instead of competing with general marketplaces, Iskommerce focused on the advantages of a smaller network. Users already shared a common identity as students, which allowed us to build around trust features like UP email verification and student profiles.
-
-The goal was not just to create another place to post items. It was to make the existing process more structured.
+Instead of competing with general marketplaces, we leaned into the advantage of a smaller network: everyone's already a student, so trust features like UP email verification and student profiles could be built directly into the system. The goal wasn't another place to post items, it was making the existing process more structured.
 
 ## How it turned out
 
-### A marketplace built around structured listings
+### Structured listings, not social posts
 
-Instead of treating items as temporary social media posts, Iskommerce represents each item as a persistent listing.
-
-Each listing has defined information such as price, condition, category, and availability status.
-
-This gives buyers a consistent way to browse items while allowing the system to understand what is happening with each item.
-
-### A discovery system instead of endless scrolling
-
-Listings can be discovered through feeds, search, filtering, and sorting.
-
-The idea was to replace passive scrolling with intentional discovery.
+Each item is a persistent listing with defined fields (price, condition, category, availability) instead of a post that gets buried, discoverable through feeds, search, filtering, and sorting.
 
 ### Search that understands what you meant, not just what you typed
 
-Keyword search breaks down fast in a small marketplace. A student searching "laptop bag" should also see listings titled "backpack for laptop" or "sling bag, fits 14-inch", even if none of those words match exactly.
+Keyword search breaks down fast in a small marketplace. A student searching "laptop bag" should also see listings titled "backpack for laptop" or "sling bag, fits 14-inch," even with no matching words.
 
-So listings are embedded, not just indexed. Every listing gets a 384-dimension vector from a local sentence-transformer model (`all-MiniLM-L6-v2`, run in-process through Transformers.js), computed in the background whenever a listing is created or edited. The vectors live in Postgres itself, through pgvector, with an HNSW index so nearest-neighbor lookups stay fast as the catalog grows.
+So listings are embedded, not just indexed. Each one gets a 384-dimension vector from a local sentence-transformer model (`all-MiniLM-L6-v2`, run in-process through Transformers.js) on create or edit.
 
-Search queries get embedded the same way and compared against listing vectors by cosine distance. Every listing page also shows similar listings, which is the same nearest-neighbor query run against one listing's own vector instead of a search query.
+Vectors live in Postgres via pgvector with an HNSW index for fast nearest-neighbor lookups. A search query gets embedded the same way and compared by cosine distance. "Similar listings" on an item page is just that lookup run against the listing's own vector.
 
-None of this needed a hosted embeddings API or a separate ML service. The model runs on the same machine as the API, which kept the system simple and meant search worked the same in development as it did in production.
+No hosted embeddings API needed, the model runs on the same machine as the API.
 
 ### A homepage that learns what you're into
 
-The default feed for a logged-in student isn't just "everything, newest first." It's a mix of what looks similar to things they've engaged with, interleaved with a recency pool so the feed doesn't collapse into one category.
+Every view, click, like, message, and purchase gets logged as an event. Those roll up into a per-user preference vector, weighted toward stronger signals like purchases and decaying over time.
 
-Every view, click, like, message, and purchase gets logged as an event. Periodically, those events are turned into a per-user preference vector: a weighted average of the embeddings of the listings a student interacted with, weighted more heavily for stronger signals (a purchase counts more than a view) and decayed over time so a user's taste can drift.
+Ranking the homepage is the same nearest-neighbor lookup as search, just against a user's vector instead of a query, mixed with a recency pool so it doesn't collapse into one category. New users with no history fall back to recency alone.
 
-Ranking the homepage then becomes the same nearest-neighbor problem as search and similar listings, just against a user's vector instead of a query's. A new user with no history simply falls back to the recency feed until they have one.
+This is content-based filtering, which fits a marketplace this size better than collaborative filtering, which needs a lot of users behaving similarly before it's useful.
 
-It's content-based filtering, which was the right call for a marketplace this size. Collaborative filtering needs a lot of users behaving similarly before it says anything useful, and Iskommerce doesn't have that scale. Content-based filtering only needs one listing's worth of signal to start working.
+### Conversations and trust
 
-### Conversations connected to transactions
-
-Each listing has its own conversation thread between buyers and sellers.
-
-Instead of moving immediately to external messaging apps, discussions remain connected to the item being negotiated.
-
-This keeps context together and makes it easier to understand the history of a transaction.
+Each listing has its own conversation thread between buyer and seller instead of moving straight to Messenger, so negotiation history stays attached to the item. Reviews are tied to completed transactions, so trust doesn't rest entirely on social reputation.
 
 ### Modeling real transactions
 
-The hardest part of the system was not managing listings. It was representing what happens when real people interact with them.
-
-A marketplace needs rules. A listing cannot be sold twice. A buyer should not reserve an item forever. A review should only exist after a completed transaction.
-
-This led us to design transaction states such as available, reserved, sold, and archived. Thinking through these states revealed edge cases that are easy to miss when building simple applications: what happens when a buyer changes their mind? what happens when multiple people want the same item? These decisions shaped both the database design and application logic.
-
-### Building trust into the exchange
-
-Iskommerce includes a review system tied to completed transactions.
-
-The goal was to create structured trust signals instead of relying entirely on social reputation.
+The hardest part for me was representing what happens when real people interact with listings. A listing can't be sold twice, a buyer shouldn't reserve something forever, a review should only exist after a completed transaction. That led to transaction states like available, reserved, sold, and archived, and thinking through them surfaced edge cases like what happens when a buyer changes their mind or multiple people want the same item.
 
 ## How we built it
 
 ### A modular system that mirrors the product
 
-Iskommerce uses a modular monolith architecture with a shared TypeScript codebase.
+Iskommerce is a modular monolith with a shared TypeScript codebase, split into feature-based modules: authentication, listings, messaging, transactions, reviews, notifications. The structure was inspired by Django apps, each feature has a clear boundary but still works together as one system.
 
-The system is divided into feature-based modules:
-
-- Authentication for account management and UP email verification
-- Listings for item creation, discovery, and lifecycle management
-- Messaging for buyer-seller conversations
-- Transactions for purchase workflows
-- Reviews for reputation building
-- Notifications for activity updates
-
-The structure was inspired by Django applications. Each feature has a clear boundary while still working together as part of one system.
-
-### A full-stack TypeScript application
-
-This was my first time building a full-stack application where both frontend and backend used TypeScript.
-
-The stack included:
+This was also my first full-stack app with TypeScript on both ends. The stack:
 
 | Layer      | Stack                                       |
 | ---------- | ------------------------------------------- |
@@ -118,32 +65,12 @@ The stack included:
 | Monorepo   | Turborepo                                   |
 | Deployment | Vercel, Supabase                            |
 
-Using TypeScript across the entire stack made sharing types and validation rules much easier.
-
-Shared packages allowed the frontend and backend to use the same schemas and assumptions instead of duplicating data definitions.
-
-### Designing around consistency
-
-The system relies on strict rules to keep data consistent.
-
-Listings, transactions, conversations, and reviews are connected through controlled workflows instead of being treated as isolated records.
-
-For example, a review cannot exist without a completed transaction. A listing cannot have multiple active buyers. Actions are restricted depending on the user's role.
-
-These constraints forced me to think beyond making features work and focus on making the system behave correctly.
+Using TypeScript everywhere made sharing types and validation rules much easier, shared packages let the frontend and backend use the same schemas instead of duplicating definitions.
 
 ## What I learned
 
-The biggest lesson from Iskommerce was not about NestJS, TypeScript, or architecture. It was about understanding existing behavior.
+It's easy to see an inefficient process and assume the fix is a better version, completely ignoring why people used the old one.
 
-When building products, it is easy to see an inefficient process and assume the solution is simply building a better version. But that ignores why people use the current system.
+Students already had a marketplace: Facebook groups. It's messy, yeah, but it's familiar. The lack of structure was a problem, but that same convenience is what made it stick.
 
-Students already had a marketplace. It was Facebook groups. It was messy, but it had advantages. It was free, familiar, and where students already spent their time. The lack of structure was a problem, but the convenience of the existing workflow was also what made it work.
-
-This changed how I think about product development. A product does not only compete against other products. It competes against the default behavior people already have.
-
-Building software is not just about improving a workflow. It is about understanding why the workflow exists in the first place and whether users actually need to change.
-
-Iskommerce taught me that turning an informal process into software is only half the challenge. The harder part is understanding the human behavior behind it.
-
-The embeddings work reinforced something similar from a different angle. It would have been easy to bolt on a recommendation feature because it sounded impressive, but the actual justification was narrower: keyword search fails on a marketplace where nobody agrees on how to name things, and a small user base rules out collaborative filtering before it even gets a chance to work. Content-based filtering with local embeddings was the fit for those specific constraints, not a default I reached for.
+> A product's biggest competitor is often the status quo: the default behavior people already have.

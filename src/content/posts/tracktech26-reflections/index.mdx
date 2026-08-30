@@ -24,29 +24,23 @@ export const manobela = (() => {
   return project;
 })();
 
-When I entered college a few months earlier, I was the freshman tagging along with my upclass in hackathons.
+A few months into college, I was still the freshman tagging along with upperclassmen in hackathons. This time was different: I was leading the team.
 
-This was different. For the first time, I was actually leading the team.
-
-That meant doing more than writing code. I coordinated the project, assigned tasks, made technical decisions, set up structure so everyone could work in parallel, and eventually stood in front of the judges to present everything we'd built.
+That meant more than writing code. I coordinated the project, assigned tasks, made the technical calls, and stood in front of the judges to present what we'd built.
 
 ## Build something people remember
 
-The hackathon gave us complete freedom as long as the project related to transportation.
+The hackathon only required the project to relate to transportation. We could've played it safe with another navigation app or educational game. Instead, I pushed for a driver monitoring system that used computer vision to detect drowsiness and distraction through nothing more than a phone camera.
 
-We could've built another navigation app. Another educational game. Another safe project. Instead, I pushed for a driver monitoring system that used computer vision to detect drowsiness and distraction through nothing more than a phone camera.
-
-Some of my teammates weren't convinced at first. It sounded difficult, maybe even impractical. My argument was simple: this is a hackathon. We don't need an idea nobody has thought of. That's almost impossible. We need an idea other teams think is impossible.
+Some teammates weren't convinced. It sounded difficult, maybe impractical. My argument: this is a hackathon, we don't need an idea nobody has thought of, we need an idea other teams think is impossible.
 
 ## Three weeks of figuring things out
 
-Choosing the ambitious project was the easy part. Actually building it wasn't.
+None of us had touched computer vision or WebRTC before, let alone mobile apps, so the first weeks went into just getting detection to run consistently.
 
-None of us had worked with computer vision or WebRTC before, let alone mobile apps. We spent the first weeks just getting the detection pipeline to work consistently.
+A big chunk of our time was dealing with performance. Render's free tier couldn't handle it, so we moved to Azure App Service mid-development for the free student credits. Even then, a locally run backend was faster, so that's what we used for the demo.
 
-Our biggest problem was performance. Our initial deployment to Render's free tier didn't work at all. We had to move to Azure App Service mid-development (because it had free credits for students) just to make live monitoring usable. Even then, a locally run backend was still faster, so we planned to use that for the demo instead.
-
-The night before demo day, we panicked when the connection wouldn't establish in the APK build. It turned out the fix was only a one-line config change after hours of debugging :)
+The night before demo day, the connection wouldn't establish in the APK build. Hours of debugging later, the fix was a one-line config change :)
 
 ## The demo mattered (maybe the most)
 
@@ -56,19 +50,17 @@ The night before demo day, we panicked when the connection wouldn't establish in
   <Image src={demoMe2Img} alt="Presenting Manobela" class="w-full" />
 </div>
 
-When our turn came, we let the product do most of the talking. The judges watched the live detection. Then the map integration. Then the live tracking. Then recorded video analysis. Every time it looked like the demo was over, there was another feature waiting.
+We let the product do most of the talking: live detection, then map integration, then live tracking, then recorded video analysis. Every time the demo looked done, there was another feature waiting.
 
-One judge commented that the project felt production ready (even though it isn't lol). They also complimented how detailed our presentation was, especially the architecture diagrams we used (just used mermaid btw).
+One judge said it felt production ready (it isn't, lol) and complimented our architecture diagrams (just mermaid).
 
 ## Looking back
 
 <Image src={winnerImg} alt="Winner" class="w-full object-cover" />
 
-This was my first hackathon outside campus, first time leading a hackathon team, and my first time winning champion.
+First hackathon outside campus, first time leading a team, first time winning champion.
 
-Unlike the [past hackathon](/the-hackathon-where-blockchain-wasnt-enough), I don't think we won because we used computer vision. We won because we built something people remembered.
-
-Computer vision was the hook. The polished demo, the attention to detail, and the willingness to take on a project other teams avoided were what made the difference.
+Unlike the [past hackathon](/the-hackathon-where-blockchain-wasnt-enough), I don't think we won because we used computer vision. That was just the hook. What made the difference was the polished demo, the attention to detail, and picking a project other teams avoided.
 
 ## How it turned out
 
@@ -88,7 +80,7 @@ We built Manobela, a driver monitoring system that detects unsafe driving behavi
 
 <ProjectCard project={manobela} />
 
-I also designed a pretty cool poster for the competition (bummer it didn't win though).
+I also designed the poster for the competition (didn't win that part though).
 
 <Image
   src={posterImg}

@@ -13,44 +13,22 @@ eHalalan is a decentralized online voting system built during KomsaiHack 2025. T
 
 ## Why we built it
 
-Our team built eHalalan for KomsaiHack 2025: Democratech Hackathon.
+Online voting has an obvious trust problem: if votes sit in a traditional database, you have to trust whoever controls it to count correctly and not touch the results afterward. Blockchain seemed like a fit because it makes records publicly verifiable and hard to alter once written.
 
-Online voting has an obvious trust problem. If votes are stored in a traditional database, people have to trust whoever controls that database to count everything correctly and not modify the results afterward.
-
-Blockchain seemed like an interesting fit because it makes records publicly verifiable and difficult to alter once they're written.
-
-I wasn't completely convinced blockchain solved online elections as a whole. Identity verification, voter privacy, and accessibility are still hard problems. But I thought it was a good opportunity to learn where blockchain actually makes sense instead of treating it as another buzzword.
+I wasn't fully convinced blockchain solves online elections as a whole. Identity verification, voter privacy, and accessibility are still hard problems. Watch [Tom Scott's video](https://youtu.be/LkH2r-sNjQs?si=wmtz7cqMzOPnNvbU) on why it's still a bad idea. But it was still a good chance to learn blockchain's more plausible applications.
 
 ## How it worked
 
-The voting flow was intentionally straightforward.
-
-A voter connects a wallet, casts a ballot, and submits it to the blockchain. Once the transaction is confirmed, the vote becomes part of the public ledger and contributes to the election results.
-
-Instead of trusting a central database, anyone can inspect the blockchain and verify that the recorded votes produce the published totals.
+A voter connects a wallet, casts a ballot, and submits it to the blockchain. Once the transaction is confirmed, the vote joins the public ledger and contributes to the results. Anyone can inspect the chain and verify that the recorded votes produce the published totals, no central database required.
 
 ## My role
 
-I worked across the project, but I spent most of my time on the frontend.
-
-One thing we kept asking ourselves was, "How do you make this feel approachable?"
-
-Our target users weren't crypto enthusiasts. They were ordinary Filipino voters who would potentially be moving from paper ballots to an online system. Even if the blockchain worked perfectly underneath, none of that mattered if the interface felt confusing or intimidating.
-
-That led me to focus on simplifying the user experience and reducing unnecessary friction wherever possible.
+I worked across the project but spent most of my time on the frontend. Our target users weren't crypto enthusiasts, they were ordinary Filipino voters who'd potentially be moving from paper ballots to an online system. Even if the blockchain worked perfectly underneath, none of that mattered if the interface felt confusing or intimidating. So I focused on simplifying the experience and cutting friction wherever I could.
 
 ## What I learned
 
-This project changed how I think about blockchain.
+This project changed how I think about blockchain. Before the hackathon it mostly felt like a buzzword people attached to projects whether they needed it or not. Building with it forced me to think more critically: it's good at solving certain trust problems, like making records publicly verifiable, but it doesn't automatically solve everything about digital voting.
 
-Before the hackathon, blockchain mostly felt like a buzzword that people attached to projects whether they needed it or not.
+Privacy was the challenge we never fully solved. Making votes verifiable while keeping each voter anonymous is much harder than just recording transactions on a chain. Onboarding was another limitation. Requiring every voter to set up and use a MetaMask wallet is a level of complexity that would kill adoption in a real national election.
 
-Building something with it forced me to think more critically. I came away realizing that blockchain is good at solving certain trust problems, like making records publicly verifiable, but it doesn't automatically solve every problem around digital voting.
-
-One challenge we never fully solved was privacy.
-
-Making votes verifiable while also keeping each voter's identity anonymous is much harder than simply recording transactions on a blockchain. That tradeoff ended up being one of the biggest technical questions in the project.
-
-Another practical limitation was onboarding. Requiring every voter to create and use a MetaMask wallet introduces a level of complexity that would make adoption difficult in a real national election.
-
-Even though eHalalan was a hackathon prototype, it gave me something more valuable than another project to add to my portfolio. It taught me to look past the technology itself and ask whether it's actually the right tool for the problem.
+Even as a hackathon prototype, eHalalan taught me to look past the technology and ask whether it's actually the right tool for the problem.

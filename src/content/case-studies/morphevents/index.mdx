@@ -11,25 +11,17 @@ import architectureRevisionDrawing from "./drawings/architecture-revision.png";
 
 This is a platform I worked on during my internship at [MorpheLabs](/work/morphelabs) that lets organizers upload event photos, so attendees can find themselves in the gallery using face recognition. The version I inherited only knew how to do that one thing: you upload a selfie, and it hands back your matches.
 
-That worked. But the more I used it, the more I noticed it only worked once per person, and then kept making you prove who you were again every time you came back.
+That worked, but it only worked once per person, then kept making you prove who you were again every time you came back.
 
 ## The problem with searching every time
 
-Think about how someone actually uses this app across a real event. They find their photos right after the event ends. A few days later, once more photos get uploaded, they come back to check for more. Maybe a friend asks them to help find a shared photo. Maybe they just want to browse the gallery again.
-
-Under the original workflow, every one of those visits started the same way: take a selfie, upload it, wait for the match. The app never remembered who you were. Each visit was treated as a first-time search, even though the system had already generated your face's match the first time you visited.
-
-That's the friction I kept running into. Selfie search is a fine way to get someone into the gallery the first time. It's a bad way to make them come back.
+Someone checks right after the event, comes back days later once more photos are up, maybe helps a friend find a shared photo. Every visit started the same way: take a selfie, upload it, wait for the match, even though the app had already matched your face the first time. Selfie search is fine for getting someone into the gallery once. It's bad at making them come back.
 
 ## The idea: let people identify themselves instead of proving it every time
 
-The app already detected every face in every uploaded photo. It just threw that information away the moment a search finished. Nothing carried forward. Nothing let attendees revisit who they were without doing the whole search again.
+The app already detected every face in every photo, it just threw that information away the moment a search finished. What if attendees could recognize themselves in a lineup of already-detected faces instead of searching again?
 
-That gap was the real product opportunity. Instead of asking "how do we make selfie search faster," I asked a different question: what if attendees never had to search at all after the first time? What if they could just recognize themselves in a lineup of faces the app had already detected, click on it, and go straight to their photos?
-
-That's face clustering. Group every detected face in an event by who it belongs to, and let attendees pick themselves out of that group instead of re-uploading a selfie. Once you're in a cluster, you're identified for as long as the event's gallery exists, not just for the duration of one search request.
-
-That single idea is what the rest of the redesign exists to support.
+That's face clustering: group every detected face in an event by who it belongs to, and let attendees pick themselves out instead of re-uploading a selfie. Once you're in a cluster, you're identified for as long as the event's gallery exists, not just for one search.
 
 <Image
   src={faceClusteringDrawing}
@@ -41,15 +33,9 @@ That single idea is what the rest of the redesign exists to support.
 
 ## Why the original architecture couldn't do this
 
-Clustering sounds like a feature you could bolt onto anything, but the existing system genuinely couldn't do it.
+Clustering sounds like something you could bolt onto anything, but the existing system genuinely couldn't. It used AWS Rekognition for face matching: a selfie went out, a FaceId came back. It never held an actual representation of a face, just a reference living inside someone else's collection. You can't cluster faces you don't have. Grouping means comparing every face against every other, which needs the numerical representation, not a lookup ID.
 
-The app used AWS Rekognition for face matching. A selfie went out to Rekognition, a FaceId came back, and Rekognition decided what matched. The app never held onto an actual representation of a face. It held a reference to one that lived inside someone else's collection, and Rekognition only exposed a matching interface, not the underlying data.
-
-You can't cluster faces you don't have. Grouping similar faces together means comparing every face in an event against every other face, which requires holding the actual numerical representation of each one, not just a lookup ID you send to an external service.
-
-So the architectural change wasn't optional. I moved face recognition in-house: DeepFace generates a 512-dimensional embedding for every detected face using ArcFace, RetinaFace handles detection, and the embeddings get stored directly in PostgreSQL with pgvector. Once the embeddings lived in our own database, comparing every face against every other face became a query instead of an impossibility.
-
-The point of owning the embeddings wasn't infrastructure for its own sake. It was the only way to make clustering, and everything clustering unlocked, possible at all.
+So I moved face recognition in-house. DeepFace generates a 512-dimensional embedding for every detected face using ArcFace, RetinaFace handles detection, and the embeddings get stored in PostgreSQL with pgvector. Once the embeddings lived in our own database, comparing every face against every other became a query instead of an impossibility.
 
 <Image
   src={architectureRevisionDrawing}
@@ -65,28 +51,20 @@ The point of owning the embeddings wasn't infrastructure for its own sake. It wa
 
 Once every photo in an event finishes processing, the system groups all detected faces using Agglomerative Clustering with cosine distance and average linkage, at a distance threshold of 0.4. Each cluster is one person as they show up across the event, ranked by how many photos they appear in, with a representative face picked by detection confidence.
 
-That turns the gallery into something you can filter by person instead of only search by selfie. Attendees can browse detected faces directly, pick out themselves or a friend, and the gallery narrows to just the photos containing that person. Selfie search still works exactly as before for a first visit, but it's no longer the only way in. Clustering is what made "identify yourself" a real alternative to "search for yourself."
+That turns the gallery into something you can filter by person instead of only search by selfie. Attendees browse detected faces, pick out themselves or a friend, and the gallery narrows to those photos. Selfie search still works for a first visit, but it's no longer the only way in.
 
 ### A visual way to explore who's in the gallery
 
-Clustering also made it possible to visualize the whole event at once. I projected the 512-dimensional embeddings down to two dimensions using UMAP, falling back to PCA when needed, so every detected face becomes a point on a scatter plot, color-coded by cluster.
-
-Attendees can zoom, pan, and jump straight to a source photo from any point. It's a direct consequence of clustering rather than a separate feature: once faces are grouped, showing those groups spatially is a small step, and it gives people another way to spot themselves or a friend without typing or uploading anything.
+I also projected the 512-dimensional embeddings down to two dimensions with UMAP (falling back to PCA when needed), so every detected face becomes a point on a scatter plot, color-coded by cluster. Attendees can zoom, pan, and jump to a source photo from any point, another way to spot themselves or a friend.
 
 ### Staying identified between visits
 
-The original workflow discarded your results the moment you left the page. Come back later, and you're uploading the same selfie again. Once clustering exists, though, being "found" isn't tied to a single search session anymore. It's tied to a cluster that persists for as long as the event's gallery does.
-
-To match that, I added browser-side caching for completed sessions, so returning to an event you've already searched doesn't require repeating the search. It's a small technical change, but it only makes sense once identity in the app stopped being something you proved on every visit and became something the system already knew.
+The original workflow discarded your results the moment you left the page. With clustering, being "found" is tied to a cluster that persists for as long as the event's gallery does. I added browser-side caching so returning to an event you've already searched doesn't require repeating it.
 
 ## Implementation
 
-Supporting clustering and browsing meant photo processing had to stop being synchronous. In the original version, a photo upload sat there while detection and embedding generation ran inline. I moved that work into background jobs with Dramatiq and Redis: the API saves the photo, queues a job, and returns immediately, while a worker detects faces, generates embeddings, and writes them to pgvector. Clustering itself runs once all photos in an event finish processing, and can be triggered again manually if new photos come in later.
-
-None of this needed to be complicated. It just needed to stop treating every face the system detected as something to be thrown away after one search.
+Supporting clustering and browsing meant photo processing had to stop being synchronous. Previously an upload sat there while detection and embedding generation ran inline. I moved that into background jobs with Dramatiq and Redis: the API saves the photo, queues a job, and returns immediately, while a worker detects faces, generates embeddings, and writes them to pgvector. Clustering runs once all photos in an event finish processing, and can be triggered again if new photos come in later.
 
 ## What I learned
 
-The insight that mattered here wasn't a better model or a faster database. It was noticing that the app already had the information it needed to recognize returning attendees, and was simply discarding it every time.
-
-Face clustering was the idea. Owning the embeddings with DeepFace and pgvector was what made that idea possible, since you can't group faces you don't have direct access to. Everything else, browsing by face, the face map, staying identified between visits, followed from that one shift: from an app that made you prove who you were on every visit, to one that let you point at yourself once and be recognized from then on.
+The insight here wasn't a better model or a faster database. It was noticing the app already had the information it needed to recognize returning attendees and was discarding it every time. Face clustering was the idea; owning the embeddings with DeepFace and pgvector was what made it possible, since you can't group faces you don't have direct access to.

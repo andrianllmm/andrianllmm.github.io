@@ -4,25 +4,15 @@ description: "I built TglStemmer after discovering that dictionary lookups weren
 date: "2023-12-27"
 ---
 
-Building [TagLID](/case-studies/taglid) exposed a problem I didn't expect.
+Building [TagLID](/case-studies/taglid) exposed a problem I didn't expect. Its language identifier relied on dictionary lookups to tell Tagalog from English, and worked well until I tested words people actually use. The dictionary contains `sulat`, not `nagsulat`, so a lookup treats `nagsulat` as unknown even though it's just an inflected form of the same root. Tagalog words change heavily through prefixes, suffixes, infixes, repeated syllables, and other morphological rules, so this kept happening.
 
-The language identifier relied on dictionary lookups to determine whether a word was Tagalog or English. It worked well until I started testing words that people actually use.
-
-Take `nagsulat`.
-
-The dictionary contains `sulat`, not `nagsulat`. A simple lookup treats it as an unknown word even though it's just an inflected form of the same root. The same problem kept showing up because Tagalog words change heavily through prefixes, suffixes, infixes, repeated syllables, and other morphological rules.
-
-I looked for a Tagalog stemmer that could recover the original root word before dictionary lookup. I couldn't find one. So I built TglStemmer.
+I looked for a Tagalog stemmer that could recover the root word before lookup. I couldn't find one, so I built TglStemmer.
 
 TglStemmer is a Python library that recovers the root form of Tagalog words through rule-based transformations. It removes affixes, reduces repeated syllables, applies phonological rules, and filters the results against a dictionary to find the most likely stem.
 
 ## Why I built it
 
-TglStemmer started as a supporting tool for the TagLID project.
-
-The original goal wasn't to publish another NLP library. I simply needed a better way to recognize inflected words during our Grade 12 research project. Expanding the dictionary wasn't practical because there are too many possible word forms. Recovering the root word before checking the dictionary was a much better approach.
-
-As the stemmer grew, I realized it could be useful outside TagLID. I separated it into its own library so it could be reused in other Filipino NLP projects.
+TglStemmer started as a supporting tool for TagLID, built to recognize inflected words for our Grade 12 research project. Expanding the dictionary to cover every word form wasn't practical, so recovering the root word first was the better approach. As it grew, I split it into its own library so it could be useful outside TagLID.
 
 ## How I built it
 
@@ -32,11 +22,9 @@ Each input first goes through tokenization using <a href="https://www.nltk.org/"
 
 ### Removing affixes
 
-The first step is stripping prefixes, infixes, and suffixes.
+The first step is stripping prefixes, infixes, and suffixes. This isn't just deleting characters, since attaching an affix often changes the spelling of the original word, so the stemmer applies transformation rules to recover the root correctly.
 
-Removing affixes isn't as simple as deleting a few characters because attaching an affix often changes the spelling of the original word. To recover the root correctly, the stemmer also applies several transformation rules.
-
-For prefixes, that includes phoneme changes and assimilation:
+Prefixes, involving phoneme changes and assimilation:
 
 - `parami` → `dami`
 - `pangailangan` → `kailangan`
@@ -46,13 +34,11 @@ For prefixes, that includes phoneme changes and assimilation:
 - `panigarilyo` → `sigarilyo`
 - `panahi` → `tahi`
 
-It also removes infixes such as `<in>`:
+Infixes such as `<in>`:
 
 - `sinulat` → `sulat`
 
-Suffixes require another set of rules. Besides removing endings like `-an` and `-in`, the stemmer accounts for contractions, phoneme changes, vowel loss, and metathesis.
-
-Some examples are:
+Suffixes, beyond removing endings like `-an` and `-in`, also involve contractions, phoneme changes, vowel loss, and metathesis:
 
 - `bayaran` → `bayad`
 - `tauhan` → `tao`
@@ -64,9 +50,7 @@ Some examples are:
 
 ### Handling reduplication
 
-Another feature of Tagalog is reduplication, where part or all of a word is repeated.
-
-The stemmer recognizes both forms.
+Another feature of Tagalog is reduplication, where part or all of a word is repeated. The stemmer recognizes both forms.
 
 Partial reduplication:
 
@@ -81,25 +65,11 @@ Full reduplication:
 
 ### Choosing the best stem
 
-These transformations often produce more than one possible root.
-
-For example, `pinakamahusay` could produce candidates like:
-
-- `husay`
-- `mahusay`
-- `pinakamahusay`
-
-Instead of picking the first result, the stemmer ranks every candidate using a custom scoring system.
-
-The scoring favors stems that require fewer transformations, remove more meaningful affixes or reduplication, and produce more morphologically plausible words. The highest-scoring candidate becomes the final result.
+These transformations often produce more than one possible root. `pinakamahusay` could produce `husay`, `mahusay`, or `pinakamahusay`. Instead of picking the first result, the stemmer ranks every candidate with a custom scoring system, favoring stems that need fewer transformations, remove more meaningful affixes or reduplication, and produce more morphologically plausible words. The highest score wins.
 
 ## How it helped TagLID
 
-Adding the stemmer significantly improved TagLID.
-
-Instead of treating many inflected words as unknown, TagLID could recover their root forms before performing dictionary lookup. It also handled mixed Taglish words surprisingly well. For example, `nagwork` becomes `work`, allowing TagLID to recognize the English root after stripping the Tagalog prefix.
-
-More importantly, it kept TagLID simple. Rather than maintaining an ever-growing dictionary of inflected words, TagLID could rely on a separate component built specifically for stemming.
+TagLID could now recover root forms before dictionary lookup instead of treating inflected words as unknown, and it handled mixed Taglish surprisingly well: `nagwork` becomes `work` after stripping the Tagalog prefix. It also kept TagLID simple, relying on a separate component for stemming instead of an ever-growing dictionary of inflected words.
 
 ## Using TglStemmer
 
@@ -122,12 +92,6 @@ print(stem.suf)
 
 ## What I learned
 
-This project completely changed how I thought about language processing.
+This project changed how I thought about language processing. I assumed stemming mostly meant chopping off prefixes and suffixes, but the more examples I tested, the more exceptions I found. It also changed how I think about building software: TglStemmer could have stayed an internal utility, but splitting it into its own library made both projects better, letting the stemmer handle Tagalog morphology while TagLID focused on identification.
 
-I started by assuming stemming mostly meant removing prefixes and suffixes. The more examples I tested, the more exceptions I found. Every time I thought I had covered all the edge cases, another word proved me wrong.
-
-That experience also changed how I think about building software.
-
-TglStemmer started as an internal utility for TagLID. I could have kept it that way, but separating it into its own library made both projects better. The stemmer solved one problem well, and TagLID could focus on language identification instead of trying to understand Tagalog morphology itself.
-
-One of my goals was to build something that would outlast my own research. Recently, a researcher opened a pull request after using TglStemmer in their own work. It was a nice reminder that a tool built to solve one problem can end up helping someone else solve theirs.
+Recently a researcher opened a pull request after using TglStemmer in their own work, a nice reminder that a tool built for one problem can end up helping someone else with theirs.
