@@ -21,7 +21,7 @@ flowchart LR
 
 A client can retry a request. If that retry records usage again, the tenant gets billed twice for one call. So every billable request carries a client-supplied idempotency key, and the same key twice should produce one usage event, not two.
 
-The guarantee lives in the database, as a unique constraint on tenant and idempotency key, not an app-level check-then-insert (that has a gap two requests could both slip through). The app still checks first so a duplicate returns the original result. One limitation: two concurrent requests with the same key could still both pass that check before either write commits. The database constraint would reject the second insert, but the app doesn't handle that rejection yet. Sequential retries are safe; concurrent ones aren't.
+The guarantee lives in the database as a unique constraint on tenant and idempotency key, not an app-level check-then-insert, which has a gap two requests could both slip through. The app still checks first so a duplicate returns the original result. Limitation: two concurrent requests with the same key could both pass that check before either write commits, and the app doesn't yet handle the rejected insert that follows. Sequential retries are safe; concurrent ones aren't.
 
 ## Quotas
 
@@ -52,4 +52,4 @@ flowchart LR
 
 ## Limitations
 
-There's no invoicing, proration, or overage billing. Token counts are simulated rather than coming from a real model call, since the point was metering and billing, not the model itself. I kept the scope small on purpose so I could actually verify the core stayed correct under retries and failures, instead of spreading that effort over more features.
+There's no invoicing, proration, or overage billing, and token counts are simulated rather than coming from a real model call since the point was metering and billing, not the model itself. I kept the scope small on purpose so I could verify the core stayed correct under retries and failures instead of spreading that effort thin.

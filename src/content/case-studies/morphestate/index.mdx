@@ -10,25 +10,23 @@ import preview from "./preview.png";
 import workflowScheduling from "./workflow-scheduling.png";
 import workflowReminders from "./workflow-reminders.png";
 
-During my internship at [MorpheLabs](/work/morphelabs), I worked on a real estate platform whose viewing bookings all went through a contact form. Someone interested in a property would fill it out, and a staff member would follow up manually to confirm a time, check it against everyone else's schedule, and get it onto the calendar.
+During my internship at [MorpheLabs](/work/morphelabs), I worked on a real estate platform whose viewing bookings all went through a contact form. Someone interested would fill it out, and a staff member would follow up manually to confirm a time, check it against everyone else's schedule, and get it onto the calendar.
 
-That's fine at a handful of bookings a week. It stops being fine once viewings overlap, staff are slow to respond, or a form submission just sits unread. The bottleneck wasn't interest in the properties. It was everything that had to happen between someone expressing interest and a viewing actually landing on a calendar without conflicting with another one.
+That's fine at a handful of bookings a week, but it breaks down once viewings overlap or staff can't keep up. The bottleneck was never interest in the properties. It was everything between someone expressing interest and a viewing landing on a calendar without conflicting with another one.
 
-My job was to remove that bottleneck: let people book, reschedule, or cancel a viewing by talking to an AI voice agent, and have the entire scheduling workflow behind it run automatically, correctly, and without double-booking anyone.
+My job was to remove that: let people book, reschedule, or cancel a viewing by talking to an AI voice agent, with the scheduling workflow behind it running automatically and correctly, no double-booking.
 
 ## Why a form was the wrong interface for this
 
-A form works when the person filling it out already knows exactly what they want: this property, this date, this time. That's often not true here. Someone browsing listings is usually still deciding, and what they actually want to ask is closer to "what's available this weekend for the unit on the corner" than a fixed date and time they can type into a field.
+A form works when the person filling it out already knows exactly what they want. That's often not true here. Someone browsing listings is usually still deciding, closer to "what's available this weekend for the unit on the corner" than a fixed date they can type into a field. That's a conversation, not a form submission, and a voice agent can hold it: take a loose request, ask for whatever's missing, land on a concrete booking.
 
-That's a conversation, not a form submission. A voice agent can hold that conversation: take a loosely specified request, ask for whatever's missing, and land on a concrete booking, without making the visitor do the work of first figuring out the exact slot they want.
-
-But a conversational front end only solves half the problem. The interesting part is what has to be true after the agent hangs up: the booking has to be checked against every other booking for that property, written down correctly, reflected on a calendar, confirmed to the right person, and followed up before the appointment. Get any of that wrong and you've just replaced a slow manual process with a fast automated way of double-booking someone.
+But the conversational front end is only half the problem. What happens after the agent hangs up matters more: the booking has to be checked against every other booking for that property, written down correctly, reflected on a calendar, and confirmed. Get any of that wrong and you've just replaced a slow manual process with a fast way to double-book someone.
 
 ## What I built
 
 <Image src={preview} alt="A preview of the website" data-zoomable />
 
-The voice agent itself doesn't touch the booking data directly. It only handles the conversation: figuring out whether someone wants to schedule, reschedule, or cancel, and pulling out the property, date, and time from however they phrase it. Once it has that, it hands off a structured request to an automation layer built in n8n, which is where the actual scheduling logic lives.
+The voice agent doesn't touch booking data directly. It only handles the conversation: figuring out whether someone wants to schedule, reschedule, or cancel, and pulling out the property, date, and time from however they phrase it. It then hands off a structured request to an automation layer built in n8n, where the scheduling logic actually lives.
 
 ### Turning a request into a confirmed booking
 
@@ -38,11 +36,9 @@ The voice agent itself doesn't touch the booking data directly. It only handles 
   data-zoomable
 />
 
-The first workflow receives the agent's request, validates the data, and routes it by intent.
+This workflow receives the agent's request, validates it, and routes it by intent. For a new booking, it checks the date against existing bookings before writing anything. If the slot's taken, it computes the nearest open slots and sends those back instead of just failing, so the agent can offer alternatives in the same conversation. If it's free, it creates the booking, a matching calendar event, and a confirmation.
 
-For a new booking, it checks the requested date against existing bookings for that property before writing anything. If the slot is already taken, it computes the nearest open slots and sends those back instead of just failing the request, so the agent can offer alternatives in the same conversation rather than asking the person to call again. If the slot is free, it creates the booking, creates a matching calendar event, and sends a confirmation.
-
-Rescheduling and cancellation go through the same shape: look up the existing booking, re-check availability if the time is changing, update or remove the calendar event, and confirm the change. Cancelling a booking marks it as cancelled rather than deleting the record, so there's still a trail of what was booked and when it was cancelled.
+Rescheduling and cancellation follow the same shape: look up the booking, re-check availability if the time changed, update or remove the calendar event, confirm. Cancelling marks a booking as cancelled rather than deleting it, so there's still a record of what happened.
 
 ### Reminding people before they forget
 
@@ -52,20 +48,14 @@ Rescheduling and cancellation go through the same shape: look up the existing bo
   data-zoomable
 />
 
-The second workflow runs on a schedule, checking every 15 minutes for bookings coming up in roughly three hours that haven't been reminded yet, and sends a reminder for each one. Once it sends a reminder, it flags the booking so the same one never goes out twice.
-
-Neither workflow depends on the voice agent staying involved after the initial request. Once a booking exists, the reminder flow picks it up entirely on its own.
+This one runs every 15 minutes, checking for bookings coming up in roughly three hours that haven't been reminded yet, and flags each one after sending so it never goes out twice. The voice agent doesn't need to stay involved after the initial request; once a booking exists, this picks it up entirely on its own.
 
 ## What this changed
 
-Booking a viewing no longer depends on a staff member being available to read a form and manually check a calendar. The conflict check that used to happen in someone's head, cross-referencing a request against everyone else's bookings, now happens before a slot is even offered back to the visitor, so a booking that gets confirmed is a booking that's actually free.
-
-It also meant fewer no-shows: reminders go out automatically on a fixed window before every viewing instead of depending on someone remembering to send them.
+Booking a viewing no longer depends on a staff member reading a form and manually checking a calendar. The conflict check that used to happen in someone's head now happens before a slot is even offered back, so a confirmed booking is actually free. It also cut no-shows, since reminders now go out automatically instead of depending on someone remembering.
 
 ## What I learned
 
-The hard part of this project was never getting the voice agent to sound natural or understand what someone was asking for. Conversational AI is good at that out of the box.
+The hard part was never getting the voice agent to sound natural, conversational AI is good at that out of the box. It was treating the agent as an input to a workflow rather than the workflow itself. Once the agent decides what someone wants, that decision has to survive a conflict check, a calendar sync, and a notification without silently going wrong. I spent most of my time on the boring parts: validation, availability checks, making sure every branch confirmed the same way it wrote.
 
-The hard part was treating the agent as an input to a workflow rather than the workflow itself. Once the agent decides what someone wants, that decision has to survive a conflict check, a calendar sync, and a notification without silently producing a bad outcome. I ended up spending most of my time on the boring parts: validation, availability checks, and making sure every branch, schedule, reschedule, cancel, confirmed the same way it wrote.
-
-That's the part that doesn't show up when you demo the voice agent, but it's the part that decides whether the automation is actually trustworthy enough to replace a human doing the same job manually.
+That part doesn't show up in a demo, but it's what decides whether the automation is actually trustworthy enough to replace a human doing the job.

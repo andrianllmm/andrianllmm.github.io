@@ -6,41 +6,23 @@ date: "2023-12-21"
 
 Taglish is messy.
 
-A single sentence can switch between Tagalog and English several times, sometimes every few words. Most language detection tools assume an entire sentence belongs to one language, so they fall apart as soon as the two start mixing.
+A single sentence can switch between Tagalog and English several times.
 
-I ran into this problem during Grade 12 while working on our Practical Research 2 paper. We asked over a hundred students to fill in the dialogue of comic strips using their own words. The responses were naturally written in Taglish, and part of our analysis required counting how often students switched between Tagalog and English.
+Most language detection tools assume an entire sentence belongs to one language, so they fall apart as soon as the two start mixing.
 
-We could have labeled every word by hand. It would have worked. It also would have been painfully slow.
-
-Instead, I wrote TagLID.
+I ran into this during Grade 12 while working on our Practical Research 2 paper. We'd asked over a hundred students to fill in comic strip dialogue in their own words, and the responses were naturally in Taglish. Part of our analysis required counting how often students switched languages, which we could have labeled by hand, but that would have been painfully slow. Instead, I wrote TagLID.
 
 TagLID is a Python library and command-line tool that identifies the language of each individual word in Taglish text. It uses dictionary lookups as its foundation, then adds rules to handle the kinds of things people actually write: slang, abbreviations, contractions, misspellings, inflected words, interjections, names, and numbers.
 
 ## From a research script to a reusable tool
 
-The first version wasn't meant for anyone else.
-
-It was a script that automated part of our research so we wouldn't have to classify every word ourselves. Once the research was finished, I realized the tool could be useful beyond that one project.
-
-So I cleaned it up, packaged it properly, added a command-line interface, and published it as a library that anyone could install and use.
-
-I liked the idea that the work wouldn't end with our paper. Maybe another student researching Taglish could use it. Maybe another developer working on Filipino NLP could build on it.
+The first version wasn't meant for anyone else, just a script to automate part of our research. Once the research was done, I realized it could be useful beyond that one project, so I cleaned it up, packaged it, added a CLI, and published it as a library anyone could install.
 
 ## Building a rule-based language identifier
 
-The core idea is simple.
+The core idea is simple: if a word appears in the Tagalog dictionary, classify it as Tagalog, and same for English. Reality wasn't that simple. I built the dictionaries by scraping Pinoy Dictionary and parsing the GCIDE English dictionary, and added frequency lists from the Leipzig Corpora Collection for another signal.
 
-If a word appears in the Tagalog dictionary, classify it as Tagalog. If it appears in the English dictionary, classify it as English.
-
-Reality wasn't nearly that simple.
-
-I built the dictionaries by scraping entries from Pinoy Dictionary and parsing the GCIDE English dictionary. I also incorporated frequency lists from the Leipzig Corpora Collection so the classifier had another signal to work with.
-
-That became important for words that exist in both languages.
-
-Take the word **"at."** In English, it's a preposition. In Tagalog, it means "and."
-
-A dictionary lookup alone can't tell which language it belongs to because both are technically correct. Instead, TagLID compares how frequently the word appears in each language and chooses the more likely match.
+That mattered for words that exist in both languages. Take **"at."** In English it's a preposition, in Tagalog it means "and," and a dictionary lookup alone can't tell which one applies since both are technically correct. TagLID compares how frequently the word appears in each language instead and picks the more likely match.
 
 ```python
 function LangIdentify(word):
@@ -57,11 +39,7 @@ function LangIdentify(word):
     return lang
 ```
 
-Even that wasn't enough.
-
-People don't always write dictionary words. They shorten them, misspell them, mix languages, and invent slang. Before classification, TagLID runs a series of preprocessing rules to normalize words, skip tokens that don't belong to either language, and handle cases that simple dictionary lookups miss.
-
-The longer I worked on it, the more I realized language isn't nearly as clean as I had assumed.
+Even that wasn't enough. People don't always write dictionary words: they shorten them, misspell them, mix languages, invent slang. Before classification, TagLID runs preprocessing rules to normalize words, skip tokens that don't belong to either language, and catch cases plain dictionary lookups miss.
 
 ## Using TagLID
 
@@ -102,12 +80,8 @@ mundo       0      1  DICT
 
 ## What I learned
 
-This was one of the first projects where programming solved a real problem I had.
+This was one of the first projects where programming solved a real problem I had: repetitive work nobody wanted to do, solved by writing a script for it.
 
-We had repetitive work that nobody wanted to do, and I realized I could just... write a script for it.
+On the technical side, it taught me to scrape data, parse XML, package a Python library, and build a CLI. I also learned how fast a simple idea turns complicated. I figured language detection would mostly be dictionary lookups, then kept running into ambiguous words, slang, misspellings, and inflections.
 
-I also learned how quickly simple ideas become complicated. At first, I thought language detection would mostly be dictionary lookups. Then I started running into ambiguous words, slang, misspellings, and inflections. Every time I thought I had finished, another edge case showed up.
-
-On the technical side, this project taught me how to scrape data, parse XML, package a Python library, build a CLI, and organize code that I wanted to keep using after the original project ended.
-
-Looking back, TagLID matters to me because it was the first project where I built software not because someone asked me to, but because I wanted to make my own work easier. It was the first time I felt the leverage programming gives you. Instead of accepting a tedious task, I could automate it.
+TagLID matters to me because it was the first time I built software not because someone asked me to, but because I wanted to make my own work easier. That was the first time I felt the leverage programming actually gives you.

@@ -4,23 +4,13 @@ description: "Huffman coding needs trees, heaps, and hash maps to work, making i
 date: "2025-12-20"
 ---
 
-ZipZap is a CLI tool that compresses text files using <a href="https://en.wikipedia.org/wiki/Huffman_coding" target="_blank"> Huffman coding </a> . It was built as an experiment in implementing data structures and algorithms from scratch, including priority queues, binary trees, and hash maps.
+ZipZap is a CLI tool that compresses text files using <a href="https://en.wikipedia.org/wiki/Huffman_coding" target="_blank">Huffman coding</a>. It was built as an experiment in implementing data structures and algorithms from scratch, including priority queues, binary trees, and hash maps.
 
 ## Why I built it
 
-I was already interested in how compression worked before this project.
+I was already interested in how compression worked, and when I learned Huffman coding leans heavily on data structures, it became the obvious choice for my final project in <a href="https://upvdpsm.com/courses/computer-science/cmsc-123.html" target="_blank">CMSC 123</a> (Data Structures).[^1]
 
-When I learned that Huffman coding relies heavily on data structures, it became
-a natural choice for my final project in <a href="https://upvdpsm.com/courses/computer-science/cmsc-123.html" target="_blank">CMSC 123</a>
-(Data Structures).[^1]
-
-The course required us to implement data structures ourselves, so I wanted a
-project where those implementations were not just isolated exercises.
-A compressor was a good fit because the algorithm depends on multiple structures
-working together.
-
-Instead of just checking whether my data structures passed tests, ZipZap gave
-them a real workload.
+The course had us implement data structures ourselves, and I wanted something where those implementations weren't just isolated exercises. A compressor fit because the algorithm depends on several structures working together, giving them a real workload instead of just passing tests.
 
 ## How it turned out
 
@@ -34,25 +24,13 @@ zipzap zip original.txt -o compressed.zz
 zipzap zap compressed.zz -o decompressed.txt
 ```
 
-The tool achieves around 50-60% size reduction on typical text files. It is not intended to compete with production compression tools like <a href="https://www.gnu.org/software/gzip/" target="_blank"> gzip </a>, but it successfully demonstrates the complete compression and decompression
-pipeline.
+It gets around 50-60% size reduction on typical text files. It's not meant to compete with <a href="https://www.gnu.org/software/gzip/" target="_blank">gzip</a>, but it does show a full compression and decompression pipeline working end to end.
 
-Beyond basic compression, ZipZap includes inspection features:
-
-- `--time` shows compression timing information
-- `--tree` displays the generated Huffman tree
-- `--codebook` shows the character-to-bit mappings
-- `--contents` displays the encoded bitstream
-
-These were originally added during development, but they also make the algorithm
-easier to understand by exposing what normally happens behind the scenes.
+It also has inspection flags I added during development and kept: `--time` for timing, `--tree` to print the Huffman tree, `--codebook` for the character-to-bit mappings, and `--contents` for the raw encoded bitstream. Useful for seeing what's normally hidden.
 
 ## How I built it
 
-The core algorithm follows Huffman coding.
-
-Given a text file, ZipZap first counts character frequencies. It then builds a
-tree by repeatedly combining the least frequent nodes using a priority queue.
+The core algorithm follows Huffman coding: count character frequencies, then build a tree by repeatedly combining the least frequent nodes with a priority queue.
 
 For example, given the input:
 
@@ -87,9 +65,7 @@ flowchart TD
     style Root fill:#1f2020
 ```
 
-ZipZap uses <a href="https://en.wikipedia.org/wiki/Canonical_Huffman_code" target="_blank">canonical Huffman codes</a> for encoding. Instead of storing the entire tree, the compressor stores enough metadata to reconstruct the codebook during decompression.
-
-The compression pipeline looks like this:
+ZipZap uses <a href="https://en.wikipedia.org/wiki/Canonical_Huffman_code" target="_blank">canonical Huffman codes</a>, so instead of storing the whole tree, it only stores enough metadata to rebuild the codebook on decompression.
 
 ```mermaid
 ---
@@ -115,31 +91,13 @@ flowchart TD
     style START fill:#1f2020
 ```
 
-All major data structures were implemented from scratch.
-The project does not rely on Python's built-in equivalents like `heapq` or
-`defaultdict`.
-
-The most challenging part was not the data structures themselves, but handling
-the actual bits.
-
-Working with individual bits instead of normal bytes introduced many edge cases:
-packing encoded data, tracking unused padding bits, and reconstructing the
-original text exactly during decompression.
+All the major data structures are implemented from scratch, no `heapq` or `defaultdict`. The hardest part wasn't the structures themselves but handling raw bits: packing encoded data, tracking unused padding bits, and reconstructing the original text exactly on decompression.
 
 ## What I learned
 
-ZipZap gave me a different perspective on data structures.
+ZipZap gave me a different perspective on data structures. Before this, heaps, trees, and hash maps were mostly things I implemented because a course required them. Building a working compressor showed why they exist and how they interact in a larger system.
 
-Before this project, concepts like heaps, trees, and hash maps were mostly things
-I implemented because a course required them. Building a working compressor
-showed why those structures exist and how they interact inside a larger system.
-
-It also reinforced the importance of correctness. Compression is unforgiving:
-a small mistake in encoding or decoding can make the entire output unusable.
-
-This project was not meant to replace existing compression tools. It was an
-experiment to understand the algorithms behind them and prove that I could turn
-abstract computer science concepts into working software.
+It also reinforced how unforgiving compression is: one small mistake in encoding or decoding and the whole output is unusable. This was never about replacing gzip, it was about proving I could turn a textbook concept into working software.
 
 ---
 

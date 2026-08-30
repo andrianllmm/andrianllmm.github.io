@@ -14,62 +14,28 @@ export const hermes = (() => {
   return project;
 })();
 
-For my previous hackathons, I kept making the same "mistake": we start with a technology, then build something interesting.
-
-For this, I wanted to do the opposite. We talked to actual users, and built around a problem that already existed.
-
-For once, I thought we did it right. Then we looked around the competition and realized we were still in a crowded space.
+In past hackathons I kept starting with a technology, then finding something interesting to build with it. This time we talked to actual users first and built around a problem that already existed. For once I thought we'd done it right. Then we looked around the competition and realized we were still in a crowded space.
 
 ## Finding the problem
 
-For this hackathon, we did something I wish we did more often: We talked to actual users.
+We interviewed dorm managers and the MDRRMO of Miagao about disaster response, and one issue kept coming up: communication. Reports come from different people, through different channels, at different levels of detail, and someone still has to organize all of it before responders can use it.
 
-We interviewed dorm managers and the MDRRMO of Miagao to understand problems they faced during disaster response. One issue kept appearing: communication.
-
-During emergencies, information does not arrive in a clean format. Reports come from different people, through different channels, with different levels of detail. Someone still has to organize all of that information before responders can actually use it.
-
-Our goal was not "let's build an AI chatbot." That would have been the exact trap I was trying to avoid in my [previous hackathon](/the-hackathon-where-blockchain-wasnt-enough).
-
-The idea was to improve an existing workflow. People already communicate through messaging platforms. The problem was that those conversations were messy and difficult to turn into structured incident data.
-
-So we built a DRRM communication control center that could receive reports through chat, process them, and turn them into information that responders could actually work with.
+We didn't want to build "an AI chatbot," that was the exact trap from my [previous hackathon](/the-hackathon-where-blockchain-wasnt-enough). People already communicate through messaging platforms; the problem was those conversations were messy and hard to turn into structured incident data. So we built a DRRM communication control center that takes in reports through chat and turns them into something responders can work with.
 
 <ProjectCard project={hermes} />
 
 ## AI is not the product
 
-One thing I am glad we did differently was how we treated AI.
+This was my first project integrating LLMs, but AI was never meant to be the selling point, especially since a wrong output here can cost lives. It handled the messy human communication, but rule-based flows held the system together. A lot of AI projects start with "where can we put an LLM?" and search for a problem afterward. I didn't want HERMES to be one of them.
 
-This was my first project integrating LLMs, but AI was never supposed to be the main selling point. That matters because a wrong output can cost lives.
+## The mistake I thought I'd already learned
 
-The AI helped process messy human communication, but it was not the thing holding the entire system together. We combined LLM-based extraction with rule-based flows because reliability mattered more than showing off that we used AI.
+This hackathon was frustrating precisely because I thought I'd learned this lesson already: a shiny technology doesn't make a shiny product, and extra features don't fix a weak idea. We started with a real problem, talked to real users, and still ended up next to a dozen other teams building some version of a reporting system.
 
-A lot of AI projects today feel like they start with "where can we put an LLM?" and then search for a problem afterward.
-
-## The mistake I thought I already learned
-
-Looking back, this hackathon was frustrating because I thought I had already learned this lesson.
-
-In my previous hackathons, I kept running into the same problem. A shiny technology does not automatically make a shiny product. Adding features did not make a weak idea stronger.
-
-For HERMES, I thought we avoided that. We started with a problem. We talked to users. We spent a lot of time thinking about the approach. And yet, when we looked around, there were still many teams building some version of reporting systems.
-
-That is one of the hardest parts of hackathons. You spend hours discussing an idea, convincing yourself that you found a unique angle, then suddenly realize that other people had the same thought.
-
-## Where we fell short
-
-The frustrating part is that even though we avoided one mistake, we still made another.
-
-We were so focused on making sure the problem was real that we did not push hard enough on what would make our solution unforgettable. A working reporting system is useful. But usefulness alone is not enough in a hackathon.
-
-You are competing against other teams with limited time, and everyone is trying to prove why their idea deserves attention. Having a valid problem is only the starting point. We built something that made sense. But maybe we needed something that made people immediately say, "I haven't seen this before."
+You spend hours convincing yourself you found a unique angle, then realize other people had the same thought. We were so focused on proving the problem was real that we didn't push hard enough on making the solution memorable. Everyone there has a valid problem; you still need people to say "I haven't seen this before."
 
 ## What I learned
 
-HERMES did not go far in the competition. We submitted our video and were eliminated. It was disappointing, especially because this project felt more grounded than some of our previous hackathon ideas.
+We submitted our video and got eliminated, which stung more because this project felt more grounded than my past hackathon ideas. Learning from a mistake doesn't mean you stop making versions of it.
 
-But it also showed me something I needed to hear again. Learning from past mistakes does not mean you stop making them. Sometimes you just make versions of the same mistake.
-
-I am still glad we built HERMES. It was my first time building an LLM-integrated system, and it taught me a lot about where AI actually belongs in software.
-
-But the bigger lesson was not about AI. It was about being ruthless with ideas. A real problem is good. A useful product is good. But in a hackathon, you still need a reason why people should remember yours.
+I'm still glad we built it. It was my first time building an LLM-integrated system, and it taught me where AI actually belongs in software.

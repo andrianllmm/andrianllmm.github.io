@@ -21,17 +21,9 @@ import leaderboard from "./screenshots/leaderboard.png";
 import wordle from "./screenshots/wordle.png";
 import match from "./screenshots/match.png";
 
-I grew up speaking Aklanon, but I'm far from fluent.
+I grew up speaking Aklanon, but I'm far from fluent. Whenever my friends and I chatted in it, I'd run into a word I didn't know, or we'd disagree about what one meant. I'd search for it and usually find nothing. If I was lucky, I'd ask my parents.
 
-Whenever my friends and I chatted in Aklanon, I'd occasionally run into a word I didn't know or wasn't completely sure I understood. Sometimes we'd even disagree about what a word actually meant or how it should be used.
-
-So I'd search for it. Most of the time, nothing useful came up. If I was lucky, I'd ask my parents.
-
-That experience made me realize how little digital infrastructure existed for my own language.
-
-So I built Aklish.
-
-Aklish is a web application where people can contribute, vote on, and discover Aklanon-English translations. Underneath that, it's really an attempt to build the pieces that a language needs to exist online: a searchable dictionary, quality control through voting, a spell checker, and learning tools that encourage people to keep using the language.
+That's how little digital infrastructure existed for my own language. So I built Aklish, a web app where people contribute and discover Aklanon-English translations. It's really an attempt to build the pieces a language needs to exist online: a searchable dictionary, quality control through voting, a spell checker, and learning tools that encourage people to keep using it.
 
 <Callout type="info">
   This project is no longer actively developed because I'm now building
@@ -41,21 +33,11 @@ Aklish is a web application where people can contribute, vote on, and discover A
 
 ## Why I built it
 
-Aklish started as my Senior High School Research Capstone Project, but the motivation came long before that.
-
-I wanted a place where I could reliably look up Aklanon words without relying on scattered sources or asking ancient family members. More importantly, I wanted something that could continue growing as more people contributed.
-
-Instead of building a static dictionary, I decided to build a crowdsourced one.
-
-That meant users could submit translations, vote on existing ones, and gradually improve the quality of the dictionary together.
+Aklish started as my Senior High School Research Capstone Project. But the motivation came earlier. I wanted a place to reliably look up Aklanon words that could keep growing as more people contributed. So instead of a static dictionary, I built a crowdsourced one, where users submit translations, vote on existing ones, and improve it together.
 
 ## Building the dictionary
 
-The biggest challenge wasn't writing code. It was getting the words.
-
-There wasn't a digital Aklanon dictionary I could simply import, so I manually encoded more than 5,000 dictionary entries from an old printed dictionary. Looking back, modern OCR models might have made that easier, but at the time the scanned pages were messy enough that manual encoding seemed like the only realistic option.
-
-Those entries became the foundation that everything else in Aklish was built on.
+The biggest challenge wasn't writing code, it was getting the words. There wasn't a digital Aklanon dictionary to import, so I manually encoded more than 5,000 entries from an old printed dictionary. Modern OCR might make that easier today, but the scanned pages were messy enough that manual encoding was the only realistic option at the time. Those entries became the foundation everything else was built on.
 
 <div class="grid gap-4 md:grid-cols-2">
   <Image
@@ -74,13 +56,7 @@ Those entries became the foundation that everything else in Aklish was built on.
 
 ## Letting the community improve it
 
-A dictionary alone wasn't enough.
-
-Language changes over time, and many words have multiple meanings depending on context. Instead of making every translation fixed, Aklish lets users contribute their own translations while the community decides which ones are most useful.
-
-Users can submit translations from either language, vote them up or down, and build reputation through their contributions.
-
-The reputation system was inspired by Stack Overflow. Voting helps surface better translations while rewarding people who consistently contribute high-quality entries.
+Language changes and words carry multiple meanings depending on context, so Aklish lets users submit translations from either language, vote them up or down, and build reputation through their contributions. The reputation system, inspired by Stack Overflow, surfaces better translations while rewarding people who consistently contribute good entries.
 
 <div class="grid gap-4 md:grid-cols-2">
   <Image src={addEntry} alt="Add Entry" data-zoomable />
@@ -96,13 +72,9 @@ The reputation system was inspired by Stack Overflow. Voting helps surface bette
 
 ## Helping people contribute better translations
 
-One feature I'm particularly proud of is the spell checker.
+One feature I'm particularly proud of is the spell checker, which catches obvious mistakes before they become part of the dictionary. It uses SymSpellPy for spelling suggestions together with LemmInflect and AklStemmer to recognize inflected English and Aklanon words.
 
-Because contributors were writing in both Aklanon and English, I wanted to catch obvious mistakes before they became part of the dictionary.
-
-The spell checker uses SymSpellPy for spelling suggestions together with LemmInflect and AklStemmer to recognize inflected English and Aklanon words.
-
-Building this feature also led to another project entirely. While implementing the spell checker, I realized dictionary lookups weren't enough because inflected Aklanon words often don't appear in dictionaries. That problem eventually became [AklStemmer](/case-studies/aklstemmer).
+Building it led to another project entirely. Dictionary lookups weren't enough because inflected Aklanon words often don't appear in dictionaries, and that problem became [AklStemmer](/case-studies/aklstemmer).
 
 <Image src={proofreader} alt="Proofreader" class="w-full" data-zoomable />
 
@@ -128,11 +100,7 @@ Building this feature also led to another project entirely. While implementing t
   </div>
 </div>
 
-Since the project depended on community participation, I wanted it to feel approachable instead of looking like a research tool.
-
-Users can browse and search the dictionary, create accounts, contribute translations, and use the application comfortably on desktop or mobile.
-
-Looking back now, it's funny seeing how I built the interface almost entirely with Django templates and Bootstrap. This was before I had learned React or modern frontend frameworks.
+Since the project depended on community participation, I wanted it to feel approachable rather than like a research tool. Users browse and search the dictionary, create accounts, and contribute translations comfortably on desktop or mobile. Looking back, it's funny that I built the interface almost entirely with Django templates and Bootstrap, before I'd learned React or any modern frontend framework.
 
 <div class="grid gap-4 md:grid-cols-2">
   <Image
@@ -151,9 +119,7 @@ Looking back now, it's funny seeing how I built the interface almost entirely wi
 
 ## Encouraging people to learn
 
-I also added a few small games to make the platform more engaging.
-
-There was a Wordle-inspired game and a synonym-antonym matching game. The idea was that repeated exposure to vocabulary would help people become more familiar with Aklanon while making the platform feel less like a dictionary.
+I also added a Wordle-inspired game and a synonym-antonym matching game, on the idea that repeated exposure to vocabulary would help people get more familiar with Aklanon while making the platform feel less like a dictionary.
 
 <div class="grid gap-4 md:grid-cols-2">
   <Image src={wordle} alt="Wordle" data-zoomable />
@@ -162,16 +128,8 @@ There was a Wordle-inspired game and a synonym-antonym matching game. The idea w
 
 ## What I learned
 
-Aklish taught me how much work goes into building a real web application.
+Aklish taught me how much work goes into a real web application. Building almost every part myself taught me more about full-stack development.
 
-Before this project, I had never built something with authentication, user-generated content, moderation, search, reputation systems, deployment, and thousands of records. Building every part of the application myself gave me a much better understanding of full-stack development than any classroom exercise could.
+It also changed how I think about community platforms. I expected people to be excited to contribute translations. Instead, many spent more time playing the games than adding words. Building a community is harder than building the software, people need reasons to come back, and those reasons aren't always the ones you expect.
 
-It also changed how I think about community platforms.
-
-I expected people would be excited to contribute translations. Instead, many users spent more time playing the games than adding new words. This showed me that building a community is much harder than building the software itself. People need reasons to come back, and those reasons aren't always the ones you expect.
-
-Even so, I'm still proud of what it became.
-
-Aklish started because I wanted a better way to look up words in my own language. Along the way, it grew into a platform that brought together a dictionary, spell checker, crowdsourced translations, and language-learning tools.
-
-It also became the foundation for Kulasisi, where I'm now applying the same ideas to many Philippine languages instead of just one.
+It also became the foundation for [Kulasisi](/case-studies/kulasisi), where I'm now applying the same ideas to many Philippine languages instead of just one.

@@ -4,41 +4,21 @@ description: "I built AklStemmer after discovering that dictionary-based spell c
 date: "2024-05-13"
 ---
 
-Building [Aklish](/case-studies/aklish) uncovered a familiar problem.
+Building [Aklish](/case-studies/aklish) uncovered a familiar problem. Its dictionary-based spell checker worked well until I tested inflected words. The dictionary contains `sueat`, not `nagsueat`, so a lookup treats `nagsueat` as unknown even though it's just an inflected form of the same root. Aklanon, like many Philippine languages, changes words through prefixes, suffixes, infixes, and reduplication, so this kept happening.
 
-One feature of the app was a dictionary-based spell checker. It worked well until I started testing inflected words.
-
-Take `nagsueat`.
-
-The dictionary contains `sueat`, not `nagsueat`. A simple dictionary lookup treats it as an unknown word even though it's just an inflected form of the same root. The same issue kept appearing because Aklanon, like many Philippine languages, changes words through prefixes, suffixes, infixes, and reduplication.
-
-I had already solved this problem once while building TagLID by creating TglStemmer for Tagalog.
-
-This time, I needed the same solution for Aklanon.
-
-I looked for an existing Aklanon stemmer that I could integrate into Aklish. There wasn't one. So I built AklStemmer.
+I had already solved this for Tagalog by building TglStemmer for TagLID. I looked for an existing Aklanon stemmer to integrate into Aklish. There wasn't one, so I built AklStemmer.
 
 AklStemmer is a Python library that recovers the root form of Aklanon words through rule-based transformations. It removes affixes, reduces repeated syllables, applies phonological rules, and filters the results against a dictionary to find the most likely stem.
 
 ## Why I built it
 
-AklStemmer started as an internal component of Aklish.
+AklStemmer started as an internal component of Aklish. Dictionaries mostly contain root words, not every inflected form, and expanding one to cover every combination wasn't realistic, so recovering the root word first was the cleaner fix. As the project grew, I split the stemmer into its own library so it could be reused outside Aklish.
 
-The spell checker relied on dictionary lookups, but dictionaries usually contain root words rather than every possible inflected form. Expanding the dictionary wasn't realistic because there are too many possible combinations. Recovering the root word first was a much cleaner solution.
-
-As the project grew, I split the stemmer into its own library so it could be reused outside Aklish.
-
-There was another reason I cared about building it.
-
-Aklanon is my mother tongue, but it's also a very low-resource language. There are very few NLP tools available for it, and compared to larger languages, its digital presence is much smaller. I enjoy building software for Filipino languages in general, not just Tagalog, and AklStemmer felt like one small step toward making Aklanon easier to work with computationally.
+Aklanon is also my mother tongue, and a low-resource one with almost no NLP tools. I like building software for Filipino languages beyond Tagalog, and this felt like a small step toward that.
 
 ## How I built it
 
-I didn't start from scratch.
-
-The overall architecture came from TglStemmer, but I couldn't simply copy the rules. Aklanon has its own morphology, phonological changes, and affix system, so many of the stemming rules had to be rewritten.
-
-At a high level, AklStemmer generates possible root words instead of assuming the input already exists in a dictionary.
+The overall architecture came from TglStemmer, but I couldn't just copy the rules. Aklanon has its own morphology, phonological changes, and affix system, so most of the stemming rules had to be rewritten. At a high level, AklStemmer generates possible root words instead of assuming the input already exists in a dictionary.
 
 Each input first goes through tokenization using <a href="https://www.nltk.org/" target="_blank">NLTK</a> so words can be processed individually. From there, the stemmer applies a sequence of rule-based transformations based on Aklanon grammar.
 
@@ -46,11 +26,9 @@ Most of the linguistic rules came from an Aklanon grammar reference. Because the
 
 ### Removing affixes
 
-The first step is stripping prefixes, infixes, and suffixes.
+The first step is stripping prefixes, infixes, and suffixes. Like Tagalog, this often requires reversing spelling changes introduced during inflection, so the stemmer applies phonological transformation rules alongside affix removal.
 
-Like Tagalog, removing affixes often requires reversing spelling changes introduced during inflection. The stemmer therefore applies several phonological transformation rules while removing affixes.
-
-For prefixes, that includes examples such as:
+Prefixes:
 
 - `parayaw` → `dayaw`
 - `pangablit` → `kablit`
@@ -58,13 +36,11 @@ For prefixes, that includes examples such as:
 - `pamasyar` → `pasyar`
 - `panumdum` → `dumdum`
 
-It also removes infixes like `<in>`:
+Infixes like `<in>`:
 
 - `sinueat` → `sueat`
 
-Suffixes require another collection of transformation rules, including contractions, phoneme changes, vowel loss, and metathesis.
-
-Some examples are:
+Suffixes, which also involve contractions, phoneme changes, vowel loss, and metathesis:
 
 - `eot` → `eon`
 - `bayari` → `bayad`
@@ -76,7 +52,7 @@ Some examples are:
 
 ### Handling reduplication
 
-The stemmer also recognizes reduplication, another common feature of Aklanon.
+The stemmer also recognizes reduplication, another common feature of Aklanon:
 
 Partial reduplication:
 
@@ -91,34 +67,14 @@ Full reduplication:
 
 ### Choosing the best stem
 
-Applying these rules often produces multiple possible stems.
-
-For example, `bukot` could generate:
-
-- `bukot`
-- `buko`
-- `bukon`
-
-Instead of selecting the first result, AklStemmer scores every candidate.
-
-The scoring favors stems that require fewer transformations, remove more meaningful affixes or reduplication, and produce more morphologically plausible words. The highest-scoring candidate becomes the final stem.
+Applying these rules often produces multiple candidates. `bukot` could generate `bukot`, `buko`, or `bukon`. Instead of taking the first result, AklStemmer scores every candidate, favoring stems that need fewer transformations, remove more meaningful affixes or reduplication, and produce more morphologically plausible words. The highest score wins.
 
 ## How it improved Aklish
 
-Adding the stemmer made the spell checker significantly more useful.
-
-Instead of treating many inflected words as unknown, Aklish could recover their root forms before checking the dictionary. That allowed the spell checker to recognize many valid words that would otherwise have been flagged incorrectly.
-
-Separating the stemmer into its own library also kept the architecture cleaner. Aklish could focus on spell checking while AklStemmer handled the language-specific morphology.
+Aklish could now recover root forms before checking the dictionary instead of treating inflected words as unknown, which let the spell checker recognize many words it used to flag incorrectly. Splitting the stemmer into its own library also kept the architecture cleaner: Aklish handles spell checking, AklStemmer handles the morphology.
 
 ## What I learned
 
-This project reminded me that supporting a low-resource language is very different from working with one that already has an NLP ecosystem.
+Supporting a low-resource language is a different kind of hard. With TglStemmer I had papers and prior work to lean on. With Aklanon there was nothing, so most of the work was reading a grammar reference and translating it into code by hand, which surfaced rules in my own language I'd never consciously noticed despite speaking it my whole life.
 
-When I built TglStemmer, there were at least papers and existing work I could learn from. With Aklanon, there were no libraries I could build on. Much of the work involved reading grammar references and translating linguistic rules into code.
-
-I also discovered rules in my own language that I had never consciously thought about, even though I had been using them my whole life. Writing software forced me to understand Aklanon at a level far beyond simply speaking it.
-
-What I'm most proud of isn't the stemming algorithm itself. It's that I built an NLP tool for my own mother tongue.
-
-Languages like English receive most of the attention in NLP. Even Tagalog has a much larger ecosystem than Aklanon. I want to help improve Filipino NLP as a whole, especially for regional languages that rarely receive that kind of support. AklStemmer is one contribution toward that goal.
+What I'm proudest of isn't the algorithm, it's that I built an NLP tool for my own mother tongue. Tagalog already has a much bigger NLP ecosystem than Aklanon. This is a small step toward closing that gap for regional languages.

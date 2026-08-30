@@ -13,11 +13,9 @@ import individualImg from "./photos/individual.png";
 import solveStats from "./photos/solve-stats.png";
 import solveHistory from "./photos/solve-history.png";
 
-Hack4Gov was my first Capture-The-Flag competition.
+Hack4Gov was my first Capture-The-Flag competition. Honestly, I only joined because my friends convinced me to (with a bit of FOMO). I don't actively study cybersecurity and it's not where I want to build my career, my experience has always been in web development. That ended up mattering more than I expected.
 
-To be honest, I only joined because my friends convinced me to (with a bit of FOMO). I wasn't someone who actively studied cybersecurity, and it isn't where I want to build my career. Most of my experience has always been in web development. That ended up mattering more than I expected.
-
-I spent almost the entire competition working on web challenges.
+I spent almost the entire competition on web challenges.
 
 <Image
   src={solveStats}
@@ -26,17 +24,9 @@ I spent almost the entire competition working on web challenges.
   data-zoomable
 />
 
-I solved two web exploitation problems early, then hit a wall. For hours, nothing worked. I switched challenges, helped with OSINT, took breaks, came back, and still got nowhere.
+I solved two web exploitation problems early, then hit a wall for hours. Nothing worked. I switched challenges, helped with OSINT, took breaks, came back, still nowhere.
 
-Eventually I returned to one web challenge involving Next.js middleware. I kept trying different ideas until something clicked.
-
-I remembered a video from Theo that talked about a serious Next.js middleware vulnerability months earlier.[^1] I didn't immediately connect it to the challenge, but once it came back to me, everything suddenly made sense.
-
-The exploit worked.
-
-It was one of those moments where you stare at the screen for a second wondering, "Wait... did that actually work?"
-
-That single solve was worth 200 points and immediately pushed us several places up the leaderboard.
+Eventually I returned to a web challenge involving Next.js middleware and kept trying ideas until one clicked: a video from Theo about a serious Next.js middleware vulnerability months earlier.[^1] I didn't connect it to the challenge right away, but once it came back to me, everything made sense. The exploit worked, one of those moments where you stare at the screen wondering "wait, did that actually work?" That single solve was worth 200 points and pushed us several places up the leaderboard.
 
 <Image
   src={solveHistory}
@@ -45,21 +35,9 @@ That single solve was worth 200 points and immediately pushed us several places 
   data-zoomable
 />
 
-Looking back, the interesting part wasn't that I solved a cybersecurity challenge.
+Looking back, the interesting part wasn't that I solved a cybersecurity challenge. It was _why_ I solved it. It didn't ask me to invent some clever exploit from scratch. It rewarded recognizing how a web framework actually worked and remembering a real vulnerability. That's software engineering knowledge. People treat cybersecurity and software engineering as separate fields, but I don't buy that. Good web developers pick up security concepts naturally, since they work with auth, routing, sessions, middleware, and browser behavior every day. Sometimes a random YouTube video about your framework turns out to be useful months later.
 
-It was _why_ I solved it.
-
-The challenge wasn't asking me to invent some clever exploit from scratch. It rewarded recognizing how a web framework actually worked, remembering a real vulnerability, and knowing enough about the framework to try it.
-
-That's software engineering knowledge.
-
-People often treat cybersecurity and software engineering as completely separate fields. I don't really buy that. Good web developers naturally pick up security concepts because they're working with authentication, routing, sessions, middleware, APIs, and browser behavior every day.
-
-Sometimes watching a random YouTube video about your framework turns out to be surprisingly useful months later.
-
-This CTF reminded me that learning is rarely wasted. Even if you're not trying to become a security engineer, understanding the tools you build with pays off in unexpected places.
-
-For me, that happened to be enough to help our team finish as 1st Runner-Up in my very first CTF.
+That was enough to help our team finish 1st Runner-Up in my very first CTF.
 
 <Callout type="award">
   1st Runner-Up for Team Category out of 11 teams (830 points).
@@ -80,6 +58,4 @@ For me, that happened to be enough to help our team finish as 1st Runner-Up in m
 
 ---
 
-[^1]:
-
-The challenge involved exploiting a critical Next.js middleware authorization bypass (CVE-2025-29927). See the <a href="https://github.com/advisories/GHSA-f82v-jwr5-mffw" target="_blank">official advisory</a> for more details.
+[^1]: The challenge involved exploiting a critical Next.js middleware authorization bypass (CVE-2025-29927). See the <a href="https://github.com/advisories/GHSA-f82v-jwr5-mffw" target="_blank">official advisory</a> for more details.

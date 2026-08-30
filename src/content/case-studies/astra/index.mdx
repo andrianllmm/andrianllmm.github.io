@@ -17,37 +17,17 @@ Astra is a code similarity detection system that analyzes Python assignments bas
 
 ## Why we built it
 
-Astra started from an observation in our own classes.
+Astra started from an observation in our own classes: some programming assignments looked suspiciously similar. We didn't care why. We wanted a way to actually measure similarity between two pieces of code.
 
-When looking at programming assignments, some solutions naturally looked very similar. Whether that similarity came from collaboration, shared resources, or simply students arriving at the same solution was not the question we wanted to answer.
-
-We were interested in a simpler question: how can we measure similarity between pieces of code?
-
-Text comparison is a poor fit for programming assignments.
-
-Two programs can solve the same problem while looking completely different because of renamed variables, changed formatting, reordered functions, or different coding styles. At the same time, two pieces of code can look different as text while sharing almost identical logic.
-
-Since this was an algorithms course project, we approached the problem from an algorithmic perspective.
-
-Code is not just text. It has structure.
-
-Instead of asking whether two files contain similar words, Astra asks whether two programs are built from similar structures.
+Text comparison doesn't work well for this. Two programs can solve the same problem while looking completely different because of renamed variables, formatting, or reordered functions, and two files can look different as plain text while sharing nearly identical logic. Since this was an algorithms course project, we treated it as one: code isn't just text, it has structure, so Astra asks whether two files are built from similar structures instead of similar words.
 
 ## How it turned out
 
-Astra became a Python-based system that analyzes code similarity through a structural comparison pipeline.
-
-It is available as both a command-line tool and a web application.
-
-The CLI is designed for batch analysis. Given a folder of submissions, it compares files and produces ranked similarity results.
-
-The web application exposes the same pipeline through an interface, making it easier to inspect suspicious pairs and understand why they were considered similar.
+Astra is a Python system that compares code through a structural pipeline, available as both a CLI and a web app. The CLI handles batch analysis: point it at a folder of submissions and it produces ranked similarity results. The web app exposes the same pipeline through an interface that makes it easier to inspect suspicious pairs and see why they were flagged.
 
 ### Comparing programs by structure, not appearance
 
-The core idea behind Astra is that source code has meaning beyond its characters.
-
-A Python program is first parsed into an Abstract Syntax Tree (AST), which represents the actual structure of the program.
+The core idea is that source code means more than its characters. A Python program first gets parsed into an Abstract Syntax Tree (AST), which represents its actual structure.
 
 For example, changing:
 
@@ -61,58 +41,22 @@ to:
 average = numbers / length
 ```
 
-changes the text but keeps the same underlying structure.
-
-Astra removes irrelevant differences through AST normalization, allowing it to focus on the parts that actually describe how the program works.
+changes the text but keeps the same underlying structure. Astra normalizes the AST to strip out these irrelevant differences and focus on what the program actually does.
 
 ### Breaking programs into comparable pieces
 
-Comparing entire files at once makes it difficult to identify partial similarities.
-
-Astra divides programs into smaller structural chunks such as functions and classes.
-
-This allows the system to identify cases where only certain parts of a submission are similar instead of treating the entire file as one block.
-
-The chunking approach also makes the comparison more flexible when students organize their code differently.
+Comparing entire files at once makes partial similarities hard to catch, so Astra divides programs into smaller chunks like functions and classes. That way it can flag cases where only part of a submission is similar, instead of judging the whole file as one block, and it's more forgiving when students organize their code differently.
 
 ### Using classic algorithms for a modern problem
 
-Astra does not use machine learning or vector embeddings.
-
-Instead, it uses traditional algorithms designed around the actual problem.
-
-After converting code structures into sequences, Astra compares them using edit distance techniques.
-
-Specifically, it uses Damerau-Levenshtein distance, which measures how many changes are needed to transform one sequence into another while accounting for insertions, deletions, substitutions, and transpositions.
-
-These algorithms are decades old, but they remain effective because they directly model the problem they are solving.
+Astra doesn't use machine learning or vector embeddings. It converts code structures into sequences and compares them with edit distance, specifically Damerau-Levenshtein distance, which measures how many insertions, deletions, substitutions, and transpositions it takes to turn one sequence into another. That algorithm is decades old, but it still works because it directly models the problem.
 
 ## How we built it
 
-The system was built as an experiment in applying algorithmic thinking to a practical problem.
+The pipeline: parse the source into an AST, normalize it, extract structural chunks, convert those chunks into sequences, then score similarity between submissions.
 
-The pipeline follows several stages:
-
-1. Parse Python source code into an AST
-2. Normalize the tree by removing irrelevant details
-3. Extract structural chunks
-4. Convert chunks into comparable sequences
-5. Calculate similarity scores between submissions
-
-The hardest part was not implementing the comparison algorithm itself. The harder question was deciding what information matters.
-
-Removing too much structure makes unrelated programs appear similar. Keeping too much detail makes simple changes like variable renaming reduce similarity.
+The hard part wasn't implementing the comparison algorithm. It was deciding what information actually matters. Strip out too much structure and unrelated programs start looking similar. Keep too much and something as simple as renaming a variable tanks the similarity score.
 
 ## What I learned
 
-Astra reinforced something I have become more conscious of when building software: the newest technology is not always the right technology.
-
-With the rise of AI and ML, it is tempting to reach for embeddings or language models whenever a problem involves understanding text or code. But the first step should always be understanding the problem itself.
-
-For code similarity, the important information is not the wording of the program. It is the structure. A carefully designed algorithm can capture that structure directly, making the system more explainable and easier to reason about.
-
-This project is not meant to argue against AI. It is a reminder that good engineering starts with choosing the right abstraction.
-
-Sometimes that means using a modern model. Sometimes it means using an algorithm from decades ago that already solves the problem well.
-
-Astra was my experiment in the latter.
+Astra reinforced something I keep relearning: the newest technology isn't always the right one. It's tempting to reach for embeddings or an LLM the moment a problem touches text or code, but for code similarity what matters is structure, not wording, and a well-designed algorithm captures that directly, more explainably than a model would. Good engineering starts with picking the right abstraction. Sometimes that's a modern model, sometimes it's an algorithm from decades ago that already solves the problem.

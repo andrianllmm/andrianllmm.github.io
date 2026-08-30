@@ -8,59 +8,27 @@ MiaGo is a campus and municipality-based food delivery platform that turns infor
 
 ## Why we built it
 
-While staying in Miagao for university, I experienced the same problem many students there had.
-
-When ordering food, the process usually happened through Messenger chats, Facebook posts, and direct coordination. Customers had to message vendors manually, vendors had to track orders through conversations, and riders had to coordinate deliveries separately.
-
-The system worked, but it was informal.
-
-As the number of orders increased, conversations became difficult to manage. There was no clear order status, no centralized catalog, and no reliable way to coordinate between customers, vendors, and riders.
-
-We built MiaGo to turn that informal process into a proper delivery workflow.
+While staying in Miagao for university, I ran into the same problem many students there had. Ordering food usually meant Messenger chats, Facebook posts, and direct coordination: customers messaged vendors manually, vendors tracked orders through conversations, and riders coordinated deliveries separately. It worked, but it was informal, and as order volume grew, conversations got hard to manage. No clear order status, no centralized catalog, no reliable way to coordinate between the three sides. We built MiaGo to turn that into a proper delivery workflow.
 
 ## How it turned out
 
-MiaGo became a multi-role delivery platform with separate workflows for customers, vendors, and riders.
+MiaGo is a multi-role delivery platform with separate workflows for customers, vendors, and riders.
 
 ### A system built around roles
 
-The biggest difference between MiaGo and a simple ordering app is that every user has a specific role in the workflow.
-
-Customers browse stores, manage their carts, place orders, and track delivery progress.
-
-Vendors manage their stores and menu items while handling incoming orders.
-
-Riders act as the connection between both sides by viewing available delivery jobs, accepting orders, and updating delivery status.
-
-Designing these separate experiences was one of the harder parts of the project. Every feature had to consider not only what users could do, but also what they should not be allowed to do.
+Customers browse stores, manage carts, place orders, and track delivery progress. Vendors manage their stores and menu items and handle incoming orders. Riders view available delivery jobs, accept them, and update delivery status. Designing these separate experiences was one of the harder parts: every feature had to consider not just what users could do, but what they shouldn't be allowed to do.
 
 ### Modeling the delivery workflow
 
-The hardest part was not creating the screens or endpoints. It was deciding how the system should behave in real situations.
-
-Real orders are not always straightforward.
-
-What happens if a customer cancels an order halfway through? What happens if a vendor runs out of an item after someone already ordered it? What happens if two riders try to accept the same delivery?
-
-These questions forced us to think beyond basic CRUD operations and design controlled state transitions.
-
-Orders became more than just records in a database. They became processes with rules about who can change them and when those changes are valid.
+The hard part wasn't the screens or endpoints. It was deciding how the system should behave in real situations: what happens if a customer cancels an order halfway through, a vendor runs out of an item someone already ordered, or two riders try to accept the same delivery. That pushed us past basic CRUD into designing controlled state transitions, where orders are processed with rules about who can change them and when.
 
 ### Stores and ordering
 
-Vendors can create stores and manage their available items.
-
-Customers can browse these catalogs directly instead of relying on scattered messages to know what is available.
-
-When an order is placed, MiaGo stores the relevant details at that moment, keeping the order history consistent even if menu items or prices change later.
+Vendors create stores and manage their items; customers browse these catalogs directly instead of relying on scattered messages. When an order is placed, MiaGo stores the relevant details at that moment, so order history stays consistent even if menu items or prices change later.
 
 ### Rider workflow
 
-Riders use a job-based system where they can see available deliveries and accept jobs.
-
-Once a rider accepts an order, it becomes assigned to them to prevent conflicts.
-
-This converts delivery from an informal agreement into a structured workflow where responsibilities are clear.
+Riders use a job-based system where they see available deliveries and accept jobs. Once accepted, an order is locked to that rider to prevent conflicts.
 
 ## How we built it
 
@@ -78,32 +46,16 @@ This converts delivery from an informal agreement into a structured workflow whe
 
 ### Backend architecture
 
-MiaGo uses a modular monolith architecture with separate modules for authentication, users, stores, orders, and deliveries.
+MiaGo uses a modular monolith with separate modules for authentication, users, stores, orders, and deliveries, following a controller-service-repository structure that keeps business logic separate from database operations.
 
-The backend follows a controller-service-repository structure, keeping business logic separate from database operations.
-
-The database was built directly with PostgreSQL instead of using an ORM.
-
-This was an intentional choice. Working directly with SQL gave me a better understanding of how data was actually being stored and queried instead of relying on abstractions.
-
-Type safety was maintained through Slonik and Zod, which helped ensure that data moving between the database and application stayed consistent.
+I built the database directly with PostgreSQL instead of an ORM, a deliberate choice: working with raw SQL gave me a better sense of how data was actually stored and queried. Slonik and Zod kept types consistent between the database and application.
 
 ### Role-based access control
 
-The three user roles made authorization one of the more challenging parts of the system.
-
-It was not enough to simply hide features from different users. Every action had to be checked against the user's permissions and the current state of the order.
-
-A customer should not be able to modify a completed delivery. A rider should not be able to update an order they do not own. A vendor should only manage their own store.
-
-Keeping these boundaries consistent across both the backend and frontend required careful design.
+Authorization was one of the harder parts, since it wasn't enough to just hide features from different users. Every action had to be checked against the user's permissions and the order's current state: a customer can't modify a completed delivery, a rider can't update an order they don't own, a vendor only manages their own store. Keeping those boundaries consistent across backend and frontend took careful design.
 
 ## What I learned
 
-MiaGo taught me that software engineering is often about translating messy real-world processes into clear systems.
+MiaGo taught me that software engineering is often about translating messy real-world processes into clear systems. The hardest problems weren't technical so much as questions about how the real world should be represented in software: states, permissions, edge cases, how different people interact with the same data.
 
-The hardest problems were questions about how the real world should be represented in software.
-
-Building a delivery system forced me to think about states, permissions, edge cases, and how different people interact with the same data.
-
-It also gave me deeper experience with backend development. Working with Express, raw SQL, and PostgreSQL made the request flow and data handling much more visible compared to higher-level frameworks I had used before.
+It also gave me deeper backend experience. Working with Express, raw SQL, and PostgreSQL made request flow and data handling much more visible than the higher-level frameworks I'd used before.

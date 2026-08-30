@@ -23,15 +23,9 @@ Manobela is a driver monitoring system that uses only a smartphone camera to det
 
 ## Why we built it
 
-Manobela started as our project for the <a href="/achievements/tracktech26" target="_blank">TrackTech Hackathon 2026</a>.
+Manobela started as our project for the <a href="/achievements/tracktech26" target="_blank">TrackTech Hackathon 2026</a>. The theme was road safety, and we picked driver monitoring because it's a problem computer vision is actually good at.
 
-The theme led us toward road safety, and we chose to explore driver monitoring because it was a problem where computer vision could make a real difference.
-
-Existing driver monitoring systems often rely on dedicated hardware, expensive vehicles, or specialized fleet equipment. That creates a barrier for everyday drivers who could benefit from safety assistance.
-
-We wanted to explore a simpler idea: what if the device people already carry could help them drive safer?
-
-The goal was not to replace professional safety systems, but to make driver monitoring more accessible by using only a smartphone camera.
+Existing driver monitoring systems usually need dedicated hardware or fleet equipment, which puts them out of reach for everyday drivers. We wanted to try the opposite: what if the phone people already have in the car was enough?
 
 ## How it turned out
 
@@ -46,11 +40,7 @@ Manobela uses the phone's front camera to analyze the driver's face while drivin
   data-zoomable
 />
 
-The system monitors: eye closure, yawning, head position, gaze direction, and phone usage.
-
-When it detects potentially dangerous behavior, it sends alerts through visual, audio, and haptic feedback.
-
-The challenge was making these alerts useful without becoming annoying. A system that triggers too often gets ignored, while one that is too conservative fails at its purpose.
+It watches eye closure, yawning, head position, gaze direction, and phone usage, and alerts through visual, audio, and haptic feedback when it catches something dangerous. The hard part was tuning sensitivity: too aggressive and drivers start ignoring it, too conservative and it misses the point.
 
 ### Video analysis
 
@@ -58,7 +48,7 @@ Besides live monitoring, users can upload recorded driving videos for analysis.
 
 <Image src={uploadsImg} alt="Uploads" class="w-full max-w-80" data-zoomable />
 
-This allows users to review their driving behavior after a trip instead of only relying on real-time warnings.
+That way users can review a trip after the fact, not just react to warnings in the moment.
 
 ### Driving insights
 
@@ -79,7 +69,7 @@ Each monitoring session is stored and summarized.
   />
 </div>
 
-The dashboard provides: risk summaries through KPI cards and visual charts, session history, and timelines of detected events.
+The dashboard shows risk summaries as KPI cards and charts, plus session history and timelines of detected events.
 
 ### Navigation integration
 
@@ -87,8 +77,7 @@ We integrated OpenStreetMap navigation with monitoring sessions.
 
 <Image src={mapsImg} alt="Maps" class="w-full max-w-80" data-zoomable />
 
-When navigation starts, monitoring can automatically begin.
-Each trip is associated with its route, allowing users to review which journeys had higher-risk behaviors.
+Monitoring can start automatically when navigation does, and each trip is tied to its route so users can see which journeys had riskier behavior.
 
 ### Configuration
 
@@ -116,18 +105,9 @@ Users can customize monitoring behavior, including alerts, session logging, and 
 
 ### Real-time computer vision pipeline
 
-The biggest technical challenge was getting real-time video processing working reliably.
-
-The mobile app captures the camera feed and streams frames to the backend through WebRTC.
-The backend processes the frames, runs detection models, and sends results back to the phone.
-
-This approach kept the mobile application lightweight because the heavy processing happened server-side.
-
-The tradeoff was latency. Since inference was not running directly on the device, network conditions became part of the system.
+The biggest technical challenge was getting real-time video processing working reliably. The mobile app streams frames to the backend over WebRTC, which runs detection and sends results back. That kept the app lightweight since all the heavy processing happens server-side, but it meant network conditions became part of the system, not just an implementation detail.
 
 ### Detecting driver behavior
-
-The system combines several computer vision techniques.
 
 **Eye closure detection**
 
@@ -154,29 +134,15 @@ Persistent high-confidence detections are treated as possible phone usage.
 
 ### Making detections usable
 
-Raw computer vision output is not enough for a real product.
-
-Early versions could react too quickly to normal behavior, such as blinking or briefly looking away. To make the system more reliable, we added techniques such as calibration periods, smoothing, debouncing, and hysteresis to reduce false detections and improve stability.
-
-These helped balance sensitivity with reducing false alarms.
+Raw computer vision output isn't enough on its own. Early versions reacted to normal behavior like blinking or briefly glancing away, so we added calibration periods, smoothing, debouncing, and hysteresis to cut down false detections.
 
 ## What I learned
 
-Manobela was one of the biggest projects I have built and led.
+Manobela was the biggest project I've built and led at the time. It pushed me past isolated features into shipping a full product: mobile app, backend, CV pipeline, deployment, all of it.
 
-It pushed me beyond building isolated features and into building a complete AI-driven product: a mobile application, backend services, computer vision pipeline, deployment infrastructure, and user experience.
+The hardest part for me was making everything work together in real time. WebRTC was new to me, and reliable video streaming brought in problems normal web apps don't have.
 
-The hardest part was not getting individual models to work. It was making everything work together in real time.
-
-WebRTC was new territory for me, and making video streaming reliable introduced problems that do not appear in normal web applications. Latency, server performance, and connection stability all became product concerns.
-
-I also learned that computer vision is much messier outside controlled environments.
-Lighting, camera angles, face shapes, and movement all affect detection quality. A model that works in a demo still needs many layers of engineering before it feels reliable.
-
-Leading the project also changed how I approach software development.
-A good idea is only one part of building a product. The difficult part is turning that idea into something people can actually use.
-
-Manobela reinforced my interest in building AI applications that solve practical problems. It showed me that AI is not just about models, but about integrating those models into products that people can interact with.
+I also learned computer vision gets a lot messier outside controlled environments. Lighting, camera angles, face shapes, movement, etc. affect detection quality, and a model still needs a lot of engineering before it feels reliable.
 
 ---
 
