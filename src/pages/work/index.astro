@@ -6,7 +6,12 @@ import Timeline from "@components/Timeline.astro";
 import { WORK } from "@consts";
 import { work as allWork } from "@data/work";
 
-const work = [...allWork];
+const professionalWork = allWork.filter(
+  (item) => item.employmentType !== "Volunteer",
+);
+const volunteerWork = allWork.filter(
+  (item) => item.employmentType === "Volunteer",
+);
 ---
 
 <Layout title={WORK.TITLE} description={WORK.DESCRIPTION}>
@@ -23,7 +28,11 @@ const work = [...allWork];
           A timeline of my professional and volunteer experience.
         </p>
 
-        <Timeline items={work} />
+        <h2 class="animate font-semibold">Professional</h2>
+        <Timeline items={professionalWork} />
+
+        <h2 class="animate font-semibold">Volunteer</h2>
+        <Timeline items={volunteerWork} />
       </div>
     </aside>
   </Container>
