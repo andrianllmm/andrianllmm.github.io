@@ -1,6 +1,7 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
 import Container from "@components/Container.astro";
 import FormattedDateRange from "@components/FormattedDateRange.astro";
 import BackToPrevious from "@components/BackToPrevious.astro";
@@ -98,5 +99,36 @@ const { posts, caseStudies } = await resolveRelatedContent(
     <div class="animate">
       <RelatedContent posts={posts} caseStudies={caseStudies} />
     </div>
+
+    {
+      (item.proofURL || item.proofImage) && (
+        <div class="animate border-border/60 mt-10 flex flex-col items-center border-t pt-8 text-center">
+          <h2 class="text-lg font-semibold">Proof of Work</h2>
+
+          {item.proofURL && (
+            <Link
+              href={item.proofURL}
+              external
+              class="text-muted-foreground mt-3 inline-flex items-center gap-1.5 text-sm"
+            >
+              <Icon name="lucide:badge-check" class="size-4" />
+              Verify
+            </Link>
+          )}
+
+          {item.proofImage && (
+            <div class="mt-3 max-h-80 w-auto overflow-hidden rounded-lg shadow-xs">
+              <Image
+                src={item.proofImage}
+                alt={`Proof for ${item.title} at ${item.company}`}
+                width={700}
+                height={495}
+                class="max-h-80 w-auto scale-100 transition-transform duration-300 ease-out hover:scale-105"
+              />
+            </div>
+          )}
+        </div>
+      )
+    }
   </Container>
 </Layout>

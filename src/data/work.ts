@@ -13,6 +13,10 @@ export type WorkItem = {
   endDate?: string;
   description?: string;
   skills?: SkillKey[];
+  /** Link to a certificate, recommendation letter, or other verification */
+  proofURL?: string;
+  /** Path to a screenshot of the proof, e.g. /images/work/... */
+  proofImage?: string;
   relatedPosts?: string[];
   relatedCaseStudies?: string[];
 };
@@ -31,6 +35,7 @@ export const work: WorkItem[] = [
     description:
       "Built an AI voice booking agent and a face clustering pipeline for photo search.",
     skills: ["n8n", "langchain", "langgraph", "python", "fastapi", "nextjs"],
+    proofImage: "/images/work/morphelabs/certificate-of-completion.png",
     relatedCaseStudies: ["morphevents", "morphestate"],
   },
   {
@@ -46,6 +51,9 @@ export const work: WorkItem[] = [
     description:
       "Built an LLM metering and billing engine and a hybrid retrieval answer pipeline.",
     skills: ["python", "fastapi", "javascript", "express"],
+    proofURL:
+      "https://internship.flyrank.ai/verify/FR-D11-7EAB6-543B4?first_name=Andrian",
+    proofImage: "/images/work/flyrank/certificate-of-completion.png",
     relatedCaseStudies: ["llm-metering-billing-engine"],
   },
   {
