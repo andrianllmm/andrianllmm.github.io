@@ -27,7 +27,7 @@
     "@iconify-json/lucide": "^1.2.51",
     "@mermaid-js/layout-elk": "^0.2.0",
     "@tailwindcss/vite": "^4.1.10",
-    "astro": "^7.1.4",
+    "astro": "^7.3.2",
     "astro-icon": "^1.1.5",
     "astro-mermaid": "^2.1.0",
     "astro-pagefind": "^2.0.1",
