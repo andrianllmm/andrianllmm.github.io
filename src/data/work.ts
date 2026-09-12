@@ -13,6 +13,10 @@ export type WorkItem = {
   endDate?: string;
   description?: string;
   skills?: SkillKey[];
+  /** Link to a certificate, recommendation letter, or other verification */
+  proofURL?: string;
+  /** Path to a screenshot of the proof, e.g. /images/work/... */
+  proofImage?: string;
   relatedPosts?: string[];
   relatedCaseStudies?: string[];
 };
