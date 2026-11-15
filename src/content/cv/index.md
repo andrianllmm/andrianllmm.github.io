@@ -161,6 +161,12 @@ _Oct 2026_
 
 Champion — led a 5-person team to build a capacity planning platform with SMS booking for a provincial rice processing complex, out of 10 finalist teams.
 
+## **Hack4Gov National CTF 2026 (DICT & CERT-PH)**
+
+_Oct 2026_
+
+1st Runner-Up (Team) — national cybersecurity competition, specialized in web security.
+
 ## **RELX REPH AI Summit 2026 Hackathon**
 
 _Oct 2026_
