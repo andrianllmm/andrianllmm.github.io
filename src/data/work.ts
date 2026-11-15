@@ -56,6 +56,7 @@ export const work: WorkItem[] = [
       "pytorch",
       "huggingface",
     ],
+    relatedPosts: ["psc11-reflections"],
   },
   {
     id: "morphelabs",
