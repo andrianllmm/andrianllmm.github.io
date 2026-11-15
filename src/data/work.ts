@@ -23,6 +23,18 @@ export type WorkItem = {
 
 export const work: WorkItem[] = [
   {
+    id: "upvdassoc",
+    title: "Research and Development Officer",
+    company: "UPV Data Science Society",
+    companyLogo: "upvdassoc-logo",
+    employmentType: "Volunteer",
+    location: "Iloilo, Philippines",
+    startDate: "2026-09",
+    description:
+      "Founding officer leading research and development. Designed and led DataLeaks, a 6-session workshop series taking 100+ members from NumPy and Pandas through data cleaning, EDA, Git, statistical learning, and machine learning, capped by an independent mini-project.",
+    skills: ["python", "numpy", "pandas", "sklearn", "git"],
+  },
+  {
     id: "morphelabs",
     title: "AI Automation Engineer",
     company: "MorpheLabs",
