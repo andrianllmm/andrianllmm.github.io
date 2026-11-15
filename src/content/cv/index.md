@@ -29,16 +29,6 @@ _BS_ _in_ _Computer Science_
 
 # Experience
 
-## **Research and Development Officer**
-
-_Sept 2026 – present_
-
-_UPV Data Science Society_
-
-- Founding officer leading the organization's research and development initiatives for 100+ members.
-
-- Designed and led DataLeaks, a 6-session data science workshop series covering NumPy, Pandas, data cleaning, EDA, Git, statistical learning, and machine learning, capped by an independent mini-project.
-
 ## **Co-founder**
 
 _Aug 2026 – present_
@@ -70,36 +60,6 @@ _FlyRank AI_
 - Built a usage metering and billing engine with idempotent event recording and Stripe webhook sync, eliminating duplicate charges under request retries.
 
 - Engineered a hybrid retrieval-augmented answer pipeline combining keyword and semantic search with source grounding and citations, validated against a labeled evaluation set to catch unsupported claims.
-
-## **Web Developer (Branding & Creative)**
-
-_Jan 2026 – May 2026_
-
-_UP Data Science Society_
-
-- Co-planned and built the organization's website from initial development through launch, shipping the branding and creative team's first production site.
-
-- Developed a Spotify Wrapped-style personal-data visualization site featured by the organization, reaching 1,000+ viewers.
-
-## **Lead Web Developer**
-
-_Sept 2025 – May 2026_
-
-_Pagbutlak — Student Publication, College of Arts and Sciences_
-
-- Architected a CMS with authentication, role-based access control, and media uploads, replacing WordPress for 50+ editorial users.
-
-- Built a migration pipeline that moved 300+ legacy articles from WordPress into the new architecture.
-
-## **Web Developer**
-
-_Sept 2024 – Sept 2025_
-
-_Komsai.Org — Computer Science Student Organization_
-
-- Rebuilt the organization's website from a legacy implementation to a modern web stack.
-
-- Restructured content organization across the site, reducing update overhead for 10+ maintainers.
 
 # Projects
 
@@ -150,6 +110,48 @@ Crowdsourced Aklanon-English translation platform with NLP tools for an underser
 - Implemented a spellchecker combining SymSpellPy, LemmInflect, and a custom-built Aklanon stemmer (AklStemmer) to catch inflected-word errors in both languages.
 
 - Conducted user testing with 100+ native speakers and iterated on UX improvements based on their feedback.
+
+# Volunteer Experience
+
+## **Research and Development Officer**
+
+_Sept 2026 – present_
+
+_UPV Data Science Society_
+
+- Founding officer leading the organization's research and development initiatives for 100+ members.
+
+- Designed and led DataLeaks, a 6-session data science workshop series covering NumPy, Pandas, data cleaning, EDA, Git, statistical learning, and machine learning, capped by an independent mini-project.
+
+## **Web Developer (Branding & Creative)**
+
+_Jan 2026 – May 2026_
+
+_UP Data Science Society_
+
+- Co-planned and built the organization's website from initial development through launch, shipping the branding and creative team's first production site.
+
+- Developed a Spotify Wrapped-style personal-data visualization site featured by the organization, reaching 1,000+ viewers.
+
+## **Lead Web Developer**
+
+_Sept 2025 – May 2026_
+
+_Pagbutlak — Student Publication, College of Arts and Sciences_
+
+- Architected a CMS with authentication, role-based access control, and media uploads, replacing WordPress for 50+ editorial users.
+
+- Built a migration pipeline that moved 300+ legacy articles from WordPress into the new architecture.
+
+## **Web Developer**
+
+_Sept 2024 – Sept 2025_
+
+_Komsai.Org — Computer Science Student Organization_
+
+- Rebuilt the organization's website from a legacy implementation to a modern web stack.
+
+- Restructured content organization across the site, reducing update overhead for 10+ maintainers.
 
 # Awards
 
