@@ -45,19 +45,7 @@ const { posts, caseStudies } = await resolveRelatedContent(
               </div>
             )
           }
-          {
-            item.companyURL ? (
-              <Link
-                href={item.companyURL}
-                external
-                class="text-accent-foreground"
-              >
-                {item.company}
-              </Link>
-            ) : (
-              <span class="text-accent-foreground">{item.company}</span>
-            )
-          }
+          <span class="text-accent-foreground">{item.company}</span>
         </div>
 
         {
@@ -81,6 +69,19 @@ const { posts, caseStudies } = await resolveRelatedContent(
             formatOptions={{ year: "numeric", month: "short" }}
           />
         </div>
+
+        {
+          item.companyURL && (
+            <Link
+              href={item.companyURL}
+              external
+              class="mt-1 flex w-fit items-center gap-1 text-sm"
+            >
+              <Icon name="lucide:external-link" class="h-4 w-4" />
+              <span>website</span>
+            </Link>
+          )
+        }
       </div>
 
       {
