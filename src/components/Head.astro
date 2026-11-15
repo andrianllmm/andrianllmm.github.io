@@ -279,7 +279,9 @@ const {
   const copiedButtonLabel = "copied!";
 
   function addCopyCodeButtons() {
-    const codeBlocks = Array.from(document.querySelectorAll("pre"));
+    const codeBlocks = Array.from(
+      document.querySelectorAll("pre:not(.mermaid)"),
+    );
 
     for (const codeBlock of codeBlocks) {
       const wrapper = document.createElement("div");
