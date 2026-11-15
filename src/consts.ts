@@ -4,8 +4,6 @@ export const SITE: Site = {
   TITLE: "Andrian Lloyd Maagma",
   DESCRIPTION: "This is Andrian Lloyd Maagma's personal website.",
   EMAIL: "maagmaandrian@gmail.com",
-  NUM_POSTS_ON_HOMEPAGE: 3,
-  NUM_CASE_STUDIES_ON_HOMEPAGE: 3,
   NUM_TAGS_ON_HOMEPAGE: 10,
 };
 
@@ -35,6 +33,18 @@ export const PINNED_PROJECTS = [
 ];
 
 export const PINNED_ACHIEVEMENTS = ["psc11", "hackiloilo26"];
+
+export const PINNED_POSTS = [
+  "psc11-reflections",
+  "hackiloilo26-reflections",
+  "reph26-reflections",
+];
+
+export const PINNED_CASE_STUDIES = [
+  "llm-metering-billing-engine",
+  "morphestate",
+  "morphevents",
+];
 
 export const PINNED_EDUCATION = [
   "upv-bscs",

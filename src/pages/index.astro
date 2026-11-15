@@ -4,6 +4,8 @@ import {
   PINNED_WORK,
   PINNED_ACHIEVEMENTS,
   PINNED_EDUCATION,
+  PINNED_POSTS,
+  PINNED_CASE_STUDIES,
   PINNED_SKILLS,
   SITE,
   HOME,
@@ -37,17 +39,16 @@ import { achievements as allAchievementsData } from "@data/achievements";
 const tags = Object.keys(allTags).slice(0, SITE.NUM_TAGS_ON_HOMEPAGE);
 
 const allPosts = (await getCollection("posts")).filter((p) => !p.data.draft);
-const posts = allPosts
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
+const posts = PINNED_POSTS.map((id) =>
+  allPosts.find((p) => p.id === id),
+).filter((p): p is (typeof allPosts)[number] => p !== undefined);
 
 const allCaseStudies = (await getCollection("caseStudies")).filter(
   (p) => !p.data.draft,
 );
-
-const caseStudies = allCaseStudies
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, SITE.NUM_CASE_STUDIES_ON_HOMEPAGE);
+const caseStudies = PINNED_CASE_STUDIES.map((id) =>
+  allCaseStudies.find((c) => c.id === id),
+).filter((c): c is (typeof allCaseStudies)[number] => c !== undefined);
 
 const work = PINNED_WORK.map((id) =>
   allWorkData.find((w) => w.id === id),
