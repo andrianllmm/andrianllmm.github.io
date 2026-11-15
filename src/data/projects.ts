@@ -127,6 +127,19 @@ export const projects: Project[] = [
     relatedCaseStudies: ["kulasisi"],
   },
   {
+    id: "lunop",
+    title: "LUNOP",
+    description:
+      "Leptospirosis surge forecasting and response planning after floods",
+    startDate: "2026-10",
+    demoURL: "https://lunop.vercel.app",
+    repoURL: "https://github.com/andrianllmm/lunop",
+    skills: ["python", "pandas", "typescript", "nextjs", "postgresql"],
+    image: "/images/projects/lunop/preview.jpg",
+    relatedPosts: ["pjdsc26-reflections"],
+    relatedCaseStudies: ["lunop"],
+  },
+  {
     id: "manobela",
     title: "Manobela",
     description: "A driver monitoring mobile app using computer vision",

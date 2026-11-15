@@ -37,6 +37,16 @@ export const achievements: Achievement[] = [
     relatedCaseStudies: ["sackto"],
   },
   {
+    id: "pjdsc26",
+    title: "Philippine Junior Data Science Challenge",
+    organizer: "UP DSSoc",
+    type: "Competition",
+    position: "Participant",
+    date: "2026-10-24",
+    relatedPosts: ["pjdsc26-reflections"],
+    relatedCaseStudies: ["lunop"],
+  },
+  {
     id: "hack4gov26",
     title: "Hack4Gov",
     organizer: "DICT x CERT-PH",

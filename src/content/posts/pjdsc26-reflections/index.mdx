@@ -1,0 +1,49 @@
+---
+title: "Bringing data science to public health at PJDSC 2026"
+description: "Reflecting on the Philippine Junior Data Science Challenge 2026, where we took on a field none of us knew"
+tags: ["reflection"]
+date: "2026-10-24"
+---
+
+import { projects } from "@data/projects";
+import ProjectCard from "@components/ProjectCard.astro";
+
+export const lunop = (() => {
+  const project = projects.find((p) => p.id === "lunop");
+  if (!project) throw new Error("Project not found");
+  return project;
+})();
+
+The Philippine Junior Data Science Challenge is UP DSSoc's yearly themed competition, and this year's theme was public health. Slots went to the first 40 teams to register nationwide, and our team, Random Seed 42, got one of them. It was our first time working on a public health problem.
+
+## Starting from zero
+
+None of us knew much about public health. The theme was broad on purpose, so the hardest part wasn't building anything. It was deciding which problem to work on.
+
+We floated a lot of ideas early: a dengue app, a centralized disease monitoring system, disease mapping. Most of them fell apart once we looked closer. The monitoring system, for one, already exists in some form in rural health units.
+
+## Asking people who knew
+
+So we talked to two public health instructors.
+
+The first one told us we didn't need to be experts, since research could fill the gap, but that we needed a starting point. They pointed us to floods and leptospirosis, and to the idea that health offices mostly respond after people are already sick.
+
+The second one said that in public health, getting the data ready is most of the work and the model is the easy part. Their advice was to start from the person who'd use the system, figure out what decision that person makes, and only then look for data. We didn't build the data platform they suggested, but we did start from the user. For us that was the City Health Office deciding what to do after a flood.
+
+## Learning from past finalists
+
+We also went through the finalists from the last two years. Most of them built a map dashboard for local governments, and several used no machine learning at all. What the winners had in common was one specific city, real local data, and some way of checking their results.
+
+So we picked Iloilo City, which has the most reported leptospirosis cases in the dataset we used. We also planned how to test the forecast from the start instead of leaving it for the end.
+
+## What we built
+
+We ended up with LUNOP, a tool that helps the Iloilo City Health Office prepare for leptospirosis before cases rise after a flood. I wrote about how it works in the [case study](/case-studies/lunop).
+
+<ProjectCard project={lunop} />
+
+Our results were modest, and we decided to show them anyway. It was tempting to lead with a big accuracy number. Instead we put the weak spots in the app, including a storm our forecast missed.
+
+## Looking back
+
+I know a lot more about public health now than when we registered. Next time I work in a field I don't know, I'll talk to people in it before deciding what to build. I'll also keep being upfront about what the data can't tell us.

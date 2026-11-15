@@ -167,6 +167,12 @@ _Oct 2026_
 
 Champion — led a 5-person team to build a capacity planning platform with SMS booking for a provincial rice processing complex, out of 10 finalist teams.
 
+## **Philippine Junior Data Science Challenge 2026 (UP DSSoc)**
+
+_Oct 2026_
+
+Participant — built LUNOP, a leptospirosis surge forecasting and response planning tool for the Iloilo City Health Office.
+
 ## **Hack4Gov National CTF 2026 (DICT & CERT-PH)**
 
 _Oct 2026_
