@@ -17,21 +17,12 @@ const duration = formatDuration(
 >
   <div>
     <div>
-      {
-        item.companyURL ? (
-          <Link
-            href={item.companyURL}
-            external
-            class="text-accent-foreground font-semibold"
-          >
-            {item.company}
-          </Link>
-        ) : (
-          <span class="text-accent-foreground font-semibold">
-            {item.company}
-          </span>
-        )
-      }
+      <Link
+        href={`/work/${item.id}`}
+        class="text-accent-foreground font-semibold"
+      >
+        {item.company}
+      </Link>
     </div>
 
     <div

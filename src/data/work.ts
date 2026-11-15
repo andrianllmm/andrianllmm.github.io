@@ -95,7 +95,7 @@ export const work: WorkItem[] = [
     id: "updssoc",
     title: "Web Developer (Branding & Creative)",
     company: "UP Data Science Society",
-    companyURL: "https://www.linkedin.com/company/updatasciencesociety",
+    companyURL: "https://updssoc.pages.dev",
     companyLogo: "updssoc-logo",
     employmentType: "Volunteer",
     location: "Remote",
