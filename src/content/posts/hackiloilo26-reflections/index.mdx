@@ -1,0 +1,128 @@
+---
+title: "We spent half of a two-day hackathon not writing code"
+description: "Reflecting on Hack Iloilo 2026, where we spent the first day on the problem instead of the code"
+tags: ["reflection"]
+date: "2026-10-24"
+image: "./photos/award.jpg"
+---
+
+import Callout from "@components/Callout.astro";
+import { Image } from "astro:assets";
+import teamImg from "./photos/team.jpg";
+import gettingProblemImg from "./photos/getting-the-problem.jpg";
+import tableImg from "./photos/table.jpg";
+import pitchMismatchImg from "./photos/pitch-mismatch.jpg";
+import pitchNetLossImg from "./photos/pitch-net-loss.jpg";
+import participationImg from "./photos/participation.jpg";
+import awardImg from "./photos/award.jpg";
+import { getEntry } from "astro:content";
+import CaseStudyCard from "@components/CaseStudyCard.astro";
+
+export const caseStudy = await getEntry("caseStudies", "sackto");
+
+Hack Iloilo 2026 is the province's startup hackathon. About 50 teams applied and 10 got in. We had two days at the Regional iHub in ISAT U to build for a problem pitched by the provincial government, then a third day to pitch. We didn't write any code on the first day.
+
+## An easy pick, then a race for it
+
+Agriculture was our sector even before the event, so when the Iloilo Rice Processing Complex (IRPC) pitched their problem, we knew we wanted it.
+
+Getting it was the hard part. Each team sent one person to hand their pick on paper to the hack master, first come, first served, with only three teams allowed per problem. My teammate went for it like his life depended on it.
+
+<figure class="my-4">
+  <Image
+    src={gettingProblemImg}
+    alt="Team representatives rushing to submit their chosen problem"
+    class="w-full"
+  />
+  <figcaption class="text-muted-foreground mt-1 text-center text-sm">
+    (that's my teammate in front, giving it everything for a piece of paper)
+  </figcaption>
+</figure>
+
+IRPC dries, stores, and mills palay in Pototan. Their pitch asked for a lot: booking, a queue, pricing, batch costing, a harvest forecast, and traceability. Two other teams took the same problem, and if we built that list, we'd look exactly like them. So we held off on building and kept asking why IRPC had these problems in the first place.
+
+## Finding the problem under the problem
+
+Most of it came back to one thing. IRPC can't see palay coming until it's at the gate. At harvest, trucks arrive all at once and the dryers overflow. Off-season, the machines sit idle and IRPC still pays for the power.
+
+In our notes, we wrote it as "at harvest, farmers wait for the machines, and off-season, the machines wait for farmers." IRPC pays for both.
+
+The pitch never called it a mismatch between supply and capacity. That was our own reading, and it became the whole project, problem slide included. Any feature that didn't cut idle days or the harvest backlog went on the roadmap.
+
+<Image
+  src={pitchMismatchImg}
+  alt="Pitching the mismatch between palay supply and processing capacity"
+  class="w-full"
+/>
+
+That took the whole first day, and all we had at the end was a PRD and a TRD. It was the hardest part of the event. Arguing about what the problem even is while the clock runs is uncomfortable. But by the end we could say it in one sentence anyone would get, and I don't think we'd have won without that.
+
+We also kept chatting with our contact at IRPC throughout. She wasn't always available, so answers came slowly, but it beat guessing about their capacities and how farmers book.
+
+## Building it in one day
+
+There were five of us. Three of us coded, one handled business and the pitch, and one did design, branding, and wireframes.
+
+<Image src={teamImg} alt="Team Popcorn Prophets" class="w-full" />
+
+Before coding, I broke the work into GitHub issues and marked which ones blocked others and which were parents of smaller tasks. That way the three of us could work in parallel without stepping on each other. Every change went through a reviewed PR.
+
+We slept in shifts of about three hours, so someone was always awake to keep working and wake the next person up.
+
+<Image
+  src={tableImg}
+  alt="Our team at our table during the hackathon"
+  class="w-full"
+/>
+
+## What we built
+
+SACKTO shows IRPC the next few weeks of palay against their dryer, storage, and mill capacity, then suggests what to do about the busy and empty days. Farmers book by plain SMS, even from a keypad phone.
+
+<CaseStudyCard caseStudy={caseStudy} />
+
+## How it turned out
+
+Our business lead opened the pitch with IRPC's own losses.
+
+<Image
+  src={pitchNetLossImg}
+  alt="Opening the pitch with IRPC's losses"
+  class="w-full"
+/>
+
+The live demo got cut short, but the judges still saw an overloaded day, the fix SACKTO suggested, and a farmer getting the text.
+
+They liked how much we built in the time. What they pushed on was the business model, specifically why we'd charge a cut of IRPC's yearly income. We froze for a second, then pushed back. SACKTO goes straight at the losses, so if it brings in more revenue, a small cut of that is worth it. The answer held up, but an actual ROI calculation would've made it a lot stronger.
+
+<figure class="my-4">
+  <Image
+    src={participationImg}
+    alt="Team receiving the certificate of participation"
+    class="w-full"
+  />
+  <figcaption class="text-muted-foreground mt-1 text-center text-sm">
+    (end of the hackathon, with certificates but no results yet)
+  </figcaption>
+</figure>
+
+Results came a week later at the closing ceremony of the Western Visayas Innovative StartupFest. We won.
+
+<Image
+  src={awardImg}
+  alt="Team receiving the Hack Iloilo champion award"
+  class="w-full"
+/>
+
+<Callout type="award">
+  Champion out of 10 competing teams with our project
+  [SACKTO](/case-studies/sackto).
+</Callout>
+
+## Looking back
+
+At [REPH](/posts/reph26-reflections) a week earlier, we also took our time picking a problem and it worked out. Now I'm more sure it wasn't luck. Giving up the first day felt like losing half the event, but it meant we didn't spend the second day building things IRPC didn't need.
+
+The pricing is what I'd fix first. We spent a whole day on the problem and much less on what SACKTO would actually return to IRPC. Next time, every number in the pitch gets a calculation behind it, especially the one we're asking them to pay.
+
+Nothing official has come out of it yet. IRPC is interested, but there's no pilot, so SACKTO is still a prototype running on sample data.

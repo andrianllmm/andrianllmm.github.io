@@ -155,6 +155,12 @@ _Komsai.Org — Computer Science Student Organization_
 
 # Awards
 
+## **Hack Iloilo 2026 (Iloilo Provincial Government)**
+
+_Oct 2026_
+
+Champion — led a 5-person team to build a capacity planning platform with SMS booking for a provincial rice processing complex, out of 10 finalist teams.
+
 ## **RELX REPH AI Summit 2026 Hackathon**
 
 _Oct 2026_
