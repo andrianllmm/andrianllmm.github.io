@@ -18,6 +18,15 @@ export type Achievement = {
 
 export const achievements: Achievement[] = [
   {
+    id: "psc11",
+    title: "Philippine Startup Challenge XI",
+    organizer: "DICT Region VI",
+    type: "Competition",
+    position: "Regional Champion, National Qualifier",
+    date: "2026-10-21",
+    relatedPosts: ["psc11-reflections"],
+  },
+  {
     id: "hackiloilo26",
     title: "Hack Iloilo",
     organizer: "Iloilo Provincial Government",
