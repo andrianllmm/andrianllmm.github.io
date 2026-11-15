@@ -34,7 +34,7 @@ export const PINNED_PROJECTS = [
   "miago",
 ];
 
-export const PINNED_ACHIEVEMENTS = ["tracktech26", "hack4gov25"];
+export const PINNED_ACHIEVEMENTS = ["reph26", "tracktech26"];
 
 export const PINNED_EDUCATION = [
   "upv-bscs",
