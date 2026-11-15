@@ -18,6 +18,16 @@ export type Achievement = {
 
 export const achievements: Achievement[] = [
   {
+    id: "hackiloilo26",
+    title: "Hack Iloilo",
+    organizer: "Iloilo Provincial Government",
+    type: "Hackathon",
+    position: "Champion",
+    date: "2026-10-24",
+    relatedPosts: ["hackiloilo26-reflections"],
+    relatedCaseStudies: ["sackto"],
+  },
+  {
     id: "reph26",
     title: "AI Summit Hackathon",
     organizer: "RELX REPH",
