@@ -28,6 +28,14 @@ cv:
           - "Relevant Coursework: Software Engineering, Web Programming, Database Systems"
 
     experience:
+      - company: UPV Data Science Society
+        position: Research and Development Officer
+        start_date: 2026-09
+        end_date: present
+        highlights:
+          - "Founding officer leading the organization's research and development initiatives for 100+ members."
+          - "Designed and led DataLeaks, a 6-session data science workshop series covering NumPy, Pandas, data cleaning, EDA, Git, statistical learning, and machine learning, capped by an independent mini-project."
+
       - company: MorpheLabs
         position: AI Automation Engineer
         start_date: 2026-06
