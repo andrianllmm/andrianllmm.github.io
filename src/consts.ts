@@ -32,7 +32,12 @@ export const PINNED_PROJECTS = [
   "miago",
 ];
 
-export const PINNED_ACHIEVEMENTS = ["psc11", "hackiloilo26"];
+export const PINNED_ACHIEVEMENTS = [
+  "psc11",
+  "hackiloilo26",
+  "reph26",
+  "hack4gov26",
+];
 
 export const PINNED_POSTS = [
   "psc11-reflections",
