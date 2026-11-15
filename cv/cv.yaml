@@ -132,6 +132,10 @@ cv:
         date: 2026-10
         summary: "Champion — led a 5-person team to build a capacity planning platform with SMS booking for a provincial rice processing complex, out of 10 finalist teams."
 
+      - name: Philippine Junior Data Science Challenge 2026 (UP DSSoc)
+        date: 2026-10
+        summary: "Participant — built LUNOP, a leptospirosis surge forecasting and response planning tool for the Iloilo City Health Office."
+
       - name: Hack4Gov National CTF 2026 (DICT & CERT-PH)
         date: 2026-10
         summary: "1st Runner-Up (Team) — national cybersecurity competition, specialized in web security."
