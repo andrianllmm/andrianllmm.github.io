@@ -1,0 +1,79 @@
+---
+title: "Shipping under pressure with half of a 5-hour hackathon left"
+description: "Reflecting on a five-hour AI hackathon and what I cut to ship in half the time"
+tags: ["reflection"]
+date: "2026-10-09"
+image: "./photos/team.jpg"
+---
+
+import Callout from "@components/Callout.astro";
+import { Image } from "astro:assets";
+import teamImg from "./photos/team.jpg";
+import trophyImg from "./photos/trophy.jpg";
+import trophyPopcornImg from "./photos/trophy-popcorn.jpg";
+import { getEntry } from "astro:content";
+import CaseStudyCard from "@components/CaseStudyCard.astro";
+
+export const caseStudy = await getEntry("caseStudies", "renewal-rescue-desk");
+
+Most hackathons I've joined give you weeks. The RELX REPH AI Summit hackathon gave us five hours, and we spent the first half not building.
+
+## Half the time gone before we even started
+
+We had to use laptops from the organizers, and getting one set up took way longer than expected.
+
+Then we took our time choosing which of the ten problem areas to work on. Most teams went with the obvious picks, or whatever their AI assistant suggested. We saw ending up with the same idea as another team as a real risk, so we kept going until we had something different. I'm pretty sure we were the last team to pick.
+
+By the time we started building, about half the time was left. I honestly thought we'd lose.
+
+## Deciding what NOT to build
+
+We went with customer support: figure out which customers are about to leave.
+
+The organizers gave us GitHub Copilot and AWS, so most of the code came from the agent. We wrote a PRD first and reviewed it as a team, then let the agent build from it. Writing code wasn't the hard part anymore. Deciding what to build was.
+
+So we cut a lot. No trained model, just a few simple rules to flag risky accounts. SQLite instead of Postgres. AI only where it actually helps, like explaining why an account is at risk and drafting an email for a person to approve. And a fallback in case the AI broke during the demo.
+
+## What we built
+
+We ended up with Renewal Rescue Desk, a queue that ranks accounts by churn risk and has AI explain each one.
+
+<CaseStudyCard caseStudy={caseStudy} />
+
+## How it turned out
+
+<Image
+  src={teamImg}
+  alt="Team receiving the 1st runner-up award"
+  class="w-full"
+/>
+
+It worked live, and we placed 1st runner-up (none of us saw coming).
+
+<Callout type="award">
+  1st runner-up out of around 8 competing teams with our project [Renewal Rescue
+  Desk](/case-studies/renewal-rescue-desk).
+</Callout>
+
+<figure class="my-4">
+  <div class="flex flex-row gap-2">
+    <Image src={trophyImg} alt="1st runner-up trophy" class="w-full" />
+    <Image
+      src={trophyPopcornImg}
+      alt="Trophy with spilled popcorn around it"
+      class="w-full"
+    />
+  </div>
+  <figcaption class="text-muted-foreground mt-1 text-center text-sm">
+    (after all that, our table was a mess, spilled popcorn everywhere. ig it's
+    fitting for a team called Popcorn Prophets...)
+  </figcaption>
+</figure>
+
+## Looking back
+
+The pressure forced us to cut things we probably should've cut anyway. A small thing that works beat a big thing half-done.
+
+I also used to think the slow pick cost us. Now I'm not so sure. It might be the reason we stood out at all.
+
+The other thing might be that we talked in money. We opened with the pain point as a real loss, about $87.7M in revenue from customers who churned, then showed what the software could save, around $550K for every 10 at-risk accounts it helps keep. That's an easier pitch to judge than "it uses AI."
