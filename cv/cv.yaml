@@ -124,6 +124,10 @@ cv:
           - "Restructured content organization across the site, reducing update overhead for 10+ maintainers."
 
     awards:
+      - name: Philippine Startup Challenge XI (DICT Region VI)
+        date: 2026-10
+        summary: "Regional Champion and National Qualifier — co-founded sentimo, an AI accounting app for Filipino micro businesses, and pitched a working web and mobile prototype."
+
       - name: Hack Iloilo 2026 (Iloilo Provincial Government)
         date: 2026-10
         summary: "Champion — led a 5-person team to build a capacity planning platform with SMS booking for a provincial rice processing complex, out of 10 finalist teams."

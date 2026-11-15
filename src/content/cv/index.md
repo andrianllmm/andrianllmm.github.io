@@ -155,6 +155,12 @@ _Komsai.Org — Computer Science Student Organization_
 
 # Awards
 
+## **Philippine Startup Challenge XI (DICT Region VI)**
+
+_Oct 2026_
+
+Regional Champion and National Qualifier — co-founded sentimo, an AI accounting app for Filipino micro businesses, and pitched a working web and mobile prototype.
+
 ## **Hack Iloilo 2026 (Iloilo Provincial Government)**
 
 _Oct 2026_
