@@ -1,0 +1,95 @@
+---
+title: "Turning heavy rain into a leptospirosis response plan"
+description: "LUNOP forecasts post-flood leptospirosis surges for the Iloilo City Health Office and turns them into ranked barangays and dated actions, with a small model and visible assumptions."
+date: "2026-10-24"
+---
+
+import { Image } from "astro:assets";
+import overviewImg from "./screenshots/overview.png";
+import priorityImg from "./screenshots/priority.png";
+import reportImg from "./screenshots/report.png";
+import replayImg from "./screenshots/replay.png";
+
+LUNOP (Leptospirosis Upsurge Nowcasting & Outbreak Prevention) is a decision-support tool for the Iloilo City Health Office. After heavy rain, it estimates how many leptospirosis cases to expect, which barangays to reach first, and what to do on which day. Lunop is Hiligaynon for "flood."
+
+## Why we built it
+
+People catch leptospirosis from floodwater contaminated by rat urine, and cases peak about two weeks after heavy rain. That delay gives a health office time to act, but the response today mostly starts after people are already sick. National guidance says to give preventive doxycycline to high-risk people in flooded areas. It doesn't say how many will get sick, when, or which communities to go to first.
+
+Iloilo City had nearly half of all reported cases across the 12 cities in our dataset, so we built for one city and one office instead of a generic national dashboard.
+
+## How it turned out
+
+### Surge forecast
+
+The overview shows expected weekly cases for the next four weeks against what's normal for that time of year, with an alert level from Normal to Severe. Live mode uses rain observed so far plus a 16-day rain forecast, and it updates once a day.
+
+<Image
+  src={overviewImg}
+  alt="Overview page with the risk level, a four-week forecast of expected cases, and the priority map"
+  class="w-full"
+/>
+
+### Barangay priority
+
+All 180 barangays are ranked by how much of their area floods and how many people live there, raised by recent flood reports from residents. We label this as estimated exposure, not a case prediction, because there's no barangay-level case data for Iloilo to check it against.
+
+<Image
+  src={priorityImg}
+  alt="Priority areas page with a barangay map and a ranked list with dose ranges"
+  class="w-full"
+/>
+
+### Dated actions
+
+Rules based on health guidelines turn the alert and the days since the rain peaked into specific actions: preventive medicine within 72 hours, case finding the next week, hospitals ready by the peak. Each one shows its target, deadline, and source.
+
+### Community flood reports
+
+Residents and health workers can report flood depth and whether they waded, from a phone and without logging in. One report only raises a barangay's score. The 72-hour countdown for preventive medicine starts only after several reports agree. Spots that flood in storm after storm go on a list for the city's drainage work.
+
+<Image
+  src={reportImg}
+  alt="Mobile flood report form with a body diagram for picking water depth"
+  class="mx-auto w-full max-w-xs"
+/>
+
+### Storm replay
+
+Health officers can replay past Iloilo storms and compare the forecast with what actually happened, including one storm where it missed.
+
+<Image
+  src={replayImg}
+  alt="Replay of an August 2011 storm with daily rain by barangay and dated actions"
+  class="w-full"
+/>
+
+## How we built it
+
+### Technologies we used
+
+|              |                                                         |
+| ------------ | ------------------------------------------------------- |
+| **Modeling** | Python + pandas + statsmodels                           |
+| **Frontend** | Next.js + Tailwind CSS + shadcn/ui + MapLibre GL        |
+| **Database** | PostgreSQL (Neon), for community reports only           |
+| **Data**     | Project CCHAIN, Project NOAH flood maps, Open-Meteo     |
+| **Ops**      | GitHub Actions daily forecast job + Vercel, offline PWA |
+
+### Keeping the model small
+
+The forecast is a negative binomial regression on lagged rain and seasonality, trained on all 12 cities so Iloilo's small counts don't make it jumpy. The data is mostly zeros with rare large outbreaks, and in our earlier tests tree-based models did no better than repeating last week's count. A simple model also gives a lag curve we could check against published studies. Its effect peaks two to three weeks after rain, which matches them.
+
+The model only estimates the surge. Priority, dose ranges, countdowns, and recommendations come from plain rules that run in the browser, and the app labels every weight as an assumption.
+
+### Testing where it matters
+
+Across all weeks, adding rain only cut Iloilo's forecast error by 2 to 7%. Most weeks are quiet, so that average hides the signal. We tested on the weeks after past big storms instead, leaving each storm out of training before forecasting it, and compared against seasonal baselines. The results, the weak barangay check, and the limitations sit on a Methods page in the app.
+
+### Keeping it running
+
+Python never runs at request time. A daily job writes the forecast to a static file. If the job fails, the app keeps showing the last good forecast with its date. Replay runs from bundled data, and the installed app queues reports while offline.
+
+## What I learned
+
+We kept the model's job small. It sizes and times the surge, and nothing else. That made it easier to explain and test, and easier to say where it falls short. The decisions about who gets medicine and where health workers go stay with the people who know the city.
