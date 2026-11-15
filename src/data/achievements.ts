@@ -28,6 +28,15 @@ export const achievements: Achievement[] = [
     relatedCaseStudies: ["sackto"],
   },
   {
+    id: "hack4gov26",
+    title: "Hack4Gov",
+    organizer: "DICT x CERT-PH",
+    type: "CTF",
+    position: "1st Runner-Up",
+    date: "2026-10-23",
+    relatedPosts: ["hack4gov26-reflections"],
+  },
+  {
     id: "reph26",
     title: "AI Summit Hackathon",
     organizer: "RELX REPH",
