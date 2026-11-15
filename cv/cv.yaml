@@ -124,6 +124,10 @@ cv:
           - "Restructured content organization across the site, reducing update overhead for 10+ maintainers."
 
     awards:
+      - name: RELX REPH AI Summit 2026 Hackathon
+        date: 2026-10
+        summary: "1st Runner-Up — led a 3-person team to build an AI churn-risk tool for customer success teams in a 5-hour sprint."
+
       - name: Quantum Computing and Cybersecurity Hackathon 2026 (QCSP)
         date: 2026-06
         summary: "1st Place — Philippines' first quantum-themed cybersecurity hackathon, specialized in Classical-Quantum challenges."

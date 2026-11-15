@@ -155,6 +155,12 @@ _Komsai.Org — Computer Science Student Organization_
 
 # Awards
 
+## **RELX REPH AI Summit 2026 Hackathon**
+
+_Oct 2026_
+
+1st Runner-Up — led a 3-person team to build an AI churn-risk tool for customer success teams in a 5-hour sprint.
+
 ## **Quantum Computing and Cybersecurity Hackathon 2026 (QCSP)**
 
 _June 2026_

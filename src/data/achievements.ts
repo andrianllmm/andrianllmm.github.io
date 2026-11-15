@@ -18,6 +18,16 @@ export type Achievement = {
 
 export const achievements: Achievement[] = [
   {
+    id: "reph26",
+    title: "AI Summit Hackathon",
+    organizer: "RELX REPH",
+    type: "Hackathon",
+    position: "1st Runner-Up",
+    date: "2026-10-09",
+    relatedPosts: ["reph26-reflections"],
+    relatedCaseStudies: ["renewal-rescue-desk"],
+  },
+  {
     id: "qcsp26",
     title: "Quantum Computing and Cybersecurity Hackathon",
     organizer: "QCSP x ISC2",
