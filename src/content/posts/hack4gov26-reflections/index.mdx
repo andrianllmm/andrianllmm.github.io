@@ -1,0 +1,42 @@
+---
+title: "Web dev knowledge still holds up in a CTF"
+description: "Reflecting on Hack4Gov '26, where we placed 1st Runner-Up again and a web background paid off a second time"
+tags: ["reflection"]
+date: "2026-10-23"
+image: "./photos/team.jpg"
+---
+
+import Callout from "@components/Callout.astro";
+import { Image } from "astro:assets";
+import teamImg from "./photos/team.jpg";
+import stageImg from "./photos/stage.jpg";
+
+Hack4Gov was [my first CTF last year](/posts/hack4gov25-reflections), where a Next.js CVE I remembered from a YouTube video became our biggest solve. This year we came back with mostly the same team.
+
+We tried to prepare better. We built a repo of notes and scripts and set time limits per difficulty so we wouldn't sink hours into one challenge. We still ended up cramming, and the time limits didn't hold up. It's hard to walk away from a problem that feels one idea away from solved.
+
+AI was banned again. This time it was harder since every other hackathon I joined this semester allowed it. I had to get used to searching, reading docs, and testing things by hand again.
+
+I spent most of my time on web. The challenge I solved was a DICT chatbot whose logic lived entirely on an Express server. I poked at its `/chat` endpoint with empty and odd inputs until it turned out to be an XSS problem.
+
+Like last year, the solve came from knowing how web apps are built. Knowledge from one field tends to carry over to another, even when it doesn't look related at first.
+
+We finished 1st Runner-Up again, and a teammate placed 4th individually.
+
+<Callout type="award">
+  1st Runner-Up for Team Category in the Region VI qualifier (610 points).
+</Callout>
+
+<Image
+  src={teamImg}
+  alt="Hack4Gov 2026 team with banner"
+  class="my-4 w-full"
+  data-zoomable
+/>
+
+<Image
+  src={stageImg}
+  alt="Hack4Gov 2026 awarding"
+  class="my-4 w-full"
+  data-zoomable
+/>
