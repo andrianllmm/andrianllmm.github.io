@@ -1,0 +1,115 @@
+---
+title: "Taking an AI accounting startup to PSC XI nationals"
+description: "Reflecting on Philippine Startup Challenge XI, where our accounting startup sentimo won Region 6 and qualified for nationals"
+tags: ["reflection"]
+date: "2026-10-25"
+image: "./photos/award.jpg"
+---
+
+import Callout from "@components/Callout.astro";
+import { Image } from "astro:assets";
+import pitchImg from "./photos/pitch.jpg";
+import awardImg from "./photos/award.jpg";
+import prizesImg from "./photos/prizes.jpg";
+import prizesCloseupImg from "./photos/prizes-closeup.jpg";
+import teamImg from "./photos/team.jpg";
+import meImg from "./photos/me.jpg";
+
+My two co-founders and I won the Western Visayas round of the Philippine Startup Challenge XI with [sentimo](/work/sentimo), our accounting app for Filipino micro businesses, and qualified for nationals. Its AI assistant drafts records from Taglish messages, but it never touches the numbers.
+
+The last time I joined was [PSC7 in 2022](/posts/psc7-reflections), when I couldn't code yet and our app only existed in slides. This time we brought a working product, and building it turned out to be the easier part.
+
+## Why accounting
+
+Every business in the Philippines has to keep books of accounts, sari-sari stores included. The owners we talked to either wrote everything in a notebook or paid a bookkeeper they could barely afford. Accounting software exists, but it expects you to know what a debit is, and most of these owners never learned accounting.
+
+So we wanted keeping proper books to feel as easy as writing in that notebook.
+
+## What we built
+
+[sentimo](/work/sentimo) lets owners record what happened the way they'd write it down: a sale, a purchase, a payment. They can tap through a short form or message the assistant in Taglish, like "benta today: 30 ensaymada, 10 pandesal, cash lahat." Receipts and voice notes work too. Underneath, every record becomes a double-entry journal entry, and sentimo builds the reports from those.
+
+We brought it to the pitch as a working web app and an Android and iOS app running on demo businesses. Having something real to show mattered to me more than anything on the slides. The judges could tap through the same app we were describing.
+
+## Where the AI stops
+
+Letting owners write in Taglish puts a language model between them and their books. A model that writes to the books directly is one hallucination away from numbers nobody catches.
+
+So the model only proposes what happened. Fixed accounting rules turn that into the actual entry, and nothing is recorded until the owner confirms it. The model never does the math.
+
+Because the model only drafts, a small fine-tuned version can run on the phone too, so owners can still record entries without signal.
+
+## Talking to people
+
+Keeping the model away from the math only works if the rules themselves are right. So we consulted CPAs on the accounting and tax side and interviewed local business owners about how they actually keep records.
+
+We heard the same worry from both sides. Owners didn't want to become accountants, and accountants didn't want to be replaced. A mentor summed it up as "a friend of a CPA, not a replacement," and we reworked the pitch around that line.
+
+The same idea shaped the pricing. If the point is to get owners off the notebook, keeping correct books has to cost nothing. The ₱399 monthly plan adds the BIR-ready books and time-savers like receipt scanning, which is still a fraction of what a bookkeeper charges.
+
+## How it turned out
+
+<Image
+  src={pitchImg}
+  alt="Pitching sentimo at the PSC XI Region 6 competition"
+  class="w-full"
+/>
+
+In Q&A, the judges asked what we thought our biggest risk was. We said adoption. Everything we built makes the books easier to keep, but an owner still has to stop writing in a notebook they've used for years, and no feature does that for them.
+
+The rest of Q&A went better than we expected. The judges liked it enough to joke about equity, asking what percentage they'd get if they put in the funding. We later heard the decision was unanimous. sentimo was named Regional Champion for Western Visayas, which also sent us to nationals.
+
+<Image
+  src={awardImg}
+  alt="Receiving the Regional Champion award at PSC XI"
+  class="w-full"
+/>
+
+<Callout type="award">
+  Regional Champion and National Qualifier at the Philippine Startup Challenge
+  XI Region 6 competition with [sentimo](/work/sentimo).
+</Callout>
+
+<figure class="my-4">
+  <div class="flex flex-row gap-2">
+    <Image
+      src={prizesImg}
+      alt="Regional Champion trophy, certificate, medals, and prize voucher on our table"
+      class="h-auto min-w-0"
+      style="flex: 16 1 0"
+    />
+    <Image
+      src={prizesCloseupImg}
+      alt="Close-up of the certificate, trophy, and medals"
+      class="h-auto min-w-0"
+      style="flex: 9 1 0"
+    />
+  </div>
+  <figcaption class="text-muted-foreground mt-1 text-center text-sm">
+    (everything we took home)
+  </figcaption>
+</figure>
+
+<figure class="my-4">
+  <div class="flex flex-row gap-2">
+    <Image
+      src={teamImg}
+      alt="The sentimo team with the trophy and certificate beside the PSC banner"
+      class="w-full min-w-0"
+    />
+    <Image
+      src={meImg}
+      alt="Me holding the Regional Champion trophy and certificate in front of the stage"
+      class="w-full min-w-0"
+    />
+  </div>
+  <figcaption class="text-muted-foreground mt-1 text-center text-sm">
+    (the obligatory photos after the awarding)
+  </figcaption>
+</figure>
+
+## Looking back
+
+A working product was enough to win regionals. It doesn't answer the risk we named in Q&A.
+
+That gap is harder to close. The prototype still runs on demo businesses, and no real owner has kept their books in it yet. Whether owners actually put down the notebook is what will tell us if sentimo is a real business.
