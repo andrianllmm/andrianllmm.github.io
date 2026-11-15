@@ -36,6 +36,15 @@ cv:
           - "Founding officer leading the organization's research and development initiatives for 100+ members."
           - "Designed and led DataLeaks, a 6-session data science workshop series covering NumPy, Pandas, data cleaning, EDA, Git, statistical learning, and machine learning, capped by an independent mini-project."
 
+      - company: "[sentimo](https://sentimo.site)"
+        position: Co-founder
+        start_date: 2026-08
+        end_date: present
+        highlights:
+          - "Co-founded an accounting startup for Filipino micro businesses, winning Region 6 champion at the Philippine Startup Challenge XI and representing the region at nationals."
+          - "Built a Taglish/English AI assistant that drafts balanced double-entry records from text, receipt photos, and voice notes, posting only after owner confirmation."
+          - "Fine-tuned FunctionGemma 270M with LoRA on 1,120 synthetic Taglish examples into an on-device model that drafts entries offline on budget phones."
+
       - company: MorpheLabs
         position: AI Automation Engineer
         start_date: 2026-06

@@ -39,6 +39,18 @@ _UPV Data Science Society_
 
 - Designed and led DataLeaks, a 6-session data science workshop series covering NumPy, Pandas, data cleaning, EDA, Git, statistical learning, and machine learning, capped by an independent mini-project.
 
+## **Co-founder**
+
+_Aug 2026 – present_
+
+_[sentimo](https://sentimo.site)_
+
+- Co-founded an accounting startup for Filipino micro businesses, winning Region 6 champion at the Philippine Startup Challenge XI and representing the region at nationals.
+
+- Built a Taglish/English AI assistant that drafts balanced double-entry records from text, receipt photos, and voice notes, posting only after owner confirmation.
+
+- Fine-tuned FunctionGemma 270M with LoRA on 1,120 synthetic Taglish examples into an on-device model that drafts entries offline on budget phones.
+
 ## **AI Automation Engineer**
 
 _June 2026 – Aug 2026_
