@@ -25,7 +25,7 @@ export const PINNED_SKILLS = [
   "pytorch",
 ];
 
-export const PINNED_WORK = ["morphelabs"];
+export const PINNED_WORK = ["sentimo"];
 
 export const PINNED_PROJECTS = [
   "manobela",
