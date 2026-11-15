@@ -29,6 +29,16 @@ _BS_ _in_ _Computer Science_
 
 # Experience
 
+## **Research and Development Officer**
+
+_Sept 2026 – present_
+
+_UPV Data Science Society_
+
+- Founding officer leading the organization's research and development initiatives for 100+ members.
+
+- Designed and led DataLeaks, a 6-session data science workshop series covering NumPy, Pandas, data cleaning, EDA, Git, statistical learning, and machine learning, capped by an independent mini-project.
+
 ## **AI Automation Engineer**
 
 _June 2026 – Aug 2026_
