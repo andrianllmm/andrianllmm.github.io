@@ -89,7 +89,7 @@ const {
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:image" content={new URL(image, Astro.site)} />
 <meta property="og:site_name" content="Andrian Lloyd Maagma" />
 {
   publishedDate && (
@@ -118,7 +118,7 @@ const {
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta property="twitter:image" content={new URL(image, Astro.site)} />
 <meta property="twitter:site" content="@andrianllmm" />
 <meta property="twitter:creator" content="@andrianllmm" />
 

@@ -26,7 +26,11 @@ const { posts, caseStudies } = await resolveRelatedContent(
 );
 ---
 
-<Layout title={project.title} description={project.description}>
+<Layout
+  title={project.title}
+  description={project.description}
+  image={project.image}
+>
   <Container>
     <div class="animate">
       <BackToPrevious href="/projects">Back to projects</BackToPrevious>
